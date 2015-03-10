@@ -33,7 +33,7 @@ task = charge_opt(environment)
 experiment = Experiment(task, agent)
 
 #do experiment
-number_of_runs = 10
+number_of_runs = 1000
 k = 0 
 while k < number_of_runs:
     experiment.doInteractions(32)
@@ -42,4 +42,4 @@ while k < number_of_runs:
     k += 1
     
     
-print "this is just a test to see if github works"
+print "this test github"
