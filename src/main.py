@@ -14,7 +14,7 @@ from pybrain.rl.learners import Q, SARSA
 from charge_opt import *
 from power_env import *
 
-from matplotlib.pyplot import plot
+#from matplotlib.pyplot import plot
 
 
 #set the environment 
