@@ -110,6 +110,7 @@ class cases(object):
     
     def set_base(self,Time):
         #sets the model to the base load profiles at a certain point in time
+        Time = Time % 96
         p = self.loadprofile[Time] * ones(25)
         p[0] = 0 # set the power at slack to 0
         for k in range(0,self.ppc["bus"].shape[0]):

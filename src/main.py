@@ -12,13 +12,13 @@ from pybrain.rl.learners.valuebased import ActionValueTable
 from pybrain.rl.agents import LearningAgent
 from pybrain.rl.learners import Q, SARSA
 from charge_opt import *
-from power_env import *
+from power_env2 import *
 
 #from matplotlib.pyplot import plot
 
 
 #set the environment 
-environment = power_env(80,5,3)
+environment = power_env2(80,5,3)
 
 # create the lerner 
 controller = ActionValueTable(3321, 9)
