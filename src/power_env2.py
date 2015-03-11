@@ -40,13 +40,26 @@ class power_env2(object):
         self.base_case = cases(self.Time)
         self.Voltage = self.base_case.get_voltage(self.node)
         
+        self.log_volt = zeros(33)
+        self.log_time = zeros(33)
+        self.log_soc = zeros(33)
+        self.log_volt[0]= self.Voltage
+        self.log_time[0]= self.Time
+        self.log_soc[0]= self.SOC
+        
         
     def reset(self):
         self.SOC = self.SOC_init
         self.Time = self.Time_init
         self.base_case.set_base(self.Time)
         self.Voltage = self.base_case.get_voltage(self.node)
-        return 0 
+        
+        self.log_volt = zeros(33)
+        self.log_time = zeros(33)
+        self.log_soc = zeros(33)
+        self.log_volt[0]= self.Voltage
+        self.log_time[0]= self.Time
+        self.log_soc[0]= self.SOC
         
     def charge_battery(self,real_action):
         """ The function that does the charging of the battery and checks if is full or empty"""
@@ -56,7 +69,7 @@ class power_env2(object):
         if tmp > self.SOC_max:
             tmp = self.SOC_max
         self.SOC = tmp 
-        print self.SOC
+        #print self.SOC
     
     def performAction(self, action):
         """performsAction function charges battery updates the time and gets new voltage from the grid."""
@@ -70,7 +83,10 @@ class power_env2(object):
         self.charge_battery(real_action)
         self.Time += 1
         self.base_case.set_base(self.Time)
+        self.base_case.add_power(self.node, real_action)
         self.Voltage = self.base_case.get_voltage(self.node)
         #self.Voltage = adapt_case(self.node, real_action, self.Time)
         #print real_action
-        print self.Time
+        self.log_soc[self.Time - self.Time_init] = self.SOC
+        self.log_time[self.Time - self.Time_init] = self.Time
+        self.log_volt[self.Time - self.Time_init] = self.Voltage

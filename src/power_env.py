@@ -55,7 +55,7 @@ class power_env(Environment, Named):
         if tmp > self.SOC_max:
             tmp = self.SOC_max
         self.SOC = tmp 
-        print self.SOC
+        #print self.SOC
     
     def performAction(self, action):
         """performsAction function charges battery updates the time and gets new voltage from the grid."""

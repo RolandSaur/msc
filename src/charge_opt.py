@@ -11,6 +11,17 @@ class charge_opt(Task):
     '''
     classdocs
     '''
+    
+    def __init__(self, environment,soc_weight,voltage_weight):
+        """ All tasks are coupled to an environment. """
+        self.env = environment
+        
+        # limits for scaling of sensors and actors (None=disabled)
+        self.sensor_limits = None
+        self.actor_limits = None
+        self.clipping = True
+        self.soc_weight = soc_weight
+        self.voltage_weight =voltage_weight
     def reward_soc(self,soc):
         #print soc / 20.0 - 0.5
         return soc / 20.0 - 0.5 # to have the best value be at one 
@@ -20,9 +31,7 @@ class charge_opt(Task):
         return 1 - power(((1-voltage)/0.01),2) # have the reward be 1 for voltage 1 and 0 for voltage 0.98 or 1.02
     
     def getReward(self):
-        soc_weight = 0.8
-        voltage_weight = 0.01
-        return soc_weight * self.reward_soc(self.env.SOC) + voltage_weight * self.reward_voltage(self.env.Voltage)
+        return self.soc_weight * self.reward_soc(self.env.SOC) + self.voltage_weight * self.reward_voltage(self.env.Voltage)
     
     
     def performAction(self, action):
@@ -49,3 +58,8 @@ class charge_opt(Task):
         #combine the indices to get the index in an array and not a matrix
         obs = array([index_soc * 41 + index_voltage])
         return obs
+    
+    def change_reward(self,soc_weight,voltage_weight):
+        self.soc_weight = soc_weight
+        self.voltage_weight = voltage_weight
+                      
