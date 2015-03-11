@@ -39,6 +39,7 @@ while k < number_of_runs:
     experiment.doInteractions(32)
     agent.learn()
     agent.reset()
+    environment.reset()
     k += 1
     
     

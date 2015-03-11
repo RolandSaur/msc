@@ -73,4 +73,4 @@ class power_env2(object):
         self.Voltage = self.base_case.get_voltage(self.node)
         #self.Voltage = adapt_case(self.node, real_action, self.Time)
         #print real_action
-        return 0 
+        print self.Time
