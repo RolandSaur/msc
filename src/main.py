@@ -34,28 +34,28 @@ task = charge_opt(environment, 0.8, 0.01)
 experiment = Experiment(task, agent)
 
 #do experiment
-number_of_runs = 1000
-k = 0 
-while k < number_of_runs:
-    experiment.doInteractions(32)
-    agent.learn()
-    agent.reset()
+number_of_runs = 5000
+#k = 0 
+#while k < number_of_runs:
+#    experiment.doInteractions(32)
+#    agent.learn()
+#    agent.reset()
     #log some data of the first and last run.
-    if k == 0:  # if it is the first run
-        first_run_time = environment.log_time
-        first_run_soc = environment.log_soc
-        first_run_volt = environment.log_volt
-    if k == number_of_runs - 1: # if it it the last run
-        last_run_time = environment.log_time
-        last_run_soc = environment.log_soc
-        last_run_volt = environment.log_volt 
-    environment.reset()
-    k += 1
+#    if k == 0:  # if it is the first run
+#        first_run_time = environment.log_time
+ #       first_run_soc = environment.log_soc
+ #       first_run_volt = environment.log_volt
+#    if k == number_of_runs - 1: # if it it the last run
+#        last_run_time = environment.log_time
+#        last_run_soc = environment.log_soc
+#        last_run_volt = environment.log_volt 
+#    environment.reset()
+#    k += 1
 
 
 
 #change the reward and run the whole experiment again
-task.change_reward(1.6, 0.01)
+task.change_reward(1.6, 0.0)
 # create the lerner 
 controller = ActionValueTable(3321, 9)
 controller.initialize(1.)
@@ -81,7 +81,9 @@ while k < number_of_runs:
     k += 1
 
    
-plt.plot(first_run_time,first_run_soc,'r',last_run_time,last_run_soc,'g',first_run_time2,first_run_soc2,'r--',last_run_time2,last_run_soc2,'g--')
+#plt.plot(first_run_time,first_run_soc,'r',last_run_time,last_run_soc,'g',first_run_time2,first_run_soc2,'r--',last_run_time2,last_run_soc2,'g--')
+plt.plot(first_run_time2,first_run_soc2,'r--',last_run_time2,last_run_soc2,'g--')
+
 
 plt.show()
     
