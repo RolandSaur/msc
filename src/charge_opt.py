@@ -24,7 +24,7 @@ class charge_opt(Task):
         self.voltage_weight =voltage_weight
     def reward_soc(self,soc):
         #print soc / 20.0 - 0.5
-        return soc / 20.0 - 0.9 # to have the best value be at one 
+        return 10 * (soc / 20.0 - 0.5) # to have the best value be at one 
     
     def reward_voltage(self,voltage):
         #print  1 - power(((1-voltage)/0.01),2)
