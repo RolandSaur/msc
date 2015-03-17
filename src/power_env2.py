@@ -23,7 +23,7 @@ class power_env2(object):
     Time_init = None
     Voltage = None  #init the voltage
     node = None     #init the node point in the grid
-    all_actions = array([-4,-3,-2,-1,0,1,2,3,4])
+    all_actions = array([-4,0,4])
 
 
     def __init__(self,Time, SOC, node):
@@ -40,9 +40,9 @@ class power_env2(object):
         self.base_case = cases(self.Time)
         self.Voltage = self.base_case.get_voltage(self.node)
         
-        self.log_volt = zeros(33)
-        self.log_time = zeros(33)
-        self.log_soc = zeros(33)
+        self.log_volt = zeros(97)
+        self.log_time = zeros(97)
+        self.log_soc = zeros(97)
         self.log_volt[0]= self.Voltage
         self.log_time[0]= self.Time
         self.log_soc[0]= self.SOC
@@ -54,9 +54,9 @@ class power_env2(object):
         self.base_case.set_base(self.Time)
         self.Voltage = self.base_case.get_voltage(self.node)
         
-        self.log_volt = zeros(33)
-        self.log_time = zeros(33)
-        self.log_soc = zeros(33)
+        self.log_volt = zeros(97)
+        self.log_time = zeros(97)
+        self.log_soc = zeros(97)
         self.log_volt[0]= self.Voltage
         self.log_time[0]= self.Time
         self.log_soc[0]= self.SOC

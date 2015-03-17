@@ -24,7 +24,7 @@ class charge_opt(Task):
         self.voltage_weight =voltage_weight
     def reward_soc(self,soc):
         #print soc / 20.0 - 0.5
-        return (soc / 20.0 - 1) # to have the best value be at one 
+        return (soc / 20.0 - 0.5) # to have the best value be at one 
     
     def reward_voltage(self,voltage):
         #print  1 - power(((1-voltage)/0.01),2)
@@ -42,8 +42,10 @@ class charge_opt(Task):
         
     def getObservation(self):
         #set the possible values and the actual value for soc and voltage
-        pos_voltage =linspace(0.98,1.02,41)
-        pos_soc = linspace(0,20,81)
+        number_voltage_steps = 3
+        number_soc_steps = 21
+        pos_voltage =linspace(0.98,1.00,number_voltage_steps)
+        pos_soc = linspace(0,20,number_soc_steps)
         soc = self.env.SOC   
         voltage = self.env.Voltage
         
@@ -56,7 +58,10 @@ class charge_opt(Task):
         index_soc = dif_soc.argmin()
         
         #combine the indices to get the index in an array and not a matrix
-        obs = array([index_soc * 41 + index_voltage])
+        obs = array([index_soc * number_voltage_steps + index_voltage])
+        #print obs
+        #print soc
+        #print voltage
         return obs
     
     def change_reward(self,soc_weight,voltage_weight):

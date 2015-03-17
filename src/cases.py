@@ -106,6 +106,7 @@ class cases(object):
     def get_voltage(self,node):
         #returns the voltage at specific node after running power flow simulation 
         ppc_result,y = runpf(self.ppc, self.ppopt)
+        #print ppc_result["bus"][node,7]
         return ppc_result["bus"][node,7]
     
     def set_base(self,Time):
@@ -118,7 +119,7 @@ class cases(object):
             
     def add_power(self,node, power):
         # adds a certain amount of power at a specific point in the grid
-        self.ppc["bus"][node,2]+= power
+        self.ppc["bus"][node,2]+= power / 1000.0 #divide by 1000 to transform it to MW
         
         
         
