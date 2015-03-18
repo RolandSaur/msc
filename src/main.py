@@ -58,7 +58,7 @@ while k < number_of_runs:
     k += 1
 
 agent.learning = False #to keep it from exploring
-experiment = Experiment(task, agent)
+experiment = Experiment(task, agent) 
 experiment.doInteractions(96)
 last_run_time2 = environment.log_time
 last_run_soc2 = environment.log_soc
