@@ -20,7 +20,7 @@ class cases(object):
         '''
         #data for the power flow 
         self.Time = Time
-        self.ppopt = ppoption(PF_ALG=2, VERBOSE= False,OUT_ALL=0)
+        self.ppopt = ppoption(PF_ALG=2,opf_flow_lim=2)#, VERBOSE= False,OUT_ALL=0)
         self.ppc = {"version": '2'}
         ## system MVA base
         self.ppc["baseMVA"] = 0.144
@@ -118,10 +118,15 @@ class cases(object):
             self.ppc["bus"][k,2]= p[k] #reset the p value
             
     def add_power(self,node, power):
-        # adds a certain amount of power at a specific point in the grid
+        # adds a certain amount of power at a specific point in the grid, takes input in kW
         self.ppc["bus"][node,2]+= power / 1000.0 #divide by 1000 to transform it to MW
         
-        
+    def get_power_actual(self, node):
+        ppc_result,y = runpf(self.ppc, self.ppopt)
+        return ppc_result["bus"][node,2]
+    
+    def change_restrictions(self,rateA):
+        self.ppc["branch"][:,5]= rateA
         
         
         
