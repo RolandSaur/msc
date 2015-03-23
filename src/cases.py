@@ -19,11 +19,17 @@ class cases(object):
         Constructs a pypower case and inits a load profile
         '''
         #data for the power flow 
-        self.Time = Time
+        self.Time = Time ## might be a useless variable since the laod profile has been moved to the agent
+        ##options
         self.ppopt = ppoption(PF_ALG=2,opf_flow_lim=2)#, VERBOSE= False,OUT_ALL=0)
         self.ppc = {"version": '2'}
+        
+        
         ## system MVA base
         self.ppc["baseMVA"] = 0.144
+        
+        ## bus data
+        # bus_i type Pd Qd Gs Bs area Vm Va baseKV zone Vmax Vmin
         self.ppc["bus"] = array([
         [1,3,0,0,0,0,0,1,1,0,1,1.1,0.94],
         [2,1,0,0,0,0,0,1,1,0,1,1.1,0.94],
@@ -51,8 +57,35 @@ class cases(object):
         [24,1,0,0,0,0,0,1,1,0,1,1.1,0.94],
         [25,1,0,0,0,0,0,1,1,0,1,1.1,0.94],
     ])
+        ## generator data
+        # bus, Pg, Qg, Qmax, Qmin, Vg, mBase, status, Pmax, Pmin, Pc1, Pc2,
+        # Qc1min, Qc1max, Qc2min, Qc2max, ramp_agc, ramp_10, ramp_30, ramp_q, apf
         self.ppc["gen"] = array([
-        [1, 232.4, -16.9, 10,   0, 1.0,  100, 1, 332.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        [1, 1, -16.9, 1,   0, 1.0,  100, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [3, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [4, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [5, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [6, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [7, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [8, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [9, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [10, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [11, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [12, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [13, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [14, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [15, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [16, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [17, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [18, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [19, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [20, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [21, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [22, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [23, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [24, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [25, 0, 0, 1,   0, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ])
         self.ppc["branch"] = array([
         [2,1,0.001590, 0.000814,0,0,0,0,0,0,1,-360,360],
@@ -83,51 +116,37 @@ class cases(object):
         self.ppc["branch"][:,2]= (0.494 * 0.1 / 1.1) * ones(24)
         self.ppc["branch"][:,3]= (0.0883 * 0.1 / 1.1) * ones(24)
         
-        self.loadprofile = 0.001 * array([2.1632,1.9456,1.7568,1.5968,1.4784 ,1.3952,1.3408,1.3056,1.2832,1.2672,
-1.2608,1.2512,1.2416,1.2352,1.2256,
-1.2256,1.2288,1.2416,1.2576,1.28,
-1.3088,1.3792,1.5264,1.7856,2.176,
-2.6496,3.136,3.568,3.8912,4.112,
-4.2464,4.3136,4.3328,4.3136,4.2592,
-4.1824,4.0864,3.9872,3.888,3.808,
-3.7536,3.7184,3.7024,3.7024,3.7152,
-3.744,3.7984,3.888,4.0128,4.1472,
-4.256,4.3136,4.2944,4.2144,4.096,
-3.968,3.8464,3.7376,3.6384,3.5424,
-3.4528,3.376,3.312,3.2768,3.2704,
-3.3024,3.3792,3.5168,3.712,3.9584,
-4.2432,4.5536,4.8768,5.1904,5.4784,
-5.7248,5.9104,6.0224,6.0448,5.9648,
-5.7824,5.5264,5.2448,4.9792,4.7648,
-4.5888,4.4288,4.2624,4.0704,3.856,
-3.6256,3.3824,3.136,2.8864,2.64,
-2.3968])
         
-    def get_voltage(self,node):
-        #returns the voltage at specific node after running power flow simulation 
+        
+    def get_output(self):
+        #returns the output of the load flow calculation
         ppc_result,y = runpf(self.ppc, self.ppopt)
         #print ppc_result["bus"][node,7]
-        return ppc_result["bus"][node,7]
+        return ppc_result
     
-    def set_base(self,Time):
-        #sets the model to the base load profiles at a certain point in time
-        Time = Time % 96
-        p = self.loadprofile[Time] * ones(25)
-        p[0] = 0 # set the power at slack to 0
-        for k in range(0,self.ppc["bus"].shape[0]):
-            self.ppc["bus"][k,2]= p[k] #reset the p value
-            
-    def add_power(self,node, power):
-        # adds a certain amount of power at a specific point in the grid, takes input in kW
-        self.ppc["bus"][node,2]+= power / 1000.0 #divide by 1000 to transform it to MW
+   
+    def set_power(self,node, power):
+        # sets the power at a specific node
+        self.ppc["gen"][node -1,1]= - power / 1000.0 #divide by 1000 to transform it to MW , the node -1 because indexing starts with 0 
         
-    def get_power_actual(self, node):
-        ppc_result,y = runpf(self.ppc, self.ppopt)
-        return ppc_result["bus"][node,2]
+    
     
     def change_restrictions(self,rateA):
         self.ppc["branch"][:,5]= rateA
         
+        
+        
+    #def get_power_actual(self, node):
+    #    ppc_result,y = runpf(self.ppc, self.ppopt)
+    #    return ppc_result["bus"][node,2]
+        
+    #def set_base(self,Time):
+        #sets the model to the base load profiles at a certain point in time
+    #    Time = Time % 96
+    #    p = self.loadprofile[Time] * ones(25)
+    #    p[0] = 0 # set the power at slack to 0
+    #    for k in range(0,self.ppc["bus"].shape[0]):
+    #        self.ppc["bus"][k,2]= p[k] #reset the p value
         
         
         
