@@ -20,7 +20,7 @@ from agent import agent
 
 time_init = 72
 testcase = cases(time_init)
-testcase.change_restrictions(0.00000000000000000000000000000000000000000005)
+testcase.change_restrictions(0.5)
 #create the agents
 SOC_initial = 5
 agents = dict()

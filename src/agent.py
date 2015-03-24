@@ -44,12 +44,21 @@ class agent(object):
 3.6256,3.3824,3.136,2.8864,2.64,
 2.3968])
         
+        
+    def get_restricted(self):
+        return self.actions[5] ## right now just unrestricted values 
+    
+    
     def get_action(self):
         #returns the action the agent would like to perform based on time ,SOC and voltage
         base_load = self.loadprofile[self.time % 96]
-        charging_load = self.actions[5]
-        print base_load + charging_load
+        #charging_load = self.actions[5]
+        #print base_load + charging_load
+        charging_load = self.get_restricted(self)
+
         return base_load + charging_load
+    
+
     
     def set_voltage(self,voltage):
         #sets the voltage level that the agent sees 
