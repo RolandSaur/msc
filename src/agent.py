@@ -54,7 +54,8 @@ class agent(object):
         base_load = self.loadprofile[self.time % 96]
         #charging_load = self.actions[5]
         #print base_load + charging_load
-        charging_load = self.get_restricted(self)
+        charging_load = self.get_restricted()
+        print base_load + charging_load
 
         return base_load + charging_load
     

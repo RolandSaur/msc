@@ -7,7 +7,7 @@ I am not sure if this file will be used, it is an attempt to decouple the pypowe
 so that different agents can make their changes.
 '''
 from scipy import array,ones
-from pypower.api import  ppoption, runpf
+from pypower.api import  ppoption, runopf
 
 class cases(object):
     '''
@@ -21,7 +21,7 @@ class cases(object):
         #data for the power flow 
         self.Time = Time ## might be a useless variable since the laod profile has been moved to the agent
         ##options
-        self.ppopt = ppoption(PF_ALG=2,opf_flow_lim=2)#, VERBOSE= False,OUT_ALL=0)
+        self.ppopt = ppoption(OPF_ALG=0,opf_flow_lim=2, VERBOSE= False,OUT_ALL=0) #using default opf solver
         self.ppc = {"version": '2'}
         
         
@@ -116,17 +116,46 @@ class cases(object):
         self.ppc["branch"][:,2]= (0.494 * 0.1 / 1.1) * ones(24)
         self.ppc["branch"][:,3]= (0.0883 * 0.1 / 1.1) * ones(24)
         
+        self.ppc["gencost"] = array([
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, 1, 1],
+        ])
+        
         
         
     def get_output(self):
         #returns the output of the load flow calculation
-        ppc_result,y = runpf(self.ppc, self.ppopt)
+        ppc_result,y = runopf(self.ppc, self.ppopt)
         #print ppc_result["bus"][node,7]
         return ppc_result
     
    
     def set_power(self,node, power):
         # sets the power at a specific node
+        print - power / 1000.0
         self.ppc["gen"][node -1,1]= - power / 1000.0 #divide by 1000 to transform it to MW , the node -1 because indexing starts with 0 
         
     
