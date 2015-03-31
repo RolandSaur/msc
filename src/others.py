@@ -20,7 +20,7 @@ from agent import agent
 
 time_init = 72
 testcase = cases(time_init)
-testcase.change_restrictions(5)
+testcase.change_restrictions(100)
 #create the agents
 SOC_initial = 5
 agents = dict()
@@ -32,6 +32,8 @@ for k in range(2,26):
 for i in agents:
     agents[i].do_interaction(testcase)
 
+testcase.adapt_main_generator()
+#print testcase.get_output()
 ## the environment calculates the next step
 output = testcase.get_output()
 
