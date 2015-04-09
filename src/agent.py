@@ -51,7 +51,8 @@ class agent(object):
     
     def get_action(self):
         #returns the action the agent would like to perform based on time ,SOC and voltage
-        base_load = self.loadprofile[self.time % 96]
+        #base_load = self.loadprofile[self.time % 96]
+        base_load =0
         #charging_load = self.actions[5]
         #print base_load + charging_load
         charging_load = self.get_restricted()

@@ -29,6 +29,7 @@ for k in range(2,26):
 
 """here is what has to be repeated over and over again. """
 ## each agent does something to the environment
+testcase.set_base(time_init)
 for i in agents:
     agents[i].do_interaction(testcase)
 
