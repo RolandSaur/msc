@@ -7,7 +7,7 @@ I am not sure if this file will be used, it is an attempt to decouple the pypowe
 so that different agents can make their changes.
 '''
 from scipy import array,ones
-from pypower.api import  ppoption, runopf
+from pypower.api import  ppoption, runopf, runpf
 
 class cases(object):
     '''
@@ -21,7 +21,7 @@ class cases(object):
         #data for the power flow 
         self.Time = Time ## might be a useless variable since the laod profile has been moved to the agent
         ##options
-        self.ppopt = ppoption(OPF_ALG=0,opf_flow_lim=2)#, VERBOSE= False,OUT_ALL=0) #using default opf solver
+        self.ppopt = ppoption(OPF_ALG=0,opf_flow_lim=2,pf_max_it = 20, VERBOSE= 2,OUT_ALL=0) #using default opf solver
         self.ppc = {"version": '2'}
         
         self.loadprofile = array([2.1632,1.9456,1.7568,1.5968,1.4784 ,1.3952,1.3408,1.3056,1.2832,1.2672,
@@ -140,7 +140,7 @@ class cases(object):
         self.ppc["branch"][:,3]= (0.0883 * 0.1 / 1.1) * ones(24)
         
         self.ppc["gencost"] = array([
-        [2, 0, 0, 1, 1, 1],
+        [2, 0, 0, 1, -1, -1],
         [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
@@ -166,6 +166,8 @@ class cases(object):
         [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
         ])
+        self.ppc['gencost'][:,4] = 0.000001
+        self.ppc['gencost'][:,5] = 0.000001
         
         
         
@@ -173,6 +175,8 @@ class cases(object):
         #returns the output of the load flow calculation
         ppc_result = runopf(self.ppc, self.ppopt)
         #print ppc_result["bus"][node,7]
+        print ppc_result["gen"]
+        print type(ppc_result)
         return ppc_result
     
    
@@ -184,8 +188,8 @@ class cases(object):
     
     
     def change_restrictions(self,rateA):
-        self.ppc["branch"][:,5]= rateA
-        
+        self.ppc["branch"][:,5]= rateA * ones(24)
+
     def adapt_main_generator(self):
         
         self.ppc["gen"][0,1] = - sum(self.ppc["gen"][1:25,1])
@@ -200,7 +204,7 @@ class cases(object):
     def set_base(self,Time):
         #sets the model to the base load profiles at a certain point in time
         Time = Time % 96
-        p = self.loadprofile[Time] * ones(25)
+        p = self.loadprofile[Time] * ones(25) / 1000
         p[0] = 0 # set the power at slack to 0
         for k in range(0,self.ppc["bus"].shape[0]):
             self.ppc["bus"][k,2]= p[k] #reset the p value

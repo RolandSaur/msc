@@ -79,8 +79,8 @@ class agent(object):
         
     def get_feedback(self, output):
         #gets feedback from the gird in the form of voltage and actual power consumption
-        print - output["gen"][self.node-1,1] * 1000
-        self.power_used(- 1000.0 * output["gen"][self.node-1,1])
+        #print - output["gen"][self.node-1,1] * 1000
+        self.power_used(- 1000.0 * output['gen'][self.node-1,1])
         self.set_voltage(output["bus"][self.node-1,7])
         
         

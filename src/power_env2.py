@@ -8,7 +8,7 @@ from numpy import *
 
 from pybrain.utilities import Named
 from pybrain.rl.environments.environment import Environment
-from cases import cases
+from cases_q_learn import cases
 
 
 class power_env2(object):

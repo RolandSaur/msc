@@ -31,7 +31,7 @@ agent = LearningAgent(controller, learner)
 task = charge_opt(environment, 0.8, 0.01)
 
 #do experiment
-number_of_runs = 20000
+number_of_runs = 20
 
 
 #change the reward and run the whole experiment 
