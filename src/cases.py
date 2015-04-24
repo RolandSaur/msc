@@ -21,7 +21,7 @@ class cases(object):
         #data for the power flow 
         self.Time = Time ## might be a useless variable since the laod profile has been moved to the agent
         ##options
-        self.ppopt = ppoption(OPF_ALG=0,opf_flow_lim=2,pf_max_it = 20, VERBOSE= 2,OUT_ALL=0) #using default opf solver
+        self.ppopt = ppoption(OPF_ALG=0,opf_flow_lim=2, VERBOSE= 2,OUT_ALL=0) #using default opf solver
         self.ppc = {"version": '2'}
         
         self.loadprofile = array([2.1632,1.9456,1.7568,1.5968,1.4784 ,1.3952,1.3408,1.3056,1.2832,1.2672,
@@ -46,6 +46,7 @@ class cases(object):
         
         ## system MVA base
         self.ppc["baseMVA"] = 0.144
+        #self.ppc["baseMVA"] = 7
         
         ## bus data
         # bus_i type Pd Qd Gs Bs area Vm Va baseKV zone Vmax Vmin
@@ -76,6 +77,7 @@ class cases(object):
         [24,1,0,0,0,0,0,1,1,0,1,1.1,0.94],
         [25,1,0,0,0,0,0,1,1,0,1,1.1,0.94],
     ])
+        #self.ppc["bus"][:,12]=0.90 # relaxes the lower voltage constraint.
         ## generator data
         # bus, Pg, Qg, Qmax, Qmin, Vg, mBase, status, Pmax, Pmin, Pc1, Pc2,
         # Qc1min, Qc1max, Qc2min, Qc2max, ramp_agc, ramp_10, ramp_30, ramp_q, apf
@@ -107,7 +109,7 @@ class cases(object):
         [25, 0, 0, 0,   -1, 1.0,  100, 1,0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ])
         self.ppc["gen"][:,9] = -1
-        self.ppc["gen"][:,4]=-0.00001
+        self.ppc["gen"][:,4]=1
         
         
         self.ppc["branch"] = array([
@@ -140,7 +142,7 @@ class cases(object):
         self.ppc["branch"][:,3]= (0.0883 * 0.1 / 1.1) * ones(24)
         
         self.ppc["gencost"] = array([
-        [2, 0, 0, 1, -1, -1],
+        [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
         [2, 0, 0, 1, 1, 1],
@@ -172,12 +174,19 @@ class cases(object):
         
         
     def get_output(self):
+        self.power_factor_correction()
         #returns the output of the load flow calculation
         ppc_result = runopf(self.ppc, self.ppopt)
         #print ppc_result["bus"][node,7]
         print ppc_result["gen"]
         print type(ppc_result)
         return ppc_result
+    
+    def power_factor_correction(self):
+        for k in range(0,25):
+            q_lim = abs(self.ppc["gen"][k,3] - self.ppc["gen"][k,4])
+            print self.ppc["gen"][k,1] * q_lim / self.ppc["gen"][k,9]
+            self.ppc["gen"][k,2] = self.ppc["gen"][k,1] * q_lim / self.ppc["gen"][k,9] 
     
    
     def set_power(self,node, power):
