@@ -68,5 +68,3 @@ last_run_volt2 = environment.log_volt
 plt.plot(first_run_time2,first_run_soc2,'r--',last_run_time2,last_run_soc2,'g--')
 
 plt.show()
-    
-#print "this test github"

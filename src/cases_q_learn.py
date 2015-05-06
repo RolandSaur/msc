@@ -109,6 +109,7 @@ class cases(object):
         p[0] = 0 # set the power at slack to 0
         for k in range(0,self.ppc["bus"].shape[0]):
             self.ppc["bus"][k,2]= p[k] #reset the p value
+            
     def add_power(self,node, power):
         # adds a certain amount of power at a specific point in the grid
         self.ppc["bus"][node,2]+= power / 1000.0 #divide by 1000 to transform it to MW

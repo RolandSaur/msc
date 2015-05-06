@@ -5,7 +5,9 @@ Created on Mar 22, 2015
 '''
 from cases import cases
 from scipy import array
-from numpy import linspace
+from numpy import linspace, matrix, zeros , random, shape, ones, argmin, lexsort
+import global_variables
+from global_variables import *
 
 class agent(object):
     '''
@@ -23,42 +25,221 @@ class agent(object):
         self.Voltage = 1
         self.time = time
         self.at_home = True
-        #set the base load profile in the back
-        self.loadprofile = array([2.1632,1.9456,1.7568,1.5968,1.4784 ,1.3952,1.3408,1.3056,1.2832,1.2672,
-1.2608,1.2512,1.2416,1.2352,1.2256,
-1.2256,1.2288,1.2416,1.2576,1.28,
-1.3088,1.3792,1.5264,1.7856,2.176,
-2.6496,3.136,3.568,3.8912,4.112,
-4.2464,4.3136,4.3328,4.3136,4.2592,
-4.1824,4.0864,3.9872,3.888,3.808,
-3.7536,3.7184,3.7024,3.7024,3.7152,
-3.744,3.7984,3.888,4.0128,4.1472,
-4.256,4.3136,4.2944,4.2144,4.096,
-3.968,3.8464,3.7376,3.6384,3.5424,
-3.4528,3.376,3.312,3.2768,3.2704,
-3.3024,3.3792,3.5168,3.712,3.9584,
-4.2432,4.5536,4.8768,5.1904,5.4784,
-5.7248,5.9104,6.0224,6.0448,5.9648,
-5.7824,5.5264,5.2448,4.9792,4.7648,
-4.5888,4.4288,4.2624,4.0704,3.856,
-3.6256,3.3824,3.136,2.8864,2.64,
-2.3968])
+        self.memory = zeros((5,7))
+        self.active_rule = zeros((1,7))
+        self.soc_max = soc_max_gloabl
+        self.count_steps = 0
+        self.count_soc = 0 
+        self.preference = 0
+        self.mean_battery_drain = random.normal(average_battery_drain, sd_average_battery_drain, 1)
+        self.sd_battery_drain = 2
+        self.arrival_time = round(random.normal(average_arrival_time,sd_average,1))
+        self.leaving_time = round(random.normal(average_laeving_time, sd_average,1))
+        
+        decide = random.uniform(0,1,1)
+        if decide > 0.5:
+            self.active_rule = self.create_random_voltage_rule()
+            #print self.active_rule
+        else:
+            self.active_rule = self.create_random_time_rule()
+            #print self.active_rule
+        
+    def change_rule(self):
+        decide = random.uniform(0,1)
+        if decide > 1 - random_change:
+            decide_random = random.uniform(0,1)
+            if decide_random > 0.5:
+                self.active_rule = self.create_random_voltage_rule()
+            else:
+                self.active_rule = self.create_random_time_rule()
+        elif (decide > 1- random_change - copy_best_change):
+            self.copy_best()
+        else:
+            self.change_learn()
+    
+    def copy_best(self):
+        best_value = -1
+        best_rule = zeros(6)
+        for i in agents:
+            if (agents[i].node != self.node):
+                if agents[i].memory[0,6] > best_value:
+                    best_rule = agents[i].memory[0,0:6]
+                    best_value = agents[i].memory[0,6]
+        self.active_rule = best_rule
         
         
-    def get_restricted(self):
-        return self.actions[5] ## right now just unrestricted values 
+    def change_learn(self):
+        count_time = 0 
+        count_voltage = 0
+        preference_time = 0 
+        preference_voltage = 0
+        k = 0 
+        ended= False
+        while (k< 5) & (ended==False):
+            if self.memory[k,0] == 1:
+                count_voltage +=1
+                preference_voltage += self.memory[k,6]
+            if self.memory[k,0] ==2:
+                count_time +=1
+                preference_time += self.memory[k,6]
+            if self.memory[k,0] == 0:
+                ended = True
+            index = k
+            k += 1
+            
+            
+        if (index == 0):
+            self.active_rule = self.memory[0,0:6]
+        else:
+            if (count_time ==0) | (count_voltage == 0):
+                if count_voltage > count_time:
+                    self.active_rule = self.weighted_volt_rule()
+                else:
+                    self.active_rule = self.weighted_time_rule()
+            else:
+                if ((preference_voltage/count_voltage) > (preference_time/count_time)):
+                    self.active_rule = self.weighted_volt_rule()
+                else: 
+                    self.active_rule = self.weighted_time_rule()
+                    
+    def weighted_volt_rule(self):
+        
+        av_volt = 0 
+        av_soc = 0 
+        av_action1 = 0
+        av_action2 =0
+        counter = 0 
+        for k in range(0,5):
+            if self.memory[k,0] == 1:
+                av_volt += self.memory[k,1] * self.memory[k,6]
+                av_soc += self.memory[k,2] * self.memory[k,6]
+                av_action1 += self.memory[k,3] * self.memory[k,6]
+                av_action2 += self.memory[k,4] * self.memory[k,6]
+                counter += self.memory[k,6]
+        av_volt = av_volt / counter
+        av_soc = av_soc / counter 
+        av_action1 = av_action1 / counter
+        av_action2 = av_action2 / counter
+        #print "weighted voltage rule"
+        #print array([1, av_volt, av_soc, av_action1, av_action2, 0])
+        
+        av_volt = round(av_volt,2)
+        av_action1 = round(av_action1,0)
+        av_action2 = round(av_action2,0)
+        soc_dif = abs(av_soc * ones(shape(soc_threshold_options)) - soc_threshold_options)
+        index_soc  = argmin(soc_dif)
+        av_soc = soc_threshold_options[index_soc]
+        return array([1, av_volt, av_soc, av_action1, av_action2, 0])
+    
+    def weighted_time_rule(self):
+        av_time_begin =0 
+        av_time_end = 0 
+        av_soc = 0 
+        av_action1 = 0
+        av_action2 =0
+        counter = 0 
+        for k in range(0,5):
+            if self.memory[k,0] == 2:
+                av_time_begin += self.memory[k,1]*self.memory[k,6]
+                av_time_end += self.memory[k,2]*self.memory[k,6]
+                av_soc += self.memory[k,3]*self.memory[k,6]
+                av_action1 += self.memory[k,4]*self.memory[k,6]
+                av_action2 += self.memory[k,5]*self.memory[k,6]
+                counter += self.memory[k,6]
+        av_time_begin = av_time_begin / counter
+        av_time_end = av_time_end / counter 
+        av_soc = av_soc / counter 
+        av_action1 = av_action1 / counter
+        av_action2 = av_action2 / counter
+        av_action1 = round(av_action1,0)
+        av_action2 = round(av_action2,0)
+        soc_dif = abs(av_soc * ones(shape(soc_threshold_options)) - soc_threshold_options)
+        index_soc  = argmin(soc_dif)
+        av_soc = soc_threshold_options[index_soc]
+        av_time_begin = round(av_time_begin,0)
+        av_time_end = round(av_time_end,0)
+        #print "weighted time rule"
+        #print array([2, av_time_begin, av_time_end, av_soc, av_action1, av_action2])
+        return array([2, av_time_begin, av_time_end, av_soc, av_action1, av_action2])
+                
+        
+    def reset_values(self):
+        self.update_memory()
+        self.count_steps = 0
+        self.count_soc = 0 
+        self.preference = 0 
+        
+    def update_memory(self):
+        in_memory = False
+        for k in range(0,5):
+            if all(self.memory[k,0:6] == self.active_rule):
+                in_memory = True
+                memory_index = k 
+        
+        if in_memory:
+            self.memory[memory_index,6] = (self.memory[memory_index,6] + self.preference) / 2
+        else:
+            memory_full = True
+            k = 0
+            while (k<5) & (memory_full == True):
+                if (self.memory[k,0]==0):
+                    memory_full = False
+                    memory_index = k
+                k += 1
+            if (memory_full == False):
+                self.memory[memory_index,0:6]= self.active_rule
+                self.memory[memory_index,6] = self.preference
+            else:
+                if self.memory[4,6] < self.preference:
+                    self.memory[4,0:6] = self.active_rule
+                    self.memory[4,6] = self.preference
+        self.memory = self.memory[lexsort((self.memory[:,6],))]
+        self.memory = self.memory[::-1]
+        
+    def create_random_voltage_rule(self):
+        voltage_threshold = random.choice(voltage_options)
+        
+        soc_threshold = random.choice(soc_threshold_options)
+        action1 = random.choice(action_options)
+        action2 = random.choice(action_options)
+        #print "random_voltage_rule"
+        #print array([1,voltage_threshold,soc_threshold,action1,action2,0])
+        return array([1,voltage_threshold,soc_threshold,action1,action2,0])
+    
+    def create_random_time_rule(self):
+
+        action1 = random.choice(action_options)
+        action2 = random.choice(action_options)
+        t_begin = random.choice(t_begin_options)
+        t_end = random.choice(t_end_options)
+        soc_threshold = random.choice(soc_threshold_options)
+        #print "random_time_rule"
+        #print array([2,t_begin,t_end,soc_threshold,action1,action2])
+        return array([2,t_begin,t_end,soc_threshold,action1,action2])
+    
     
     
     def get_action(self):
         #returns the action the agent would like to perform based on time ,SOC and voltage
-        #base_load = self.loadprofile[self.time % 96]
-        base_load =0
-        #charging_load = self.actions[5]
-        #print base_load + charging_load
-        charging_load = self.get_restricted()
-        print base_load + charging_load
-
-        return base_load + charging_load
+        if self.SOC == self.soc_max:
+            return 0
+        else:
+            if self.active_rule[0] ==1:  # voltage rule
+                if (self.Voltage < self.active_rule[1]) & (self.SOC> self.active_rule[2]):
+                    return self.active_rule[3]
+                else:
+                    return self.active_rule[4]
+            else:
+                if (self.active_rule[2] > self.active_rule[1]):
+                    if ((self.active_rule[1] < self.time % 96) & (self.active_rule[2] > self.time % 96) & (self.SOC> self.active_rule[3]) ):
+                        return self.active_rule[4]
+                    else:
+                        return self.active_rule[5]
+                else:
+                    if ((self.active_rule[1] < self.time % 96) | (self.active_rule[2] > self.time % 96) & (self.SOC> self.active_rule[3]) ):
+                        return self.active_rule[4]
+                    else:
+                        return self.active_rule[5]
     
 
     
@@ -68,12 +249,14 @@ class agent(object):
         
     def power_used(self,power):
         #calculate how much energy can be used to charge the battery and updates the state of charge (SOC) 
-        self.SOC += (power - self.loadprofile[self.time % 96])/4.0 #energy used in a 15 minute interval 
-        #print self.SOC
+        self.SOC += (power)/4.0 #energy used in a 15 minute interval 
+        if self.SOC > self.soc_max:
+            self.SOC = self.soc_max
         
     def do_interaction(self,case_object):
         # increase the time and then interact with the case structure
         self.time += self.time
+        #print self.get_action()
         case_object.set_power(self.node,self.get_action())
         
         
@@ -83,6 +266,22 @@ class agent(object):
         self.power_used(- 1000.0 * output['gen'][self.node-1,1])
         self.set_voltage(output["bus"][self.node-1,7])
         
+    def get_active_rule(self):
+        return self.active_rule
+    def get_memory(self):
+        return self.memory
         
-        #self.power_uesd(case_object.get_power_actual()) 
-        #self.set_voltage(case_object.get_voltage())
+    def arrive_at_home(self):
+        self.at_home = True
+        battery_drain = random.normal(self.mean_battery_drain,self.sd_battery_drain,1)
+        self.SOC = self.SOC - battery_drain
+        if self.SOC < 0:
+            self.SOC = 0
+            
+    def update_situation(self):
+        self.count_steps += 1
+        self.count_soc += self.SOC
+        self.preference = self.SOC / self.count_steps
+        
+    def get_soc(self):
+        return self.SOC
