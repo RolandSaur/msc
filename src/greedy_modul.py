@@ -5,7 +5,7 @@ Created on May 5, 2015
 '''
 from cases_second import cases
 from greed_agent import agent
-from numpy import random, zeros, savetxt
+from numpy import random, zeros, savetxt,concatenate
 import time as zeiter
 
 time_experiment = 96 * 7
@@ -13,6 +13,7 @@ time = 0
 soc = 20
 testcase = cases(time)
 soc_data = zeros((time_experiment,24))
+time_data = zeros((time_experiment,1))
 agents = dict()
 
 for k in range(2,26):
@@ -23,6 +24,7 @@ for i in agents:
     soc_data[0,agents[i].node -2]=agents[i].get_soc()
 
 while (time < time_experiment -1):
+    time_data[time,0]=time
     time += 1
     testcase.set_base(time)
     
@@ -43,7 +45,7 @@ while (time < time_experiment -1):
                           
     for i in agents:
         soc_data[time,agents[i].node -2]=agents[i].get_soc()
-        
-        
-savetxt('/home/saur/test.txt',soc_data,fmt='%1.2f',delimiter=',')
+time_data[time,0]=time        
+
+savetxt('/home/saur/test.txt',concatenate((soc_data,time_data),axis=1),fmt='%1.2f',delimiter=',')
 
