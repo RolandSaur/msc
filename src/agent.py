@@ -281,7 +281,10 @@ class agent(object):
     def update_situation(self):
         self.count_steps += 1
         self.count_soc += self.SOC
-        self.preference = self.SOC / self.count_steps
+        self.preference = float(self.count_soc) / float(self.count_steps)
         
     def get_soc(self):
         return self.SOC
+    
+    def set_rule(self,rule):
+        self.active_rule = rule 
