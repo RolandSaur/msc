@@ -6,8 +6,8 @@ x <- data.frame(read.csv('/home/saur/constraint_test.txt', sep=",", col.names = 
 xx <- melt(x, varnames=z)
 
 plot <- ggplot(data = xx,aes(x=variable, y= value, ymin=0.94)) + 
-  geom_point() + 
-  geom_hline(yintercept=0.96,color="red") +
+  geom_point(size = 5) + 
+  geom_hline(yintercept=0.96,color="red",size =2) +
   xlab("Branch") +
   ylab("Voltage") +
   ggtitle("Minimum voltage in Branch(constrained)")
@@ -19,8 +19,8 @@ y <- data.frame(read.csv('/home/saur/unconstraint_test.txt', sep=",", col.names 
 yy <- melt(y, varnames=z)
 
 plot2 <- ggplot(data = yy,aes(x=variable, y= value, ymin=0.94)) + 
-  geom_point() + 
-  geom_hline(yintercept=0.96,color="red") +
+  geom_point(size = 5) + 
+  geom_hline(yintercept=0.96,color="red",size = 2) +
   xlab("Branch") +
   ylab("Voltage") +
   ggtitle("Minimum voltage in Branch(unconstrained)")

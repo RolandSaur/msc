@@ -255,7 +255,7 @@ class agent(object):
         
     def do_interaction(self,case_object):
         # increase the time and then interact with the case structure
-        self.time += self.time
+        self.time += 1
         #print self.get_action()
         case_object.set_power(self.node,self.get_action())
         

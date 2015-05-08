@@ -5,8 +5,9 @@ Created on May 6, 2015
 '''
 import unittest
 from agent import agent
-from numpy import array,zeros
-
+from numpy import array,zeros, ones
+from global_variables import agents
+from cases_second import cases
 
 class TestStringMethods(unittest.TestCase):
     
@@ -237,6 +238,145 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(new_rule[3], 4,"weighted time rules 1")
         self.assertEqual(new_rule[4], 2,"weighted time rules 1")
         self.assertEqual(new_rule[5], 0,"weighted time rules 1")
+        
+    def test_copy_best(self):
+        time =32
+        for k in range(2,26):
+            agents[k]= agent(30,k,time)
+            
+        bad_memory = zeros((5,7))
+        bad_memory[0,:] = array([1, 0.97, 30, 5, 2, 0,4.5])
+        bad_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        bad_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        bad_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        bad_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])
+        
+        for i  in agents:
+            agents[i].memory = bad_memory
+        
+        good_memory = zeros((5,7))
+        good_memory[0,:] = array([1, 0.99, 20, 5, 5, 0,5])
+        good_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        good_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        good_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        good_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])   
+        
+        i = 2
+        agents[i].memory = good_memory 
+        best_rule =array([1, 0.99, 20, 5, 5, 0])
+        agents[3].copy_best()
+        copied_rule =    agents[3].active_rule
+        for k in range(0,6):
+            self.assertEqual(best_rule[k],copied_rule[k],"copy best rule test")
+        
+    def test_do_interaction(self):
+        time =32
+        testcase = cases(time)
+        testcase.set_base(time)
+        
+        for k in range(2,26):
+            agents[k] = agent(30,k,time)
+            agents[k].Voltage = 0.98
+            agents[k].set_rule(array([1, 0.97, 20, 5, 2, 0]))
+            
+            
+        for i in agents:
+            agents[i].do_interaction(testcase)
+            
+        for i in agents:
+            self.assertEqual(agents[i].time,33, "do interaction time test")
+            
+        load_vector = array([0, -0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002,-0.002])
+
+        for i in range(0,25):
+            self.assertEqual(testcase.dispatch_load[i], load_vector[i], "do interaction dispatchabel load test")
+            
+            
+    def test_get_feedback(self):
+        time =32
+        testcase = cases(time)
+        testcase.ppc["bus"][:,12] = 0.90 #basically drop the voltage restriction 
+        testcase.set_base(time)
+        
+        for k in range(2,26):
+            agents[k] = agent(30,k,time)
+            agents[k].Voltage = 0.98
+            agents[k].set_rule(array([1, 0.99, 20, 4, 2, 0]))
+            
+            
+        for i in agents:
+            agents[i].do_interaction(testcase)
+            
+        testcase.adapt_main_generator()
+        output = testcase.get_output()
+        for i in agents:
+            agents[i].get_feedback(output)
+            
+        for i in agents:
+            self.assertEqual(agents[i].SOC, 31, "test get feedback check SOC")
+            
+            
+    def test_arrive_at_home(self):
+        agent1= agent(20,1,23)
+        agent1.at_home = False
+        agent1.arrive_at_home()
+        self.assertEqual(agent1.at_home,True, "test arrive at home, at home true")
+        
+        agent1.SOC = -2 
+        agent1.at_home = False
+        agent1.arrive_at_home()
+        self.assertEqual(agent1.SOC, 0, "test arrive at home soc equal 0")
+        
+    def test_vote_rule(self):
+        memory = zeros((5,7))
+        time = 32
+        memory[0,:] = array([2, 20, 30, 10, 5, 2, 5])
+        memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        memory[2,:] = array([1, 0.98, 30, 5, 2, 0,2.2])
+        memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        memory[4,:] = array([1, 0.98, 20, 5, 2, 0,0.2])
+        n = 5
+        agents = dict()
+        for i in range(2,26):
+            agents[i] = agent(30,i,time)
+            agents[i].memory = memory
+            
+            
+        global institutional_rule
+        election_matrix = zeros((240,7))
+
+        index = 0 
+        for i in agents:
+            agents[i].reset_values()
+        for i in agents:
+            #print agents[i].node
+            for k in range(0,5):
+                multiple = 0
+                while multiple < n - k-1:
+                    election_matrix[index,:] = agents[i].get_memory()[k,:]
+                    index += 1
+                    multiple += 1
+        count_voltage = 0
+        count_time = 0
+        for k in range(0,240):
+            if election_matrix[k,0] == 1:
+                count_voltage += 1
+            elif election_matrix[k,0] == 2:
+                    count_time += 1
+                                    
+        index_counts = array([96,72,48,24,0])
+        for i in range(0,5):
+            counter = 0 
+            rule_test = memory[i,0:6]
+            for k in range(0,240):
+                if all(election_matrix[k,0:6] == rule_test):
+                    counter += 1
+            self.assertEqual(counter, index_counts[i], "test number of rules in election matrix")
+            
+        self.assertEqual(count_time, 192, "test number of time rules in election matrix")
+        self.assertEqual(count_voltage, 48, "test number of voltage rules in election matrix")
+    
+        
         
 if __name__ == '__main__':
     unittest.main()
