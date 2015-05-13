@@ -58,14 +58,36 @@ class agent(object):
             self.change_learn()
     
     def copy_best(self):
-        best_value = -1
-        best_rule = zeros(6)
-        for i in agents:
-            if (agents[i].node != self.node):
-                if agents[i].memory[0,6] > best_value:
-                    best_rule = agents[i].memory[0,0:6]
-                    best_value = agents[i].memory[0,6]
-        self.active_rule = best_rule
+        global copy_all
+        if (copy_all ==True):
+            best_value = -1
+            best_rule = zeros(6)
+            for i in agents:
+                if (agents[i].node != self.node):
+                    if agents[i].memory[0,6] > best_value:
+                        best_rule = agents[i].memory[0,0:6]
+                        best_value = agents[i].memory[0,6]
+            self.active_rule = best_rule
+        else:
+            best_value = -1
+            best_rule = zeros(6)
+            if ((self.node -2) % 6 ==0):
+                for i in agents:
+                    if (agents[i].node == self.node + 1):
+                        best_rule = agents[i].memory[0,0:6]
+                        best_value = agents[i].memory[0,6]
+            elif ((self.node -2) % 6 ==5):
+                for i in agents:
+                    if (agents[i].node == self.node - 1):
+                        best_rule = agents[i].memory[0,0:6]
+                        best_value = agents[i].memory[0,6]
+            else:
+                for i in agents:
+                    if ((agents[i].node == self.node + 1) | (agents[i].node == self.node - 1)):
+                        if (agents[i].memory[0,6] > best_value):
+                            best_rule = agents[i].memory[0,0:6]
+                            best_value = agents[i].memory[0,6]
+            self.active_rule = best_rule
         
         
     def change_learn(self):

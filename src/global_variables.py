@@ -27,7 +27,12 @@ global copy_best_change
 global learn_change
 global agents
 global institutional_success_rate
+global majority_vote 
+global copy_all
 
+
+majority_vote = False
+copy_all = True
 institutional_success_rate = 0.5 
 
 institutional_rule = zeros(6)

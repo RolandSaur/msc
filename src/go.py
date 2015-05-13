@@ -8,12 +8,14 @@ from numpy import zeros , array, argmax, ones, shape, argmin
 from scipy.cluster.vq import vq, kmeans, whiten
 
 def go():
-    time_experiment = 96 * 44 # this is just one day
+    time_experiment = 96 * 100 # this is just one day
     global time
     global institutional_rule
+    global majority_vote 
+    majority_vote = True
+    voting = False
     while time < time_experiment:
         time += 1
-        voting = False
         testcase.set_base(time)
         for i in agents:
             if agents[i].at_home:
@@ -43,7 +45,7 @@ def go():
                         memory = agents[i].get_memory()
                         in_memory = False
                         for k in range(0,5):
-                            if memory[k,0:6] == institutional_rule:
+                            if all(memory[k,0:6] == institutional_rule):
                                 in_memory = True
                         if in_memory == True:
                             count_memory += 1
@@ -59,52 +61,94 @@ def go():
                     agents[i].change_rule()
                 memory_full = True
                 for i in agents:
-                    if (agents[i].memory[4,0]==0):
+                    if ((agents[i].memory[4,0]!= 1) &  (agents[i].memory[4,0]!= 2)):
                         memory_full = False
                 if (memory_full == True):
                     voting = True
                 
+                
+    
                                 
                    
                     
 
 def vote_rules():
     global institutional_rule
-    election_matrix = zeros((240,7))
-    n = 5
-    index = 0 
-    for i in agents:
-        agents[i].reset_values()
-    for i in agents:
-        #print agents[i].node
-        for k in range(0,5):
-            multiple = 0
-            while multiple < n - k-1:
-                election_matrix[index,:] = agents[i].get_memory()[k,:]
-                index += 1
-                multiple += 1
-    count_voltage = 0
-    count_time = 0
-    for k in range(0,240):
-        if election_matrix[k,0] == 1:
-            count_voltage += 1
-        elif election_matrix[k,0] == 2:
-            count_time += 1
+    global majority_vote 
+    if (majority_vote == False):
+        election_matrix = zeros((240,7))
+        n = 5
+        index = 0 
+        for i in agents:
+            agents[i].reset_values()
+        for i in agents:
+            #print agents[i].node
+            for k in range(0,5):
+                multiple = 0
+                while multiple < n - k-1:
+                    election_matrix[index,:] = agents[i].get_memory()[k,:]
+                    index += 1
+                    multiple += 1
+        count_voltage = 0
+        count_time = 0
+        for k in range(0,240):
+            if election_matrix[k,0] == 1:
+                count_voltage += 1
+            elif election_matrix[k,0] == 2:
+                count_time += 1
+                
+        if count_voltage> count_time:
+            new_rule = cluster_voltage_rule(election_matrix,count_voltage)
+        else:
+            new_rule = cluster_time_rule(election_matrix,count_time)
             
-    if count_voltage> count_time:
-        new_rule = cluster_voltage_rule(election_matrix,count_voltage)
+        institutional_rule = new_rule
+        for i in agents:
+            agents[i].active_rule = new_rule
+    
     else:
-        new_rule = cluster_time_rule(election_matrix,count_time)
+        print "this is majority voting"
+        election_matrix = zeros((24,7))
+        index = 0 
+        for i in agents:
+            agents[i].reset_values()
+            
+        for i in agents:
+            election_matrix[index,:] = agents[i].get_memory()[0,:]
+            index += 1
+            
+        count_voltage = 0
+        count_time = 0
+        for k in range(0,24):
+            if election_matrix[k,0] == 1:
+                count_voltage += 1
+            elif election_matrix[k,0] == 2:
+                count_time += 1
+                
+        if count_voltage> count_time:
+            new_rule = cluster_voltage_rule(election_matrix,count_voltage)
+        else:
+            new_rule = cluster_time_rule(election_matrix,count_time)
+            
+        institutional_rule = new_rule
+        for i in agents:
+            agents[i].active_rule = new_rule
+            
+            
         
-    institutional_rule = new_rule
-    for i in agents:
-        agents[i].active_rule = new_rule
+        
+        
+    
         
         
 def cluster_voltage_rule(election_matrix,number):
     sub_matrix = zeros((number,6))
+    if (majority_vote == False):
+        matrix_size = 240
+    else:
+        matrix_size = 24
     index =0 
-    for k in range(0,240):
+    for k in range(0,matrix_size):
         if election_matrix[k,0] == 1:
             #print election_matrix[k,0:6]
             sub_matrix[index,:] = election_matrix[k,0:6]
@@ -137,7 +181,11 @@ def cluster_voltage_rule(election_matrix,number):
 def cluster_time_rule(election_matrix,number):
     sub_matrix = zeros((number,6))
     index =0 
-    for k in range(0,240):
+    if (majority_vote == False):
+        matrix_size = 240
+    else:
+        matrix_size = 24
+    for k in range(0,matrix_size):
         if election_matrix[k,0] == 2:
             sub_matrix[index,:] = election_matrix[k,0:6]
             index += 1

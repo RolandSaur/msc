@@ -10,7 +10,8 @@ plot <- ggplot(data = xx,aes(x=variable, y= value, ymin=0.94)) +
   geom_hline(yintercept=0.96,color="red",size =2) +
   xlab("Branch") +
   ylab("Voltage") +
-  ggtitle("Minimum voltage in Branch(constrained)")
+  ggtitle("Minimum voltage in Branch(constrained)") +
+  theme(axis.text=element_text(size=18),axis.title=element_text(size=18),title = element_text(size = 24))
 print(plot)
 ggsave(filename='/home/saur/constrained.jpg',plot)
 
@@ -23,6 +24,7 @@ plot2 <- ggplot(data = yy,aes(x=variable, y= value, ymin=0.94)) +
   geom_hline(yintercept=0.96,color="red",size = 2) +
   xlab("Branch") +
   ylab("Voltage") +
-  ggtitle("Minimum voltage in Branch(unconstrained)")
+  ggtitle("Minimum voltage in Branch(unconstrained)") + 
+  theme(axis.text=element_text(size=18),axis.title=element_text(size=18),title = element_text(size = 24))
 print(plot2)
 ggsave(filename='/home/saur/unconstrained.jpg',plot2)
