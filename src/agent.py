@@ -8,6 +8,7 @@ from scipy import array
 from numpy import linspace, matrix, zeros , random, shape, ones, argmin, lexsort
 import global_variables
 from global_variables import *
+from math import floor
 
 class agent(object):
     '''
@@ -35,7 +36,7 @@ class agent(object):
         self.sd_battery_drain = 2
         self.arrival_time = round(random.normal(average_arrival_time,sd_average,1))
         self.leaving_time = round(random.normal(average_laeving_time, sd_average,1))
-        
+        self.copy_all = "all"
         decide = random.uniform(0,1,1)
         if decide > 0.5:
             self.active_rule = self.create_random_voltage_rule()
@@ -58,8 +59,7 @@ class agent(object):
             self.change_learn()
     
     def copy_best(self):
-        global copy_all
-        if (copy_all ==True):
+        if (self.copy_all == "all"):
             best_value = -1
             best_rule = zeros(6)
             for i in agents:
@@ -68,27 +68,29 @@ class agent(object):
                         best_rule = agents[i].memory[0,0:6]
                         best_value = agents[i].memory[0,6]
             self.active_rule = best_rule
-        else:
+        elif (self.copy_all == "vertical"):
             best_value = -1
             best_rule = zeros(6)
-            if ((self.node -2) % 6 ==0):
-                for i in agents:
-                    if (agents[i].node == self.node + 1):
+            branch = floor((self.node - 2)/6)
+            for i in agents:
+                branch2 = floor((agents[i].node - 2)/6)
+                if ((branch == branch2) &(agents[i].node != self.node)):
+                    if agents[i].memory[0,6] > best_value:
                         best_rule = agents[i].memory[0,0:6]
-                        best_value = agents[i].memory[0,6]
-            elif ((self.node -2) % 6 ==5):
-                for i in agents:
-                    if (agents[i].node == self.node - 1):
-                        best_rule = agents[i].memory[0,0:6]
-                        best_value = agents[i].memory[0,6]
-            else:
-                for i in agents:
-                    if ((agents[i].node == self.node + 1) | (agents[i].node == self.node - 1)):
-                        if (agents[i].memory[0,6] > best_value):
-                            best_rule = agents[i].memory[0,0:6]
-                            best_value = agents[i].memory[0,6]
+                        best_value = agents[i].memory[0,6] 
             self.active_rule = best_rule
-        
+        else: 
+            best_value = -1
+            best_rule = zeros(6)
+            level = (self.node -2) % 6
+            for i in agents:
+                level2 = (agents[i].node -2) % 6
+                if ((level == level2) & (agents[i].node != self.node)):
+                    if agents[i].memory[0,6] > best_value:
+                        best_rule = agents[i].memory[0,0:6]
+                        best_value = agents[i].memory[0,6] 
+            self.active_rule = best_rule
+            
         
     def change_learn(self):
         count_time = 0 
@@ -296,6 +298,8 @@ class agent(object):
     def arrive_at_home(self):
         self.at_home = True
         battery_drain = random.normal(self.mean_battery_drain,self.sd_battery_drain,1)
+        if battery_drain >= self.soc_max:
+            battery_drain = self.soc_max - 1
         self.SOC = self.SOC - battery_drain
         if self.SOC < 0:
             self.SOC = 0

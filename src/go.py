@@ -3,68 +3,68 @@ Created on Apr 29, 2015
 
 @author: saur
 '''
-from global_variables import *
+import global_variables as g
 from numpy import zeros , array, argmax, ones, shape, argmin
 from scipy.cluster.vq import vq, kmeans, whiten
 
 def go():
-    time_experiment = 96 * 100 # this is just one day
-    global time
-    global institutional_rule
-    global majority_vote 
-    majority_vote = True
+    time_experiment = 96 * 30 * 6 # this is just one day
+    g.majority_vote = True
     voting = False
-    while time < time_experiment:
-        time += 1
-        testcase.set_base(time)
-        for i in agents:
-            if agents[i].at_home:
-                agents[i].do_interaction(testcase)
+    while g.time < time_experiment:
+        g.time += 1
+        g.testcase.set_base(g.time)
+        for i in g.agents:
+            if g.agents[i].at_home:
+                g.agents[i].do_interaction(g.testcase)
             else: 
-                if time % 96 == agents[i].arrival_time:
-                    agents[i].arrive_at_home()
+                if g.time % 96 == g.agents[i].arrival_time:
+                    g.agents[i].arrive_at_home()
                     
-        testcase.adapt_main_generator()
-        output = testcase.get_output()
+        g.testcase.adapt_main_generator()
+        output = g.testcase.get_output()
         
-        for i in agents:
-            if agents[i].at_home:
-                agents[i].get_feedback(output)
-                if time % 96 == agents[i].leaving_time:
-                    agents[i].at_home = False
+        for i in g.agents:
+            if g.agents[i].at_home:
+                g.agents[i].get_feedback(output)
+                if g.time % 96 == g.agents[i].leaving_time:
+                    g.agents[i].at_home = False
                     
-        for i in agents:
-            agents[i].update_situation()
+        for i in g.agents:
+            g.agents[i].update_situation()
             
-        if time % 672 == 0:
+        if g.time % 672 == 0:
             if (voting == True):
                 voting = True 
-                if all(institutional_rule != zeros(6)):
+                if all(g.institutional_rule != zeros(6)):
                     count_memory = 0
-                    for i in agents:
-                        memory = agents[i].get_memory()
+                    for i in g.agents:
+                        memory = g.agents[i].get_memory()
                         in_memory = False
                         for k in range(0,5):
-                            if all(memory[k,0:6] == institutional_rule):
+                            if all(memory[k,0:6] == g.institutional_rule):
                                 in_memory = True
                         if in_memory == True:
                             count_memory += 1
-                    if count_memory < 24 * institutional_success_rate: # 12 because i have 24 agents
+                    if count_memory < 24 * g.institutional_success_rate: # 12 because i have 24 agents
                         voting = False
                 vote_rules()
                 #for i in agents:
                 #    print agents[i].get_active_rule()
             else:
-                for i in agents:
-                    agents[i].reset_values()
-                for i in agents:
-                    agents[i].change_rule()
+                for i in g.agents:
+                    g.agents[i].reset_values()
+                for i in g.agents:
+                    g.agents[i].change_rule()
                 memory_full = True
-                for i in agents:
-                    if ((agents[i].memory[4,0]!= 1) &  (agents[i].memory[4,0]!= 2)):
+                for i in g.agents:
+                    if ((g.agents[i].memory[4,0]!= 1) &  (g.agents[i].memory[4,0]!= 2)):
                         memory_full = False
                 if (memory_full == True):
                     voting = True
+                    
+        print g.institutional_rule
+        print g.time / 96
                 
                 
     
@@ -72,21 +72,19 @@ def go():
                    
                     
 
-def vote_rules():
-    global institutional_rule
-    global majority_vote 
-    if (majority_vote == False):
+def vote_rules(): 
+    if (g.majority_vote == False):
         election_matrix = zeros((240,7))
         n = 5
         index = 0 
-        for i in agents:
-            agents[i].reset_values()
-        for i in agents:
+        for i in g.agents:
+            g.agents[i].reset_values()
+        for i in g.agents:
             #print agents[i].node
             for k in range(0,5):
                 multiple = 0
                 while multiple < n - k-1:
-                    election_matrix[index,:] = agents[i].get_memory()[k,:]
+                    election_matrix[index,:] = g.agents[i].get_memory()[k,:]
                     index += 1
                     multiple += 1
         count_voltage = 0
@@ -102,19 +100,19 @@ def vote_rules():
         else:
             new_rule = cluster_time_rule(election_matrix,count_time)
             
-        institutional_rule = new_rule
-        for i in agents:
-            agents[i].active_rule = new_rule
+        g.institutional_rule = new_rule
+        for i in g.agents:
+            g.agents[i].active_rule = new_rule
     
     else:
         print "this is majority voting"
         election_matrix = zeros((24,7))
         index = 0 
-        for i in agents:
-            agents[i].reset_values()
+        for i in g.agents:
+            g.agents[i].reset_values()
             
-        for i in agents:
-            election_matrix[index,:] = agents[i].get_memory()[0,:]
+        for i in g.agents:
+            election_matrix[index,:] = g.agents[i].get_memory()[0,:]
             index += 1
             
         count_voltage = 0
@@ -130,9 +128,9 @@ def vote_rules():
         else:
             new_rule = cluster_time_rule(election_matrix,count_time)
             
-        institutional_rule = new_rule
-        for i in agents:
-            agents[i].active_rule = new_rule
+        g.institutional_rule = new_rule
+        for i in g.agents:
+            g.agents[i].active_rule = new_rule
             
             
         
@@ -143,7 +141,7 @@ def vote_rules():
         
 def cluster_voltage_rule(election_matrix,number):
     sub_matrix = zeros((number,6))
-    if (majority_vote == False):
+    if (g.majority_vote == False):
         matrix_size = 240
     else:
         matrix_size = 24
@@ -173,15 +171,15 @@ def cluster_voltage_rule(election_matrix,number):
     action1 = round(new_rule[3],0)
     action2 = round(new_rule[4],0)
     soc = new_rule[2]
-    soc_dif = abs(soc * ones(shape(soc_threshold_options)) - soc_threshold_options)
+    soc_dif = abs(soc * ones(shape(g.soc_threshold_options)) - g.soc_threshold_options)
     index_soc  = argmin(soc_dif)
-    soc = soc_threshold_options[index_soc]
+    soc = g.soc_threshold_options[index_soc]
     return array([1,volt,soc, action1, action2 , 0 ])
 
 def cluster_time_rule(election_matrix,number):
     sub_matrix = zeros((number,6))
     index =0 
-    if (majority_vote == False):
+    if (g.majority_vote == False):
         matrix_size = 240
     else:
         matrix_size = 24
@@ -210,8 +208,8 @@ def cluster_time_rule(election_matrix,number):
     action1 = round(new_rule[4],0)
     action2 = round(new_rule[5],0)
     soc = new_rule[3]
-    soc_dif = abs(soc * ones(shape(soc_threshold_options)) - soc_threshold_options)
+    soc_dif = abs(soc * ones(shape(g.soc_threshold_options)) - g.soc_threshold_options)
     index_soc  = argmin(soc_dif)
-    soc = soc_threshold_options[index_soc]
+    soc = g.soc_threshold_options[index_soc]
     return array([2,t_begin, t_end, soc, action1, action2])
     

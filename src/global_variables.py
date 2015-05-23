@@ -5,6 +5,7 @@ Created on Apr 28, 2015
 '''
 from numpy import linspace , zeros
 from cases_second import cases
+#import go
 
 global institutional_rule 
 global time
@@ -28,12 +29,12 @@ global learn_change
 global agents
 global institutional_success_rate
 global majority_vote 
-global copy_all
+
 
 
 majority_vote = False
-copy_all = True
-institutional_success_rate = 0.5 
+
+institutional_success_rate = 0.9 
 
 institutional_rule = zeros(6)
 agents = dict()
@@ -47,12 +48,13 @@ sd_average_battery_drain = 2
 average_soc = 20
 sd_average_soc = 2
 soc_max_gloabl = 40
-random_change = 0.5
-copy_best_change = 0.3
-learn_change = 0.2
 #steps_threshhold = 96
 action_options = [0,1,2,3,4,5]
 t_end_options = linspace(1,96,96)
 t_begin_options = t_end_options 
 soc_threshold_options = linspace(0, soc_max_gloabl, 9)
 voltage_options = linspace(0.96,1,5)
+
+random_change = 0.8
+copy_best_change = 0.1
+learn_change = 0.1

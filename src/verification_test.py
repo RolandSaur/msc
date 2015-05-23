@@ -243,6 +243,7 @@ class TestStringMethods(unittest.TestCase):
         time =32
         for k in range(2,26):
             agents[k]= agent(30,k,time)
+
             
         bad_memory = zeros((5,7))
         bad_memory[0,:] = array([1, 0.97, 30, 5, 2, 0,4.5])
@@ -267,7 +268,94 @@ class TestStringMethods(unittest.TestCase):
         agents[3].copy_best()
         copied_rule =    agents[3].active_rule
         for k in range(0,6):
-            self.assertEqual(best_rule[k],copied_rule[k],"copy best rule test")
+            self.assertEqual(best_rule[k],copied_rule[k],"copy best rule of all test")
+            
+    def test_copy_best_vertical(self):
+        time = 32
+        for k in range(2,26):
+            agents[k]= agent(30,k,time)
+            agents[k].copy_all = "vertical"
+            
+        bad_memory = zeros((5,7))
+        bad_memory[0,:] = array([1, 0.97, 30, 5, 2, 0,4.5])
+        bad_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        bad_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        bad_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        bad_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])
+        
+        for i  in agents:
+            agents[i].memory = bad_memory
+        
+        good_memory = zeros((5,7))
+        good_memory[0,:] = array([1, 0.99, 20, 5, 5, 0,5])
+        good_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        good_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        good_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        good_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])   
+        
+        best_memory = zeros((5,7))
+        best_memory[0,:] = array([1, 1, 15, 5, 5, 0,7])
+        best_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        best_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        best_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        best_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])
+        
+        best_rule =array([1, 0.99, 20, 5, 5, 0])
+        
+        i = 2
+        agents[i].memory = good_memory 
+        
+        i = 14 
+        agents[i].memory = best_memory
+        
+        agents[3].copy_best()
+        copied_rule =    agents[3].active_rule
+        for k in range(0,6):
+            self.assertEqual(best_rule[k],copied_rule[k],"copy best rule of all test")
+            
+    def test_copy_best_horizontal(self):
+        time = 32
+        for k in range(2,26):
+            agents[k]= agent(30,k,time)
+            agents[k].copy_all = "horizontal"
+            
+        bad_memory = zeros((5,7))
+        bad_memory[0,:] = array([1, 0.97, 30, 5, 2, 0,4.5])
+        bad_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        bad_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        bad_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        bad_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])
+        
+        for i  in agents:
+            agents[i].memory = bad_memory
+        
+        good_memory = zeros((5,7))
+        good_memory[0,:] = array([1, 0.99, 20, 5, 5, 0,5])
+        good_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        good_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        good_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        good_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])   
+        
+        best_memory = zeros((5,7))
+        best_memory[0,:] = array([1, 1, 15, 5, 5, 0,7])
+        best_memory[1,:] = array([2, 20, 40, 5, 5, 2, 4])
+        best_memory[2,:] = array([1, 0.96, 20, 3, 2, 0,3])
+        best_memory[3,:] = array([2, 30, 50, 10, 3, 3, 2])
+        best_memory[4,:] = array([1, 0.98, 40, 3, 5, 0,1])
+        
+        best_rule =array([1, 0.99, 20, 5, 5, 0])
+        
+        i = 8
+        agents[i].memory = good_memory 
+        
+        i = 10 
+        agents[i].memory = best_memory
+        
+        agents[2].copy_best()
+        copied_rule =    agents[2].active_rule
+        for k in range(0,6):
+            self.assertEqual(best_rule[k],copied_rule[k],"copy best rule of all test")
+        
         
     def test_do_interaction(self):
         time =32
