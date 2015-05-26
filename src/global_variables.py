@@ -5,6 +5,8 @@ Created on Apr 28, 2015
 '''
 from numpy import linspace , zeros
 from cases_second import cases
+import csv
+from __builtin__ import False
 #import go
 
 global institutional_rule 
@@ -29,12 +31,8 @@ global learn_change
 global agents
 global institutional_success_rate
 global majority_vote 
-
-
-
-majority_vote = False
-
-institutional_success_rate = 0.9 
+global copy_al
+global run_id
 
 institutional_rule = zeros(6)
 agents = dict()
@@ -55,6 +53,19 @@ t_begin_options = t_end_options
 soc_threshold_options = linspace(0, soc_max_gloabl, 9)
 voltage_options = linspace(0.96,1,5)
 
+majority_vote = False
+institutional_success_rate = 0.9
+copy_al = "all"
 random_change = 0.8
 copy_best_change = 0.1
 learn_change = 0.1
+run_id = 0
+
+
+    
+
+
+
+ 
+
+

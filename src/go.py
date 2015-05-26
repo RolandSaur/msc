@@ -6,9 +6,12 @@ Created on Apr 29, 2015
 import global_variables as g
 from numpy import zeros , array, argmax, ones, shape, argmin
 from scipy.cluster.vq import vq, kmeans, whiten
+import csv
+from global_variables import agents
 
-def go():
+def go(str2_out):
     time_experiment = 96 * 30 * 6 # this is just one day
+    print time_experiment
     g.majority_vote = True
     voting = False
     while g.time < time_experiment:
@@ -63,8 +66,20 @@ def go():
                 if (memory_full == True):
                     voting = True
                     
-        print g.institutional_rule
-        print g.time / 96
+        with open(str2_out,'a') as csvfile:
+            schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
+            output_values_to_csv = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
+                               g.institutional_success_rate,g.majority_vote, g.time,
+                               g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
+                               g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
+                               voting,g.run_id]
+            for i in g.agents:
+                output_values_to_csv.append(float(g.agents[i].SOC))
+            schreiber.writerow(output_values_to_csv)
+        
+        
+        #print g.institutional_rule
+        #print g.time / 96
                 
                 
     
