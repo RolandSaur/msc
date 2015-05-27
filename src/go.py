@@ -11,8 +11,10 @@ from global_variables import agents
 
 def go(str2_out):
     time_experiment = 96 * 30 * 6 # this is just one day
-    print time_experiment
-    g.majority_vote = True
+    #print time_experiment
+    #print g.copy_al
+    #g.majority_vote = True
+    
     voting = False
     while g.time < time_experiment:
         g.time += 1

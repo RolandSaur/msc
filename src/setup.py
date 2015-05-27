@@ -6,7 +6,7 @@ Created on Apr 28, 2015
 from cases_second import cases
 import global_variables as g 
 from agent import agent
-from numpy import random
+from numpy import random, array
 from go import go
 import time as zeiter
 import csv
@@ -39,6 +39,10 @@ def init_agents():
         g.agents[k]= agent(soc,k,g.time)
         g.agents[k].copy_all = g.copy_al
         
+def set_global_rule(inst_rule):
+    for k in g.agents:
+        g.agents[k].active_rule = inst_rule
+        
         
 def init_global_vraibles(parameter_row_from_matrix):
     #"string is the path to the file in which the experiment is defined"
@@ -52,7 +56,7 @@ def init_global_vraibles(parameter_row_from_matrix):
     if parameter_row_from_matrix[5] == 1:
         g.majority_vote = True
 
-def do_experiment(str,str2_out):
+def do_experiment(str,str2_out,*args):
     g.run_id = 0 
     parameter_matrix =read_parameters_from_file(str)
     number_experiments = len(parameter_matrix)
@@ -75,6 +79,12 @@ def do_experiment(str,str2_out):
             g.run_id += 1
             
             setup() 
+            
+            if args: #if there is a default initial rule to be set set it for each agent. 
+                for k in g.agents:
+                    #print args[0]
+                    g.agents[k].active_rule = args[0]
+                    
             go(str2_out)
             
             repetition_counter += 1

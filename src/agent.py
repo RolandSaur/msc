@@ -27,7 +27,7 @@ class agent(object):
         self.time = time
         self.at_home = True
         self.memory = zeros((5,7))
-        self.active_rule = zeros((1,7))
+        self.active_rule = zeros((1,6))
         self.soc_max = soc_max_gloabl
         self.count_steps = 0
         self.count_soc = 0 
