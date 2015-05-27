@@ -9,7 +9,7 @@ from scipy.cluster.vq import vq, kmeans, whiten
 import csv
 from global_variables import agents
 
-def go(str2_out):
+def go(str2_out,*args):
     time_experiment = 96 * 30 * 6 # this is just one day
     #print time_experiment
     #print g.copy_al
@@ -27,7 +27,10 @@ def go(str2_out):
                     g.agents[i].arrive_at_home()
                     
         g.testcase.adapt_main_generator()
-        output = g.testcase.get_output()
+        if args:
+            output  = g.testcase.get_output(args[0])
+        else:
+            output = g.testcase.get_output()
         
         for i in g.agents:
             if g.agents[i].at_home:
@@ -67,17 +70,29 @@ def go(str2_out):
                         memory_full = False
                 if (memory_full == True):
                     voting = True
-                    
-        with open(str2_out,'a') as csvfile:
-            schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
-            output_values_to_csv = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
-                               g.institutional_success_rate,g.majority_vote, g.time,
-                               g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
-                               g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
-                               voting,g.run_id]
-            for i in g.agents:
-                output_values_to_csv.append(float(g.agents[i].SOC))
-            schreiber.writerow(output_values_to_csv)
+        if args:
+            with open(str2_out,'a') as csvfile:
+                schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
+                output_values_to_csv = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
+                                        g.institutional_success_rate,g.majority_vote, g.time,
+                                        g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
+                                        g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
+                                        voting,g.run_id]
+                for i in g.agents:
+                    output_values_to_csv.append(float(g.agents[i].SOC))
+                output_values_to_csv.append(args[0])
+                schreiber.writerow(output_values_to_csv)
+        else:           
+            with open(str2_out,'a') as csvfile:
+                schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
+                output_values_to_csv = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
+                                        g.institutional_success_rate,g.majority_vote, g.time,
+                                        g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
+                                        g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
+                                        voting,g.run_id]
+                for i in g.agents:
+                    output_values_to_csv.append(float(g.agents[i].SOC))
+                schreiber.writerow(output_values_to_csv)
         
         
         #print g.institutional_rule

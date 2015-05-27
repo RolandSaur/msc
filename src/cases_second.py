@@ -5,6 +5,7 @@ Created on Apr 24, 2015
 '''
 from scipy import array,ones , zeros
 from pypower.api import  ppoption, runopf, runpf
+from numpy import random
 
 class cases(object):
     '''
@@ -145,15 +146,28 @@ class cases(object):
         self.power_slopes = array([-0.00031438, -0.00063391, -0.00095885, -0.00128944, -0.00162597, -0.00196872])
         self.dispatch_load = zeros(25)
         
+    
+    def add_noise(self,noise):
+        for i in range(1,25):
+            addition = random.normal(0,noise * self.ppc["bus"][i,2],1)
+            
+            self.ppc["bus"][i,2] += addition
+            
+            if self.ppc["bus"][i,2] < 0: # constrain so it does ont drop below 0 
+                self.ppc["bus"][i,2] = 0
+            if self.ppc["bus"][i,2] > max(self.loadprofile) /1000.0: # constrain so it does not exceed the maximum load
+                self.ppc["bus"][i,2] = max(self.loadprofile) / 1000.0
         
         
-    def get_output(self):
+    def get_output(self,*args):
         #returns the output of the load flow calculation
         for k in range(1,25):
             self.ppc["gen"][k,1] = self.dispatch_load[k]
             
         ppc_result, y = runpf(self.ppc, self.ppopt)
         
+        if args:
+            self.add_noise(args[0])
         
         #print ppc_result["bus"][1,12]
         #print ppc_result["bus"][6,7]
@@ -188,6 +202,8 @@ class cases(object):
                 #print branch_constraints
                 
         return ppc_result
+    
+
     
     def adapt_branch_power(self,ppc_result, k):
         difference_voltage = ppc_result["bus"][1,12] - ppc_result["bus"][k * 6 + 6,7]

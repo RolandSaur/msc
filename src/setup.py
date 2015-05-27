@@ -71,7 +71,6 @@ def do_experiment(str,str2_out,*args):
                             "agent15_soc","agent16_soc","agent17_soc","agent18_soc","agent19_soc",
                             "agent20_soc","agent21_soc","agent22_soc","agent23_soc","agent24_soc"))
     for i in range(0,number_experiments):
-        print parameter_matrix
         init_global_vraibles(parameter_matrix[i][0:6])
         repetition_counter = 0 
         number_repetitions = parameter_matrix[i][6]
@@ -86,6 +85,36 @@ def do_experiment(str,str2_out,*args):
                     g.agents[k].active_rule = args[0]
                     
             go(str2_out)
+            
+            repetition_counter += 1
+            
+def do_noise_experiment(str,str2_out,noise_levels):
+    g.run_id = 0 
+    parameter_matrix =read_parameters_from_file(str)
+    number_experiments = len(noise_levels)
+    print number_experiments
+    print noise_levels
+    
+    with open(str2_out,'w') as csvfile:
+        schreiber = csv.writer(csvfile,delimiter=',')
+        schreiber.writerow(("random_change","copy_best","learn_change","copy_all","inst_success",
+                            "majority", "time" ,"inst_rule1","inst_rule2","inst_rule3","inst_rule4",
+                            "inst_rule5","inst_rule6", "voting","run_id","agent1_soc","agent2_soc","agent3_soc",
+                            "agent4_soc","agent5_soc","agent6_soc","agent7_soc","agent8_soc","agent9_soc",
+                            "agent10_soc","agent11_soc","agent12_soc","agent13_soc","agent14_soc",
+                            "agent15_soc","agent16_soc","agent17_soc","agent18_soc","agent19_soc",
+                            "agent20_soc","agent21_soc","agent22_soc","agent23_soc","agent24_soc","noise_level"))
+    for i in range(0,number_experiments):
+        #print parameter_matrix
+        init_global_vraibles(parameter_matrix[i][0:6])
+        repetition_counter = 0 
+        number_repetitions = parameter_matrix[i][6]
+        while repetition_counter < number_repetitions:
+            g.run_id += 1
+            
+            setup() 
+            #print noise_levels[i] 
+            go(str2_out,noise_levels[i])
             
             repetition_counter += 1
     
