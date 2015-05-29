@@ -6,7 +6,7 @@ Created on Apr 28, 2015
 from cases_second import cases
 import global_variables as g 
 from agent import agent
-from numpy import random, array
+from numpy import random, array, zeros
 from go import go
 import time as zeiter
 import csv
@@ -55,6 +55,20 @@ def init_global_vraibles(parameter_row_from_matrix):
         g.majority_vote = False
     if parameter_row_from_matrix[5] == 1:
         g.majority_vote = True
+        
+    #reset some of the values to the original
+    g.institutional_rule = zeros(6)
+    g.agents = dict()
+    g.time = 0
+    g.testcase = cases(g.time)
+    g.average_arrival_time = 72
+    g.average_laeving_time = 32
+    g.sd_average = 1
+    g.average_battery_drain = 10
+    g.sd_average_battery_drain = 2
+    g.average_soc = 20
+    g.sd_average_soc = 2
+    g.soc_max_gloabl = 40
 
 def do_experiment(str,str2_out,*args):
     g.run_id = 0 
@@ -71,12 +85,13 @@ def do_experiment(str,str2_out,*args):
                             "agent15_soc","agent16_soc","agent17_soc","agent18_soc","agent19_soc",
                             "agent20_soc","agent21_soc","agent22_soc","agent23_soc","agent24_soc"))
     for i in range(0,number_experiments):
-        init_global_vraibles(parameter_matrix[i][0:6])
         repetition_counter = 0 
         number_repetitions = parameter_matrix[i][6]
-        while repetition_counter < number_repetitions:
+        print number_repetitions
+        while (repetition_counter < int(number_repetitions)):
+            init_global_vraibles(parameter_matrix[i][0:6])
             g.run_id += 1
-            
+            #print g.run_id
             setup() 
             
             if args: #if there is a default initial rule to be set set it for each agent. 
@@ -85,7 +100,6 @@ def do_experiment(str,str2_out,*args):
                     g.agents[k].active_rule = args[0]
                     
             go(str2_out)
-            
             repetition_counter += 1
             
 def do_noise_experiment(str,str2_out,noise_levels):

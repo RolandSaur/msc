@@ -59,6 +59,7 @@ copy_al = "all"
 random_change = 0.8
 copy_best_change = 0.1
 learn_change = 0.1
+
 run_id = 0
 
 
