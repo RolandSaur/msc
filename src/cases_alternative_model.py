@@ -116,8 +116,8 @@ class cases(object):
         [28,27,0.001590, 0.000814,0,0,0,0,0,0,1,-360,360],
         [29,28,0.001590, 0.000814,0,0,0,0,0,0,1,-360,360]
         ])
-        self.ppc["branch"][:,2]= (0.494 * 0.097 / 1.5) * ones(28)
-        self.ppc["branch"][:,3]= (0.0883 * 0.097 / 1.5) * ones(28)
+        self.ppc["branch"][:,2]= (0.494 * 0.097 / 1.5) 
+        self.ppc["branch"][:,3]= (0.0883 * 0.097 / 1.5)
         
         ## generator data
         # bus, Pg, Qg, Qmax, Qmin, Vg, mBase, status, Pmax, Pmin, Pc1, Pc2,
@@ -172,7 +172,7 @@ class cases(object):
             
             self.ppc["bus"][i,2] += addition
             
-            if self.ppc["bus"][i,2] < 0: # constrain so it does ont drop below 0 
+            if self.ppc["bus"][i,2] < 0: # constrain so it does not drop below 0 
                 self.ppc["bus"][i,2] = 0
             if self.ppc["bus"][i,2] > max(self.loadprofile) /1000.0: # constrain so it does not exceed the maximum load
                 self.ppc["bus"][i,2] = max(self.loadprofile) / 1000.0
