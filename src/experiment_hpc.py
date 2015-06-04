@@ -16,4 +16,4 @@ import ntpath
 
 path = sys.argv[1]
 output = path[0:len(path)-4]
-setup.do_experiment_hpc(path, output + "_output.csv",sys.argv[2])
+setup.do_experiment_hpc(path, output +"_"+sys.argv[2] + "_output.csv",sys.argv[2])
