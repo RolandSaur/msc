@@ -17,4 +17,4 @@ mkdir $stream_output
 TEMP="/var/tmp"
 RAMDISK="/tmp/ramdisk"
 
-qsub -t 1-$numberruns -N $runname -l nodes=1:ppn=1,mem=100mb,walltime=$walltime -o $stream_output -e $stream_output -v path_csv=$path_csv,runname=$runname,TEMP=$TEMP,RAMDISK=$RAMDISK,main_node_folder=$main_node_folder .$script_folder/single_run_on_node.sh 
+qsub -t 1-$numberruns -N $runname -l nodes=1:ppn=1,mem=100mb,walltime=$walltime -o $stream_output -e $stream_output -v path_csv=$path_csv,runname=$runname,TEMP=$TEMP,RAMDISK=$RAMDISK,main_node_folder=$main_node_folder $script_folder/single_run_on_node.sh 

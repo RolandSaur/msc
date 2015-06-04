@@ -10,6 +10,6 @@ files_csv_files="$files_folder/list_csv.txt"
 for file in $(cat $files_csv_files)
 	do
 	runname=${file%.*}
-	.$script_folder/hpc_array_run.sh $runname "$files_folder/$file" $number_of_runs $walltime
+	$script_folder/hpc_array_run.sh $runname "$files_folder/$file" $number_of_runs $walltime
 	sleep $pause
 	done
