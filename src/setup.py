@@ -69,6 +69,36 @@ def init_global_vraibles(parameter_row_from_matrix):
     g.average_soc = 20
     g.sd_average_soc = 2
     g.soc_max_gloabl = 40
+    
+def do_experiment_hpc(str,str2_out,run):
+    parameter_matrix =read_parameters_from_file(str)[0]
+    print parameter_matrix
+    print len(parameter_matrix)
+    g.run_id = run
+    parameter_matrix = parameter_matrix[0:len(parameter_matrix)-1]
+    number_experiments = len(parameter_matrix)
+    
+    with open(str2_out,'w') as csvfile:
+        schreiber = csv.writer(csvfile,delimiter=',')
+        schreiber.writerow(("random_change","copy_best","learn_change","copy_all","inst_success",
+                            "majority", "time" ,"inst_rule1","inst_rule2","inst_rule3","inst_rule4",
+                            "inst_rule5","inst_rule6", "voting","run_id","agent1_soc","agent2_soc","agent3_soc",
+                            "agent4_soc","agent5_soc","agent6_soc","agent7_soc","agent8_soc","agent9_soc",
+                            "agent10_soc","agent11_soc","agent12_soc","agent13_soc","agent14_soc",
+                            "agent15_soc","agent16_soc","agent17_soc","agent18_soc","agent19_soc",
+                            "agent20_soc","agent21_soc","agent22_soc","agent23_soc","agent24_soc"))
+    for i in range(0,number_experiments):
+        repetition_counter = 0 
+        number_repetitions = parameter_matrix[6]
+        print number_repetitions
+        while (repetition_counter < int(number_repetitions)):
+            init_global_vraibles(parameter_matrix[0:6])
+            
+            #print g.run_id
+            setup() 
+                    
+            go(str2_out)
+            repetition_counter += 1 
 
 def do_experiment(str,str2_out,*args):
     g.run_id = 0 

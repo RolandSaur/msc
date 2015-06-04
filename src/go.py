@@ -137,7 +137,7 @@ def vote_rules():
             g.agents[i].active_rule = new_rule
     
     else:
-        print "this is majority voting"
+        #print "this is majority voting"
         election_matrix = zeros((24,7))
         index = 0 
         for i in g.agents:
