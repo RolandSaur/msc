@@ -9,12 +9,12 @@ walltime=$4
 
 #jump to home folder and create folder for the output of this specific configuration
 cd $HOME
-main_node_folder=$HOME/$runname
+main_node_folder="$HOME/$runname"
 mkdir main_node_folder
-stream_output=$runname/streamoutput
+stream_output="$runname/streamoutput"
 mkdir $stream_output
 
 TEMP="/var/tmp"
 RAMDISK="/tmp/ramdisk"
 
-qsub -t 1-$numberruns -N $runname -l nodes=1:ppn=2,mem=3000mb,walltime=$walltime -o $stream_output -e $stream_output -v path_csv=$path_csv,TEMP=$TEMP,RAMDISK=$RAMDISK,main_node_folder=$main_node_folder .$script_folder/single_run_on_node.sh 
+qsub -t 1-$numberruns -N $runname -l nodes=1:ppn=1,mem=100mb,walltime=$walltime -o $stream_output -e $stream_output -v path_csv=$path_csv,runname=$runname,TEMP=$TEMP,RAMDISK=$RAMDISK,main_node_folder=$main_node_folder .$script_folder/single_run_on_node.sh 
