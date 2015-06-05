@@ -9,12 +9,16 @@ walltime=$4
 
 #jump to home folder and create folder for the output of this specific configuration
 cd $HOME
-main_node_folder="$HOME/$runname"
-if [ ! -d $main_node_folder]; then 
-	mkdir main_node_folder
+data_output="$HOME/main_node_folder"
+if [ ! -d $data_output ]; then
+	mkdir $data_output
+fi
+main_node_folder="$data_output/$runname"
+if [ ! -d $main_node_folder ]; then 
+	mkdir $main_node_folder
 fi
 stream_output="$main_node_folder/streamoutput"
-if [! -d $stream_output];then
+if [ ! -d $stream_output ];then
 	mkdir $stream_output
 fi
 
