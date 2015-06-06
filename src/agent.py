@@ -221,6 +221,7 @@ class agent(object):
         self.memory = self.memory[::-1]
         
     def create_random_voltage_rule(self):
+	print random.__name__
         voltage_threshold = random.choice(voltage_options)
         
         soc_threshold = random.choice(soc_threshold_options)
