@@ -231,7 +231,7 @@ class agent(object):
         return array([1,voltage_threshold,soc_threshold,action1,action2,0])
     
     def create_random_time_rule(self):
-
+	print random.__name__
         action1 = random.choice(action_options)
         action2 = random.choice(action_options)
         t_begin = random.choice(t_begin_options)
