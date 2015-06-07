@@ -72,11 +72,14 @@ def init_global_vraibles(parameter_row_from_matrix):
     
 def do_experiment_hpc(str,str2_out,run):
     parameter_matrix =read_parameters_from_file(str)[0]
-    print parameter_matrix
-    print len(parameter_matrix)
+    if not (isinstance(parameter_matrix[0],list)):
+	print "one"
+	number_experiments=1
+    else:
+	number_experiments =  len(parameter_matrix)
+    #print len(parameter_matrix[0])
     g.run_id = run
     parameter_matrix = parameter_matrix[0:len(parameter_matrix)-1]
-    number_experiments = len(parameter_matrix)
     
     with open(str2_out,'w') as csvfile:
         schreiber = csv.writer(csvfile,delimiter=',')
@@ -90,7 +93,7 @@ def do_experiment_hpc(str,str2_out,run):
     for i in range(0,number_experiments):
         repetition_counter = 0 
         number_repetitions = parameter_matrix[6]
-        print number_repetitions
+        #print number_repetitions
         while (repetition_counter < int(number_repetitions)):
             init_global_vraibles(parameter_matrix[0:6])
             

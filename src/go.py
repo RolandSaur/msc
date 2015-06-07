@@ -14,8 +14,15 @@ def go(str2_out,*args):
     #print time_experiment
     #print g.copy_al
     #g.majority_vote = True
+
+	
+    #output_values_to_csv = zeros((17280,39))
+	
     
+    output_values_to_csv=[[]for i in range(17280)]
+	
     voting = False
+    g.time =int(g.time)
     while g.time < time_experiment:
         g.time += 1
         g.testcase.set_base(g.time)
@@ -71,6 +78,35 @@ def go(str2_out,*args):
                 if (memory_full == True):
                     voting = True
         if args:
+	    output_line = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
+                                        g.institutional_success_rate,g.majority_vote, g.time,
+                                        g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
+                                        g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
+                                        voting,g.run_id]
+	    for i in g.agents:
+            	output_line.append(float(g.agents[i].SOC))
+            output_line.append(args[0])
+	    #print output_line
+            output_values_to_csv[g.time -1]=output_line
+        else:
+	    output_line = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
+                                        g.institutional_success_rate,g.majority_vote, g.time,
+                                        g.institutional_rule[0],g.institutional_rule[1],g.institutional_rule[2],
+                                        g.institutional_rule[3],g.institutional_rule[4],g.institutional_rule[5],
+                                        voting,g.run_id]
+	    for i in g.agents:
+            	output_line.append(float(g.agents[i].SOC))
+	    #print output_line
+            output_values_to_csv[g.time -1]=output_line
+    
+    with open(str2_out,'a') as csvfile:
+		schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
+		for row in output_values_to_csv:
+			#print row
+			schreiber.writerow(row)
+			
+'''
+some old stuff wrtiting to the csv file, just there to see how it worked before
             with open(str2_out,'a') as csvfile:
                 schreiber = csv.writer(csvfile,delimiter=',',quotechar='"')
                 output_values_to_csv = [g.random_change,g.copy_best_change,g.learn_change,g.copy_al,
@@ -92,8 +128,9 @@ def go(str2_out,*args):
                                         voting,g.run_id]
                 for i in g.agents:
                     output_values_to_csv.append(float(g.agents[i].SOC))
+                print len(output_values_to_csv)
                 schreiber.writerow(output_values_to_csv)
-        
+'''        
         
         #print g.institutional_rule
         #print g.time / 96
