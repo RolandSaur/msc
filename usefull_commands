@@ -1,0 +1,7 @@
+#for getting the data from the server:
+rsync -rz rsaur@hpc07.tudelft.net:/home/rsaur/main_node_folder /home/saur/Documents/master/output_data/
+
+#for ssh-ing to the hpc:
+ssh -Y rsaur@hpc07.tudelft.net
+
+
