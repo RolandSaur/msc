@@ -4,11 +4,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{tabu}
+%\usepackage{tabu}
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{xcolor}
 \usepackage{alltt}
+%\usepackage{cleveref}
 
 \title{Proposal}
 
@@ -525,6 +526,9 @@ the specific condition for the rule.
 
 
 \subsection{Implementation}
+The model was written in Pyhton because the language is easy to use and has a full implementation of MATPOWER, called
+PYPOWER, and the k-means algorithm. A detailed description of the model implementation and pseudo 
+code can be found in Appendix C . 
 \subsection{Verification}
 
 \newpage
@@ -580,6 +584,19 @@ solve the tragedy of the commons.
 The exact structure of the output and how it will be done in detail will be explained in the appendix.
 
 \subsection{Performance indicators}
+The output will be evaluated using the statistical tool R. There are some basic statistics that will be used , such as the mean, median and spread of variables.
+More interesting is how the state of charge of all the agents will be used to interpret a model run or a specific
+rule as a success or failure. Simply looking at the mean state of charge over all the agents is not sufficient 
+to indicate if some agent failed.  In particular the state of charge of the agents which in the unconstrained test 
+had the lowest average state of charge are of most interest. If a rule itself is a failure will therefore be judged
+by how the state of charge changed over a week. If the state of charge for the weakest agent never reaches 100\%
+it is considered a “weak failure”. If the state of charge for the weakest agent drops to 0 it is considered a 
+“strong failure”, because it indicates that there was not enough time to recharge the battery to a needed minimum. 
+The graph below depicts a weak and strong failure. The brown line depicts the state of charge of an agent on level 5.
+The agent shown by the brown line has a higher average state of charge than the agent shown by the red line.
+However the agent on level 6 is arguably doing better, because its state of charge never drops to 0, meaning 
+that there is always sufficient charge in the battery  to commute to and from work. The model setup is 
+considered a failure based on the frequency of failure of the institutional rules.
 \subsection{hypotheses}
 \begin{enumerate}
  \item \textbf{Behavioral Hypotheses} \begin{enumerate}
@@ -857,19 +874,20 @@ The low voltage cables are taken from real world cable data and have the followi
 The per unit values for the lines therefor are $r = \frac{R}{Z_{Base}}=0.001431$
 and $x=\frac{X}{Z_{Base}}=0.00073226$
 \begin{figure}[!ht]
-\includegraphics[width = \linewidth]{Topology.png}
+\centering
+\includegraphics[width = \textwidth]{Topology.png}
 \caption{Topology}
 \label{topology}
 \end{figure}
-The load profiles are based on normalized profiles with an  average usage of 8000kWh a year, see figure \ref{profile}.
+The load profiles are based on normalized profiles with an  average usage of 8000kWh a year, see figure \ref{profile}. \\
 \begin{figure}
-\includegraphics[width = \linewidth]{loadprofile.png}
+\centering
+\includegraphics[width = \textwidth]{loadprofile.png}
 \caption{Load Profile}
 \label{profile}
 \end{figure}
 
-\newpage
-
+\clearpage
 \section{Verification}
 The verification of the model is done in three steps. The functions that the agent can execute by itself
 are verified, then the functions that only work by interacting with other agents or other parts of the
@@ -1024,11 +1042,513 @@ All the test are run in the “pypower\_constraint\_test.py” file.
 \caption{Pypower model with constraints}
 \label{constrained_pypower}
 \end{figure}
-
+\newpage
 \section{Pseudo Code}
+\begin{enumerate}
+ \item Agents have:\begin{enumerate}
+                    \item active\_rule
+                    \item Memory (7,5 Matrix)
+                    \item arrival\_time
+                    \item leaving\_time
+                    \item at\_home (true/false)
+                    \item average\_battery\_drain
+                    \item sd\_battery\_drain
+                    \item SOC
+                    \item SOC\_max
+                    \item Voltage
+                    \item Node
+                    \item count\_steps
+                    \item count\_soc
+                    \item preference
+                    \item copy\_all
+                   \end{enumerate}
+ \item Global Variables: \begin{enumerate}
+                          \item average\_arrival\_time
+                          \item average\_leaving\_time
+                          \item sd\_average
+                          \item average\_battery\_drain
+                          \item sd\_average\_battery\_drain
+                          \item average\_soc
+                          \item sd\_average\_soc
+                          \item soc\_max\_global
+                          \item random\_change
+                          \item copy\_best\_change
+                          \item learn\_change
+                          \item Action\_options
+                          \item t\_end\_options
+                          \item t\_begin\_options
+                          \item soc\_threshold\_options
+                          \item voltage\_options
+                          \item institutional\_rule
+                          \item institutional\_success\_rate
+                         \end{enumerate}
+\end{enumerate}
 
 \newpage
+In the setup phase of the model the time gets set to 0, the agents are created and initialized and the 
+matpower model is created. 
 
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth ]{setup.jpg}
+\caption{To-setup}
+\label{setup}
+\end{figure}
+During the initialization the agents get assigned their node in the grid and the voltage is set to 
+1. Each agent then initializes their preference to the current rule to 0, sets leaving and arrival times, 
+sets up their battery and creates an initial rule and an empty Memory.
+\begin{figure}[!ht]
+\includegraphics[width = 10cm]{init_agent.jpg}
+\caption{Initialize agents}
+\label{init_agents}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+create-turtles agents 24 [set voltage to 1 set node to 2-25]
+Foreach Agent
+    set count_steps = 0 
+    set count_soc = 0 
+    set preference = 0
+    Set arrival and leaving time
+    Setup Battery
+    Setup Rule and Memory
+\end{alltt}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width =10cm]{set_arrival_leaving_time.jpg}
+\caption{Setup arrival and leaving time}
+\label{setup_arival_leaving}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width =10cm]{setup_battery.jpg}
+\caption{Setup Battery}
+\label{setup_battery}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width =10cm]{setup_rule_memory.jpg}
+\caption{Setup Rules and Memory}
+\label{setup_rule_memory}
+\end{figure}
+
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let decide be a random number between 0 and 1
+if decide > 0.5 
+    let t\_begin be randomly picked from t_begin_options
+    let t\_end be randomly picked from t_end_options
+    let soc\_threshold be randomly picked from soc\_threshold_options
+    let action1 be randomly picked from action\_options
+    let action2 be randomly picked from action\_options
+    set active\_rule to vector[2,t\_begin,t\_end,soc\_threshold,action1,action2]
+else
+    let voltage_threshold be randomly picked from voltage_threshold_options
+    let soc_threshold be randomly picked from soc_threshold_options
+    let action1 be randomly picked from action_options
+    let action2 be randomly picked from action_options
+    set active_rule to vector[1,voltage_threshold,soc_threshold,action1,action2,NA]
+
+let Memory be a 7X5 matrix of NA values
+\end{alltt}
+\newpage
+
+To-go \\
+The two things the agents do in the to-go part is to interact with the matpower model and develop rules.
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{go.jpg}
+\caption{To-go}
+\label{to-go}
+\end{figure}
+The agents interact with the matpower model by inputting their action into the matpower model,
+the model then runs and outputs a structured output object. From this output object the agents read
+the actual power they received. The agents can only interact with the model if they are at home. 
+The agents arrive and leave at specific times, and this state is kept track of by the at\_home variable.
+\newpage
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{agent_matpower_interaction.jpg}
+\caption{Agent matpower interaction}
+\label{agent-matpower-interaction}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo code:}}
+foreach agent
+    if (at_home ==True)
+        Do Interact
+    else 
+        if (time%96 == arrival_time)
+            Arrive at home
+Run Matpower
+foreach agent
+    if (at_home == True)
+        get feedback 
+        if (time % 96 == leaving_time)
+            set at_home to False
+\end{alltt}
+\newpage
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{arrive_home.jpg}
+\caption{Arrive at home}
+\label{arrive_at_home}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{do_interaction.jpg}
+\caption{Do Interact}
+\label{do_interact}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{get_action.jpg}
+\caption{Get Action}
+\label{get_action}
+\end{figure}
+
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+if (active_rule[index = 1] ==1)
+    if (Voltage < active_rule[index = 2]) & (soc > active_rule[index = 1])
+        return active_rule[index = 4]
+    else 
+        return active_rule[index = 5]
+else 
+    if (active_rule[index = 3] > active_rule[index=2])
+        if (active_rule[index = 2] < time%96 < active_rule[index = 3]  &  soc > soc_thres.)
+            return active_rule[index = 5]
+        else 
+            return active_rule[index = 6]
+    else 
+        if  (active_rule[index = 2] < time%96  or time % 96 < active_rule[index = 3]&  soc > soc_threshold)
+            return active_rule[index = 5]
+        else 
+            return active_rule[index = 6]
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{get_feedback.jpg}
+\caption{Get feedback}
+\label{get_feedback}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let power be  - 1000.0 * output["gen"][node,1] ;; -1000 stems from unit conversions
+let volt be output["bus"][node,7]
+set voltage = volt
+set SOC = SOC + power/4
+if SOC > SOC_max 
+    set SOC to SOC_max
+\end{alltt}
+\newpage
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{agents_develop_rules.jpg}
+\caption{Agents develop new rules}
+\label{agents_develop_rules}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+foreach agent
+    count_steps = count_steps + 1
+    count_soc = count_soc + soc
+    preference = count_soc / count _steps ;; basically the average soc 
+voting = False
+if (time % 672 == 0)                 ;; 672 is one week in 15 minutes ticks
+    if (voting == True)             
+        if (there is already an institutional rule)
+            let counter be the number of times the institutional rule is in agent memory
+            if (counter < 24 * institutional_success_rate)
+                set voting to False
+            Vote on rules
+else 
+            Vote on Rules
+
+    else 
+        foreach agent
+            Change Rule
+        let in_memory be  True
+foreach agent
+            if memory is not full 
+                set in_memory to False
+        if (in_memory == True)
+            set voting to True
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{vote_rules.jpg}
+\caption{Vote on Rules}
+\label{vote_rules}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let election_list be an empty list of matrices
+Foreach agent
+    reset Values 
+    add Memory to election_list
+let election_matrix be a 240x7 empty  matrix
+let n be 5  ;; number of rules for borda count
+let i be 1 
+foreach element in election_list 
+    for k = 1 to 5
+        let multiple be 0
+        while multiple < n-k 
+            set election_matrix[index = all, index = i] to element[k, all]
+set i to i + 1 
+set multiple to multiple + 1 
+let number_voltage_rules to number of instances (election_matrix[index = 1, index = all]== 1)
+let number_time_rules to number of instances (election_matrix[index = 1, index = all]== 2)
+if number_time_rules > number_voltage_rules 
+    set new_rule to Cluster all Time Rules
+else 
+    set new_rule Cluster all Voltage Rules
+foreach agent
+    set active_rule to new_rule
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{reset_value.jpg}
+\caption{Reset values}
+\label{reset_values}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+Update Memory 
+set count_steps to 0
+set count_soc to 0 
+set preference to 0 
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{update_memory.jpg}
+\caption{Update Memory}
+\label{update_memory}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+ let in_memory be False
+for k = 1 to 5
+    if memory[k ,index 1 to 6] == active_rule
+        set in_memory to True
+        let memory_index  be k
+if (in_memory == True)
+    set memory[memory_index,7] = (memory[memory_index,7] +preference)  / 2
+else 
+    let memory_full be True
+    for k = 1 to 5 
+        if (memory[k ,1] ==NA) 
+            set memory_full to False
+            set memory_index to k 
+    if (memory_full == True)
+        if (active_rule[index = 7] > memory[index = 5m index = ])
+            set memory[index = 5, index = 1 to 6] to active_rule
+            set memory[index = 5, index = 7] to preference
+    else 
+        set memory[index = memory_index,index = all] to active_rule
+        set memory[index = memory_index, index = 7] to preference
+sort memory by 7th column
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{Cluster_voltage.jpg}
+\caption{Cluster Voltage Rules}
+\label{cluster_voltage}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let cluster_matrix be a (number_voltage_rules)x7 matrix 
+let i be 1
+for elements in election_matrix
+    if (element[index = 1] == 1)
+        set cluster_matrix[index = all, index = i] = element
+        i = i + 1
+Cluster Algorithm(cluster_matrix)
+\end{alltt}
+\newpage
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{cluster_time.jpg}
+\caption{Cluster time Rules}
+\label{cluster_time}
+\end{figure}
+
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let cluster_matrix be a (number_time_rules)x7 matrix 
+let i be 1
+for elements in election_matrix
+    if (element[index = 1] == 2)
+        set cluster_matrix[index = all, index = i] = element
+        i = i + 1
+Cluster Algorithm(cluster_matrix)
+\end{alltt}
+
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{cluster_algorithm.jpg}
+\caption{Cluster algorithm}
+\label{cluster_algorithm}
+\end{figure}
+
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let centers be a 3x6 matrtix
+if (cluster_matrix[index = 1, index =1] ==1)
+for k = 1 to 3
+        set centers[k,all] to random_voltage_rule
+else 
+    for k = 1 to 3 
+        set centers[k,all] to random_time_rule
+let old_centers be a 3x6 matrix (NA)
+while old_centers != centers
+    foreach element in cluster_matrix 
+        let lowest_distance be 99 
+        let lowest_index be 0
+        for k = 1 to 3 
+            if calc_distance(centers[k,all],element[1 to 6] < lowest_distance
+                set lowest_distance to calc_distance(centers[k,all],element[1 to 6]
+                set lowest_index to k 
+        set element[7] to lowest_index
+    set old_centers = centers
+for k = 1 to 3 
+    set centers[k,all] to arithmetic_mean(cluster_matrix[1 to 6] with (index = 7 ==k)
+sort centers by 7th index
+return centers[1, all] ;; returns the most voted on mean rule
+\underline{to report random_voltage_rule}
+let voltage_threshold be randomly picked from voltage_threshold_options
+    let soc_threshold be randomly picked from soc_threshold_options
+    let action1 be randomly picked from action_options
+    let action2 be randomly picked from action_options
+    return vector[1,voltage_threshold,soc_threshold,action1,action2,NA]
+
+\underline{to report random_time_rule} 
+let t_begin be randomly picked from t_begin_options
+    let t_end be randomly picked from t_end_options
+    let soc_threshold be randomly picked from soc_threshold_options
+    let action1 be randomly picked from action_options
+    let action2 be randomly picked from action_options
+    return vector[2,t_begin,t_end,soc_threshold,action1,action2]
+\end{alltt}
+\newpage
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{change_rule.jpg}
+\caption{Change Rule}
+\label{change_rule}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+Reset values ;; see above 
+let decide be a random number between 0 and 1
+if (decide > 1 - random_change)
+    Change_random
+else
+    change_copy_best
+    else 
+        Change_learn
+\end{alltt}
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{change_random.jpg}
+\caption{Change random}
+\label{change_random}
+\end{figure}
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{change_learn.jpg}
+\caption{Change learn}
+\label{change_learn}
+\end{figure}
+
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+let index = 0
+let number_voltage be 0
+let voltage_preference be 0
+let number_time be 0
+let time_preference be 0 
+for k = 1 to 5 
+    if (memory[k,1] == 1)
+        set number_voltage = number_voltage + 1 
+        set preference_voltage = preference_voltage + memory[k,7]
+    if (memory[k,1] == 2)
+        set number_time = number_time + 1 
+        set preference_time = preference_time + memory[k,7]
+    if (memory[k,1]==NA)
+        set index to k - 1
+if (index ==1)
+    set active_rule to matrix[1, all]
+else
+    if (number_voltage==0 or number_time==0)
+        if (number_voltage > number_time)
+            set active_rule to weighted_new_voltage_rule
+        else 
+            set active_rule to weighted_new_time_rule
+    else 
+        if (preference_voltage/number_voltage > preference_time/number_time)
+            set active_rule to weighted_new_voltage_rule
+        else 
+            set active_rule to weighted_new_time_rule
+
+\underline{to report weighted_new_voltage_rule}
+let averaged_rule be vector[0,0,0,0,0,0]
+let count be 0
+for k = 1 to 5 
+    if (memory[k,1] == 1)
+        averaged_rule = averaged_rule + memory[k, 1 to 6]
+        count = count + 1 
+return (averaged_rule  / count)
+
+\underline{to report weighted_new_time_rule}
+let averaged_rule be vector[0,0,0,0,0,0]
+let count be 0
+for k = 1 to 5 
+    if (memory[k,1] == 2)
+        averaged_rule = averaged_rule + memory[k, 1 to 6]
+        count = count + 1 
+return (averaged_rule  / count)
+\end{alltt}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{change_copy_best.jpg}
+\caption{Change copy best}
+\label{change_copy_best}
+\end{figure}
+\begin{alltt}
+ \underline{\textit{Pseudo Code:}}
+If copy_all = “all”
+    let best_value be  -1
+            let best_rule be empty rule
+            for i in agents:
+                if (node of i-th agent != node of original agent):
+                        if preference of i-th best rule> best_value:
+                            best_rule = best rule of i-th agent
+                            best_value = preference of i-th agents best rule
+            set active_rule  to  best_rule
+
+elsif (copy_all == "vertical")
+            let best_value be -1
+            let best_rule be empty rule
+            let branch be branch in which agent is in 
+            for i in agents:
+                let branch2 be branch in which  i-th agent is in  
+                if ((branch == branch2) &(node of i-th agent != node of original agent)):
+                        if preference of i-th best rule > best_value:
+                                best_rule = best rule of i-th agent
+                                best_value = preference of i-th agents best rule
+            self.active_rule = best_rule
+    else:
+            let best_value be -1
+            let best_rule be empty rule
+            level = level of agent
+            for i in agents:
+                level2 = level on which i-th agent is on 
+                if ((level == level2) & (node of i-th agent != node of original agent)):
+                        if preference of i-th best rule > best_value:
+                                best_rule = best rule of i-th agent
+                                best_value = preference of i-th agents best rule
+             set active_rule to  best_rule
+\end{alltt}
+
+
+\newpage
 \begin{thebibliography}{9}
 
 \bibitem{cprbook}
