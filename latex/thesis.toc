@@ -1,0 +1,56 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}Smart Grids}{4}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Smart Grid Related Research}{5}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Social aspects of Smart grids}{5}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Technical aspects of smart grids}{6}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.3}Distributed Approaches to smart grid}{6}{subsubsection.1.2.3}
+\contentsline {subsubsection}{\numberline {1.2.4}Research Problem}{7}{subsubsection.1.2.4}
+\contentsline {subsection}{\numberline {1.3}Research Question}{7}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Research Approach}{8}{subsubsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.2}Research methodology}{8}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Addressing Research Question}{8}{subsubsection.1.3.3}
+\contentsline {subsection}{\numberline {1.4}Research Tools}{9}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Powerflow simulation in MATPOWER/PYPOWER}{9}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Multi Agent System}{10}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}Artificial Institutions}{10}{subsubsection.1.4.3}
+\contentsline {subsubsection}{\numberline {1.4.4}Borda count}{11}{subsubsection.1.4.4}
+\contentsline {subsubsection}{\numberline {1.4.5}k-means Clustering}{11}{subsubsection.1.4.5}
+\contentsline {section}{\numberline {2}Problem description}{13}{section.2}
+\contentsline {subsection}{\numberline {2.1}Stakeholders}{13}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Modeling approach}{13}{subsection.2.2}
+\contentsline {section}{\numberline {3}Model}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}Concept}{14}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Model components}{14}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Agent gets up drinks a cup of coffee}{15}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Rules}{15}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Memory}{17}{subsubsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.5}Voting}{17}{subsubsection.3.1.5}
+\contentsline {subsubsection}{\numberline {3.1.6}Model assumptions and choices}{18}{subsubsection.3.1.6}
+\contentsline {subsection}{\numberline {3.2}Implementation}{20}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Verification}{20}{subsection.3.3}
+\contentsline {section}{\numberline {4}Experimental}{21}{section.4}
+\contentsline {subsection}{\numberline {4.1}Basic setup}{21}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Input}{21}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Output}{22}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Performance indicators}{22}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}hypotheses}{22}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Experiments}{24}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{24}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{25}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Experiment 3}{26}{subsubsection.4.4.3}
+\contentsline {subsubsection}{\numberline {4.4.4}Experiment 4}{26}{subsubsection.4.4.4}
+\contentsline {subsubsection}{\numberline {4.4.5}Experiment 5}{27}{subsubsection.4.4.5}
+\contentsline {subsubsection}{\numberline {4.4.6}Experiment 6}{27}{subsubsection.4.4.6}
+\contentsline {section}{\numberline {5}Results and Discussion}{28}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{29}{section.6}
+\contentsline {subsection}{\numberline {6.1}Model conclusion}{29}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Stakeholder perspective}{29}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Insight for software agent systems for resource appropriation}{29}{subsection.6.3}
+\contentsline {section}{\numberline {A}PYPOWER Model}{30}{appendix.A}
+\contentsline {section}{\numberline {B}Verification}{31}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Verification of Functions}{31}{subsection.B.1}
+\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{31}{subsubsection.B.1.1}
+\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{33}{subsubsection.B.1.2}
+\contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{35}{subsection.B.2}
+\contentsline {section}{\numberline {C}Pseudo Code}{35}{appendix.C}

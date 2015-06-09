@@ -1,0 +1,55 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Smart Grids}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Smart Grid Related Research}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Social aspects of Smart grids}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Technical aspects of smart grids}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.3}{Distributed Approaches to smart grid}{subsection.1.2}% 6
+\BOOKMARK [3][-]{subsubsection.1.2.4}{Research Problem}{subsection.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.3}{Research Question}{section.1}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Research Approach}{subsection.1.3}% 9
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Research methodology}{subsection.1.3}% 10
+\BOOKMARK [3][-]{subsubsection.1.3.3}{Addressing Research Question}{subsection.1.3}% 11
+\BOOKMARK [2][-]{subsection.1.4}{Research Tools}{section.1}% 12
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Powerflow simulation in MATPOWER/PYPOWER}{subsection.1.4}% 13
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Multi Agent System}{subsection.1.4}% 14
+\BOOKMARK [3][-]{subsubsection.1.4.3}{Artificial Institutions}{subsection.1.4}% 15
+\BOOKMARK [3][-]{subsubsection.1.4.4}{Borda count}{subsection.1.4}% 16
+\BOOKMARK [3][-]{subsubsection.1.4.5}{k-means Clustering}{subsection.1.4}% 17
+\BOOKMARK [1][-]{section.2}{Problem description}{}% 18
+\BOOKMARK [2][-]{subsection.2.1}{Stakeholders}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.2}{Modeling approach}{section.2}% 20
+\BOOKMARK [1][-]{section.3}{Model}{}% 21
+\BOOKMARK [2][-]{subsection.3.1}{Concept}{section.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Model components}{subsection.3.1}% 23
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Agent gets up drinks a cup of coffee}{subsection.3.1}% 24
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Rules}{subsection.3.1}% 25
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Memory}{subsection.3.1}% 26
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Voting}{subsection.3.1}% 27
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Model assumptions and choices}{subsection.3.1}% 28
+\BOOKMARK [2][-]{subsection.3.2}{Implementation}{section.3}% 29
+\BOOKMARK [2][-]{subsection.3.3}{Verification}{section.3}% 30
+\BOOKMARK [1][-]{section.4}{Experimental}{}% 31
+\BOOKMARK [2][-]{subsection.4.1}{Basic setup}{section.4}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Input}{subsection.4.1}% 33
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Output}{subsection.4.1}% 34
+\BOOKMARK [2][-]{subsection.4.2}{Performance indicators}{section.4}% 35
+\BOOKMARK [2][-]{subsection.4.3}{hypotheses}{section.4}% 36
+\BOOKMARK [2][-]{subsection.4.4}{Experiments}{section.4}% 37
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Experiment 1}{subsection.4.4}% 38
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Experiment 2}{subsection.4.4}% 39
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Experiment 3}{subsection.4.4}% 40
+\BOOKMARK [3][-]{subsubsection.4.4.4}{Experiment 4}{subsection.4.4}% 41
+\BOOKMARK [3][-]{subsubsection.4.4.5}{Experiment 5}{subsection.4.4}% 42
+\BOOKMARK [3][-]{subsubsection.4.4.6}{Experiment 6}{subsection.4.4}% 43
+\BOOKMARK [1][-]{section.5}{Results and Discussion}{}% 44
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 45
+\BOOKMARK [2][-]{subsection.6.1}{Model conclusion}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.2}{Stakeholder perspective}{section.6}% 47
+\BOOKMARK [2][-]{subsection.6.3}{Insight for software agent systems for resource appropriation}{section.6}% 48
+\BOOKMARK [1][-]{appendix.A}{PYPOWER Model}{}% 49
+\BOOKMARK [1][-]{appendix.B}{Verification}{}% 50
+\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 51
+\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 52
+\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 53
+\BOOKMARK [2][-]{subsection.B.2}{Verification of Pypower model}{appendix.B}% 54
+\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 55
