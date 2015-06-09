@@ -34,7 +34,7 @@
 \contentsline {subsubsection}{\numberline {4.1.1}Input}{21}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Output}{22}{subsubsection.4.1.2}
 \contentsline {subsection}{\numberline {4.2}Performance indicators}{22}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}hypotheses}{22}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Hypotheses}{22}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Experiments}{24}{subsection.4.4}
 \contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{25}{subsubsection.4.4.1}
 \contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{25}{subsubsection.4.4.2}
