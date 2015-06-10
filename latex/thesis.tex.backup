@@ -530,6 +530,11 @@ The model was written in Pyhton because the language is easy to use and has a fu
 PYPOWER, and the k-means algorithm. A detailed description of the model implementation and pseudo 
 code can be found in Appendix C . 
 \subsection{Verification}
+Two parts of the model have to be verified. That the multiagent system itself works and that the PYPOWER model 
+represents reality in the intended way.\\
+For the multiagent system, the agents individual behavior and their collective behavior, interacting with each other was 
+tested. For the PYPOWER model the constrain mechanism was tested.\\
+An extensive list of all the tests that were done can be found in Appendix B. 
 
 \newpage
 
@@ -575,16 +580,73 @@ with how the agents come up with rules and how they vote on rules.
 \end{enumerate}
 
 \subsubsection{Output}
-Part of the output of each experiment has to be the the input variables that defined the exact parameters.
+The output of each experiment is written to a comma separated files(.csv).To evaluate the different runs the following 
+variables are written to the output file for each time step. \\
+To keep track of time and to identify each run. 
+\begin{enumerate}
+ \item run\_id
+ \item time
+\end{enumerate}
+
+Part of the output of each experiment has to be the the input variables that defined the exact experiment.
+\begin{enumerate}
+ \item random\_change
+ \item copy\_best\_change
+ \item learn\_change
+ \item copy\_all
+ \item institutional\_success\_rate
+ \item majority\_vote
+\end{enumerate}
+
 The output is also  defined by the question that needs to be answered. What is of interest in the model is how and 
 if the model solves the common pool resource problem. The tragedy of the commons in this case is that some agents are 
-not able to charge sufficiently. Therefore the state of charge of the battery over time is kept track of for each agent.The
-institutional rule, how quickly it changes over time and how frequently it fails gives insight into how the agents try to 
-solve the tragedy of the commons. 
+not able to charge sufficiently. Therefore the state of charge of the battery is kept track of for each agent.
+\begin{enumerate}
+ \item agent1\_soc
+ \item ...
+ \item agent24\_soc
+\end{enumerate}
+
+The institutional rule, how quickly it changes over time and how frequently it fails gives insight into how the 
+agents try to solve the tragedy of the commons. The institutional rule is split in its 6 parts to make it easier to write
+to and read from the output file. 
+\begin{enumerate}
+ \item institutional\_rule = [inst\_rule1,... inst\_rule6]
+ \item voting
+\end{enumerate}
+
 The exact structure of the output and how it will be done in detail will be explained in the appendix.
 
 \subsection{Performance indicators}
-The output will be evaluated using the statistical tool R. There are some basic statistics that will be used , such as the mean, median and spread of variables.
+The output will be evaluated using the statistical tool R. In this section the properties which are desirable 
+are quickly explained and then a list of performance indicators, that help in looking for these properties is given.\\
+The model is only useful if the agents find a stable solution. If the agents cannot find a rule ,which they agree on,
+the results will fluctuate in between weeks and the agents do not work reliably. Ideally the agents would vote on an 
+institutional rule after an initial phase of exploration and then only make minor changes to the rule so that 
+the results stay similar over the following weeks.\\
+\begin{enumerate}
+ \item \textbf{stability:}\\
+\end{enumerate}
+
+Secondly the model describes a common pool resource, therefore looking at the average performance of the agents 
+is not useful for judging if the agents solved the cpr problem. Therefore the focus has to be on the weakest agent 
+in the model. Looking at the average state of charge of the weakest agent in the model is an indicator of 
+how well it performs but this is however still a blunt tool. It is better to define events within the model which relate 
+to the real world of electric vehicles. An event like ,an agent not being able to fully charge the electric vehicle 
+within one week or an agent not being able to charge the electric vehicle sufficiently, 
+meaning that the state of charge of its battery drops to zero, is an event that has meaning in the real world and can 
+be identified in the model output. Further it can also be said that an agent not being able to charge sufficiently is a
+much worse event than an agent not being able to charge to 100\%.
+\begin{enumerate}
+ \item \textbf{Average SOC:}\\
+ 
+ \item \textbf{Frequency of weak failures}\\
+ \item \textbf{Frequency of hard failures}\\
+\end{enumerate}
+
+
+\begin{comment}
+There are some basic statistics that will be used , such as the mean, median and spread of variables.
 More interesting is how the state of charge of all the agents will be used to interpret a model run or a specific
 rule as a success or failure. Simply looking at the mean state of charge over all the agents is not sufficient 
 to indicate if some agent failed.  In particular the state of charge of the agents which in the unconstrained test 
@@ -597,7 +659,9 @@ The agent shown by the brown line has a higher average state of charge than the 
 However the agent on level 6 is arguably doing better, because its state of charge never drops to 0, meaning 
 that there is always sufficient charge in the battery  to commute to and from work. The model setup is 
 considered a failure based on the frequency of failure of the institutional rules.
-\subsection{hypotheses}
+\end{comment}
+
+\subsection{Hypotheses}
 \begin{enumerate}
  \item \textbf{Behavioral Hypotheses} \begin{enumerate}
                                        \item \textbf{By increase the copying behavior the model performs worse}\\
@@ -707,7 +771,7 @@ charge within one week, and an agent not being able to charge sufficiently and i
 \subsubsection{Experiment 2}
 This experiment addresses the first three institutional hypotheses, 2a, 2b, and 2c. The behavior of 
 the individual is not important to those hypotheses, therefore the parameters influencing the 
-individual behavior and their connections are fixed. The parameter for\begin{alltt}copy_all\end{alltt} is 
+individual behavior and their connections are fixed. The parameter for copy\_all is 
 based on the results of experiments one.
 \begin{enumerate}
  \item \begin{alltt}random_change  = 0.3\end{alltt}
@@ -724,12 +788,11 @@ The variables which are of interest are the variables which influence how the ag
  \item \begin{alltt}institutional_success_rate = [10 \%, 30 \%, 50 \%, 80\% ,100\%] \end{alltt}
 \end{enumerate}
 Similar to experiment 1, the hypotheses will be accepted based on increase/decrease of the number of two failures.
-\newpage
 
 \subsubsection{Experiment 3}
 This experiment addresses the behavioral hypotheses, 1.a and 1.b. Since the parameters which do 
 not influence individual behavior, are not essential to the hypotheses, they are kept fixed. 
-The parameters for \begin{alltt}copy_all\end{alltt} and \begin{alltt}institutional_success_rate\end{alltt} 
+The parameters for copy\_all and institutional\_success\_rate 
 are based on the results of experiments one and two.
 \begin{enumerate}
  \item \begin{alltt}majority_vote = True\end{alltt}
@@ -759,7 +822,7 @@ are fixed. Further the initial active rule of each agent has to be set to a gree
  \item  \begin{alltt}institutional_success_rate = best(insitutional_success_rate)\end{alltt}
 \end{enumerate}
 
-The only variable parameter is the \begin{alltt}majority_vote\end{alltt} parameter.
+The only variable parameter is the majority\_vote parameter.
 \begin{enumerate}
  \item  \begin{alltt} majority_vote = [True, False] \end{alltt}
 \end{enumerate}
@@ -814,6 +877,8 @@ similar to experiment 5, the agents no longer develop new rules but live with th
 To accept this hypothesis there has to be a significant increase in the performance 
 difference between the two consecutive runs for increasing noise levels. This would mean that the 
 rules were selected more randomly and therefore performed worse when they were run for longer times.
+
+\newpage
 \section{Results and Discussion}
 
 \newpage
@@ -1210,18 +1275,22 @@ foreach agent
 \begin{alltt}
  \underline{\textit{Pseudo Code:}}
 if (active_rule[index = 1] ==1)
-    if (Voltage < active_rule[index = 2]) & (soc > active_rule[index = 1])
+    if (Voltage < active_rule[index = 2]) 
+	& (soc > active_rule[index = 1])
         return active_rule[index = 4]
     else 
         return active_rule[index = 5]
 else 
     if (active_rule[index = 3] > active_rule[index=2])
-        if (active_rule[index = 2] < time%96 < active_rule[index = 3]  &  soc > soc_thres.)
+        if (active_rule[index = 2] < time\%96 < active_rule[index = 3]
+	    &  soc > soc_thres.)
             return active_rule[index = 5]
         else 
             return active_rule[index = 6]
     else 
-        if  (active_rule[index = 2] < time%96  or time % 96 < active_rule[index = 3]&  soc > soc_threshold)
+        if  (active_rule[index = 2] < time\%96  
+	      or time  96 < active_rule[index = 3]
+	      &  soc > soc_threshold)
             return active_rule[index = 5]
         else 
             return active_rule[index = 6]

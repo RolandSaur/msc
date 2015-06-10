@@ -33,24 +33,24 @@
 \contentsline {subsection}{\numberline {4.1}Basic setup}{21}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}Input}{21}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Output}{22}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Performance indicators}{22}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Hypotheses}{22}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Experiments}{24}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{25}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{25}{subsubsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.3}Experiment 3}{26}{subsubsection.4.4.3}
-\contentsline {subsubsection}{\numberline {4.4.4}Experiment 4}{26}{subsubsection.4.4.4}
-\contentsline {subsubsection}{\numberline {4.4.5}Experiment 5}{27}{subsubsection.4.4.5}
-\contentsline {subsubsection}{\numberline {4.4.6}Experiment 6}{27}{subsubsection.4.4.6}
-\contentsline {section}{\numberline {5}Results and Discussion}{27}{section.5}
-\contentsline {section}{\numberline {6}Conclusion}{28}{section.6}
-\contentsline {subsection}{\numberline {6.1}Model conclusion}{28}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Stakeholder perspective}{28}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Insight for software agent systems for resource appropriation}{28}{subsection.6.3}
-\contentsline {section}{\numberline {A}PYPOWER Model}{29}{appendix.A}
-\contentsline {section}{\numberline {B}Verification}{31}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Verification of Functions}{31}{subsection.B.1}
-\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{31}{subsubsection.B.1.1}
-\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{32}{subsubsection.B.1.2}
-\contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{34}{subsection.B.2}
-\contentsline {section}{\numberline {C}Pseudo Code}{36}{appendix.C}
+\contentsline {subsection}{\numberline {4.2}Performance indicators}{23}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Hypotheses}{23}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Experiments}{25}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{26}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{26}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Experiment 3}{27}{subsubsection.4.4.3}
+\contentsline {subsubsection}{\numberline {4.4.4}Experiment 4}{27}{subsubsection.4.4.4}
+\contentsline {subsubsection}{\numberline {4.4.5}Experiment 5}{28}{subsubsection.4.4.5}
+\contentsline {subsubsection}{\numberline {4.4.6}Experiment 6}{28}{subsubsection.4.4.6}
+\contentsline {section}{\numberline {5}Results and Discussion}{29}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{30}{section.6}
+\contentsline {subsection}{\numberline {6.1}Model conclusion}{30}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Stakeholder perspective}{30}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Insight for software agent systems for resource appropriation}{30}{subsection.6.3}
+\contentsline {section}{\numberline {A}PYPOWER Model}{31}{appendix.A}
+\contentsline {section}{\numberline {B}Verification}{33}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Verification of Functions}{33}{subsection.B.1}
+\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{33}{subsubsection.B.1.1}
+\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{34}{subsubsection.B.1.2}
+\contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{36}{subsection.B.2}
+\contentsline {section}{\numberline {C}Pseudo Code}{38}{appendix.C}
