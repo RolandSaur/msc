@@ -626,6 +626,8 @@ institutional rule after an initial phase of exploration and then only make mino
 the results stay similar over the following weeks.\\
 \begin{enumerate}
  \item \textbf{stability:}\\
+ How often the \textit{voting} variable indicating if the agents currently vote or explore, changes within the last 
+ two months of the model run. 
 \end{enumerate}
 
 Secondly the model describes a common pool resource, therefore looking at the average performance of the agents 
@@ -639,9 +641,13 @@ be identified in the model output. Further it can also be said that an agent not
 much worse event than an agent not being able to charge to 100\%.
 \begin{enumerate}
  \item \textbf{Average SOC:}\\
- 
- \item \textbf{Frequency of weak failures}\\
- \item \textbf{Frequency of hard failures}\\
+ Average state of charge of the weakest agent in situations when there is an institutional rule in place.
+ \item \textbf{Frequency of weak failures:}\\
+ How often in one run it occurs that 
+ an agent cannot charge to 100 \% in a situations when there is an institutional rule in place.
+ \item \textbf{Frequency of hard failures:}\\
+ How often in one run it occurs that 
+ an agents state of charge drops to 0 in a situations when there is an institutional rule in place.
 \end{enumerate}
 
 
