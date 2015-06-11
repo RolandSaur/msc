@@ -337,7 +337,14 @@ The algorithm consists of two steps which are repeated until the clusters no lon
 \newpage
 
 \section{Problem description}
+The integration of electric vehicles into the electricity grid poses opportunities and threats to stakeholders. 
+The increase of electric vehicles can increase air quality in cities and the management of the load that 
+EVs create can open up new markets for energy companies. The grid however might also not be equipped well enough to 
+deal with the coming changes.\\
+In the following two chapters the different stakeholders and their motivations are being presented and the reasons for 
+this modeling approach are given.
 \subsection{Stakeholders}
+This chapter is based mainly on \cite{ev_stakeholder}.
 \subsection{Modeling approach}
 
 \newpage
@@ -1667,7 +1674,9 @@ Matpower: Steady-State Operations, Planning and Analysis Tools for Power Systems
 Power Systems, IEEE Transactions on, vol. 26, no. 1, pp. 12-19, Feb. 2011
 \bibitem {powertransfer}\url{http://www.powerworld.com/files/S01SystemModeling.pdf}
 \bibitem{mas}Wooldridge, M. (2009). An introduction to multiagent systems. John Wiley \& Sons.
-\bibitem{cabletable}\url{http://ffcpg.com.my/portal/Products.nsf/2d248e16d8d12df4825719b00301d50/5801a1bfde86e113482577e40009d126/$FILE/LV+TD.pdf}
+\bibitem{cabletable}\url{http://ffcpg.com.my/portal/Products.nsf/2d248e16d8d12df4825719b00301d50/5801a1bfde86e113482577e40009d126/FILE/LV+TD.pdf}
+\bibitem{ev_stakeholder}Bakker, S., Maat, K., \& Van Wee, B. (2014). Stakeholders interests, expectations, and strategies regarding the development and implementation of electric vehicles: The case of the Netherlands. Transportation Research Part A: Policy and Practice, 66, 52-64.
+\bibitem{social_smart_grid}Skopik, F. (2014). The social smart grid: Dealing with constrained energy resources through social coordination. Journal of Systems and Software, 89, 3-18.
 \bibitem{powerbook}Willis, H. L. (1997). Power Distribution Planning Reference Book. CRC Press.
 \end{thebibliography}
 
