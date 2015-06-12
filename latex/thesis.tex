@@ -223,7 +223,11 @@ Rules, that will be imposed on the agents, have to be designed in such a way tha
 \end{comment}
 
 \subsubsection{Addressing Research Question}
-To address the question an agent has to be designed, which can interact with the PYPOWER environment.A graphical representation to better understand how the software agent is to interact with the grid, can be seen in figure \ref{q1model}. This agent also has to have an internal policy to guide its behavior. The behavioral policy can be developed by the agent itself or can be imposed on the agent as an institutional policy. The institutional policy is elected by all the agents collectively.  \\
+To address the question an agent has to be designed, which can interact with the PYPOWER environment.
+A graphical representation to better understand how the software agent is to interact with the grid,
+can be seen in figure \ref{q1model}. This agent also has to have an internal policy to guide its behavior. 
+The behavioral policy can be developed by the agent itself or can be imposed on the agent as an institutional
+policy. The institutional policy is elected by all the agents collectively.  \\
 
 \begin{figure}[!ht]
 \includegraphics[width =\textwidth]{EV_smart_charging_model.png}
@@ -348,19 +352,64 @@ This chapter is based mainly on \cite{ev_stakeholder}. First the different stake
 transition to electric vehicles and then possible conflicts of interest are discussed.
 \begin{enumerate}
  \item \textbf{Energy Companies:}\\
- blabla
+ To electricity companies the transition to electric vehicles is mostly an opportunity. It opens up a new market to them 
+ in which they see the potential to charge different rates at different times to sell as much electricity as possible 
+ at times when production costs are lowest due to excess renewable energy production. Further can the batteries in 
+ electric vehicles be seen as cheap storage solutions for electricity companies. The main opportunity electricity 
+ companies see in the introduction of EVs is to make it easier to balance the excess production of renewable energies
+ and the peak load.
  \item \textbf{Grid operators:}\\
- Municlalkfdajs
+ Unlike electricity companies, grid operators are not allowed to sell electricity themselves and the transition is 
+ therefore mostly a threat to them. While electricity companies are interested in making the peak electric load coincide
+ with the production of cheap renewable energies to maximize their profits, grid operators are interested in spreading 
+ the load more evenly to optimize use of the grid. Thus grid operators would prefer a more direct control over charging 
+ strategies of electric vehicles. 
  \item \textbf{Municipalities:}\\
- ladida
+ Municipalities see the switch to EV as an opportunity to increase air quality, and thus switch their own fleets to 
+ electric to be an example to others, and give financial incentives to further the introduction of electric vehicles. 
  \item \textbf{Consumer/Prosumer:}\\
- ja klar ahhahahahahahhahahah
- 
+ never ever gonna happen. 
 \end{enumerate}
+The main conflict between stakeholders is between energy companies and grid operators. This simply arises from the 
+fact that the former uses the infrastructure and wants to maximize use of the infrastructure at times when it is 
+most profitable to use it, and the later provides the infrastucture and wants to minimize investement in the infrastructure
+and therefore the use to be as evenly as possible. This also causes the two parties to favor different solutions 
+in the integration of electric vehicles. \\
+grid operators more control, electritcity companies more flexibility in use and price structures. 
 
-\subsection{Modeling approach}
+\subsection{Why Modeling/Modeling approach}
+The stakeholders problem is situated in a socio-technical system including, almost every aspect of peoples daily life, 
+since electricity is ubiquitous, and expensive infrastructure, the electricity grid. This makes experimenting to find 
+best solutions, very difficult, because failures could have very adverse affects on peoples lives and therefore on the 
+reputation of the concept of smart grids. Possible failures could also cause damage to infrastructure which would not just
+be disruptive but also expensive. System obviosily have to be tested at some point in real world scenarios. But it is 
+very important to have a good theoretical understanding of how the system could possibly behave in reality. Therefore 
+models have to be deviced, which are most accurate representations of the socio-tehcnical system and the 
+software solution that is proposed to solve the problem. \\
+The model has to consist of a physical layer representing the grid and a multi agent system to represent peoples 
+behavior and the software agents choices. The first step in solving the problem in this theoretical model is 
+to check if the model experiences the initial problem in the way predicted. For this each household is given a 
+software agent, and behavior of the software agents is set to charge as long as the battery is not at 100\% charge,
+at the highest possible rate.\\
+The result of such a test are given in graph \ref{software_tragedy}. In this graph the state of charge over time is 
+represented for different levels. the level in this case is an indication of how close or far from the 
+electricity source the electric vehicle is situated. The higher the level the further the EV is from the source. 
+What we can see is that the state of charge for EVs on level 5 and 6 are not able to recover to full charge after being 
+drained. They sometimes even drop down to 0, meaning completely empty. This is the abstract 
+representation of the tragedy of the commons in the smart grid with a lot of EVs accessing the grid. Some agents 
+cannot access the resource, the grid, because it has been depleted by the self interest driven actions of 
+all of them. This way the model represents the initial problem of too many electric vehicles charging at the same time 
+and overloading the grid. 
 
-\newpage
+
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{tragedy_of_commons.jpg}
+ \caption{Tragedy of the commons in the Model}
+ \label{software_tragedy}
+\end{figure}
+
+\clearpage
 
 \section{Model}
 \subsection{Concept}
@@ -906,6 +955,20 @@ rules were selected more randomly and therefore performed worse when they were r
 
 \newpage
 \section{Results and Discussion}
+\begin{alltt}
+ Recap questions.
+ method
+      graphs
+      statistical tests
+
+experiments
+    exp1 & what do results imply
+    exp2
+    ...
+    exp6
+
+What is the picture all those results paint.
+\end{alltt}
 
 \newpage
 
