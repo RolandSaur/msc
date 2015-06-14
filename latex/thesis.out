@@ -47,9 +47,11 @@
 \BOOKMARK [2][-]{subsection.6.2}{Stakeholder perspective}{section.6}% 47
 \BOOKMARK [2][-]{subsection.6.3}{Insight for software agent systems for resource appropriation}{section.6}% 48
 \BOOKMARK [1][-]{appendix.A}{PYPOWER Model}{}% 49
-\BOOKMARK [1][-]{appendix.B}{Verification}{}% 50
-\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 51
-\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 52
-\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 53
-\BOOKMARK [2][-]{subsection.B.2}{Verification of Pypower model}{appendix.B}% 54
-\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 55
+\BOOKMARK [2][-]{subsection.A.1}{Physical Representation}{appendix.A}% 50
+\BOOKMARK [2][-]{subsection.A.2}{Power Constrain Algorithm}{appendix.A}% 51
+\BOOKMARK [1][-]{appendix.B}{Verification}{}% 52
+\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 53
+\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 54
+\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 55
+\BOOKMARK [2][-]{subsection.B.2}{Verification of Pypower model}{appendix.B}% 56
+\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 57

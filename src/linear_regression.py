@@ -47,8 +47,13 @@ for index in range(2,8):
 for k in range(0,6):
     x = linspace(0,25,num =25)
     y = slopes[k] * x +1 
-    plt.plot(power_data_matrix[:,k],voltage_data_matrix[:,k], x , y ,'g--')
+    ausgabe = plt.plot(power_data_matrix[:,k],voltage_data_matrix[:,k], x , y ,'g--')
     plt.hold(True)
+plt.xlabel("Load [kW]")
+plt.ylabel("Voltage [pu]")
+plt.title("Load Voltage Relation")
+#plt.legend(["1","1","1","1","1"])
+plt.savefig("../latex/load_voltage.jpg")
 plt.show()
 
 print slopes

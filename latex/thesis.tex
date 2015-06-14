@@ -1013,6 +1013,11 @@ Besides the general difficulties of doing a master thesis project there are a fe
 \appendix
 
 \section{PYPOWER Model}
+The PYPOWER model has two functions, it has to represent the physical grid and it has to constrain the power consumptions at 
+nodes when their voltage exceeds the voltage constraints. Since PYPOWER does not contain the option to constrain power in the way
+needed an algorithm has to be written around the PYPOWER model to achieve this. In the following the implementation of these two parts
+will be explained.\\
+\subsection{Physical Representation}
 To have some grid to work with a low voltage case has to be created from the ground up, since MATPOWER/PYPOWER does not include any generic low voltage cases. Since there is no data on a real grid, reasonable values have to be assumed based on literature. To create the model the size and topology of a grid has to be set, impedance values for connections and load values for the buses have to be found and all the data has to be converted to per unit values. \\ 
 Based on literature\cite{powerbook} a radial network with a central transformer with a power of between 100 and 500kVA is chosen. There will be 24 homes, base load of 6kVA, connected to the transformer with 4 lines. Between each household there will be a line of 100 meters. This way the total base load is about $S_{base}=144kVA$ and the total length of each cable is 600 meters. The base voltage of the grid is 400V. \\
 \begin{equation}
@@ -1040,7 +1045,69 @@ The load profiles are based on normalized profiles with an  average usage of 800
 \caption{Load Profile}
 \label{profile}
 \end{figure}
+\clearpage
+\subsection{Power Constrain Algorithm}
+The algorithm should  constrain EV charging if the voltage at a grid point exceeds the minimum voltage, while ignoring branches which do 
+not need any constraining and not constraining branches further than needed. \\
+The basic idea is an adapted newton method. The variable that needs to be adapted would be the power consumption in kW and the variable 
+on which this has an effect is the voltage. Calculating the slope or ratio of change in voltage caused by change in power consumption
+every time to come up with how much an individual agent would have to reduce or increase its power consumption would be very time 
+consuming. To make this process a bit quicker two facts come in handy, the different branches behave the same and the slope is relatively 
+constant for specific points in the grid. So once the slope of each position is determined the algorithm can be sped up significantly 
+by replacing the calculation of the slope with looking up the slope. \\
+To determine the slopes for different positions in the grid  a linear regression was done, in which the different grid points are 
+given a range of power and the resulting voltage is measured. The graph \ref{load_voltage_graph} shows the result of the linear regression. 
+The dashed lines are the linear regression lines and the solid lines are the actual output of the model. It is clear that using a linear
+relation between power and voltage is reasonable. The six different colors represent the different level on which the agents
+ can be on. If they are further from the source, there is more resistance in between and power consumption has a stronger effect on the 
+ voltage.\\
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{load_voltage.jpg}
+ \caption{Linear Regression}
+ \label{load_voltage_graph}
+\end{figure}
 
+Given this relation between voltage and power for the different grid points, the algorithm just has to adapt the power consumption 
+proportional to the voltage deviation, that needs to be cut, with proportionality equal to the slopes defined previous. \\
+The main steps of the algorithm are as follows. \\
+(See graph \ref{constrain1})The algorithm should ignore each branch that does not need to be constrained. If a branch needs to be constrained is simply defined by if 
+the lowest voltage is below the minimum voltage.\\
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{constrain1.jpg}
+ \caption{Power Constrain algorithm}
+ \label{constrain1}
+\end{figure}
+(See graph \ref{constrain2})If a branch needs to be constrained the voltage difference has to be calculated and then it has to be decided if the power has to be 
+increased or decreased. Most of the times the power will have to be decreased. The power only has to increased if the algorithm already
+adapted this branch and constrained it too much and therefore has to increase the power a little bit. Also the power should be 
+adapted as long as the voltage deviation from the lower bound is greater than a small threshold, 0.001 in this case.\\
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{constrain2.jpg}
+ \caption{Constrain Branch}
+ \label{constrain2}
+\end{figure}
+(See graph \ref{constrain3_1})When reducing the power consumptions those on the lowest voltage level are cut first. Given this lower voltage level agent, the maximum 
+amount of power that can be cut has to be compared to how much needs to be cut. If the amount is sufficient only the needed amount has 
+to be cut if it is not the complete amount of power has to be cut.\\
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{constrain3_1.jpg}
+ \caption{Reduce Power}
+ \label{constrain3_1}
+\end{figure}
+(See graph \ref{constrain3_2})When increasing the power consumption first the power of the highest level agent which has unmet power demands is allowed to increase its 
+power consumption. Similar to reducing the power, first the amount of power that can be increased on this node has to be compared to the 
+needed power increase. If the power is sufficient only the needed amount is increased if it is not sufficient it is increased to the 
+amount of power that can be increased on this level. \\
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = \textwidth]{constrain3_2.jpg}
+ \caption{Increase Power}
+ \label{constrain3_2}
+\end{figure}
 \clearpage
 \section{Verification}
 The verification of the model is done in three steps. The functions that the agent can execute by itself
