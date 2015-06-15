@@ -368,7 +368,10 @@ transition to electric vehicles and then possible conflicts of interest are disc
  Municipalities see the switch to EV as an opportunity to increase air quality, and thus switch their own fleets to 
  electric to be an example to others, and give financial incentives to further the introduction of electric vehicles. 
  \item \textbf{Consumer/Prosumer:}\\
- never ever gonna happen. 
+ With the change from pure consumers to prosumers, the view on household electricity consumption and consumers has changed. 
+ \cite{social_smart_grid} has pointed out that in a more distributed system of production and control, individual consumers 
+ become more important. \cite{social_smart_grid} further develops a model in which consumers collaborate in communities 
+ to better negotiate with other stakeholders. This would increase the predictability of the costumer energy demand 
 \end{enumerate}
 The main conflict between stakeholders is between energy companies and grid operators. This simply arises from the 
 fact that the former uses the infrastructure and wants to maximize use of the infrastructure at times when it is 
@@ -1071,7 +1074,7 @@ relation between power and voltage is reasonable. The six different colors repre
 Given this relation between voltage and power for the different grid points, the algorithm just has to adapt the power consumption 
 proportional to the voltage deviation, that needs to be cut, with proportionality equal to the slopes defined previous. \\
 The main steps of the algorithm are as follows. \\
-The algorithm should ignore each branch that does not need to be constrained. If a branch needs to be constrained is simply defined by if 
+(See graph \ref{constrain1})The algorithm should ignore each branch that does not need to be constrained. If a branch needs to be constrained is simply defined by if 
 the lowest voltage is below the minimum voltage.\\
 \begin{figure}[!ht]
  \centering
@@ -1079,21 +1082,29 @@ the lowest voltage is below the minimum voltage.\\
  \caption{Power Constrain algorithm}
  \label{constrain1}
 \end{figure}
-
+(See graph \ref{constrain2})If a branch needs to be constrained the voltage difference has to be calculated and then it has to be decided if the power has to be 
+increased or decreased. Most of the times the power will have to be decreased. The power only has to increased if the algorithm already
+adapted this branch and constrained it too much and therefore has to increase the power a little bit. Also the power should be 
+adapted as long as the voltage deviation from the lower bound is greater than a small threshold, 0.001 in this case.\\
 \begin{figure}[!ht]
  \centering
  \includegraphics[width = \textwidth]{constrain2.jpg}
  \caption{Constrain Branch}
  \label{constrain2}
 \end{figure}
-
+(See graph \ref{constrain3_1})When reducing the power consumptions those on the lowest voltage level are cut first. Given this lower voltage level agent, the maximum 
+amount of power that can be cut has to be compared to how much needs to be cut. If the amount is sufficient only the needed amount has 
+to be cut if it is not the complete amount of power has to be cut.\\
 \begin{figure}[!ht]
  \centering
  \includegraphics[width = \textwidth]{constrain3_1.jpg}
  \caption{Reduce Power}
  \label{constrain3_1}
 \end{figure}
-
+(See graph \ref{constrain3_2})When increasing the power consumption first the power of the highest level agent which has unmet power demands is allowed to increase its 
+power consumption. Similar to reducing the power, first the amount of power that can be increased on this node has to be compared to the 
+needed power increase. If the power is sufficient only the needed amount is increased if it is not sufficient it is increased to the 
+amount of power that can be increased on this level. \\
 \begin{figure}[!ht]
  \centering
  \includegraphics[width = \textwidth]{constrain3_2.jpg}
