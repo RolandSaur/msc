@@ -9,6 +9,8 @@
 \usepackage{verbatim}
 \usepackage{xcolor}
 \usepackage{alltt}
+
+\usepackage{subfigure}
 %\usepackage{cleveref}
 
 \title{Proposal}
@@ -744,7 +746,9 @@ considered a failure based on the frequency of failure of the institutional rule
 \end{comment}
 
 \subsection{Hypotheses}
-
+In this chapter some model specific hypotheses are explained. They are supposed to make insight into how the model itself 
+functions  and do not directly contribute to answering the overall research question.To make it easier to understand 
+them, one should keep the performance indicators defining terms like  stability, better or worse in the model context, in mind.\\ 
 \begin{enumerate}
  \item \textbf{Behavioral Hypotheses} \begin{enumerate}
                                        \item \textbf{By increase the copying behavior the model performs worse}\\
@@ -961,14 +965,103 @@ To accept this hypothesis there has to be a significant increase in the performa
 difference between the two consecutive runs for increasing noise levels. This would mean that the 
 rules were selected more randomly and therefore performed worse when they were run for longer times.
 
-\newpage
+\clearpage
 \section{Results and Discussion}
+The overall question that should be answered by this model is if distributed software agents can organize in a way so that 
+every electric vehicle can charge sufficiently charge while being constrained by a finite grid. \\
+The data will be examined using the statistical tool R. Histograms and box-plots will be used to get a broad first look at the data. 
+Statistical tests like the T-test will be used where useful and necessary.\\
+In the following chapter first a broad look at the model output and a comparison between the model output and a uncontrolled or 
+models without institutional rules is given. Then the results of the experiments are discussed and finally a summary of the results is 
+given.
+\subsection{First Look}
+To evaluate the model on a first glance the results from the first experiment are used because of simplicity reasons. The 
+model will be compared to a model run, in which there is no control and every agent tries to charge as much as possible as long as 
+its battery is not completely full. This is to see if the switch to software agents is in itself beneficial to the overall situatio.
+In a second step the times when there is an institutional rule will be compared to the times when there is no institutional 
+rule in place and the agents are free to develop their rules by themselves. This is to show if the introduction of institutions has an 
+effect on the performance of the agents. 
+\subsubsection{Comparison to uncontrolled}
+\clearpage
+\subsubsection{Comparison with and without an Institutional Rule}
+The effect of the existence of an institutional rule on the performance of the model will be explored next. For 
+this the results of experiment 1 are used. The results are split into times when there is a institutional rule and 
+times when there is no institutional rule. The performance indicators are used to judge the performance. \\
+
+The first step is to look at the average state of charge of all the agents. The distribution of the average SOC of all
+the agents, with and without an institutional rule, is displayed in figure \ref{inst_averages_all_second}. It is surprisingly hard 
+to say definitively that the presence of an institutional rule has an affect on the average SOC just by looking at the graphs.
+However a one sided t-test for institutional rule being greater with a confidence interval of 95\% reveals that the average 
+SOC is statistical significantly bigger when there is an institutional rule.
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
+\label{inst_averages_all}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{average_all_no_first_2.jpg}
+\label{no_inst_averages_all}}
+\caption{Average State of Charge of all the agents}
+\label{inst_averages_all_second}
+\end{figure}
+
+To see the effect of an institutional rule on the performance of the model, one has to look at where the effect should be most visible, 
+the agents, which have the least chance to get charge in an unregulated scenario. Those agents are the agents on the lowest level ,
+because they are furthest from the source and therefore first to be restricted by the grid.
+The distribution of average state of charge of the agent on the lowest level, with and without an institutional
+rule is displayed in figure \ref{inst_averages_second}. The bin width in both the graphs is the same but the axis are different. 
+The highest value indicated in figure \ref{inst_averages} is 80  whereas the highest count indicated in figure \ref{no_inst_averages}
+is 30. Given this it seems like figure \ref{inst_averages} is shifted to the right compared to figure \ref{no_inst_averages},
+indicating that the weakest agents perform better when there is an institutional rule that every agent follows. 
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{averages_first_2.jpg}
+\label{inst_averages}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{averages_no_first_2.jpg}
+\label{no_inst_averages}}
+\caption{Average State of Charge of weakest agent}
+\label{inst_averages_second}
+\end{figure}
+
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{weak_first_2.jpg}
+\label{inst_weak_second}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{weak_no_first_2.jpg}
+\label{no_inst_weakest_second}}
+\caption{Number of weak Failure}
+\label{weakest_second}
+\end{figure}
+
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{hard_first_2.jpg}
+\label{inst_hard_second}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{hard_no_first_2.jpg}
+\label{no_inst_hard_second}}
+\caption{Number of hard Failure}
+\label{hard_second}
+\end{figure}
+
+\subsection{Experiments}
+\subsubsection{Experiment 1}
+\subsubsection{Experiment 2}
+\subsubsection{Experiment 3}
+\subsubsection{Experiment 4}
+\subsubsection{Experiment 5}
+\subsection{Summary}
+Not sure if this summary should not just be the conclusion. I cannot see a difference between the two. 
+
+\begin{comment}
 \begin{alltt}
  Recap questions.
  method
       graphs
       statistical tests
-
+Initial look at the Model 
+    compare to greedy and to non institutional
 experiments
     exp1 & what do results imply
     exp2
@@ -977,23 +1070,23 @@ experiments
 
 What is the picture all those results paint.
 \end{alltt}
+\end{comment}
 
-\newpage
+\clearpage
 
 \section{Conclusion}
 \subsection{Model conclusion}
 \subsection{Stakeholder perspective}
 \subsection{Insight for software agent systems for resource appropriation}
+\section{Further Research}
 
-
-\newpage
-\newpage
+\clearpage
 \begin{comment}
 \section{Time schedule and pitfalls}
 \begin{figure}[!ht]
 \includegraphics[width =\textwidth]{Time_schedule.png}
 \caption{Time Schedule}
-\label{time_schedule}
+% \label{time_schedule}
 \end{figure}
 Besides the general difficulties of doing a master thesis project there are a few pitfalls of this project that are worth mentioning.
 \begin{enumerate}

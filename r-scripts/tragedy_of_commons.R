@@ -1,8 +1,8 @@
 library(ggplot2)
 library(reshape)
 
-z = c("a1","a2","a3","a4","a5","a6","a7","a8","a9","a10","a11","a12","a13","a14","a15","a16","a17","a18","a19","a20","a21","a22","a23","a24","time")
-x <- data.frame(read.csv('/home/saur/test.txt', sep=",", col.names = z,header=FALSE))
+z = c("a1","a2","a3","a4","a5","a6","a7","a8","a9","a10","a11","a12","a13","a14","a15","a16","a17","a18","a19","a20","a21","a22","a23","a24","time","run_id")
+x <- data.frame(read.csv('/home/saur/test.txt', sep=",", col.names = z,header=TRUE))
 
 plot <- ggplot(data = x,aes(x=time)) + 
         geom_line(aes(y=a1,color = "level1")) + 
