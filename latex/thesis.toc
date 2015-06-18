@@ -67,3 +67,4 @@
 \contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{43}{subsubsection.B.1.2}
 \contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{45}{subsection.B.2}
 \contentsline {section}{\numberline {C}Pseudo Code}{47}{appendix.C}
+\contentsline {section}{\numberline {D}Additional Graphs}{65}{appendix.D}

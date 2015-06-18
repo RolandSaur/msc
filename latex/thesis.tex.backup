@@ -982,12 +982,36 @@ In a second step the times when there is an institutional rule will be compared 
 rule in place and the agents are free to develop their rules by themselves. This is to show if the introduction of institutions has an 
 effect on the performance of the agents. 
 \subsubsection{Comparison to uncontrolled}
+\clearpage
 \subsubsection{Comparison with and without an Institutional Rule}
 The effect of the existence of an institutional rule on the performance of the model will be explored next. For 
 this the results of experiment 1 are used. The results are split into times when there is a institutional rule and 
 times when there is no institutional rule. The performance indicators are used to judge the performance. \\
+
+The first step is to look at the average state of charge of all the agents. The distribution of the average SOC of all
+the agents, with and without an institutional rule, is displayed in figure \ref{inst_averages_all_second}. It is surprisingly hard 
+to say definitively that the presence of an institutional rule has an affect on the average SOC just by looking at the graphs.
+However a one sided t-test for institutional rule being greater with a confidence interval of 95\% reveals that the average 
+SOC is statistical significantly bigger when there is an institutional rule.
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
+\label{inst_averages_all}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{average_all_no_first_2.jpg}
+\label{no_inst_averages_all}}
+\caption{Average State of Charge of all the agents}
+\label{inst_averages_all_second}
+\end{figure}
+
+To make the effect of an institutional rule on the performance of the model clearer, one has to look at where the effect should be most visible, 
+the agents, which have the least chance to get charge in an unregulated scenario. Those agents are the agents on the lowest level ,
+because they are furthest from the source and therefore first to be restricted by the grid.
 The distribution of average state of charge of the agent on the lowest level, with and without an institutional
-rule is displayed in figure \ref{inst_averages_second}.
+rule is displayed in figure \ref{inst_averages_second}. The bin width in both the graphs is the same but the axis are different. 
+The highest value indicated in figure \ref{inst_averages} is 80  whereas the highest count indicated in figure \ref{no_inst_averages}
+is 30. Given this it seems like figure \ref{inst_averages} is shifted to the right compared to figure \ref{no_inst_averages},
+indicating that the weakest agents perform better when there is an institutional rule that every agent follows. 
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{averages_first_2.jpg}
@@ -995,28 +1019,30 @@ rule is displayed in figure \ref{inst_averages_second}.
 \subfigure[No Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{averages_no_first_2.jpg}
 \label{no_inst_averages}}
-\caption{Average State of Charge}
+\caption{Average State of Charge of weakest agent}
 \label{inst_averages_second}
 \end{figure}
 
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{weak_first_2.jpg}
-\label{inst_averages}}
+\label{inst_weak_second}}
 \subfigure[No Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{weak_no_first_2.jpg}
-\label{no_inst_averages}}
+\label{no_inst_weakest_second}}
 \caption{Number of weak Failure}
+\label{weakest_second}
 \end{figure}
 
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{hard_first_2.jpg}
-\label{inst_averages}}
+\label{inst_hard_second}}
 \subfigure[No Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{hard_no_first_2.jpg}
-\label{no_inst_averages}}
+\label{no_inst_hard_second}}
 \caption{Number of hard Failure}
+\label{hard_second}
 \end{figure}
 
 \subsection{Experiments}
@@ -1848,7 +1874,21 @@ elsif (copy_all == "vertical")
 \end{alltt}
 
 
-\newpage
+\clearpage
+\section{Additional Graphs}
+
+\begin{figure}[!ht]
+\subfigure[Weak Failures Uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{weak_first_greedy.jpg}
+}
+\subfigure[Hard Failures Uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{hard_first_greedy.jpg}
+}
+\caption{Number of Failure in uncontrolled scenario}
+\label{inst_averages_all_second}
+\end{figure}
+
+
 \begin{thebibliography}{9}
 
 \bibitem{cprbook}

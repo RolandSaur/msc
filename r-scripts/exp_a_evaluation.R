@@ -1,3 +1,5 @@
+library(ggplot2)
+
 
 function_average <- function(df) {
         for (k in c(1:100)){
@@ -8,7 +10,8 @@ function_average <- function(df) {
                         averages <- c(averages, mean(df[[k]]$agent6_soc))
                 }
         }
-        hist(averages)
+        #hist(averages)
+        return(averages)
 }
 
 function_hard_failure <- function(df){
@@ -38,11 +41,12 @@ function_hard_failure <- function(df){
                 }
                 hard_fails <- c(hard_fails,summe)
         }
-        print(max(hard_fails))
-        print(min(hard_fails))
+        #print(max(hard_fails))
+        #print(min(hard_fails))
         #breaks <- c(0,200 * c(1:100))
-        breaks <- c(0:60)
-        hist(hard_fails,breaks)
+        #breaks <- c(0:60)
+        #hist(hard_fails,breaks)
+        return(hard_fails)
 }
 function_hard_failure_no <- function(df){
         hard_fails <- c()
@@ -71,11 +75,12 @@ function_hard_failure_no <- function(df){
                 }
                 hard_fails <- c(hard_fails,summe)
         }
-        print(max(hard_fails))
-        print(min(hard_fails))
+        #print(max(hard_fails))
+        #print(min(hard_fails))
         #breaks <- c(0,200 * c(1:100))
         #breaks <- c(0:60)
-        hist(hard_fails)#,breaks)
+        #hist(hard_fails)#,breaks)
+        return(hard_fails)
 }
 
 function_weak_failure <- function(df){
@@ -108,9 +113,10 @@ function_weak_failure <- function(df){
                 }
                 weak_fails <- c(weak_fails,summe)
         }
-        breaks <- 5 * c(0:100)
-        hist(weak_fails,breaks)
+        #breaks <- 5 * c(0:100)
+        #hist(weak_fails,breaks)
         #xx
+        return(weak_fails)
 }
 function_weak_failure_no <- function(df){
         weak_fails <- c()
@@ -143,8 +149,9 @@ function_weak_failure_no <- function(df){
                 weak_fails <- c(weak_fails,summe)
         }
         #breaks <- 5 * c(0:100)
-        hist(weak_fails)#,breaks)
+        #hist(weak_fails)#,breaks)
         #xx
+        return(weak_fails)
 }
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
 runs <- c(1,2,3)
@@ -157,8 +164,22 @@ for (i in runs) {
                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
         }
         #assign(paste("data_a_",i),function_average(data_frames))
-        function_hard_failure_no(data_frames)
-        function_weak_failure_no(data_frames)
+        averages <- function_average(data_frames) 
+        hard_failures <- function_hard_failure(data_frames)
+        weak_failures <- function_weak_failure(data_frames)
+        
+        averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
+                ggtitle("Average SOC") + xlab("Average SOC")
+        
+        ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".jpg",sep=""))
+         
+        weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
+              ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+        ggsave(weak_figure , file = paste("../latex/weak_exp_c_",i,".jpg",sep=""))
+        
+        hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
+              ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+        ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".jpg",sep=""))
 }
 
 

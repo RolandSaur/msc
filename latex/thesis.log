@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.26)  17 JUN 2015 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.26)  17 JUN 2015 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -572,7 +572,7 @@ LaTeX Info: Redefining \nameref on input line 22.
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
- <tud.png, id=277, 326.21875pt x 138.5175pt>
+ <tud.png, id=281, 326.21875pt x 138.5175pt>
 File: tud.png Graphic file (type png)
 
 <use tud.png>
@@ -652,7 +652,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--233
 
  []
 
-<EV_smart_charging_model.png, id=433, 879.285pt x 785.93625pt>
+<EV_smart_charging_model.png, id=438, 879.285pt x 785.93625pt>
 File: EV_smart_charging_model.png Graphic file (type png)
 
 <use EV_smart_charging_model.png>
@@ -664,27 +664,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 329--331
 
  []
 
-<K-means_alg.jpg, id=475, 746.79pt x 380.42125pt>
+<K-means_alg.jpg, id=481, 746.79pt x 380.42125pt>
 File: K-means_alg.jpg Graphic file (type jpg)
  <use K-means_alg.jpg>
 Package pdftex.def Info: K-means_alg.jpg used on input line 338.
 (pdftex.def)             Requested size: 345.0pt x 175.7447pt.
 
 [11] [12 <./K-means_alg.jpg>] [13]
-<tragedy_of_commons.jpg, id=508, 506.8536pt x 371.2269pt>
+<tragedy_of_commons.jpg, id=513, 506.8536pt x 371.2269pt>
 File: tragedy_of_commons.jpg Graphic file (type jpg)
 
 <use tragedy_of_commons.jpg>
 Package pdftex.def Info: tragedy_of_commons.jpg used on input line 416.
 (pdftex.def)             Requested size: 345.0pt x 252.68584pt.
  [14] [15 <./tragedy_of_commons.jpg>]
-<concept_components.png, id=518, 722.7pt x 542.025pt>
+<concept_components.png, id=523, 722.7pt x 542.025pt>
 File: concept_components.png Graphic file (type png)
 
 <use concept_components.png>
 Package pdftex.def Info: concept_components.png used on input line 438.
 (pdftex.def)             Requested size: 345.0pt x 258.74649pt.
- <concept_coffe.png, id=519, 1027.84pt x 770.88pt>
+ <concept_coffe.png, id=524, 1027.84pt x 770.88pt>
 File: concept_coffe.png Graphic file (type png)
 
 <use concept_coffe.png>
@@ -693,14 +693,14 @@ Package pdftex.def Info: concept_coffe.png used on input line 456.
  [16
 
  <./concept_components.png>]
-<concept_rules_function.png, id=526, 737.75626pt x 308.15125pt>
+<concept_rules_function.png, id=531, 737.75626pt x 308.15125pt>
 File: concept_rules_function.png Graphic file (type png)
 
 <use concept_rules_function.png>
 Package pdftex.def Info: concept_rules_function.png used on input line 466.
 (pdftex.def)             Requested size: 345.0pt x 144.10228pt.
  [17 <./concept_coffe.png>]
-<concept_rules_structure.png, id=533, 671.50874pt x 457.71pt>
+<concept_rules_structure.png, id=538, 671.50874pt x 457.71pt>
 File: concept_rules_structure.png Graphic file (type png)
 
 <use concept_rules_structure.png>
@@ -716,7 +716,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 492--496
 
  []
 
-<concept_memory.jpg, id=543, 702.625pt x 434.62375pt>
+<concept_memory.jpg, id=548, 702.625pt x 434.62375pt>
 File: concept_memory.jpg Graphic file (type jpg)
  <use concept_memory.jpg>
 Package pdftex.def Info: concept_memory.jpg used on input line 513.
@@ -780,53 +780,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 987--990
 
  []
 
-<average_all_first_2.jpg, id=708, 423.5022pt x 511.9125pt>
+<average_all_first_2.jpg, id=713, 423.5022pt x 511.9125pt>
 File: average_all_first_2.jpg Graphic file (type jpg)
 
 <use average_all_first_2.jpg>
 Package pdftex.def Info: average_all_first_2.jpg used on input line 999.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
 
-<average_all_no_first_2.jpg, id=709, 423.5022pt x 511.9125pt>
+<average_all_no_first_2.jpg, id=714, 423.5022pt x 511.9125pt>
 File: average_all_no_first_2.jpg Graphic file (type jpg)
 
 <use average_all_no_first_2.jpg>
 Package pdftex.def Info: average_all_no_first_2.jpg used on input line 1002.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
 
-<averages_first_2.jpg, id=715, 423.5022pt x 511.9125pt>
+<averages_first_2.jpg, id=720, 423.5022pt x 511.9125pt>
 File: averages_first_2.jpg Graphic file (type jpg)
 
 <use averages_first_2.jpg>
 Package pdftex.def Info: averages_first_2.jpg used on input line 1018.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
 
-<averages_no_first_2.jpg, id=716, 423.5022pt x 511.9125pt>
+<averages_no_first_2.jpg, id=721, 423.5022pt x 511.9125pt>
 File: averages_no_first_2.jpg Graphic file (type jpg)
 
 <use averages_no_first_2.jpg>
 Package pdftex.def Info: averages_no_first_2.jpg used on input line 1021.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
 
-<weak_first_2.jpg, id=717, 423.5022pt x 511.9125pt>
+<weak_first_2.jpg, id=722, 423.5022pt x 511.9125pt>
 File: weak_first_2.jpg Graphic file (type jpg)
  <use weak_first_2.jpg>
 Package pdftex.def Info: weak_first_2.jpg used on input line 1029.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
 
-<weak_no_first_2.jpg, id=718, 423.5022pt x 511.9125pt>
+<weak_no_first_2.jpg, id=723, 423.5022pt x 511.9125pt>
 File: weak_no_first_2.jpg Graphic file (type jpg)
 
 <use weak_no_first_2.jpg>
 Package pdftex.def Info: weak_no_first_2.jpg used on input line 1032.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
- <hard_first_2.jpg, id=719, 423.5022pt x 511.9125pt>
+ <hard_first_2.jpg, id=724, 423.5022pt x 511.9125pt>
 File: hard_first_2.jpg Graphic file (type jpg)
 
 <use hard_first_2.jpg>
 Package pdftex.def Info: hard_first_2.jpg used on input line 1040.
 (pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
- <hard_no_first_2.jpg, id=720, 423.5022pt x 511.9125pt>
+ <hard_no_first_2.jpg, id=725, 423.5022pt x 511.9125pt>
 File: hard_no_first_2.jpg Graphic file (type jpg)
 
 <use hard_no_first_2.jpg>
@@ -848,13 +848,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1122--1124
 
  []
 
-<Topology.png, id=752, 861.2175pt x 674.52pt>
+<Topology.png, id=757, 861.2175pt x 674.52pt>
 File: Topology.png Graphic file (type png)
  <use Topology.png>
 Package pdftex.def Info: Topology.png used on input line 1138.
 (pdftex.def)             Requested size: 345.0pt x 270.2149pt.
 
-<loadprofile.png, id=754, 569.9694pt x 371.2269pt>
+<loadprofile.png, id=759, 569.9694pt x 371.2269pt>
 File: loadprofile.png Graphic file (type png)
  <use loadprofile.png>
 Package pdftex.def Info: loadprofile.png used on input line 1145.
@@ -863,31 +863,31 @@ Package pdftex.def Info: loadprofile.png used on input line 1145.
 [36
 
 ] [37 <./Topology.png> <./loadprofile.png>]
-<load_voltage.jpg, id=776, 803.0pt x 602.25pt>
+<load_voltage.jpg, id=781, 803.0pt x 602.25pt>
 File: load_voltage.jpg Graphic file (type jpg)
  <use load_voltage.jpg>
 Package pdftex.def Info: load_voltage.jpg used on input line 1167.
 (pdftex.def)             Requested size: 345.0pt x 258.75108pt.
 
-<constrain1.jpg, id=778, 775.89874pt x 471.7625pt>
+<constrain1.jpg, id=783, 775.89874pt x 471.7625pt>
 File: constrain1.jpg Graphic file (type jpg)
  <use constrain1.jpg>
 Package pdftex.def Info: constrain1.jpg used on input line 1179.
 (pdftex.def)             Requested size: 345.0pt x 209.77168pt.
 
-<constrain2.jpg, id=780, 924.45375pt x 552.0625pt>
+<constrain2.jpg, id=785, 924.45375pt x 552.0625pt>
 File: constrain2.jpg Graphic file (type jpg)
  <use constrain2.jpg>
 Package pdftex.def Info: constrain2.jpg used on input line 1189.
 (pdftex.def)             Requested size: 345.0pt x 206.02892pt.
 
-<constrain3_1.jpg, id=782, 995.72pt x 498.86375pt>
+<constrain3_1.jpg, id=787, 995.72pt x 498.86375pt>
 File: constrain3_1.jpg Graphic file (type jpg)
  <use constrain3_1.jpg>
 Package pdftex.def Info: constrain3_1.jpg used on input line 1198.
 (pdftex.def)             Requested size: 345.0pt x 172.84654pt.
 
-<constrain3_2.jpg, id=784, 1039.885pt x 604.2575pt>
+<constrain3_2.jpg, id=789, 1039.885pt x 604.2575pt>
 File: constrain3_2.jpg Graphic file (type jpg)
  <use constrain3_2.jpg>
 Package pdftex.def Info: constrain3_2.jpg used on input line 1208.
@@ -903,13 +903,13 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
  [42
 
 ] [43] [44]
-<unconstrained.jpg, id=835, 506.8536pt x 371.2269pt>
+<unconstrained.jpg, id=840, 506.8536pt x 371.2269pt>
 File: unconstrained.jpg Graphic file (type jpg)
  <use unconstrained.jpg>
 Package pdftex.def Info: unconstrained.jpg used on input line 1357.
 (pdftex.def)             Requested size: 345.0pt x 252.68584pt.
 
-<constrained.jpg, id=836, 506.8536pt x 371.2269pt>
+<constrained.jpg, id=841, 506.8536pt x 371.2269pt>
 File: constrained.jpg Graphic file (type jpg)
  <use constrained.jpg>
 Package pdftex.def Info: constrained.jpg used on input line 1363.
@@ -920,32 +920,32 @@ Package pdftex.def Info: constrained.jpg used on input line 1363.
 LaTeX Warning: Text page 46 contains only floats.
 
 [46 <./unconstrained.jpg> <./constrained.jpg>] [47]
-<setup.jpg, id=890, 690.58pt x 134.5025pt>
+<setup.jpg, id=895, 690.58pt x 134.5025pt>
 File: setup.jpg Graphic file (type jpg)
  <use setup.jpg>
 Package pdftex.def Info: setup.jpg used on input line 1414.
 (pdftex.def)             Requested size: 345.0pt x 67.19565pt.
 
-<init_agent.jpg, id=891, 570.13pt x 636.3775pt>
+<init_agent.jpg, id=896, 570.13pt x 636.3775pt>
 File: init_agent.jpg Graphic file (type jpg)
  <use init_agent.jpg>
 Package pdftex.def Info: init_agent.jpg used on input line 1422.
 (pdftex.def)             Requested size: 284.52756pt x 317.58592pt.
  [48 <./setup.jpg> <./init_agent.jpg>]
-<set_arrival_leaving_time.jpg, id=900, 829.0975pt x 325.215pt>
+<set_arrival_leaving_time.jpg, id=905, 829.0975pt x 325.215pt>
 File: set_arrival_leaving_time.jpg Graphic file (type jpg)
 
 <use set_arrival_leaving_time.jpg>
 Package pdftex.def Info: set_arrival_leaving_time.jpg used on input line 1440.
 (pdftex.def)             Requested size: 284.52756pt x 111.6038pt.
 
-<setup_battery.jpg, id=901, 862.22125pt x 456.70625pt>
+<setup_battery.jpg, id=906, 862.22125pt x 456.70625pt>
 File: setup_battery.jpg Graphic file (type jpg)
  <use setup_battery.jpg>
 Package pdftex.def Info: setup_battery.jpg used on input line 1448.
 (pdftex.def)             Requested size: 284.52756pt x 150.70656pt.
 
-<setup_rule_memory.jpg, id=902, 1004.75375pt x 429.605pt>
+<setup_rule_memory.jpg, id=907, 1004.75375pt x 429.605pt>
 File: setup_rule_memory.jpg Graphic file (type jpg)
 
 <use setup_rule_memory.jpg>
@@ -982,13 +982,13 @@ Overfull \hbox (90.7462pt too wide) in paragraph at lines 1475--1475
 old,action1,action2,NA][] 
  []
 
-[50] <go.jpg, id=914, 361.35pt x 352.31625pt>
+[50] <go.jpg, id=919, 361.35pt x 352.31625pt>
 File: go.jpg Graphic file (type jpg)
  <use go.jpg>
 Package pdftex.def Info: go.jpg used on input line 1484.
 (pdftex.def)             Requested size: 345.0pt x 336.37581pt.
  [51 <./go.jpg>]
-<agent_matpower_interaction.jpg, id=920, 837.1275pt x 775.89874pt>
+<agent_matpower_interaction.jpg, id=926, 837.1275pt x 775.89874pt>
 File: agent_matpower_interaction.jpg Graphic file (type jpg)
 
 <use agent_matpower_interaction.jpg>
@@ -996,19 +996,19 @@ Package pdftex.def Info: agent_matpower_interaction.jpg used on input line 1494
 .
 (pdftex.def)             Requested size: 345.0pt x 319.7662pt.
  [52 <./agent_matpower_interaction.jpg>]
-<arrive_home.jpg, id=927, 810.02625pt x 390.45876pt>
+<arrive_home.jpg, id=932, 810.02625pt x 390.45876pt>
 File: arrive_home.jpg Graphic file (type jpg)
  <use arrive_home.jpg>
 Package pdftex.def Info: arrive_home.jpg used on input line 1515.
 (pdftex.def)             Requested size: 345.0pt x 166.30322pt.
 
-<do_interaction.jpg, id=928, 520.94624pt x 148.555pt>
+<do_interaction.jpg, id=933, 520.94624pt x 148.555pt>
 File: do_interaction.jpg Graphic file (type jpg)
  <use do_interaction.jpg>
 Package pdftex.def Info: do_interaction.jpg used on input line 1521.
 (pdftex.def)             Requested size: 345.0pt x 98.38206pt.
 
-<get_action.jpg, id=929, 964.60374pt x 338.26375pt>
+<get_action.jpg, id=934, 964.60374pt x 338.26375pt>
 File: get_action.jpg Graphic file (type jpg)
  <use get_action.jpg>
 Package pdftex.def Info: get_action.jpg used on input line 1527.
@@ -1020,7 +1020,7 @@ Overfull \hbox (17.24684pt too wide) in paragraph at lines 1542--1542
 ndex = 3][] 
  []
 
-<get_feedback.jpg, id=937, 840.13875pt x 119.44624pt>
+<get_feedback.jpg, id=942, 840.13875pt x 119.44624pt>
 File: get_feedback.jpg Graphic file (type jpg)
  <use get_feedback.jpg>
 Package pdftex.def Info: get_feedback.jpg used on input line 1557.
@@ -1032,7 +1032,7 @@ s from unit conversions[]
  []
 
 [54 <./get_feedback.jpg>]
-<agents_develop_rules.jpg, id=944, 820.06375pt x 697.60625pt>
+<agents_develop_rules.jpg, id=949, 820.06375pt x 697.60625pt>
 File: agents_develop_rules.jpg Graphic file (type jpg)
 
 <use agents_develop_rules.jpg>
@@ -1057,7 +1057,7 @@ onal rule is in agent memory[]
  []
 
 [55 <./agents_develop_rules.jpg>]
-<vote_rules.jpg, id=950, 677.53125pt x 636.3775pt>
+<vote_rules.jpg, id=955, 677.53125pt x 636.3775pt>
 File: vote_rules.jpg Graphic file (type jpg)
  <use vote_rules.jpg>
 Package pdftex.def Info: vote_rules.jpg used on input line 1606.
@@ -1080,13 +1080,13 @@ Overfull \hbox (127.49588pt too wide) in paragraph at lines 1627--1627
 x[index = 1, index = all]== 2)[] 
  []
 
-<reset_value.jpg, id=956, 577.15625pt x 116.435pt>
+<reset_value.jpg, id=961, 577.15625pt x 116.435pt>
 File: reset_value.jpg Graphic file (type jpg)
  <use reset_value.jpg>
 Package pdftex.def Info: reset_value.jpg used on input line 1637.
 (pdftex.def)             Requested size: 345.0pt x 69.60214pt.
 
-<update_memory.jpg, id=957, 640.3925pt x 455.7025pt>
+<update_memory.jpg, id=962, 640.3925pt x 455.7025pt>
 File: update_memory.jpg Graphic file (type jpg)
  <use update_memory.jpg>
 Package pdftex.def Info: update_memory.jpg used on input line 1650.
@@ -1104,20 +1104,20 @@ Overfull \hbox (6.74693pt too wide) in paragraph at lines 1674--1674
 ve_rule[] 
  []
 
-<Cluster_voltage.jpg, id=964, 545.03625pt x 145.54375pt>
+<Cluster_voltage.jpg, id=969, 545.03625pt x 145.54375pt>
 File: Cluster_voltage.jpg Graphic file (type jpg)
 
 <use Cluster_voltage.jpg>
 Package pdftex.def Info: Cluster_voltage.jpg used on input line 1680.
 (pdftex.def)             Requested size: 345.0pt x 92.1261pt.
  [58 <./Cluster_voltage.jpg>]
-<cluster_time.jpg, id=970, 541.02126pt x 144.54pt>
+<cluster_time.jpg, id=975, 541.02126pt x 144.54pt>
 File: cluster_time.jpg Graphic file (type jpg)
  <use cluster_time.jpg>
 Package pdftex.def Info: cluster_time.jpg used on input line 1696.
 (pdftex.def)             Requested size: 345.0pt x 92.17224pt.
 
-<cluster_algorithm.jpg, id=971, 518.93875pt x 402.50375pt>
+<cluster_algorithm.jpg, id=976, 518.93875pt x 402.50375pt>
 File: cluster_algorithm.jpg Graphic file (type jpg)
 
 <use cluster_algorithm.jpg>
@@ -1165,19 +1165,19 @@ Overfull \hbox (6.74693pt too wide) in paragraph at lines 1753--1753
 options[] 
  []
 
-[60] <change_rule.jpg, id=983, 749.80125pt x 571.13374pt>
+[60] <change_rule.jpg, id=988, 749.80125pt x 571.13374pt>
 File: change_rule.jpg Graphic file (type jpg)
 
 <use change_rule.jpg>
 Package pdftex.def Info: change_rule.jpg used on input line 1760.
 (pdftex.def)             Requested size: 345.0pt x 262.79443pt.
- <change_random.jpg, id=984, 799.98875pt x 299.1175pt>
+ <change_random.jpg, id=989, 799.98875pt x 299.1175pt>
 File: change_random.jpg Graphic file (type jpg)
 
 <use change_random.jpg>
 Package pdftex.def Info: change_random.jpg used on input line 1776.
 (pdftex.def)             Requested size: 345.0pt x 128.99683pt.
- <change_learn.jpg, id=985, 578.16pt x 272.01625pt>
+ <change_learn.jpg, id=990, 578.16pt x 272.01625pt>
 File: change_learn.jpg Graphic file (type jpg)
 
 <use change_learn.jpg>
@@ -1190,7 +1190,7 @@ ime/number_time)[]
  []
 
 [62 <./change_learn.jpg>]
-<change_copy_best.jpg, id=997, 923.45pt x 300.12125pt>
+<change_copy_best.jpg, id=1002, 923.45pt x 300.12125pt>
 File: change_copy_best.jpg Graphic file (type jpg)
 
 <use change_copy_best.jpg>
@@ -1262,33 +1262,50 @@ Overfull \hbox (74.99634pt too wide) in paragraph at lines 1872--1872
 -th agents best rule[] 
  []
 
-[64] [65]
-Underfull \hbox (badness 10000) in paragraph at lines 1921--1922
+[64] <weak_first_greedy.jpg, id=1012, 423.5022pt x 511.9125pt>
+File: weak_first_greedy.jpg Graphic file (type jpg)
+
+<use weak_first_greedy.jpg>
+Package pdftex.def Info: weak_first_greedy.jpg used on input line 1883.
+(pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
+
+<hard_first_greedy.jpg, id=1013, 423.5022pt x 511.9125pt>
+File: hard_first_greedy.jpg Graphic file (type jpg)
+
+<use hard_first_greedy.jpg>
+Package pdftex.def Info: hard_first_greedy.jpg used on input line 1886.
+(pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
+ [65
+
+ <./weak_first_greedy.jpg> <./hard_first_greedy.jpg>] [66
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1935--1936
 [][]$\OT1/cmtt/m/n/10 http : / / ffcpg . com . my / portal / Products . nsf /
  []
 
 
-Overfull \hbox (11.80261pt too wide) in paragraph at lines 1921--1922
+Overfull \hbox (11.80261pt too wide) in paragraph at lines 1935--1936
 \OT1/cmtt/m/n/10 2d248e16d8d12df4825719b00301d50 / 5801a1bfde86e113482577e40009
 d126 /
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1968.
-[66]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1968.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1982.
+[67]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1982.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1968.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1968.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1982.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1982.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D6041B874B37791688B3C44DB1C17C19;4842.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1968.
+(rerunfilecheck)             Checksum: 96585016DA74A61BC7782478C131381F;4896.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1982.
  ) 
 Here is how much of TeX's memory you used:
- 7659 strings out of 493105
- 108077 string characters out of 6137072
- 205555 words of memory out of 5000000
- 10602 multiletter control sequences out of 15000+600000
+ 7676 strings out of 493105
+ 108413 string characters out of 6137072
+ 206622 words of memory out of 5000000
+ 10612 multiletter control sequences out of 15000+600000
  9357 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,8n,35p,1515b,549s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1310,10 +1327,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (67 pages, 3060821 bytes).
+Output written on thesis.pdf (68 pages, 3325994 bytes).
 PDF statistics:
- 1171 PDF objects out of 1200 (max. 8388607)
- 1016 compressed objects within 11 object streams
- 394 named destinations out of 1000 (max. 500000)
- 785 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1187 PDF objects out of 1200 (max. 8388607)
+ 1029 compressed objects within 11 object streams
+ 399 named destinations out of 1000 (max. 500000)
+ 803 words of extra memory for PDF output out of 10000 (max. 10000000)
 
