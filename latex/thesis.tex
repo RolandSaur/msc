@@ -981,8 +981,27 @@ its battery is not completely full. This is to see if the switch to software age
 In a second step the times when there is an institutional rule will be compared to the times when there is no institutional 
 rule in place and the agents are free to develop their rules by themselves. This is to show if the introduction of institutions has an 
 effect on the performance of the agents. 
-\subsubsection{Comparison to uncontrolled}
-\clearpage
+\subsubsection{Comparison to uncontrolled scenario}
+Firstly the intelligent agents have to be compared to what would happen without a smart grid, to control the charging. 
+To see how the model would behave in an uncontrolled scenario, in which every agent tries to charge as much as it can, the model 
+is run with simplified agents which only have one action to charge at 5kW. The results from these model runs are then compared to the 
+results from experiment 1.\\
+Figures \ref{inst_averages_all_1} and \ref{averages_uncontrolled} show the distribution of 
+average SOC for controlled and uncontrolled model runs, respectively. It is already clear from the graphs that the average 
+SOC for an uncontrolled model run is about 8kWh less than for controlled runs with institutional rules.  \\
+\begin{figure}[!ht]
+\subfigure[Average SOC with Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
+\label{inst_averages_all_1}}
+\subfigure[Average SOC uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{averages_first_greedy.jpg}
+\label{averages_uncontrolled}}
+\caption{Average State of Charge}
+\label{averages_unconstrained_a}
+\end{figure}
+Graphs for the other two performance indicators are given in the appendix, but paint a similar picture that an uncontrolled grid would 
+cause many electric vehicles to fail to charge sufficiently. 
+\newpage
 \subsubsection{Comparison with and without an Institutional Rule}
 The effect of the existence of an institutional rule on the performance of the model will be explored next. For 
 this the results of experiment 1 are used. The results are split into times when there is a institutional rule and 
@@ -1011,7 +1030,7 @@ The distribution of average state of charge of the agent on the lowest level, wi
 rule is displayed in figure \ref{inst_averages_second}. The bin width in both the graphs is the same but the axis are different. 
 The highest value indicated in figure \ref{inst_averages} is 80  whereas the highest count indicated in figure \ref{no_inst_averages}
 is 30. Given this it seems like figure \ref{inst_averages} is shifted to the right compared to figure \ref{no_inst_averages},
-indicating that the weakest agents perform better when there is an institutional rule that every agent follows. 
+indicating that the weakest agents perform better when there is an institutional rule that every agent follows. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{averages_first_2.jpg}
@@ -1022,7 +1041,14 @@ indicating that the weakest agents perform better when there is an institutional
 \caption{Average State of Charge of weakest agent}
 \label{inst_averages_second}
 \end{figure}
-
+\newpage
+Figures \ref{inst_weak_second} and \ref{no_inst_weakest_second}  show the distribution of the frequency of weak failures  for 
+when there is and when there is no institutional rule that every agent follows, respectively. The number of weak failures in cases
+where there is no institutional  rule spans from 250 and 700. When there is an institutional rule there still is a portion of the 
+runs with a high failure number. However the high failure runs only span up to 450 failures in one run and there is a significant 
+portion of the runs which have very few weak failures. This very low failure rate is completely missing in the cases without 
+institutional rules. This shows that the introduction of an institutional rule can, but will not always, reduce the number of times
+electric vehicles cannot charge up to 100 \%. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{weak_first_2.jpg}
@@ -1032,8 +1058,12 @@ indicating that the weakest agents perform better when there is an institutional
 \label{no_inst_weakest_second}}
 \caption{Number of weak Failure}
 \label{weakest_second}
-\end{figure}
-
+\end{figure} \\
+Figures \ref{inst_hard_second} and \ref{no_inst_hard_second}  show the distribution of the frequency of hard failures  for 
+when there is and when there is no institutional rule that every agent follows, respectively. The number of hard failures spans from
+about 20 to 100 times when there is no institutional rule. Similar to the behavior of the weak failures the maximum 
+number of hard failures is reduced an there is a portion of the runs which experiences very low failure rates. Thus the introduction
+of an institutional rule reduces the number of electric vehicles that fail to be able to charge sufficiently. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{hard_first_2.jpg}
@@ -1044,7 +1074,10 @@ indicating that the weakest agents perform better when there is an institutional
 \caption{Number of hard Failure}
 \label{hard_second}
 \end{figure}
-
+In summary the introduction of an institutional rule that every agent follows increases the performance of the model. The average SOC
+is increased, the benefit for the agents on the lowest level however is more significant than for other agents. The number of times 
+electric vehicles are not able to charge fully or sufficiently is also reduced.
+\newpage
 \subsection{Experiments}
 \subsubsection{Experiment 1}
 \subsubsection{Experiment 2}
