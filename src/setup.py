@@ -51,9 +51,9 @@ def init_global_vraibles(parameter_row_from_matrix):
     g.learn_change = parameter_row_from_matrix[2]
     g.copy_al = parameter_row_from_matrix[3]
     g.institutional_success_rate = parameter_row_from_matrix[4]
-    if parameter_row_from_matrix[5] == 0:
+    if int(parameter_row_from_matrix[5]) == 0:
         g.majority_vote = False
-    if parameter_row_from_matrix[5] == 1:
+    if int(parameter_row_from_matrix[5]) == 1:
         g.majority_vote = True
         
     #reset some of the values to the original

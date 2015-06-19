@@ -261,5 +261,5 @@ ggsave(hard_figure , file = "../latex/hard_first_2.jpg")
 ggsave(hard_no_figure , file = "../latex/hard_no_first_2.jpg")
 
 #----------------------------------t_test---------------------------------------
-t.test(averages, averages_no, "greater", conf.level= 0.95)
-t.test(averages_all,averages_all_no, "greater", conf.level= 0.95 )
+t.test(averages, averages_no, "less", conf.level= 0.95)
+t.test(averages_all,averages_all_no, "less", conf.level= 0.95 )

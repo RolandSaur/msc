@@ -154,7 +154,13 @@ function_weak_failure_no <- function(df){
         return(weak_fails)
 }
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
-runs <- c(1,2,3)
+runs <- c(1:10)
+averages_majority <- c()
+averages_borda <- c()
+hard_majority <- c()
+hard_borda <- c()
+weak_majority <- c()
+weak_borda <- c()
 for (i in runs) {
         folder <- paste(main_folder,"/exp_b_",i,sep="")
         data_frames <- list()
@@ -164,22 +170,44 @@ for (i in runs) {
                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
         }
         #assign(paste("data_a_",i),function_average(data_frames))
-        averages <- function_average(data_frames) 
-        hard_failures <- function_hard_failure(data_frames)
-        weak_failures <- function_weak_failure(data_frames)
-        
-        averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
-                ggtitle("Average SOC") + xlab("Average SOC")
-        
-        ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".jpg",sep=""))
-        
-        weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
-                ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
-        ggsave(weak_figure , file = paste("../latex/weak_exp_b_",i,".jpg",sep=""))
-        
-        hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
-                ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
-        ggsave(hard_figure , file = paste("../latex/hard_exp_b_",i,".jpg",sep=""))
-}
+        print((data_frames[[1]]$majority[1] =="False"))
+        if (data_frames[[1]]$majority[1] =="False"){
+                print(6)
+                averages_borda <- c(averages_borda,function_average(data_frames))
+                hard_borda <- c(hard_borda, function_hard_failure(data_frames))
+                weak_borda <- c(weak_borda,function_weak_failure(data_frames))
+        }else{
+                print(7)
+                averages_majority <- c(averages_majority,function_average(data_frames))
+                hard_majority <- c(hard_majority,function_hard_failure(data_frames))
+                weak_majority <- c(weak_majority,function_weak_failure(data_frames))
+        }
+        #averages <- function_average(data_frames) 
+        #hard_failures <- function_hard_failure(data_frames)
+        #weak_failures <- function_weak_failure(data_frames)
 
+}
+averages_majority_figure <- qplot(averages_majority,geom = "histogram",binwidth = 1) + 
+        ggtitle("Average SOC") + xlab("Average SOC")
+ggsave(averages_figure , file = paste("../latex/averages_majority_exp_b.jpg",sep=""))
+
+averages_borda_figure <- qplot(averages_borda,geom = "histogram",binwidth = 1) + 
+        ggtitle("Average SOC") + xlab("Average SOC")
+ggsave(averages_figure , file = paste("../latex/averages_borda_exp_b_.jpg",sep=""))
+
+weak_borda_figure <- qplot(weak_borda,geom = "histogram",binwidth = 10) + 
+        ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+ggsave(weak_figure , file = paste("../latex/weak_borda_exp_b.jpg",sep=""))
+
+weak_majority_figure <- qplot(weak_majority,geom = "histogram",binwidth = 10) + 
+        ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+ggsave(weak_figure , file = paste("../latex/weak_majority_exp_b.jpg",sep=""))
+
+hard_borda_figure <- qplot(hard_borda,geom = "histogram",binwidth = 1) + 
+        ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+ggsave(hard_figure , file = paste("../latex/hard_borda_exp_b.jpg",sep=""))
+
+hard_majority_figure <- qplot(hard_majority,geom = "histogram",binwidth = 1) + 
+        ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+ggsave(hard_figure , file = paste("../latex/hard_majority_exp_b.jpg",sep=""))
 

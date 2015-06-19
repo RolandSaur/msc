@@ -164,7 +164,16 @@ for (i in runs) {
                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
         }
         #assign(paste("data_a_",i),function_average(data_frames))
-        averages <- function_average(data_frames) 
+        averages <- function_average(data_frames)
+        if (i ==1){
+                averages_all <- averages
+        }
+        if (i==2){
+                averages_vertical <- averages
+        }
+        if (i==3){
+                averages_horizontal <- averages
+        }
         hard_failures <- function_hard_failure(data_frames)
         weak_failures <- function_weak_failure(data_frames)
         
@@ -182,5 +191,6 @@ for (i in runs) {
         ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".jpg",sep=""))
 }
 
-
-
+t.test(averages_vertical,averages_all, "less", conf.level= 0.95)
+t.test(averages_horizontal,averages_all, "less", conf.level= 0.95)
+t.test(averages_vertical, averages_horizontal, "less", conf.level= 0.95)
