@@ -25,6 +25,7 @@ def go(str2_out,*args):
     g.time =int(g.time)
     while g.time < time_experiment:
         g.time += 1
+        #print g.time
         g.testcase.set_base(g.time)
         for i in g.agents:
             if g.agents[i].at_home:
