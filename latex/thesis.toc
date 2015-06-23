@@ -51,20 +51,20 @@
 \contentsline {subsubsection}{\numberline {5.2.2}Experiment 2}{37}{subsubsection.5.2.2}
 \contentsline {subsubsection}{\numberline {5.2.3}Experiment 3}{37}{subsubsection.5.2.3}
 \contentsline {subsubsection}{\numberline {5.2.4}Experiment 4}{37}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{37}{subsubsection.5.2.5}
-\contentsline {subsection}{\numberline {5.3}Summary}{38}{subsection.5.3}
-\contentsline {section}{\numberline {6}Conclusion}{39}{section.6}
-\contentsline {subsection}{\numberline {6.1}Model conclusion}{39}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Stakeholder perspective}{39}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Insight for software agent systems for resource appropriation}{39}{subsection.6.3}
-\contentsline {section}{\numberline {7}Further Research}{39}{section.7}
-\contentsline {section}{\numberline {A}PYPOWER Model}{40}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Physical Representation}{40}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{42}{subsection.A.2}
-\contentsline {section}{\numberline {B}Verification}{46}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Verification of Functions}{46}{subsection.B.1}
-\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{46}{subsubsection.B.1.1}
-\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{47}{subsubsection.B.1.2}
-\contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{49}{subsection.B.2}
-\contentsline {section}{\numberline {C}Pseudo Code}{51}{appendix.C}
-\contentsline {section}{\numberline {D}Additional Graphs}{69}{appendix.D}
+\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{38}{subsubsection.5.2.5}
+\contentsline {subsection}{\numberline {5.3}Summary}{39}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{40}{section.6}
+\contentsline {subsection}{\numberline {6.1}Model conclusion}{40}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Stakeholder perspective}{40}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Insight for software agent systems for resource appropriation}{40}{subsection.6.3}
+\contentsline {section}{\numberline {7}Further Research}{40}{section.7}
+\contentsline {section}{\numberline {A}PYPOWER Model}{41}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Physical Representation}{41}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{43}{subsection.A.2}
+\contentsline {section}{\numberline {B}Verification}{47}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Verification of Functions}{47}{subsection.B.1}
+\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{47}{subsubsection.B.1.1}
+\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{48}{subsubsection.B.1.2}
+\contentsline {subsection}{\numberline {B.2}Verification of Pypower model}{50}{subsection.B.2}
+\contentsline {section}{\numberline {C}Pseudo Code}{52}{appendix.C}
+\contentsline {section}{\numberline {D}Additional Graphs}{70}{appendix.D}
