@@ -347,10 +347,12 @@ The integration of electric vehicles into the electricity grid poses opportuniti
 The increase of electric vehicles can increase air quality in cities and the management of the load that 
 EVs create can open up new markets for energy companies. The grid however might also not be equipped well enough to 
 deal with the coming changes.\\
-In the following two chapters the different stakeholders and their motivations are being presented and the reasons for 
+In the following two sections the different stakeholders and their motivations are being presented and the reasons for 
 this modeling approach are given.
 \subsection{Stakeholders}
-This chapter is based mainly on \cite{ev_stakeholder}. First the different stakeholders and how they perceive this 
+This chapter is based mainly on \cite{ev_stakeholder}. \cite{ev_stakeholder} is an analysis of the most important stakeholders in 
+the  Netherlands in the transition towards electric vehicles, based on 38-semistructured interviews.
+First the different stakeholders and how they perceive this 
 transition to electric vehicles and then possible conflicts of interest are discussed.
 \begin{enumerate}
  \item \textbf{Energy Companies:}\\
@@ -391,7 +393,7 @@ The stakeholders problem is situated in a socio-technical system including, almo
 since electricity is ubiquitous, and expensive infrastructure, the electricity grid. This makes experimenting to find 
 best solutions, very difficult, because failures could have very adverse affects on peoples lives and therefore on the 
 reputation of the concept of smart grids. Possible failures could also cause damage to infrastructure which would not just
-be disruptive but also expensive. System obviously have to be tested at some point in real world scenarios. But it is 
+be disruptive but also expensive. Systems obviously have to be tested at some point in real world scenarios. But it is 
 very important to have a good theoretical understanding of how the system could possibly behave in reality. Therefore 
 models have to be devised, which are most accurate representations of the socio-technical system and the 
 software solution that is proposed to solve the problem. \\
@@ -1134,9 +1136,31 @@ In summary grouping the agents into subgroups seems to have a weak effect on the
 conclusively said that they also reduce the number of failures in a  model run. There also seems to be no significant difference 
 between different kinds of grouping the agents, simply grouping them into subgroups of any kind has a positive effect. 
 \subsubsection{Experiment 2}
+Experiment 2 is for hypotheses 2a,2b and 2c, about the influence of the voting mechanism and the effect of the institutional success 
+rate. The hypotheses state that using borda count as a voting mechanism improves performance and reducing the institutional success 
+rate would at some point worsen performance, while increase the institutional success rate would increase instability. 
 \subsubsection{Experiment 3}
+Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
+The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.
 \subsubsection{Experiment 4}
+Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
+that using borda count over majority voting would improve how the model deals with the initially greedy agents. \\
+Figures \ref{borda_d_average} and \ref{majority_d_average} show the scenario using borda count and using simple 
+majority voting.
+\begin{figure}[!ht]
+\subfigure[Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{averages_d_borda.jpg}
+\label{borda_d_average}}
+\subfigure[No Institutional Rule]{
+\includegraphics[width = 0.45\textwidth]{averages_d_majority.jpg}
+\label{majority_d_average}}
+\caption{Average State of Charge of weakest agent}
+\label{d_average}
+\end{figure}
+
 \subsubsection{Experiment 5}
+Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
+The hypothesis states that rule which were developed in one infrastructural setting do not work in a slightly different infrastructure. 
 \subsection{Summary}
 Not sure if this summary should not just be the conclusion. I cannot see a difference between the two. 
 

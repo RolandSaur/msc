@@ -1144,7 +1144,44 @@ Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters
 The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.
 \subsubsection{Experiment 4}
 Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
-that using borda count over majority voting would improve how the model deals with the initially greedy agents.
+that using borda count over majority voting would improve how the model deals with the initially greedy agents. \\
+Figures \ref{borda_d_average} and \ref{majority_d_average} show the distibution of the average SOC of the weakest agent
+in a scenario using borda count and using simple majority voting. 
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{averages_d_borda.jpg}
+\label{borda_d_average}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{averages_d_majority.jpg}
+\label{majority_d_average}}
+\caption{Average State of Charge of weakest agent}
+\label{d_average}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{hard_d_borda.jpg}
+\label{borda_d_hard}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{hard_d_majority.jpg}
+\label{majority_d_hard}}
+\caption{Number of hard Failure}
+\label{d_hard}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{weak_d_borda.jpg}
+\label{borda_d_weak}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{weak_d_majority.jpg}
+\label{majority_d_weak}}
+\caption{Number of weak Failure}
+\label{d_weak}
+\end{figure}
+
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
 The hypothesis states that rule which were developed in one infrastructural setting do not work in a slightly different infrastructure. 
