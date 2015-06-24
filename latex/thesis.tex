@@ -1138,13 +1138,31 @@ between different kinds of grouping the agents, simply grouping them into subgro
 \subsubsection{Experiment 2}
 Experiment 2 is for hypotheses 2a,2b and 2c, about the influence of the voting mechanism and the effect of the institutional success 
 rate. The hypotheses state that using borda count as a voting mechanism improves performance and reducing the institutional success 
-rate would at some point worsen performance, while increase the institutional success rate would increase instability. 
+rate would at some point worsen performance, while increase the institutional success rate would increase instability.\\
+First the effect of the kind of voting mechanism on performance of the model is looked at.
+Figure \ref{b_average} shows the distribution of the average SOC of the weakest agent with borda count and with majority 
+voting. There is no visible difference between the scenarios, which indicates that the kind of voting mechanism has no 
+effect on the performance of the model. \\ 
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{averages_borda_exp_b_.jpg}
+\label{borda_b_average}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{averages_majority_exp_b.jpg}
+\label{majority_b_average}}
+\caption{Average State of Charge of weakest agent}
+\label{b_average}
+\end{figure}\\
+The figure for the other two performance indicators show a very similar picture. They can be found in the appendix.\\
+
 \subsubsection{Experiment 3}
 Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
 The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.
 \subsubsection{Experiment 4}
 Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
 that using borda count over majority voting would improve how the model deals with the initially greedy agents. \\
+First the general effect of initializing the model with a greedy rule is looked at. For this the results from this 
+experiment are compared to the results from experiment 2. 
 Figures \ref{borda_d_average} and \ref{majority_d_average} show the distribution of the average SOC of the weakest agent
 in a scenario using borda count and in a scenario using simple majority voting. When borda count is used the lower bound 
 of the values, with one exception of 30 kWh, is 32.5 kWh, while the lower bound for the majority vote runs is 
@@ -2036,6 +2054,28 @@ elsif (copy_all == "vertical")
 \label{grouping_horizontal_weak_failures}}
 \caption{Effect of Neighborhood configurations on weak failure rate}
 \label{group_weak_failures}
+\end{figure}
+
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.jpg}
+\label{borda_b_hard}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{hard_majority_exp_b.jpg}
+\label{majority_b_hard}}
+\caption{Number of hard failures Experiment 2}
+\label{b_hard}
+\end{figure}
+
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{weak_borda_exp_b.jpg}
+\label{borda_b_weak}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{weak_majority_exp_b.jpg}
+\label{majority_b_weak}}
+\caption{Number of weak failures Experiment 2}
+\label{b_weak}
 \end{figure}
 \clearpage
 \begin{thebibliography}{9}
