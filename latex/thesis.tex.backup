@@ -1206,7 +1206,7 @@ of the values, with one exception of 30 kWh, is 32.5 kWh, while the lower bound 
 The number of hard and weak failures, however is reduced in terms of maximum occurred number of failures and 
 average number of failures, as can be seen in figure \ref{d_hard}. The number of hard failures seems to lean 
 much more to the lower end, when borda count is used as a voting mechanism. The graph for weak failures can be found 
-in the appendix. 
+in the appendix. \\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{hard_d_borda.jpg}
@@ -1216,8 +1216,26 @@ in the appendix.
 \label{majority_d_hard}}
 \caption{Number of hard Failure}
 \label{d_hard}
+\end{figure}\\
+After looking at the effect of the voting mechanism on the performance, the effect of the voting mechanism on the institutional rule 
+is examined to get a better understanding of how the borda count improves results over simple majority voting. Since there are 
+100 runs per scenario it is not possible to examine each rule individually. Therefore the distance of the last institutional rule 
+of each run to the initial rule is used as a measure of change. The greater the distance the more the final rule deviates from 
+the initially set rule. \\
+Figure \ref{d_distance} shows the distance of the final rule to the initial rule for borda count and majority voting. The distance tends
+to be higher when majority voting is used as compared to when borda count is used. This is rather unexpected, since the reasoning for
+why borda count would work better, was that it would be able to make a bigger change to the initial greedy rule. 
+A possible explanation is that since borda count 
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{dist_borda_d.jpg}
+\label{borda_d_dist}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{dist_majority_d.jpg}
+\label{majority_d_dist}}
+\caption{Distance from initial Rule}
+\label{d_distance}
 \end{figure}
-
 \clearpage
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 

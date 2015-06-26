@@ -1225,6 +1225,10 @@ the initially set rule. \\
 Figure \ref{d_distance} shows the distance of the final rule to the initial rule for borda count and majority voting. The distance tends
 to be higher when majority voting is used as compared to when borda count is used. This is rather unexpected, since the reasoning for
 why borda count would work better, was that it would be able to make a bigger change to the initial greedy rule. 
+A possible explanation is that since borda count reports the complete memory rather than just the best rule, the 
+memory as a whole is more similar to the initial rule than the best rule of the memory. A reason for this might be 
+that there has not yet been enough time to purge the initial rule from the weaker agents, and therefore they still 
+report it as one of their candidates. \\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{dist_borda_d.jpg}
@@ -1234,7 +1238,10 @@ why borda count would work better, was that it would be able to make a bigger ch
 \label{majority_d_dist}}
 \caption{Distance from initial Rule}
 \label{d_distance}
-\end{figure}
+\end{figure}\\
+In conclusion it was shown that neither borda count nor majority voting can counteract the effect of initializing 
+the model with a greedy rule completely. Borda count however performs better in such a scenario although the 
+mechanism of how it achieves this is is not what was expected. 
 \clearpage
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
