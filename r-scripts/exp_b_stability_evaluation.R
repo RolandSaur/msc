@@ -255,4 +255,20 @@ df_weak <- melt(data.frame(weak_10,weak_30,weak_50,weak_80,weak_100))
 #colnames(df) <- c("stability_10","stability_30","stability_50","stability_80","stability_100")
 
 
+stability_figure <- ggplot(df, aes(factor(variable), value)) + geom_boxplot() +
+        xlab("Institutional success rate") +
+        ylab("Stability")
+average_figure <- ggplot(df_averages, aes(factor(variable), value)) + geom_boxplot() +
+        xlab("Institutional success rate") +
+        ylab("Average  SOC")
+hard_figure <- ggplot(df_hard, aes(factor(variable), value)) + geom_boxplot() +
+        xlab("Institutional success rate") +
+        ylab("Number of hard failures")
+weak_figure <- ggplot(df_weak, aes(factor(variable), value)) + geom_boxplot() +
+        xlab("Institutional success rate") + 
+        ylab("Number of weak failures")
 
+ggsave(stability_figure , file = "../latex/stability_b.jpg")
+ggsave(average_figure , file = "../latex/average_ins_b.jpg")
+ggsave(hard_figure , file = "../latex/hard_inst_b.jpg")
+ggsave(weak_figure , file = "../latex/weak_inst_b.jpg")

@@ -824,6 +824,7 @@ them, one should keep the performance indicators defining terms like  stability,
                                       whose demand is getting cut and therefore on how the different agents 
                                       perform in the model. So rules which work in one setting, may creating 
                                       bottlenecks in other setting.
+                                      \begin{comment}
                                       \item \textbf{Increasing the variance in base load results in more random rules.} \\
                                       Randomness in the base load affects the effect a rule has on the performance 
                                       of the agent and increases therefore the potential difference between how good
@@ -831,6 +832,7 @@ them, one should keep the performance indicators defining terms like  stability,
                                       the base load is increased the evaluation of rules becomes less based on
                                       merit and more random. If the evaluation of the rules by agents becomes 
                                       random the rules that get elected also become more and more random.
+                                      \end{comment}
                                      \end{enumerate}
 \end{enumerate}
 
@@ -941,7 +943,7 @@ agents in the second run. The second run will be done without the development of
 of this rule. 
 To accept the hypothesis there has to be a significant difference in the number of failure in the second run compared 
 to the first run with the default grid. 
-
+\begin{comment}
 \subsubsection{Experiment 6}
 This experiment addresses the second contextual hypothesis, 4b. This experiment is to introduce noise to the system. 
 The other parameters will be set to default values.
@@ -966,6 +968,7 @@ similar to experiment 5, the agents no longer develop new rules but live with th
 To accept this hypothesis there has to be a significant increase in the performance 
 difference between the two consecutive runs for increasing noise levels. This would mean that the 
 rules were selected more randomly and therefore performed worse when they were run for longer times.
+\end{comment}
 
 \clearpage
 \section{Results and Discussion}
@@ -1154,10 +1157,14 @@ effect on the performance of the model. \\
 \label{b_average}
 \end{figure}\\
 The figure for the other two performance indicators show a very similar picture. They can be found in the appendix.\\
-
+For examining the influence of the institutional success rate on the model behavior, several boxplots were made to illustrate its 
+effect on stability and performance. However there seems to be absolutely no effect at all. The plots can be seen in the appendix, but are
+omitted here because they do not contain useful information.
+\clearpage
 \subsubsection{Experiment 3}
 Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
 The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.
+\clearpage
 \subsubsection{Experiment 4}
 Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
 that using borda count over majority voting would improve how the model deals with the initially greedy agents. \\
@@ -1166,8 +1173,8 @@ model with a greedy rule is looked at. For this the results from this
 experiment are compared to the results from experiment 2. Figure \ref{d_comp} shows the distribution of hard failures 
 for experiment 2 and experiment 4. There is a clear worsening of the results for when the model was initialized with a 
 greedy rule. The runs with a very low failure rate , below 10 failures, are rather prominent in the results from 
-experiment 2, but are however almost nonexistent in the results from experiment 4. Further has the maximum number 
-of hard failures that occurred increased from below 60 to above 75. \\
+experiment 2, but are however almost nonexistent in the results from experiment 4. Further the maximum number 
+of hard failures that occurred has increased from below 60 to above 75. \\
 \begin{figure}[!ht]
 \subfigure[Experiment 2]{
 \includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.jpg}
@@ -1178,6 +1185,9 @@ of hard failures that occurred increased from below 60 to above 75. \\
 \caption{Number of hard Failure - Comparison Experiment 2 and 4}
 \label{d_comp}
 \end{figure}\\
+This shows that if the model is initialized with a greedy rule, the agents perform much worse, and seem not to be able to 
+completely overcome the initial rule. Although it is unlikely that such a scenario just happens, it is still interesting 
+to see how different voting mechanisms would cope with such a scenario.\\
 To compare the two scenarios of this experiment the distribution of the performance indicators are used. 
 Figures \ref{borda_d_average} and \ref{majority_d_average} show the distribution of the average SOC of the weakest agent
 in a scenario using borda count and in a scenario using simple majority voting. When borda count is used the lower bound 
@@ -1193,11 +1203,10 @@ of the values, with one exception of 30 kWh, is 32.5 kWh, while the lower bound 
 \caption{Average State of Charge of weakest agent}
 \label{d_average}
 \end{figure}\\
-The number of hard failures, however is reduced in terms of maximum occurred number of failures and average number 
-of failures, as can be seen in figure \ref{d_hard}. The number of hard failures seems to lean much more to the lower 
-end, when borda count is used as voting mechanism.
-
-
+The number of hard and weak failures, however is reduced in terms of maximum occurred number of failures and 
+average number of failures, as can be seen in figure \ref{d_hard}. The number of hard failures seems to lean 
+much more to the lower end, when borda count is used as a voting mechanism. The graph for weak failures can be found 
+in the appendix. 
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{hard_d_borda.jpg}
@@ -1209,7 +1218,7 @@ end, when borda count is used as voting mechanism.
 \label{d_hard}
 \end{figure}
 
-
+\clearpage
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
 The hypothesis states that rule which were developed in one infrastructural setting do not work in a slightly different infrastructure. 
@@ -2038,7 +2047,7 @@ elsif (copy_all == "vertical")
 
 \clearpage
 \section{Additional Graphs}
-
+\subsection{First look}
 \begin{figure}[!ht]
 \subfigure[Weak Failures Uncontrolled scenario]{
 \includegraphics[width = 0.45\textwidth]{weak_first_greedy.jpg}
@@ -2050,6 +2059,7 @@ elsif (copy_all == "vertical")
 \label{Failure_uncontrolled}
 \end{figure}
 
+\subsection{Experiment 1}
 \begin{figure}[!ht]
 \subfigure[All]{
 \includegraphics[width = 0.3\textwidth]{weak_exp_c_1.jpg}
@@ -2063,7 +2073,7 @@ elsif (copy_all == "vertical")
 \caption{Effect of Neighborhood configurations on weak failure rate}
 \label{group_weak_failures}
 \end{figure}
-
+\subsection{Experiment 2}
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.jpg}
@@ -2086,6 +2096,30 @@ elsif (copy_all == "vertical")
 \label{b_weak}
 \end{figure}
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width =0.5 \textwidth]{stability_b.jpg}
+\label{inst_stability}
+\caption{Influence of institutional success rate on stability}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\subfigure[Average SOC]{
+\includegraphics[width = 0.3\textwidth]{average_ins_b.jpg}
+\label{average_inst_b}}
+\subfigure[Weak Failure rate]{
+\includegraphics[width = 0.3\textwidth]{weak_inst_b.jpg}
+\label{weak inst_b}}
+\subfigure[Hard Failure rate]{
+\includegraphics[width = 0.3\textwidth]{hard_inst_b.jpg}
+\label{hard_inst_b}}
+\caption{Influence of the institutional success rate on performance}
+\label{inst_b}
+\end{figure}
+
+\clearpage
+\subsection{Experiment 4}
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{weak_d_borda.jpg}

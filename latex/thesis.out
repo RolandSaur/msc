@@ -40,30 +40,33 @@
 \BOOKMARK [3][-]{subsubsection.4.4.3}{Experiment 3}{subsection.4.4}% 40
 \BOOKMARK [3][-]{subsubsection.4.4.4}{Experiment 4}{subsection.4.4}% 41
 \BOOKMARK [3][-]{subsubsection.4.4.5}{Experiment 5}{subsection.4.4}% 42
-\BOOKMARK [3][-]{subsubsection.4.4.6}{Experiment 6}{subsection.4.4}% 43
-\BOOKMARK [1][-]{section.5}{Results and Discussion}{}% 44
-\BOOKMARK [2][-]{subsection.5.1}{First Look}{section.5}% 45
-\BOOKMARK [3][-]{subsubsection.5.1.1}{Comparison to uncontrolled scenario}{subsection.5.1}% 46
-\BOOKMARK [3][-]{subsubsection.5.1.2}{Comparison with and without an Institutional Rule}{subsection.5.1}% 47
-\BOOKMARK [2][-]{subsection.5.2}{Experiments}{section.5}% 48
-\BOOKMARK [3][-]{subsubsection.5.2.1}{Experiment 1}{subsection.5.2}% 49
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Experiment 2}{subsection.5.2}% 50
-\BOOKMARK [3][-]{subsubsection.5.2.3}{Experiment 3}{subsection.5.2}% 51
-\BOOKMARK [3][-]{subsubsection.5.2.4}{Experiment 4}{subsection.5.2}% 52
-\BOOKMARK [3][-]{subsubsection.5.2.5}{Experiment 5}{subsection.5.2}% 53
-\BOOKMARK [2][-]{subsection.5.3}{Summary}{section.5}% 54
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 55
-\BOOKMARK [2][-]{subsection.6.1}{Model conclusion}{section.6}% 56
-\BOOKMARK [2][-]{subsection.6.2}{Stakeholder perspective}{section.6}% 57
-\BOOKMARK [2][-]{subsection.6.3}{Insight for software agent systems for resource appropriation}{section.6}% 58
-\BOOKMARK [1][-]{section.7}{Further Research}{}% 59
-\BOOKMARK [1][-]{appendix.A}{PYPOWER Model}{}% 60
-\BOOKMARK [2][-]{subsection.A.1}{Physical Representation}{appendix.A}% 61
-\BOOKMARK [2][-]{subsection.A.2}{Power Constrain Algorithm}{appendix.A}% 62
-\BOOKMARK [1][-]{appendix.B}{Verification}{}% 63
-\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 64
-\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 65
-\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 66
-\BOOKMARK [2][-]{subsection.B.2}{Verification of Pypower model}{appendix.B}% 67
-\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 68
-\BOOKMARK [1][-]{appendix.D}{Additional Graphs}{}% 69
+\BOOKMARK [1][-]{section.5}{Results and Discussion}{}% 43
+\BOOKMARK [2][-]{subsection.5.1}{First Look}{section.5}% 44
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Comparison to uncontrolled scenario}{subsection.5.1}% 45
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Comparison with and without an Institutional Rule}{subsection.5.1}% 46
+\BOOKMARK [2][-]{subsection.5.2}{Experiments}{section.5}% 47
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Experiment 1}{subsection.5.2}% 48
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Experiment 2}{subsection.5.2}% 49
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Experiment 3}{subsection.5.2}% 50
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Experiment 4}{subsection.5.2}% 51
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Experiment 5}{subsection.5.2}% 52
+\BOOKMARK [2][-]{subsection.5.3}{Summary}{section.5}% 53
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 54
+\BOOKMARK [2][-]{subsection.6.1}{Model conclusion}{section.6}% 55
+\BOOKMARK [2][-]{subsection.6.2}{Stakeholder perspective}{section.6}% 56
+\BOOKMARK [2][-]{subsection.6.3}{Insight for software agent systems for resource appropriation}{section.6}% 57
+\BOOKMARK [1][-]{section.7}{Further Research}{}% 58
+\BOOKMARK [1][-]{appendix.A}{PYPOWER Model}{}% 59
+\BOOKMARK [2][-]{subsection.A.1}{Physical Representation}{appendix.A}% 60
+\BOOKMARK [2][-]{subsection.A.2}{Power Constrain Algorithm}{appendix.A}% 61
+\BOOKMARK [1][-]{appendix.B}{Verification}{}% 62
+\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 63
+\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 64
+\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 65
+\BOOKMARK [2][-]{subsection.B.2}{Verification of Pypower model}{appendix.B}% 66
+\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 67
+\BOOKMARK [1][-]{appendix.D}{Additional Graphs}{}% 68
+\BOOKMARK [2][-]{subsection.D.1}{First look}{appendix.D}% 69
+\BOOKMARK [2][-]{subsection.D.2}{Experiment 1}{appendix.D}% 70
+\BOOKMARK [2][-]{subsection.D.3}{Experiment 2}{appendix.D}% 71
+\BOOKMARK [2][-]{subsection.D.4}{Experiment 4}{appendix.D}% 72
