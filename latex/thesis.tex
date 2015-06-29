@@ -726,10 +726,14 @@ much worse event than an agent not being able to charge to 100\%.
  Average state of charge of the weakest agent in situations when there is an institutional rule in place.
  \item \textbf{Frequency of weak failures:}\\
  How often in one run it occurs that 
- an agent cannot charge to 100 \% in a situations when there is an institutional rule in place.
+ an agent cannot charge to 100 \% in a situations when there is an institutional rule in place. For this each model run 
+ is split into its individual days. The days and agents which do not contain any instance of charge 100\% are counted.
  \item \textbf{Frequency of hard failures:}\\
  How often in one run it occurs that 
- an agents state of charge drops to 0 in a situations when there is an institutional rule in place.
+ an agents state of charge drops to 0 in a situations when there is an institutional rule in place. For this the SOC of each 
+ agent is made into a logical vector, which is True when the SOC is 0 and False otherwise. The instances when the entries go from False
+ to True ,for each vector, are counted. This way each period of an agent having charge 0 is counted as one instance no matter how long or 
+ short the period is.
 \end{enumerate}
 
 
@@ -1170,7 +1174,38 @@ It might also be a little bit of both.
 \clearpage
 \subsubsection{Experiment 3}
 Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
-The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.
+The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.\\
+Figure \ref{Result_exp_3_1} shows the results of the performance indicators with increasing copying behavior from left to right in the 
+graphs. The figures display no noticeable difference between the high and low rates of copying behavior. \\
+\begin{figure}[!ht]
+\subfigure[Average SOC]{
+\includegraphics[width = 0.3\textwidth]{copy_average_c.jpg}
+\label{exp_3_averages}}
+\subfigure[Weak Failures]{
+\includegraphics[width = 0.3\textwidth]{copy_weak_c.jpg}
+\label{exp_3_weak}}
+\subfigure[Hard Failures]{
+\includegraphics[width = 0.3\textwidth]{copy_hard_c.jpg}
+\label{exp_3_hard}}
+\caption{Results}
+\label{Result_exp_3_1}
+\end{figure} \\
+Figure \ref{Result_exp_3_1} display a similar picture for the learning behavior. \\
+\begin{figure}[!ht]
+\subfigure[Average SOC]{
+\includegraphics[width = 0.3\textwidth]{learn_average_c.jpg}
+\label{exp_3_averages_2}}
+\subfigure[Weak Failures]{
+\includegraphics[width = 0.3\textwidth]{learn_weak_c.jpg}
+\label{exp_3_weak_2}}
+\subfigure[Hard Failures]{
+\includegraphics[width = 0.3\textwidth]{learn_hard_c.jpg}
+\label{exp_3_hard_2}}
+\caption{Results}
+\label{Result_exp_3_2}
+\end{figure}\\
+In summary there is surprisingly no to very little effect of behavioral parameters on the performance. It could also be because any 
+very small effect is overshadowed by the general fluctuation, natural to the model. 
 \clearpage
 \subsubsection{Experiment 4}
 Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
@@ -1293,7 +1328,7 @@ The results for the runs with the second rule can be found in the appendix, but 
 \label{exp_5_weak}}
 \subfigure[Hard Failures]{
 \includegraphics[width = 0.3\textwidth]{hard_first_simple.jpg}
-\label{exp_5_weak}}
+\label{exp_5_hard}}
 \caption{Results from adapted Grid}
 \label{Result_exp_5}
 \end{figure}
@@ -1366,17 +1401,20 @@ easily be accessed in an automated way so that software agents can be used, and 
 variable which can indicate the state of the resource. \\
 There are not many results that can be generalized to any such system. The one insight that might be applicable in a wider range is 
 that the effect of the voting mechanism is not as straight forward as it seems. Using borda count for voting increases the 
-fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The effect of the 
-agents 
+fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The voting 
+mechanism affects the rules that become the institutional rules and those rules then affect the behavior of the agent and therefore 
+the agent itself. But the link that a better representation of the agents also results in better rules and therefore in better 
+outcomes is not as clear and is heavily dependent on the particular model. 
 \section{Further Research}
 In this segment a few points about what could further be done are presented. They will be grouped in points regarding research tools that
-have been used, extensions of the model and extending the idea to other problems. \\
+have been used, extensions of the model and extending the idea to other problems. \\ \\
 \textbf{Research Tools:}\\
 One of the hurdles during this project was that, although PYPOWER is a very powerful tool, it was lacking the functionality to 
 constrain the Voltage of the different nodes,based on the voltage alone. It was necessary to write a specific algorithm for each 
 grid that was used. It would be useful to generalize this algorithm to be applicable to any kind of grid and not just the one it was 
 written for. One simple first approach would be to automate the two steps of determining the effect of power consumption on 
 voltage for each grid point and inserting it into  the algorithm.
+\\
 \\
 \textbf{Extending the model:}\\
 The most obvious extension of the model is to include more than just the charging of electric vehicles, but also include distributed 
@@ -1388,9 +1426,11 @@ A third point concerning the model directly is that it might be interesting to e
 while the agents come up with rules. This way the question about how well the agents deal with change once they have already 
 converged to a rule can be answered.
 \\
+\\
 \textbf{Extending to other problems:}\\
 As mentioned before, this idea of having software agents collaborate to manage a common pool resource could also be applied to other 
-problems. 
+problems. A interesting application would be the management of a communally shared heat source and or storage, to which several 
+household are connected and contribute to  and draw heat from. 
 \clearpage
 \begin{comment}
 \section{Time schedule and pitfalls}
@@ -2282,7 +2322,7 @@ elsif (copy_all == "vertical")
 \label{exp_5_weak_2}}
 \subfigure[Hard Failures]{
 \includegraphics[width = 0.3\textwidth]{hard_second_simple.jpg}
-\label{exp_5_weak_2}}
+\label{exp_5_hard_2}}
 \caption{Results from adapted Grid}
 \label{Result_exp_5_2}
 \end{figure}
