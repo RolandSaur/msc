@@ -72,6 +72,8 @@ Prof.dr.ir. P.M. \textsc{Herder}  \\
 \newpage
 \tableofcontents
 \newpage
+\listoffigures
+\newpage
 
 \renewcommand{\abstractname}{Summary}
 \begin{abstract}
@@ -1159,7 +1161,12 @@ effect on the performance of the model. \\
 The figure for the other two performance indicators show a very similar picture. They can be found in the appendix.\\
 For examining the influence of the institutional success rate on the model behavior, several boxplots were made to illustrate its 
 effect on stability and performance. However there seems to be absolutely no effect at all. The plots can be seen in the appendix, but are
-omitted here because they do not contain useful information.
+omitted here because they do not contain useful information. There are two possible explanations for this result. One is that 
+rules are either very good or very bad and therefore the institutional success rate does not have an influence on 
+whether or not rule will be continued as a institutional rule. Really good rules will always convince all the agents and really bad 
+rules will fail to convince even just a few agents. The alternative explanation is that the model runs are two short and therefore 
+the memories of the agents have not had enough time yet to become sophisticated enough to discern correctly between good and bad rules.
+It might also be a little bit of both.
 \clearpage
 \subsubsection{Experiment 3}
 Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
@@ -1192,7 +1199,9 @@ To compare the two scenarios of this experiment the distribution of the performa
 Figures \ref{borda_d_average} and \ref{majority_d_average} show the distribution of the average SOC of the weakest agent
 in a scenario using borda count and in a scenario using simple majority voting. When borda count is used the lower bound 
 of the values, with one exception of 30 kWh, is 32.5 kWh, while the lower bound for the majority vote runs is 
-30 kWh, with an exception at 25 kWh. Overall there does not seem to be a visible difference in average SOC. \\
+30 kWh, with an exception at 25 kWh. Overall there does not seem to be a strong visible difference in average SOC.
+However a  one sided t-test returns a p-value of 0.9626, making it extremely likely that the slight difference, however small, is 
+statistically significant.\\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{averages_d_borda.jpg}
@@ -1225,7 +1234,10 @@ the initially set rule. \\
 Figure \ref{d_distance} shows the distance of the final rule to the initial rule for borda count and majority voting. The distance tends
 to be higher when majority voting is used as compared to when borda count is used. This is rather unexpected, since the reasoning for
 why borda count would work better, was that it would be able to make a bigger change to the initial greedy rule. 
-A possible explanation is that since borda count 
+A possible explanation is that since borda count reports the complete memory rather than just the best rule, the 
+memory as a whole is more similar to the initial rule than the best rule of the memory. A reason for this might be 
+that there has not yet been enough time to purge the initial rule from the weaker agents, and therefore they still 
+report it as one of their candidates. \\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{dist_borda_d.jpg}
@@ -1235,13 +1247,72 @@ A possible explanation is that since borda count
 \label{majority_d_dist}}
 \caption{Distance from initial Rule}
 \label{d_distance}
-\end{figure}
+\end{figure}\\
+In summary it was shown that neither borda count nor majority voting can counteract the effect of initializing 
+the model with a greedy rule completely. Borda count however performs better in such a scenario although the 
+mechanism of how it achieves this is is not what was expected. 
 \clearpage
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
-The hypothesis states that rule which were developed in one infrastructural setting do not work in a slightly different infrastructure. 
+The hypothesis states that rule which were developed in one infrastructural setting do not work in a slightly different infrastructure.\\
+The following  two rules were taken from the runs from experiment 1. The rules showed a very low failure rate and a high minimum SOC and 
+are therefore considered very successful rules in the original grid.\\
+\begin{alltt}
+\textbf{First Rule:}
+If (Voltage < 0.98) & (SOC > 35 kWh)
+    then do (Charge 3 kW)
+else 
+    do  (Charge 4kW)
+
+\textbf{Second Rule:}
+If (Voltage < 0.98) & (SOC > 15 kWh)
+    then do (Charge 3 kW)
+else 
+    do  (Charge 3kW)
+\end{alltt}
+The first rule is a very simple restriction that if the battery is almost completely charged, the agents should restrict their action to 
+3kW and else restrict their action to 4kW. The second rule is even simpler. It is a strict restriction to charge at only 3 kW. The thought 
+that comes to mind when seeing such almost trivial rules, is that there is no need for a complex system to find these rules but that it 
+would be sufficient to use one set of rules for any grid.\\
+In the following the two aforementioned rules where used as fixed institutional rules in a slightly adapted grid. In the adapted grid 
+one household was added per branch and the lines between the households were shortened. \\
+The results, when using the first Rule as institutional rule,  are in graph \ref{Result_exp_5}. The average SOC for the weakest agents 
+is consistently below 32 kWh, which is significantly lower than in the previous scenarios. The number of weak failures is always 
+extremely high,ranging from 1000 to 1600 occurrences in only 6 months. 
+The number of hard failures is not always problematically high. There still are a number of runs which have a very low hard 
+failure rate, below 10 failures in 6 months. Those runs however are well outnumbered by runs with very high hard failure rates of up to 
+almost 800 failures in 6 months.
+The results for the runs with the second rule can be found in the appendix, but show a very similar picture.  
+
+\begin{figure}[!ht]
+\subfigure[Average SOC]{
+\includegraphics[width = 0.3\textwidth]{averages_first_simple.jpg}
+\label{exp_5_averages}}
+\subfigure[Weak Failures]{
+\includegraphics[width = 0.3\textwidth]{weak_first_simple.jpg}
+\label{exp_5_weak}}
+\subfigure[Hard Failures]{
+\includegraphics[width = 0.3\textwidth]{hard_first_simple.jpg}
+\label{exp_5_weak}}
+\caption{Results from adapted Grid}
+\label{Result_exp_5}
+\end{figure}
+This shows that the rules which emerge from one grid cannot simply
+be applied to another grid. In a broader sense it shows that for any specific grid there is a very narrow band in which rules can lie, 
+so that the agents neither are too passive and charge too little, nor charge too aggressively and overwhelm the grid. The emerging rules
+are trivial in their structure, while finding rules which work for specific infrastructures is not.
 \subsection{Summary}
-Not sure if this summary should not just be the conclusion. I cannot see a difference between the two. 
+A short summary of the results. 
+\begin{enumerate}
+ \item Institutional rules are needed to get good results. Individual agents coming up with rules is not 
+sufficient on its own.
+ \item While Grouping the agents in different neighborhoods does make a difference the way in which they are grouped, 
+homogeneous or heterogeneous, seems not to be important. 
+ \item The institutional success rate has no effect on the model.
+ \item The influence of behavioral parameters on the model are much weaker than expected.
+ \item Different voting mechanisms make a slight difference in performance and become more pronounced when the agents are initialized with a greedy rule.
+ \item Rules, which emerged from one grid do not work well when the infrastructure changes.
+\end{enumerate}
 
 \begin{comment}
 \begin{alltt}
@@ -1264,11 +1335,51 @@ What is the picture all those results paint.
 \clearpage
 
 \section{Conclusion}
-\subsection{Model conclusion}
-\subsection{Stakeholder perspective}
-\subsection{Insight for software agent systems for resource appropriation}
-\section{Further Research}
+In this chapter conclusions will be drawn based on what has been presented so far. First a quick recap and interpretation of the
+model results will be given to answer the Research Questions. 
+This is followed by a look at what this can mean for real world implementations of smart charging and if there is also some 
+general insight about distributed software agents. 
+\subsection{Model conclusion \& Research Questions}
+The model works quite well for most of the scenarios. But there are however no parameter settings that guarantee that the agents come up 
+with well functioning rules. The biggest contribution to the performance of the model is the existence of an institutional rule. 
+The institutional rules make scenarios possible in which it is very rare that EVs cannot charge sufficiently. Other parameters, 
+like the voting mechanism or how the agents are grouped, do have an impact on the model performance but only make a minor difference. \\
 
+\subsection{Real World implementation}
+As mentioned in the model conclusion there are no parameter setting that ensure a perfect operation, and people also do not have 6 months
+of time to wait until the agents converge towards an institutional rule. This shows that this is not a system of software agents which 
+can just be implemented like this in the real world. However if smart meters are already deployed the software agents can be run in a dry 
+run. This way this could be seen as a tool to quickly come up with simple rules which work for this specific grid configuration and 
+situation, without having to actually analyze the situation. \\
+This tool or implementation would however not open up any markets for energy companies or consumers, which makes it rather unattractive 
+to them. Municipalities would also only have a secondary interest in deploying software agents, since they are more interested in the 
+existence of electric vehicles then mitigating their effect on the grid. The main stakeholder with an incentive to adopt such a system 
+are grid operators. It is a quick way of coming up with simple rules to manage charging of EV, without infringing on privacy of people
+or high cost in equipment. \\
+But the feeling of loss of control and the infringement of privacy is very much tied for costumers. It will be rather hard to convince 
+consumers that although they would be giving up direct control of their charging stations, this is not a step towards Orwellianism or 
+infringement of their privacy. \\
+Overall using software agents to come up with simple rules to govern a part of the grid seems unlikely but not impossible or useless.
+\subsection{Distributed Software Agents for resource allocation}
+Generally software agents, as presented here, could be used for resource allocation whenever there is a common pool resource, which can 
+easily be accessed in an automated way so that software agents can be used, and there is a local
+variable which can indicate the state of the resource. \\
+There are not many results that can be generalized to any such system. The one insight that might be applicable in a wider range is 
+that the effect of the voting mechanism is not as straight forward as it seems. Using borda count for voting increases the 
+fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The effect of the 
+agents 
+\section{Further Research}
+In this segment a few points about what could further be done are presented. They will be grouped in points regarding research tools that
+have been used, extensions of the model and extending the idea to other problems. \\
+\textbf{Research Tools:}\\
+One of the hurdles during this project was that, although PYPOWER is a very powerful tool, it was lacking the functionality to 
+constrain the Voltage of the different nodes,based on the voltage alone. It was necessary to write a specific algorithm for each 
+grid that was used. It would be useful to generalize this algorithm to be applicable to any kind of grid and not just the one it was 
+written for. 
+\\
+\textbf{Extending the model:}\\
+this\\
+\textbf{Extending to other problems:}\\
 \clearpage
 \begin{comment}
 \section{Time schedule and pitfalls}
@@ -2149,6 +2260,23 @@ elsif (copy_all == "vertical")
 \label{d_weak}
 \end{figure}
 \clearpage
+
+\subsection{Experiment 5}
+\begin{figure}[!ht]
+\subfigure[Average SOC]{
+\includegraphics[width = 0.3\textwidth]{averages_second_simple.jpg}
+\label{exp_5_averages_2}}
+\subfigure[Weak Failures]{
+\includegraphics[width = 0.3\textwidth]{weak_second_simple.jpg}
+\label{exp_5_weak_2}}
+\subfigure[Hard Failures]{
+\includegraphics[width = 0.3\textwidth]{hard_second_simple.jpg}
+\label{exp_5_weak_2}}
+\caption{Results from adapted Grid}
+\label{Result_exp_5_2}
+\end{figure}
+\clearpage
+
 \begin{thebibliography}{9}
 
 \bibitem{cprbook}
