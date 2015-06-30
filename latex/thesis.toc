@@ -18,7 +18,7 @@
 \contentsline {subsubsection}{\numberline {1.4.5}k-means Clustering}{13}{subsubsection.1.4.5}
 \contentsline {section}{\numberline {2}Problem description}{15}{section.2}
 \contentsline {subsection}{\numberline {2.1}Stakeholders}{15}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Why Modeling/Modeling approach}{16}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Why Modeling}{16}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Tragedy of the Commons in the Simulated Environment}{16}{subsection.2.3}
 \contentsline {section}{\numberline {3}Model}{18}{section.3}
 \contentsline {subsection}{\numberline {3.1}Concept}{18}{subsection.3.1}
