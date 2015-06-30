@@ -404,6 +404,15 @@ behavior and the software agents choices. The first step in solving the problem 
 to check if the model experiences the initial problem in the way predicted. For this each household is given a 
 software agent, and behavior of the software agents is set to charge as long as the battery is not at 100\% charge,
 at the highest possible rate.\\
+\subsection{Tragedy of the Commons in the Simulated Environment}
+This chapter is to show how the common pool resource concept applies to the physical system and to show how 
+the tragedy of the commons is displayed by the model. \\
+A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
+therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
+appropriating as much of the resource as possible and in the process depleting the resource. \\
+The resource in this model is the grid itself. The accessibility is given by simply plugging the electric vehicles in. 
+The grid is limited in the sense that there is only a limited amount of energy that can be transported by it. The tragedy
+of the commons is that each agent tries to charge its electric vehicle as much as possible. 
 The result of such a test are given in graph \ref{software_tragedy}. In this graph the state of charge over time is 
 represented for different levels. the level in this case is an indication of how close or far from the 
 electricity source the electric vehicle is situated. The higher the level the further the EV is from the source. 
@@ -731,7 +740,7 @@ much worse event than an agent not being able to charge to 100\%.
  \item \textbf{Frequency of hard failures:}\\
  How often in one run it occurs that 
  an agents state of charge drops to 0 in a situations when there is an institutional rule in place. For this the SOC of each 
- agent is made into a logical vector, which is True when the SOC is 0 and False otherwise. The instances when the vector goes from False
+ agent is made into a logical vector, which is True when the SOC is 0 and False otherwise. The instances when the entries go from False
  to True ,for each vector, are counted. This way each period of an agent having charge 0 is counted as one instance no matter how long or 
  short the period is.
 \end{enumerate}
