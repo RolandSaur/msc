@@ -405,8 +405,17 @@ In order to shape the rules there has to be a set of possible options on which t
 To give the agents the ability to judge rules, a function to the existing agents has to be added. However in order to coordinate their voting behavior an additional agent has to be introduced. 
 \end{comment}
 \subsection{Research Tools}
+In this chapter the research tools which are used to build the model are going to be explained.
 \subsubsection{Powerflow simulation in MATPOWER/PYPOWER}
-MATPOWER/PYPOWER is a software package for power flow simulations. MATPOWER/PYPOWER is available for Matlab, octave and python. The software package models AC and DC electrical networks. The inputs to the model are the network topology, given in a $n_b$x$n_b$ matrix, representing the impedance between the node points,  and the  $n_b$x$1$ complex load vector, representing the static loads at each node.  The model is then solved for the voltage and angle for each node. The model works internally by defining so called cases. Within these cases each node, Transformer and household is represented as bus, with its own bus index. The household usage of electricity is represented by P and Q values at the respective bus index. The lines between the nodes are defined in per unit values of impedance, active and reactive resistance. In order to transfer real impedance values of lines to per unit values, each case has a defined base voltag(Vbase) and power base(SBase). From these a base impedance can be calculated, see equation \ref{zbase}.\cite{powertransfer}
+MATPOWER/PYPOWER is a software package for power flow simulations. MATPOWER/PYPOWER is available for Matlab, octave and python.
+The software package models AC and DC electrical networks. The inputs to the model are the network topology, given in 
+a $n_b$x$n_b$ matrix, representing the impedance between the node points,  and the  $n_b$x$1$ complex load vector, 
+representing the static loads at each node.  The model is then solved for the voltage and angle for each node. The 
+model works internally by defining so called cases. Within these cases each node, transformer and household is represented by bus, 
+with its own bus index. The household usage of electricity is represented by P and Q values at the respective bus index. 
+The lines between the nodes are defined in per unit values of impedance, active and reactive resistance. In order to transfer 
+real impedance values of lines to per unit values, each case has a defined base voltag(Vbase) and power base(SBase). From these 
+a base impedance can be calculated, see equation \ref{zbase}.\cite{powertransfer}
 \begin{equation}
 Z_{Base} = \frac{V_{Base}^2}{S_{Base}}
 \label{zbase}
@@ -461,9 +470,8 @@ Coupled learning is when each agent tries to model and estimate the effect of th
 in which all the agents share the same reward function, sparse cooperation can be used to combine all the agents to one 
 agent.\cite{multiagent}\\
 \begin{comment}
-For agents to further cooperate in multi agent systems they can vote on mutual laws.  For this there has to be a set of
-options the agents can choose from and an internal function that ranks the different options. 
-There are different voting mechanisms to combine the rankings the different agents made into one result. A simple majority 
+
+ A simple majority 
 vote takes the option that is most often chosen by the  agents to be the best option. A Borda count takes not just the
 highest ranked option into account but also the whole ranking of all options. Each agent attaches a number to the different
 options. The highest ranked option gets the number k-1 attached, while k being the number of options. The option below that 
@@ -471,9 +479,18 @@ gets k-2 attached and so on until the least favorable option gets 0 attached. Th
 to them by the different agents. The option with the highest number then becomes the mutually agreed upon option.\cite{mas}
 \end{comment}
 
-\subsubsection{Borda count}
-A majority voting system only takes into account the top choice of voters. The Borda count also takes into account second and third choices of voters, this way it is more representative of the actual preferences of the voters. \\
-Lets say there are k candidates $\Omega = \{\Omega_1 , \Omega_2,\Omega_3,... \Omega_k\}$. The voters then rank those k candidates from most to least favorable. Weights will be attached to the different candidates in the following manner. The best candidate gets the weight (k-1), the second best (k-2) and so on until the worst candidate receives 0. The choice with the highest weight count gets selected as the winner of the vote.\cite{mas} \\
+\subsubsection{Voting Mechanism (Borda Count/Majority)}
+To cooperate in multi agent systems, agents can vote on mutual laws.  For this there has to be a set of
+options the agents can choose from and an internal function that ranks the different options. This way the agents 
+can come up with preferences for different rules. The preferences of all the agents can then be combined into one rule 
+that everybody follows.\\
+There are different voting mechanisms to combine the preferences of different agents into one result.
+A majority voting system only takes into account the top choice of voters. The Borda count also takes into account 
+second and third choices of voters, this way it is more representative of the actual preferences of the voters. \\
+Lets say there are k candidates $\Omega = \{\Omega_1 , \Omega_2,\Omega_3,... \Omega_k\}$. The voters then rank those k 
+candidates from most to least favorable. Weights will be attached to the different candidates in the following manner. 
+The best candidate gets the weight (k-1), the second best (k-2) and so on until the worst candidate receives 0. The choice 
+with the highest weight count gets selected as the winner of the vote.\cite{mas} \\
 \subsubsection{k-means  Clustering}
 The K-means clustering algorithm clusters n d-dimensional data points ,$x=\{ x_1,x_2,..., x_n\}$ into k clusters, $S_i$ with mean values $\mu_i$, so that the sum of square distances within the clusters is minimized. 
 \begin{equation}
@@ -487,38 +504,55 @@ The algorithm consists of two steps which are repeated until the clusters no lon
 \end{figure}
 
 \newpage
-
+\subsection{Structure of thesis}
+In the following chapter the model itself will be explained. This is followed by an introduction into the experimental part, 
+consisting of a basic experimental setup, the performance indicators,which are used to evaluate the model output, the 
+hypotheses and the experiments,that are used to test the hypotheses. The experiments are then evaluated in a 
+results and discussion section. The thesis is concluded with a conclusion and further research chapter.
 
 
 
 %For this each household is given a 
 %software agent, and behavior of the software agents is set to charge as long as the battery is not at 100\% charge,
 %at the highest possible rate.\\
-\subsection{Model Testbed}
-A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world, meaning the 
-grid itself, but also human behavior. When representing the grid, the model not just has to be based on reasonable assumptions 
-about its topology and values for the lines, it also has to experience some boundaries of what is possible. It has to constrain the power
-that can be drawn from different points. 
-The human behavior part is very simplified because it is not the main focus of this thesis to model human behavior. What it has to 
-represent is a base load of electricity use and driving patterns. For the base load a base load profile is used, for the driving patterns 
-each household has a time at which the car arrives at home and is drained by a certain amount and a time when it leaves from home. The 
-arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
-All the technical details about the number of households the structure and how the constraint is implemented in PYPOWER can be 
-viewed in Appendix A. \\
-The software agents in this testbed have to be able to interact with the grid. They have to be able to set a dispatch-able load of how 
-much they want to charge and receive feedback on how much power they can actually draw from the grid. This is done with two simple functions 
-in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after it has been run. 
 
-\subsection{Tragedy of the Commons in the Simulated Environment}
+\clearpage
+
+\section{Model}
+The model chapter is split into two section. The first section is to explain the model testbed and how the common pool
+resource problem displays itself in this testbed. The second section is about the model concept, which is supposed to 
+solve this problem. 
+\subsubsection{Model Testbed}
+A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world,
+meaning the 
+grid itself, but also human behavior. When representing the grid, the model not just has to be based on reasonable
+assumptions 
+about its topology and values for the lines, it also has to experience some boundaries of what is possible. 
+It has to constrain the power
+that can be drawn from different points. 
+The human behavior part is very simplified because it is not the main focus of this thesis to model 
+human behavior. What it has to 
+represent is a base load of electricity use and driving patterns. For the base load a base load profile is used, 
+for the driving patterns 
+each household has a time at which the car arrives at home and is drained by a certain amount and a time when it 
+leaves from home. The 
+arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
+All the technical details about the number of households the structure and how the constraint is 
+implemented in PYPOWER can be 
+viewed in Appendix A. \\
+The software agents in this testbed have to be able to interact with the grid. They have to be able to set a
+dispatch-able load of how 
+much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
+is done with two simple functions 
+in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
+it has been run. 
+
+\subsubsection{Tragedy of the Commons in the Simulated Environment}
 This chapter is to show how the common pool resource concept applies to the physical system and to show how 
 the tragedy of the commons is displayed by the model. \\
-
-
 A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
 therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
 appropriating as much of the resource as possible and in the process depleting the resource. \\
-
-
 To show the what this looks like in the model, the simulation is run with rational agents each of which will charge 
 as much as possible.
 The result of such a simulation run is given in graph \ref{software_tragedy}. In this graph the state of charge over 
@@ -543,9 +577,6 @@ of too many electric vehicles charging at the same time and overloading the grid
  \label{software_tragedy}
 \end{figure}
 
-\clearpage
-
-\section{Model}
 \subsection{Concept}
 First the components of the model will be explained. Then a overview of the processes that the agents go through will be 
 given. The agents, how their rules and memory work and how the agents come up with rules collectively through voting 

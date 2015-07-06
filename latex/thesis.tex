@@ -504,38 +504,57 @@ The algorithm consists of two steps which are repeated until the clusters no lon
 \end{figure}
 
 \newpage
-
+\subsection{Structure of thesis}
+In the following chapter the model itself will be explained. This is followed by an introduction into the experimental part, 
+consisting of a basic experimental setup, the performance indicators,which are used to evaluate the model output, the 
+hypotheses and the experiments,that are used to test the hypotheses. The experiments are then evaluated in a 
+results and discussion section. The thesis is concluded with a conclusion and further research chapter.
 
 
 
 %For this each household is given a 
 %software agent, and behavior of the software agents is set to charge as long as the battery is not at 100\% charge,
 %at the highest possible rate.\\
-\subsection{Model Testbed}
-A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world, meaning the 
-grid itself, but also human behavior. When representing the grid, the model not just has to be based on reasonable assumptions 
-about its topology and values for the lines, it also has to experience some boundaries of what is possible. It has to constrain the power
-that can be drawn from different points. 
-The human behavior part is very simplified because it is not the main focus of this thesis to model human behavior. What it has to 
-represent is a base load of electricity use and driving patterns. For the base load a base load profile is used, for the driving patterns 
-each household has a time at which the car arrives at home and is drained by a certain amount and a time when it leaves from home. The 
-arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
-All the technical details about the number of households the structure and how the constraint is implemented in PYPOWER can be 
-viewed in Appendix A. \\
-The software agents in this testbed have to be able to interact with the grid. They have to be able to set a dispatch-able load of how 
-much they want to charge and receive feedback on how much power they can actually draw from the grid. This is done with two simple functions 
-in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after it has been run. 
 
-\subsection{Tragedy of the Commons in the Simulated Environment}
+\clearpage
+
+\section{Model}
+The model chapter is split into two section. The first section is to explain the model testbed and how the common pool
+resource problem displays itself in this testbed. The second section is about the model concept, which is supposed to 
+solve this problem. 
+\subsection{Modeling the Problem}
+This first section is to model the problem itself and show what it looks like in the simulated environment.
+\subsubsection{Model Testbed}
+A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world,
+meaning the 
+grid itself, but also human behavior. When representing the grid, the model not just has to be based on reasonable
+assumptions 
+about its topology and values for the lines, it also has to experience some boundaries of what is possible. 
+It has to constrain the power
+that can be drawn from different points. 
+The human behavior part is very simplified because it is not the main focus of this thesis to model 
+human behavior. What it has to 
+represent is a base load of electricity use and driving patterns. For the base load a base load profile is used, 
+for the driving patterns 
+each household has a time at which the car arrives at home and is drained by a certain amount and a time when it 
+leaves from home. The 
+arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
+All the technical details about the number of households the structure and how the constraint is 
+implemented in PYPOWER can be 
+viewed in Appendix A. \\
+The software agents in this testbed have to be able to interact with the grid. They have to be able to set a
+dispatch-able load of how 
+much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
+is done with two simple functions 
+in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
+it has been run. 
+
+\subsubsection{Tragedy of the Commons in the Simulated Environment}
 This chapter is to show how the common pool resource concept applies to the physical system and to show how 
 the tragedy of the commons is displayed by the model. \\
-
-
 A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
 therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
 appropriating as much of the resource as possible and in the process depleting the resource. \\
-
-
 To show the what this looks like in the model, the simulation is run with rational agents each of which will charge 
 as much as possible.
 The result of such a simulation run is given in graph \ref{software_tragedy}. In this graph the state of charge over 
@@ -560,9 +579,6 @@ of too many electric vehicles charging at the same time and overloading the grid
  \label{software_tragedy}
 \end{figure}
 
-\clearpage
-
-\section{Model}
 \subsection{Concept}
 First the components of the model will be explained. Then a overview of the processes that the agents go through will be 
 given. The agents, how their rules and memory work and how the agents come up with rules collectively through voting 
