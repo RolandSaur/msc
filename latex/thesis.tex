@@ -1549,47 +1549,8 @@ But the feeling of loss of control and the infringement of privacy is very much 
 consumers that although they would be giving up direct control of their charging stations, this is not a step towards Orwellianism or 
 infringement of their privacy. \\
 Overall using software agents to come up with simple rules to govern a part of the grid seems unlikely but not impossible or useless.
-\subsection{Distributed Software Agents for resource allocation}
-Generally software agents, as presented here, could be used for resource allocation whenever there is a common pool resource, which can 
-easily be accessed in an automated way so that software agents can be used, and there is a local
-variable which can indicate the state of the resource. \\
-There are not many results that can be generalized to any such system. The one insight that might be applicable in a wider range is 
-that the effect of the voting mechanism is not as straight forward as it seems. Using borda count for voting increases the 
-fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The voting 
-mechanism affects the rules that become the institutional rules and those rules then affect the
-behavior of the agent, which affects what happens in the model  and therefore affects the state of
-the agents themselves. But the link that a better representation of the agents also results in better 
-rules and therefore in better 
-outcomes is not as clear and is heavily dependent on the particular situation. 
-\section{Further Research}
-In this segment a few points about what could further be done are presented. They will be grouped in points regarding research tools that
-have been used, extensions of the model and extending the idea to other problems. \\ \\
-\textbf{Research Tools:}\\
-One of the hurdles during this project was that, although PYPOWER is a very powerful tool, it was lacking the functionality to 
-constrain the Voltage of the different nodes,based on the voltage alone. It was necessary to write a specific algorithm for each 
-grid that was used. It would be useful to generalize this algorithm to be applicable to any kind of grid and not just the one it was 
-written for. One simple first approach would be to automate the two steps of determining the effect of power consumption on 
-voltage for each grid point and inserting it into  the algorithm.
-\\
-\\
-\textbf{Extending the model:}\\
-The most obvious extension of the model is to include more than just the charging of electric vehicles, but also include distributed 
-energy resources and and stand-alone batteries. \\
-A second point has to do with the criticism in experiments 2 and 4 that the results might have been distorted by the shortness of each run. 
-The number of runs had to be kept this short because of time constrains of the project. An increase in runtime would also open up the 
-possibility of exploring the effect of different institutional emergence times on the model.\\
-A third point concerning the model directly is that it might be interesting to explore the effect of slight changes in infrastructure, 
-while the agents come up with rules. This way the question about how well the agents deal with change once they have already 
-converged to a rule can be answered.
-\\
-\\
-\textbf{Extending to other problems:}\\
-As mentioned before, this idea of having software agents collaborate to manage a common pool resource could also be applied to other 
-problems. A interesting application would be the management of a communally shared heat source and or storage, to which several 
-household are connected and contribute to  and draw heat from. 
-\clearpage
 
-\subsection{Stakeholders}
+\subsection{Stakeholder perspective}
 The integration of electric vehicles into the electricity grid poses opportunities and threats to stakeholders. 
 The increase of electric vehicles can increase air quality in cities and the management of the load that 
 EVs create can open up new markets for energy companies. The grid however might also not be equipped well enough to 
@@ -1634,6 +1595,51 @@ and therefore the use to be as evenly as distributed possible. This also causes 
 different solutions in the integration of electric vehicles. \\
 While grid operators would favor a system giving them more control, energy companies would prefer systems which give 
 them and consumers most flexibility to sell the most at more profitable times. 
+
+\subsection{MAS for resource allocation}
+Generally multi agent systems, as presented here, could be used for resource allocation whenever there 
+is a common pool resource, which can 
+easily be accessed in an automated way so that software agents can be used, and there is a local
+variable which can indicate the state of the resource. \\
+There are not many results that can be generalized to any such system. The one insight that might be applicable in a wider range is 
+that the effect of the voting mechanism is not as straight forward as it seems. Using borda count for voting increases the 
+fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The voting 
+mechanism affects the rules that become the institutional rules and those rules then affect the
+behavior of the agent, which affects what happens in the model  and therefore affects the state of
+the agents themselves. But the link that a better representation of the agents also results in better 
+rules and therefore in better 
+outcomes is not as clear and is heavily dependent on the particular situation. 
+
+\subsection{Conclusions about CPR}
+\section{Further Research}
+In this segment a few points about what could further be done are presented. They will be grouped in points regarding research tools that
+have been used, extensions of the model and extending the idea to other problems. \\ \\
+\textbf{Research Tools:}\\
+One of the hurdles during this project was that, although PYPOWER is a very powerful tool, it was lacking the functionality to 
+constrain the Voltage of the different nodes,based on the voltage alone. It was necessary to write a specific algorithm for each 
+grid that was used. It would be useful to generalize this algorithm to be applicable to any kind of grid and not just the one it was 
+written for. One simple first approach would be to automate the two steps of determining the effect of power consumption on 
+voltage for each grid point and inserting it into  the algorithm.
+\\
+\\
+\textbf{Extending the model:}\\
+The most obvious extension of the model is to include more than just the charging of electric vehicles, but also include distributed 
+energy resources and and stand-alone batteries. \\
+A second point has to do with the criticism in experiments 2 and 4 that the results might have been distorted by the shortness of each run. 
+The number of runs had to be kept this short because of time constrains of the project. An increase in runtime would also open up the 
+possibility of exploring the effect of different institutional emergence times on the model.\\
+A third point concerning the model directly is that it might be interesting to explore the effect of slight changes in infrastructure, 
+while the agents come up with rules. This way the question about how well the agents deal with change once they have already 
+converged to a rule can be answered.
+\\
+\\
+\textbf{Extending to other problems:}\\
+As mentioned before, this idea of having software agents collaborate to manage a common pool resource could also be applied to other 
+problems. A interesting application would be the management of a communally shared heat source and or storage, to which several 
+household are connected and contribute to  and draw heat from. 
+\clearpage
+
+
 \begin{comment}
 \section{Time schedule and pitfalls}
 \begin{figure}[!ht]

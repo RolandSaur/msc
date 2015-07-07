@@ -522,6 +522,8 @@ results and discussion section. The thesis is concluded with a conclusion and fu
 The model chapter is split into two section. The first section is to explain the model testbed and how the common pool
 resource problem displays itself in this testbed. The second section is about the model concept, which is supposed to 
 solve this problem. 
+\subsection{Modeling the Problem}
+This first section is to model the problem itself and show what it looks like in the simulated environment.
 \subsubsection{Model Testbed}
 A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world,
 meaning the 
