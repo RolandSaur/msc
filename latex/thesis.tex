@@ -719,14 +719,18 @@ Only the additional load of the electric vehicles will be constrained, because
 only those are defined as dispatch-able loads. The load at the nodes with the highest voltages are constrained first.\\
 The human behavior part is very simplified because it is not the main focus of this thesis to model 
 human behavior. What it has to 
-represent is a base load of electricity use and driving patterns. For the base load a base load profile is used.
+represent is a base load of electricity use and driving patterns. 
+For the base load a base load profile is used. This gives for any moment in time the amount of electricity that is used 
+irrespectively of the electric vehicle, thus representing the situation as it is without any electric vehicles. \\
 
-
-, 
-for the driving patterns 
-each household has a time at which the car arrives at home and is drained by a certain amount and a time when it 
-leaves from home. The 
-arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
+For the driving patterns each household has a time at which the car arrives at home and a time when it leaves from home. After the 
+car has left, its battery is no longer part of the grid and can therefore not interact with the grid. Upon arriving, the battery gets 
+reconnected to the grid and the state of charge of the battery is updated to the former state of charge minus the amount of electricity,
+that was used for driving. The amount of electricity that is used by driving is gaussian distributed among the households and 
+varies with time.
+The arrival and leaving times are gaussian distributed, among the households with mean values of 6pm and 8am respectively.
+\\
+\begin{comment}
 All the technical details about the number of households the structure and how the constraint is 
 implemented in PYPOWER can be 
 viewed in Appendix A. \\
@@ -735,7 +739,9 @@ dispatch-able load of how
 much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
 is done with two simple functions 
 in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
-it has been run. 
+it has been run.
+\end{comment}
+
 \subsubsection{Modeling Assumptions}
 In order to implement the model some assumptions had to be made. In the following 3 assumptions and their explanations ,for 
 why those assumptions were made, are given. 

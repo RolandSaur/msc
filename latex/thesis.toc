@@ -25,7 +25,7 @@
 \contentsline {subsubsection}{\numberline {2.1.6}Model assumptions and choices}{19}{subsubsection.2.1.6}
 \contentsline {section}{\numberline {3}Modeling}{21}{section.3}
 \contentsline {subsection}{\numberline {3.1}Model Testbed}{21}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Modeling Assumptions}{21}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Modeling Assumptions}{22}{subsubsection.3.1.1}
 \contentsline {subsection}{\numberline {3.2}Tragedy of the Commons in the Simulated Environment}{22}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Implementation of Model}{23}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Verification of the Model}{23}{subsection.3.4}
