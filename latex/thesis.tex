@@ -518,66 +518,13 @@ results and discussion section. The thesis is concluded with a conclusion and fu
 
 \clearpage
 
-\section{Model}
+\section{Multi Agent System Design}
+\begin{comment}
 The model chapter is split into two section. The first section is to explain the model testbed and how the common pool
 resource problem displays itself in this testbed. The second section is about the model concept, which is supposed to 
-solve this problem. 
-\subsection{Modeling the Problem}
-This first section is to model the problem itself and show what it looks like in the simulated environment.
-\subsubsection{Model Testbed}
-A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world,
-meaning the 
-grid itself, but also human behavior. When representing the grid, the model not just has to be based on reasonable
-assumptions 
-about its topology and values for the lines, it also has to experience some boundaries of what is possible. 
-It has to constrain the power
-that can be drawn from different points. 
-The human behavior part is very simplified because it is not the main focus of this thesis to model 
-human behavior. What it has to 
-represent is a base load of electricity use and driving patterns. For the base load a base load profile is used, 
-for the driving patterns 
-each household has a time at which the car arrives at home and is drained by a certain amount and a time when it 
-leaves from home. The 
-arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
-All the technical details about the number of households the structure and how the constraint is 
-implemented in PYPOWER can be 
-viewed in Appendix A. \\
-The software agents in this testbed have to be able to interact with the grid. They have to be able to set a
-dispatch-able load of how 
-much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
-is done with two simple functions 
-in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
-it has been run. 
+solve this problem.
+\end{comment}
 
-\subsubsection{Tragedy of the Commons in the Simulated Environment}
-This chapter is to show how the common pool resource concept applies to the physical system and to show how 
-the tragedy of the commons is displayed by the model. \\
-A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
-therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
-appropriating as much of the resource as possible and in the process depleting the resource. \\
-To show the what this looks like in the model, the simulation is run with rational agents each of which will charge 
-as much as possible.
-The result of such a simulation run is given in graph \ref{software_tragedy}. In this graph the state of charge over 
-time is 
-represented for different levels. the level in this case is an indication of how close or far from the 
-electricity source the electric vehicle is situated. The higher the level the further the EV is from the source. 
-What we can see is that the state of charge for EVs on level 5 and 6 are not able to recover to full charge after being 
-drained. They sometimes even drop down to 0, meaning completely empty.\\
-So there are several rational agents trying to access a common resource,the grid, which is not able to provide as much 
-as is required and some agents are unable to get enough access to sustain what they are supposed to do.
-This is the abstract 
-representation of the tragedy of the commons in the smart grid with a lot of EVs accessing the grid. Some agents 
-cannot access the resource, the grid, because it has been depleted by the self interest driven actions of 
-all of them. This way the model represents the initial problem,as a common pool resource problem, 
-of too many electric vehicles charging at the same time and overloading the grid. 
-
-
-\begin{figure}[!ht]
- \centering
- \includegraphics[width = 0.9\textwidth]{tragedy_of_commons.jpg}
- \caption{Tragedy of the commons in the Model}
- \label{software_tragedy}
-\end{figure}
 
 \subsection{Concept}
 First the components of the model will be explained. Then a overview of the processes that the agents go through will be 
@@ -686,20 +633,6 @@ the specific condition for the rule.
 \subsubsection{Model assumptions and choices}
 
 \begin{enumerate}
- \item \textbf{General assumptions} \begin{enumerate}
-                            \item \textbf{The global time is kept track of by the ticks. One tick is 15 minutes} \\
-			     To make it easier to keep track of the time of day the model always starts at midnight. 
-			     This way the modulo of the global tick by 96 indicates the time within the day.
-			    \item \textbf{The agents can either be at home or not at home. The mean arrival/leaving times of 
-			    all the agents are gaussian distributed. The mean battery drain of all the agents is 
-			    gaussian distributed with mean equal to the average battery drain.} \\
-			    Given the central limit theorem the assumption that the mean of a variable over multiple agents is 
-			    gaussian distributed  means that  the variable has the same distribution for each agent.
-			    \item \textbf{Power consumption exceeding this voltage level will be capped. } \\
-			    The agents have to get feedback from the MATPOWER/PYPOWER model. In order for this to happen current 
-			    and or voltage constraints have to be imposed on the model. Based on the maximum current in one
-			    line the maximum voltage that can appear can be derived. 
-                           \end{enumerate}
  \item \textbf{Assumptions/Choices  about Rules} \begin{enumerate}
                                          \item \textbf{The number of rules that dictate the behavior of the agents will be 
                                          fixed to one rule} \\
@@ -759,13 +692,103 @@ the specific condition for the rule.
 
 
 \end{enumerate}
+\clearpage
+\section{Modeling}
+This chapter is about how the theoretical multi agent system can be tested in a software environment. An environment 
+in which the agents can be placed has to be designed. This will be called the testbed. Secondly the multi agent 
+system itself has to be implemented. \\
+In the following the testbed with its modeling assumptions are explained. Then a short look at what the tragedy 
+of the commons looks like in the testbed is given. This chapter ends with a description of th the implementation and 
+verification of the model.
+\subsection{Model Testbed}
+A testbed has to be made to develop and test the software agents. This testbed has to represent the physical world,
+meaning the 
+grid itself, but also human behavior. When representing the grid, the model has to be based on reasonable
+assumptions 
+about its topology and values for the lines. For a structure a radial structure is used. From a main transformer node 
+4 main lines go out to the first level of households. The next level of households is then only connected to the 
+first level of households and not to the main transformer. This way 6 to 7 households, depending on the grid, 
+are connected in a row with the 
+first household connected to the main transformer. The distance between the households is approximately 100 meters.
+Four of such sets of households are connected to the main transformer. \\
+The grid also has to experience some boundaries of what is possible. 
+It has to constrain the power
+that can be drawn from different points. A voltage threshold is used to define the boundary of what is possible. 
+Nodes which exceed the voltage threshold will be constrained.
+Only the additional load of the electric vehicles will be constrained, because 
+only those are defined as dispatch-able loads. The load at the nodes with the highest voltages are constrained first.\\
+The human behavior part is very simplified because it is not the main focus of this thesis to model 
+human behavior. What it has to 
+represent is a base load of electricity use and driving patterns. For the base load a base load profile is used.
 
 
-\subsection{Implementation}
+, 
+for the driving patterns 
+each household has a time at which the car arrives at home and is drained by a certain amount and a time when it 
+leaves from home. The 
+arrival and leaving times as well as the amount that is drained from the batteries are gaussian distributed.\\
+All the technical details about the number of households the structure and how the constraint is 
+implemented in PYPOWER can be 
+viewed in Appendix A. \\
+The software agents in this testbed have to be able to interact with the grid. They have to be able to set a
+dispatch-able load of how 
+much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
+is done with two simple functions 
+in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
+it has been run. 
+\subsubsection{Modeling Assumptions}
+In order to implement the model some assumptions had to be made. In the following 3 assumptions and their explanations ,for 
+why those assumptions were made, are given. 
+\begin{enumerate}
+                            \item \textbf{The global time is kept track of by the ticks. One tick is 15 minutes} \\
+			     To make it easier to keep track of the time of day the model always starts at midnight. 
+			     This way the modulo of the global tick by 96 indicates the time within the day.
+			    \item \textbf{The agents can either be at home or not at home. The mean arrival/leaving times of 
+			    all the agents are gaussian distributed. The mean battery drain of all the agents is 
+			    gaussian distributed with mean equal to the average battery drain.} \\
+			    Given the central limit theorem the assumption that the mean of a variable over multiple agents is 
+			    gaussian distributed  means that  the variable has the same distribution for each agent.
+			    \item \textbf{Power consumption exceeding this voltage level will be capped. } \\
+			    The agents have to get feedback from the MATPOWER/PYPOWER model. In order for this to happen current 
+			    and or voltage constraints have to be imposed on the model. Based on the maximum current in one
+			    line the maximum voltage that can appear can be derived. 
+                           \end{enumerate}
+                           
+\subsection{Tragedy of the Commons in the Simulated Environment}
+This chapter is to show how the common pool resource concept applies to the physical system and to show how 
+the tragedy of the commons is displayed by the model. \\
+A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
+therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
+appropriating as much of the resource as possible and in the process depleting the resource. \\
+To show the what this looks like in the model, the simulation is run with rational agents each of which will charge 
+as much as possible.
+The result of such a simulation run is given in graph \ref{software_tragedy}. In this graph the state of charge over 
+time is 
+represented for different levels. the level in this case is an indication of how close or far from the 
+electricity source the electric vehicle is situated. The higher the level the further the EV is from the source. 
+What we can see is that the state of charge for EVs on level 5 and 6 are not able to recover to full charge after being 
+drained. They sometimes even drop down to 0, meaning completely empty.\\
+So there are several rational agents trying to access a common resource,the grid, which is not able to provide as much 
+as is required and some agents are unable to get enough access to sustain what they are supposed to do.
+This is the abstract 
+representation of the tragedy of the commons in the smart grid with a lot of EVs accessing the grid. Some agents 
+cannot access the resource, the grid, because it has been depleted by the self interest driven actions of 
+all of them. This way the model represents the initial problem,as a common pool resource problem, 
+of too many electric vehicles charging at the same time and overloading the grid. 
+
+
+\begin{figure}[!ht]
+ \centering
+ \includegraphics[width = 0.9\textwidth]{tragedy_of_commons.jpg}
+ \caption{Tragedy of the commons in the Model}
+ \label{software_tragedy}
+\end{figure}
+
+\subsection{Implementation of Model}
 The model was written in Pyhton because the language is easy to use and has a full implementation of MATPOWER, called
 PYPOWER, and the k-means algorithm. A detailed description of the model implementation and pseudo 
 code can be found in Appendix C . 
-\subsection{Verification}
+\subsection{Verification of the Model}
 Two parts of the model have to be verified. That the multiagent system itself works and that the PYPOWER model 
 represents reality in the intended way.\\
 For the multiagent system, the agents individual behavior and their collective behavior, interacting with each other was 
