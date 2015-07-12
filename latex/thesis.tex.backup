@@ -547,7 +547,7 @@ are used to come up with and vote on new rules.
 
 \subsubsection{Agent gets up drinks a cup of coffee}
 Each agent goes through the following process, depicted below. For one week in intervals of 15 minutes, the agent 
-chooses an action based on their internal rule. The matpower model then calculates a feedback which the agents internalize
+chooses an action based on their internal rule. The Matpower model then calculates a feedback which the agents internalize
 by updating their voltage and state of charge. Each week the agent evaluates the rule it has been living with based on how 
 high their battery state of charge over this past week was, and commits the rule and an associated preference value to 
 its memory. Afterwards the agent comes up with a new rule for the next week. When the memory of the agents is not yet 
@@ -611,8 +611,10 @@ is needed for the learning and for being able to vote. The memory consist of 5 p
 values. The rules are kept in memory based on merit.
 Each time an agent commits a rule to its memory, it calculates the average state of charge of its battery under this rule. 
 This value is the preference value for this rule. If the rule is already in the memory the preference value becomes the 
-average of the two preference values. If the rule is new it replaces the worst rule in the memory if its preference value 
-is higher than the preference value of the worst rule in memory. Afterwards the memory gets sorted from best to worst. 
+average of the two preference values. In case the rule is new it can replaces the worst rule in the memory.
+However the worst rule in the memory will only be replaced by the new rule if the new rule is better than the old worst rule. 
+Better in this case means that the agent has given the new rule a higher preference value. 
+Afterwards the memory gets sorted from best to worst. 
 
 \begin{figure}[!ht]
 \includegraphics[width =\textwidth]{concept_memory.jpg}
@@ -630,7 +632,7 @@ determined by clustering the rules into 3 clusters. The center of the cluster co
 the specific condition for the rule.
 
 
-\subsubsection{Model assumptions and choices}
+\subsubsection{Assumptions and Choices}
 
 \begin{enumerate}
  \item \textbf{Assumptions/Choices  about Rules} \begin{enumerate}
@@ -705,7 +707,7 @@ A testbed has to be made to develop and test the software agents. This testbed h
 meaning the 
 grid itself, but also human behavior. When representing the grid, the model has to be based on reasonable
 assumptions 
-about its topology and values for the lines. For a structure a radial structure is used. From a main transformer node 
+about its topology and values for the lines. For the structure a radial structure is used. From a main transformer node 
 4 main lines go out to the first level of households. The next level of households is then only connected to the 
 first level of households and not to the main transformer. This way 6 to 7 households, depending on the grid, 
 are connected in a row with the 
@@ -730,6 +732,7 @@ that was used for driving. The amount of electricity that is used by driving is 
 varies with time.
 The arrival and leaving times are gaussian distributed, among the households with mean values of 6pm and 8am respectively.
 \\
+\begin{comment}
 All the technical details about the number of households the structure and how the constraint is 
 implemented in PYPOWER can be 
 viewed in Appendix A. \\
@@ -738,7 +741,9 @@ dispatch-able load of how
 much they want to charge and receive feedback on how much power they can actually draw from the grid. This 
 is done with two simple functions 
 in the agents that alter the pypower models dispatch-able loads and reads values from the pypower model after
-it has been run. 
+it has been run.
+\end{comment}
+
 \subsubsection{Modeling Assumptions}
 In order to implement the model some assumptions had to be made. In the following 3 assumptions and their explanations ,for 
 why those assumptions were made, are given. 
@@ -758,13 +763,15 @@ why those assumptions were made, are given.
                            \end{enumerate}
                            
 \subsection{Tragedy of the Commons in the Simulated Environment}
-This chapter is to show how the common pool resource concept applies to the physical system and to show how 
+This chapter is to show how 
 the tragedy of the commons is displayed by the model. \\
 A common pool resource has two defining properties. It is accessible by each agent in the system and it is limited, and can 
 therefore be depleted. The tragedy of the commons stems from rational agents doing what is best for them and 
 appropriating as much of the resource as possible and in the process depleting the resource. \\
 To show the what this looks like in the model, the simulation is run with rational agents each of which will charge 
-as much as possible.
+as much as possible. Each electric vehicle arrives at home, gets reconnected to the grid and the its software agent 
+does what is most rational, it charges the battery of the electric vehicle as long as the battery is not full. Each agent theoretically 
+has access to the grid, and each agent does what is most rational in this situation. \\
 The result of such a simulation run is given in graph \ref{software_tragedy}. In this graph the state of charge over 
 time is 
 represented for different levels. the level in this case is an indication of how close or far from the 
@@ -773,7 +780,7 @@ What we can see is that the state of charge for EVs on level 5 and 6 are not abl
 drained. They sometimes even drop down to 0, meaning completely empty.\\
 So there are several rational agents trying to access a common resource,the grid, which is not able to provide as much 
 as is required and some agents are unable to get enough access to sustain what they are supposed to do.
-This is the abstract 
+This is a concrete
 representation of the tragedy of the commons in the smart grid with a lot of EVs accessing the grid. Some agents 
 cannot access the resource, the grid, because it has been depleted by the self interest driven actions of 
 all of them. This way the model represents the initial problem,as a common pool resource problem, 
@@ -787,101 +794,235 @@ of too many electric vehicles charging at the same time and overloading the grid
  \label{software_tragedy}
 \end{figure}
 
-\subsection{Implementation of Model}
-The model was written in Pyhton because the language is easy to use and has a full implementation of MATPOWER, called
-PYPOWER, and the k-means algorithm. A detailed description of the model implementation and pseudo 
-code can be found in Appendix C . 
+\subsection{Implementation of Model} 
+This chapter is on what had to be implemented in order to arrive at a functioning model. But it will not go into detail about how 
+it was implemented. The programming language for this is python, since it is easy to use and has the needed software packages.\\
+There are three basic parts that need to be implemented, the testbed, the multi agent system and a to-setup and to-go script to initialize 
+and run the model. \\
+For the physical representation part of the testbed the nodes of where the households are and the lines between the households had to be 
+defined in PYPOWER. Further fixed and dispatch-able loads for the normal household electricity use and the charging of EVs had to be 
+defined, respectively. An algorithm to run the PYPOWER model, to come up with how much electricity can actually be used at the different 
+node points based on what is demanded, is the second part of the physical part of the testbed. PYPOWER already provides a function 
+to take an input of loads and calculate the voltages and currents in the system. However this function is not able to constrain the 
+loads based on voltage thresholds. To accomplish this the model is repeatedly changed and run until all voltages are in the allowed
+band of voltages without constraining any further than necessary. In order to speed this process up, for each node the effect of different
+loads on the voltage is determined before the actual model is run. This way it is possible to approximate how much of the load has to be 
+cut. A detailed explanation of how this is accomplished can be found in appendix A.2. \\
+The multi agent system is composed of two parts the agents themselves and the scripts that are needed for them to cooperate in a 
+multi agent system. Although the driving patterns are conceptually part of the testbed they are implemented in the agents themselves, because
+this way it is easier to keep track whether or not the battery is connected to the grid. For the agents to be software agents in the true
+sense of the definition \cite{mas}, they have to be able to interact with their environment and they have to have some internal logic. 
+The interaction is as simple as defining two functions one for setting a load at its node and one for reading the actual load and 
+voltage after the PYPOWER model has run. For the internal logic, variables have to be defined for the agents to store the rules and memories, 
+but also for storing physical attributes like the voltage and the state of charge of its battery. 
+To make sense of what the agent reads from its 
+environment, it has to have functions for updating its internal physical attributes, setting the voltage and changing the state of charge of
+the battery. Further there has to be a function for interpreting the rules and translating them into what to do exactly. This differs from 
+the previously mentioned function, that tells the agent how to interact with the grid. The previous function is so that the agent can talk 
+to the grid. This second function is needed so that the agent not just knows how to say something to the grid but also knows what it wants 
+to say to the grid. These rules obviously have to come from somewhere therefore it has to have the ability to come up with rules based 
+on previous experience. \\
+Combining all the agents into a multi agent system requires some additional functionality withing the agents but also some external scripts. 
+The agent has to have functions to learn from others and express itself. There is one function to read how well all the other agents in 
+its neighborhood are performing and copying their rules and one function to report its own experience in a vote. Outside of the agents 
+these votes have to be combined into an election, which comes up with a new institutional rule, for all the agents. \\
+The to-setup and to-go scripts combine all these parts into one functioning model. A detailed pseudo code of how all of this is 
+accomplished can be found in appendix C. 
+
 \subsection{Verification of the Model}
-Two parts of the model have to be verified. That the multiagent system itself works and that the PYPOWER model 
+Two parts of the model have to be verified. That the multi agent system itself works and that the PYPOWER model 
 represents reality in the intended way.\\
 For the multiagent system, the agents individual behavior and their collective behavior, interacting with each other was 
 tested. For the PYPOWER model the constrain mechanism was tested.\\
-An extensive list of all the tests that were done can be found in Appendix B. 
 
-\newpage
+\subsubsection{Verification of Multi Agent System}
+When testing the agents, there are three steps that were taken. The agents internal functions, the agents interaction with the grid and the 
+agents interactions among themselves were tested. In the agents internals, whether or not the agent updates its physical attributes 
+correctly, if the agent creates and reads its rules correctly and if the memory is updated correctly, was tested. When testing the agents
+interaction with the grid, it was important that the agent would read from and write to the PYPOWER model correctly, so that there would be 
+no mix up between the agents. There should never be two agents who both think they have control over the same grid node. The interaction 
+between the agents themselves is tested, by checking that they would read other agents performance correctly and choose the best one. But 
+also that they would only read the performance of the agents in their own neighborhood and not of all the agents. Lastly the functions 
+that enable the agents to vote is tested.\\
+An extensive list of all the tests that were done on the agents can be found in Appendix B. 
+\subsubsection{Verification of Pypower Model}
+The functions that are to be verified are the following. 
+\begin{enumerate}
+ \item The dispatchable loads are \begin{enumerate}
+                                   \item changed in such a way that  the voltage at each node is 
+                                   always above a specific voltage threshold
+                                   \item not changed if the voltage is already above the specific voltage threshold
+                                   \item changed first at the nodes with the highest voltage in the branch
+                                  \end{enumerate}
 
-\section{Experimental}
+\end{enumerate}
+To verify this two PYPOWER models are initialized one with and  one without a voltage constraint. Both models are 
+run 20 times. Each time a random dispatch-able load is applied to the different node points. Within each run the 
+dispatch-able loads of both models are set to the same values. This creates several scenarios, 
+some in which the model should constrain the load and some in which the load should not be constrained. Since the configuration of the 
+dispatch-able loads is the same in the two models, constrained and not constrained, the results should look the same in the cases when 
+the loads should not be cut.In the cases when the loads should be constrained the voltage should be always at he lowest voltage of the 
+allowed voltage band. A short graphical overview of what is done,can be seen in figure \ref{test_pypower}.\\
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{Pypower_verification.jpg}
+\caption{Pypower Test}
+\label{test_pypower}
+\end{figure}
+
+
+The two graphs below show the minimum voltage in each branch. The red line indicates the voltage threshold.  In the
+top graph the unrestricted load causes the voltage to drop below the voltage threshold, in the bottom graph 
+the minimum voltage seems to be bound to the red line while the points above the line appear to be unchanged. 
+This is confirmed by looking at the dispatchable load in the branches which had a minimum voltage above the threshold
+in the unconstrained case. In those cases the dispatchable loads of both models were exactly equal. To check if the order
+in which the loads are cut is correct, the percentage of change between the constrained and unconstrained case is checked
+for each branch. If  at any node the change is more than 0 and below 100 percent, this node has to be either the very 
+lowest in its branch , meaning furthest away from the source and therefore lowest voltage, or all the percentage difference 
+that come after it in the branch have to be 100 percent. 
+All the test are run in the “pypower\_constraint\_test.py” file. 
+
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{unconstrained.jpg}
+\caption{Pypower model without constraints}
+\label{un_constrained_pypower}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width =\textwidth]{constrained.jpg}
+\caption{Pypower model with constraints}
+\label{constrained_pypower}
+\end{figure}
+\clearpage
+
+\section{Experimental Setup and Experiments}
 \subsection{Basic setup}
 In this chapter the basic experimental setup will be explained. First the input, that is needed to run the model 
 and the time frame for the model is stated. Then the data that will generally be output by the model will be explained 
 and finally how this output will be interpreted will be explained. 
 \subsubsection{Input}
-Each run of the model will consist of six months of simulation in 15 minute intervals. The global variables that are fixed
-over all the experiments and have to be provided are the following. 
-\begin{enumerate}
- \item \begin{alltt}time\end{alltt}
- \item \begin{alltt}average_arrival_time = 72 (6pm)\end{alltt}
- \item \begin{alltt}average_leaving_time = 32 (8am) \end{alltt}
- \item \begin{alltt}sd_average = 1 (quarter of an hour)\end{alltt}
- \item \begin{alltt}average_battery_drain = 10 \end{alltt}
- \item \begin{alltt}sd_average_battery_drain = 2\end{alltt}
- \item \begin{alltt}average_soc = 20 \end{alltt}
- \item \begin{alltt}sd_average_soc 2\end{alltt}
- \item \begin{alltt}soc_max_gloabl = 40\end{alltt}
- \item \begin{alltt}action_options = [0,1,2,3,4,5]\end{alltt}
- \item \begin{alltt}t_begin_options = [1,2,.....,96]\end{alltt}
- \item \begin{alltt}t_end_options = [1,2,.....,96]\end{alltt}
- \item \begin{alltt}soc_threshold_options = [  0.,   5.,  10.,  15.,  20.,  25.,  30.,  35.,  40.]\end{alltt}
- \item \begin{alltt}voltage_options = [ 0.96,  0.97,  0.98,  0.99,  1.  ]\end{alltt}
-\end{enumerate}
+Each run of the model will consist of six months of simulation in 15 minute intervals. There are three different kinds of 
+global variables. 
+Some of the variables have to be preset and are fixed throughout all the experiments, others emerge while the 
+model is running and some have to be preset but differ in between the experiments.
 
-There are other global variables which will be initialized to an empty value but will emerge from the model.
+\begin{enumerate}
+ \item The global variables that are fixed over all the experiments and have to be provided are the following. 
+ \begin{enumerate}
+  \item \begin{alltt}run\_id\end{alltt}
+  An ID to identify each individual run.
+ \item \begin{alltt}time:\end{alltt} 
+ Global time in total number of 15 minute steps.
+ \item \begin{alltt}average_arrival_time = 72 (6pm)\end{alltt}
+ The time, in 15 minute steps from midnight, the average electric vehicle arrives at home and is connected to the grid. 
+ \item \begin{alltt}average_leaving_time = 32 (8am) \end{alltt}
+ The time, in 15 minute steps from midnight, the average electric vehicle leaves from home and is disconnected from the grid.
+ \item \begin{alltt}sd_average = 1 (quarter of an hour)\end{alltt}
+ The standard deviation within the arrival and and leaving times of electric vehicles.
+ \item \begin{alltt}average_battery_drain = 10 \end{alltt}
+ Average amount of battery charge that is used during one drive. The battery is always update when the battery is connected back to the 
+ grid. 
+ \item \begin{alltt}sd_average_battery_drain = 2\end{alltt}
+ The standard deviation of how much the battery charge that is used during one drive.
+ \item \begin{alltt}average_soc = 20 \end{alltt}
+ The average of state of charge to which the agents battery is initialized, in kWh. 
+ \item \begin{alltt}sd_average_soc = 2\end{alltt}
+ The standard deviation of the state of charge, the agents battery is being initialized.  
+ \item \begin{alltt}soc_max_gloabl = 40\end{alltt}
+ Maximum amount of energy a battery can hold in kWh. 
+ \item \begin{alltt}action_options = [0,1,2,3,4,5]\end{alltt}
+ The pool of action options, in kW, from which the rules can be made. So there are theoretically 6 different actions the agent can take. 
+ Zero, the first entry in this array is simply saying that the agent does not charge at all, while 5 kW would be the maximum amount 
+ of energy the agents can draw from the grid.
+ \item \begin{alltt}t_begin_options = [1,2,.....,96]\end{alltt}
+ The pool of beginning time options, in number of 15 minute steps from midnight, from which the rules can be made. The agents can 
+ theoretically choose any time, within every day to define the beginning of a time interval.
+ \item \begin{alltt}t_end_options = [1,2,.....,96]\end{alltt}
+ The pool of end time options, in number of 15 minute steps from midnight, from which the rules can be made. The agents can 
+ theoretically choose any time, within every day to define the end of a time interval.
+ \item \begin{alltt}soc_threshold_options = [0,5,10,15,20,25,30,35,40]\end{alltt}
+ The pool of state of charge threshold options, in kWh, from which the rules can be made. The agents can choose the state of charge 
+ threshold, in 5 kWh steps from 0, meaning completely empty, to 40, meaning completely full. 
+ \item \begin{alltt}voltage_options = [ 0.96,  0.97,  0.98,  0.99,  1.0  ]\end{alltt}
+ The pool of voltage threshold options ,in  per unit, from which the rules can be made. The agents can set voltage thresholds in their 
+ rules in 0.1 steps from 0.96 to 1.0. 
+\end{enumerate}
+\item
+The following global variable emerges from the model run but has to be initialized at the beginning of the model run. 
 \begin{enumerate}
  \item \begin{alltt}institutional_rule\end{alltt}
+ This is the institutional rule, it is structurally the same as the individual rule but applies to all the agents.
 \end{enumerate}
-
+\item
 There are also global variables which will be defined within the specific experiments and are therefore mentioned later in the experimental part. Those variables mostly deal 
 with how the agents come up with rules and how they vote on rules. 
 \begin{enumerate}
- \item \begin{alltt}random_change\end{alltt}
+ \item \begin{alltt} random_change\end{alltt}
+ The variable defining the probability of an agent coming up with a new rule based on randomly choosing the parameters that define the rule.
  \item \begin{alltt}copy_best_change\end{alltt}
+ The variable defining the probability of an agent coming up with a new rule based on copying the best performing agents rule.
  \item \begin{alltt}learn_change\end{alltt}
- \item \begin{alltt}institutional_success_rate\end{alltt}
+ The variable defining the probability of an agent coming up with a new rule based on its own memory and experience.
+ \item \begin{alltt}institutional_acceptance_threshold\end{alltt}
+ Defines the threshold for an institution to stay an institution. An institutional rule only stays an institutional rule
+ if the proportion of the agent accepting the rule into their memory is higher than the  institutional\_acceptance\_threshold
  \item \begin{alltt}copy_all\end{alltt}
+ Sets the neighborhood configuration of the model. This influences where the agents look for best solutions. If this values is set to 
+ ``vertical'' the agents only look for a best solution in the branch they are in. If this value is set to ``horizontal'' the 
+ agents only look for best solutions the level they are in. If this is set to ``all'' they look at the behavior of all the agents.
  \item \begin{alltt}majority_vote\end{alltt}
+ Sets whether or not the agents do simple majority voting or borda count voting. 
 \end{enumerate}
-
+\end{enumerate}
 \subsubsection{Output}
 The output of each experiment is written to a comma separated files(.csv).To evaluate the different runs the following 
-variables are written to the output file for each time step. \\
-To keep track of time and to identify each run. 
+variables are written to the output file for each time step. There are three parts to the output. The first part is simply needed 
+to keep  track of the different runs and the time within the model runs. The second part is composed of the different parameters, which 
+define the specific experiments. The third part is information about the well being of the agents and the \\
+\begin{enumerate}
+\item To keep track of time and to identify each run. 
 \begin{enumerate}
  \item run\_id
  \item time
 \end{enumerate}
 
-Part of the output of each experiment has to be the the input variables that defined the exact experiment.
+\item Parameters defining the exact experiment.
 \begin{enumerate}
  \item random\_change
  \item copy\_best\_change
  \item learn\_change
  \item copy\_all
- \item institutional\_success\_rate
+ \item institutional\_acceptance\_threshold
  \item majority\_vote
 \end{enumerate}
 
-The output is also  defined by the question that needs to be answered. What is of interest in the model is how and 
+\item The output is also  defined by the question that needs to be answered. What is of interest in the model is how and 
 if the model solves the common pool resource problem. The tragedy of the commons in this case is that some agents are 
 not able to charge sufficiently. Therefore the state of charge of the battery is kept track of for each agent.
+
+
 \begin{enumerate}
  \item agent1\_soc
  \item ...
  \item agent24\_soc
-\end{enumerate}
-
-The institutional rule, how quickly it changes over time and how frequently it fails gives insight into how the 
-agents try to solve the tragedy of the commons. The institutional rule is split in its 6 parts to make it easier to write
-to and read from the output file. 
-\begin{enumerate}
  \item institutional\_rule = [inst\_rule1,... inst\_rule6]
  \item voting
 \end{enumerate}
+\begin{comment}
+\item The institutional rule, how quickly it changes over time and how frequently it fails gives insight into how the 
+agents try to solve the tragedy of the commons. The institutional rule is split in its 6 parts to make it easier to write
+to and read from the output file. 
+\end{comment}
 
-The exact structure of the output and how it will be done in detail will be explained in the appendix.
+
+\end{enumerate}
+
 
 \subsection{Performance indicators}
 The output will be evaluated using the statistical tool R. In this section the properties which are desirable 
 are quickly explained and then a list of performance indicators, that help in looking for these properties is given.\\
+
+\subsubsection{Stability}
 The model is only useful if the agents find a stable solution. If the agents cannot find a rule ,which they agree on,
 the results will fluctuate in between weeks and the agents do not work reliably. Ideally the agents would vote on an 
 institutional rule after an initial phase of exploration and then only make minor changes to the rule so that 
@@ -892,18 +1033,28 @@ the results stay similar over the following weeks.\\
  two months of the model run. 
 \end{enumerate}
 
-Secondly the model describes a common pool resource, therefore looking at the average performance of the agents 
-is not useful for judging if the agents solved the cpr problem. Therefore the focus has to be on the weakest agent 
-in the model. Looking at the average state of charge of the weakest agent in the model is an indicator of 
-how well it performs but this is however still a blunt tool. It is better to define events within the model which relate 
+\subsubsection{Performance}
+The model describes a common pool resource. A common pool resource system has two parts, the resource itself and the agents, 
+which benefit from using the resource. When evaluating a solution to this problem, both have to be looked at. But, 
+measuring one value that is representative of the state of the resource is hard, since the resource is distributed itself.
+However there is a way of 
+\\
+
+
+
+
+Looking at the average state of charge of an agent in the model is an indicator of 
+how well it performs. But this is a rather blunt tool, because it does not take into account the effect a certain 
+state of charge has on a household. 
+Therefore it is better to define events within the model which relate 
 to the real world of electric vehicles. An event like ,an agent not being able to fully charge the electric vehicle 
 within one week or an agent not being able to charge the electric vehicle sufficiently, 
 meaning that the state of charge of its battery drops to zero, is an event that has meaning in the real world and can 
 be identified in the model output. Further it can also be said that an agent not being able to charge sufficiently is a
 much worse event than an agent not being able to charge to 100\%.
 \begin{enumerate}
- \item \textbf{Average SOC:}\\
- Average state of charge of the weakest agent in situations when there is an institutional rule in place.
+ \item \textbf{Average SOC of all of the EVs:}\\
+ Average state of charge of all the agents in situations when there is an institutional rule in place.
  \item \textbf{Frequency of weak failures:}\\
  How often in one run it occurs that 
  an agent cannot charge to 100 \% in a situations when there is an institutional rule in place. For this each model run 
@@ -934,12 +1085,12 @@ considered a failure based on the frequency of failure of the institutional rule
 \end{comment}
 
 \subsection{Hypotheses}
-In this chapter some model specific hypotheses are explained. They are supposed to make insight into how the model itself 
+In this section some model specific hypotheses are explained. The Hypotheses are intended to make insight into how the model itself 
 functions  and do not directly contribute to answering the overall research question.To make it easier to understand 
 them, one should keep the performance indicators defining terms like  stability, better or worse in the model context, in mind.\\ 
 \begin{enumerate}
  \item \textbf{Behavioral Hypotheses} \begin{enumerate}
-                                       \item \textbf{By increase the copying behavior the model performs worse}\\
+                                       \item \textbf{By increasing the copying behavior the model performs worse}\\
                                        Rules are evaluated by each agent individually. Rules which are best for the 
                                        individual are bad for the system as a whole. Those rules are problematic.
                                        When more agents copy the rules from the best performing agent these problematic 
@@ -958,14 +1109,14 @@ them, one should keep the performance indicators defining terms like  stability,
 					   representative of the actual preferences of the agents. This way rules which 
 					   are not best for most but good for all are more likely to be elected and thus
 					   the model performs better. 
-					  \item \textbf{A high institutional success rate makes the model unstable.}\\
-					  The institutional success rate is the percentage of agents which have to be satisfied 
+					  \item \textbf{A high institutional acceptance threshold makes the model unstable.}\\
+					  The institutional acceptance threshold the percentage of agents which have to be satisfied 
 					  by an institutional rule to continue the voting. If the percentage becomes too high 
 					  no rules will be able to be good enough. The model will jump between institutional 
 					  and personal rule and not be stable.
-					  \item \textbf{A low institutional success rate makes the model perform worse.}\\
-					  The institutional success rate is the percentage of agents which have to be satisfied by 
-					  an institutional rule to continue the voting.  If this rate is too low the model will 
+					  \item \textbf{A low institutional acceptance threshold makes the model perform worse.}\\
+					  The institutional acceptance threshold is the percentage of agents which have to be satisfied by 
+					  an institutional rule to continue the voting.  If this threshold is too low the model will 
 					  continue voting even if the set of rules to vote on is too limited to come
 					  up with an adequate solution. The model will perform worse because what is 
 					  seen as satisfactory is set too low. 
@@ -1062,7 +1213,7 @@ The variables which are of interest are the variables which influence how the ag
 
 \begin{enumerate}
  \item \begin{alltt}majority_vote = [True, False]\end{alltt}
- \item \begin{alltt}institutional_success_rate = [10 \%, 30 \%, 50 \%, 80\% ,100\%] \end{alltt}
+ \item \begin{alltt}institutional_acceptance_threshold = [10 \%, 30 \%, 50 \%, 80\% ,100\%] \end{alltt}
 \end{enumerate}
 Similar to experiment 1, the hypotheses will be accepted based on increase/decrease of the number of two failures.
 
@@ -1074,7 +1225,7 @@ are based on the results of experiments one and two.
 \begin{enumerate}
  \item \begin{alltt}majority_vote = True\end{alltt}
  \item \begin{alltt}copy_all = best(copy_all)\end{alltt}
- \item \begin{alltt}institutional_success_rate = best(insitutional_success_rate)\end{alltt}
+ \item \begin{alltt}institutional_acceptance_threshold = best(institutional_acceptance_threshold)\end{alltt}
 \end{enumerate}
 
 The variables which are of interest are the variables which influence the individual behavior of the agents. 
@@ -1799,6 +1950,7 @@ amount of power that can be increased on this level. \\
 The verification of the model is done in three steps. The functions that the agent can execute by itself
 are verified, then the functions that only work by interacting with other agents or other parts of the
 model are verified and finally the pypower model, in particular the constraints. 
+In the following two lists of all the functionalities that were tested are given.
 \subsection{Verification of Functions}
 Each function and how it was tested will shortly be explained. 
 \subsubsection{Verification of simple functions}
@@ -1912,43 +2064,7 @@ Each function and how it was tested will shortly be explained.
  in the election matrix. The k-means clustering algorithm was not tested since it is a function of the numpy python package.
 \end{enumerate}
 
-\subsection{Verification of Pypower model}
-The functions that are to be verified are the following. 
-\begin{enumerate}
- \item The dispatchable loads are \begin{enumerate}
-                                   \item changed in such a way that  the voltage at each node is 
-                                   always above a specific voltage threshold
-                                   \item not changed if the voltage is already above the specific voltage threshold
-                                   \item changed first at the nodes with the highest voltage in the branch
-                                  \end{enumerate}
 
-\end{enumerate}
-To verify this two pypower models are initialized one with and  one without a voltage constraint. Both models are 
-run 20 times. Each time a random dispatchable load is applied to the different node points. Within each run the 
-dispatchable loads of both models are set to the same values. Among other things the voltage is kept track of and compared. 
-The two graphs below show the minimum voltage in each branch. The red line indicates the voltage threshold.  In the
-top graph the unrestricted load causes the voltage to drop below the voltage threshold, in the bottom graph 
-the minimum voltage seems to be bound to the red line while the points above the line appear to be unchanged. 
-This is confirmed by looking at the dispatchable load in the branches which had a minimum voltage above the threshold
-in the unconstrained case. In those cases the dispatchable loads of both models were exactly equal. To check if the order
-in which the loads are cut is correct, the percentage of change between the constrained and unconstrained case is checked
-for each branch. If  at any node the change is more than 0 and below 100 percent, this node has to be either the very 
-lowest in its branch , meaning furthest away from the source and therefore lowest voltage, or all the percentage difference 
-that come after it in the branch have to be 100 percent. 
-All the test are run in the “pypower\_constraint\_test.py” file. 
-
-
-\begin{figure}[!ht]
-\includegraphics[width =\textwidth]{unconstrained.jpg}
-\caption{Pypower model without constraints}
-\label{un_constrained_pypower}
-\end{figure}
-
-\begin{figure}[!ht]
-\includegraphics[width =\textwidth]{constrained.jpg}
-\caption{Pypower model with constraints}
-\label{constrained_pypower}
-\end{figure}
 \newpage
 \section{Pseudo Code}
 \begin{enumerate}
