@@ -34,6 +34,47 @@ function_average_t_all <- function(df) {
 }
 
 
+function_average_t_near <- function(df) {
+        averages <- c()
+        for (k in c(1:100)){
+                untergruppe <- df[[k]]
+                summe <- 0
+                counter <- 0
+                #print(untergruppe)
+                for (i in c(1)){
+                        agent_name <- paste("agent",i,"_soc", sep="")
+                        index <- which(colnames(untergruppe)==agent_name)
+                        summe <- summe + sum(untergruppe[[index]])
+                        counter <- counter + length(untergruppe[[index]])
+                }
+                #print(summe)
+                #print(counter)
+                averages <- c(averages, summe/counter)
+        }
+        return(averages)
+}
+
+
+function_average_t_far <- function(df) {
+        averages <- c()
+        for (k in c(1:100)){
+                untergruppe <-df[[k]]
+                summe <- 0
+                counter <- 0
+                #print(untergruppe)
+                for (i in c(6)){
+                        agent_name <- paste("agent",i,"_soc", sep="")
+                        index <- which(colnames(untergruppe)==agent_name)
+                        summe <- summe + sum(untergruppe[[index]])
+                        counter <- counter + length(untergruppe[[index]])
+                }
+                #print(summe)
+                #print(counter)
+                averages <- c(averages, summe/counter)
+        }
+        return(averages)
+}
+
 function_average_f <- function(df) {
         for (k in c(1:100)){
                 untergruppe <- subset(df[[k]],df[[k]]$voting == "False")
@@ -195,6 +236,28 @@ function_weak_failure_no <- function(df){
         return(weak_fails)
 }
 
+function_get_number_voltagerules <- function(df)
+{
+        voltage_rules <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                voltage_rules <- c(voltage_rules,sum(as.numeric(untergruppe$inst_rule1==1)))
+        }
+        return(voltage_rules)
+}
+
+function_get_number_timerules <- function(df)
+{
+        time_rules <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                time_rules <- c(time_rules,sum(as.numeric(untergruppe$inst_rule1==2)))
+        }
+        return(time_rules)
+}
+#----------------------------------------------------------------------------------------------------
 
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
 runs <- c(1,2,3)
@@ -202,11 +265,19 @@ hard_failures <- c()
 weak_failures <- c()
 averages <- c()
 
+
 hard_failures_no <- c()
 weak_failures_no <- c()
 averages_no <- c()
 averages_all <- c()
 averages_all_no <- c()
+
+averages_near <- c()
+averages_far <- c()
+
+number_voltage_rules <- c()
+number_time_rules <- c()
+
 for (i in runs) {
         folder <- paste(main_folder,"/exp_a_",i,sep="")
         data_frames <- list()
@@ -225,40 +296,77 @@ for (i in runs) {
         weak_failures_no <- c(weak_failures_no,function_weak_failure_no(data_frames))
         averages_no <- c(averages_no,function_average_f(data_frames))
         averages_all_no <- c(averages_all_no, function_average_f_all(data_frames))
+        
+        
+        averages_near <- c(averages_near,function_average_t_near(data_frames))
+        averages_far <- c(averages_far,function_average_t_far(data_frames))
+        
+        number_voltage_rules <- c(number_voltage_rules,function_get_number_voltagerules(data_frames))
+        number_time_rules <- c(number_time_rules,function_get_number_timerules(data_frames))
 
 }
 
+indicator <- c()
+for (k in c(1:length(number_time_rules)))
+{
+        if (number_time_rules[k] > number_voltage_rules[k])
+        {
+                indicator <- c(indicator,"Time-Rule")
+        }else
+        {
+                indicator <- c(indicator,"Voltage-Rule")
+        }
+}
+df_2 <- data.frame(cbind(hard_failures,indicator))
+df_2$indicator <- as.factor(df_2$indicator)
+rule_colored_hard_failure <- ggplot(df_2,aes(hard_failures,fill=indicator)) + 
+        geom_histogram() +
+        ggtitle("Hard Failures colored by Rule") 
+ggsave(rule_colored_hard_failure , file = "../latex/hard_failure_colored_first_look.eps") 
 
-averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
-        ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
-averages_no_figure <- qplot(averages_no,geom = "histogram",binwidth = 1) +
-        ggtitle("Average SOC without Institutional Rule") + xlab("Average SOC")
 
-ggsave(averages_figure , file = "../latex/averages_first_2.jpg")
-ggsave(averages_no_figure , file = "../latex/averages_no_first_2.jpg") 
-        
 
-averages_all_figure <- qplot(averages_all,geom = "histogram",binwidth = 1) +
-        ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
 
-averages_all_no_figure <- qplot(averages_all_no,geom = "histogram",binwidth = 1) +
-        ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
-ggsave(averages_all_figure , file = "../latex/average_all_first_2.jpg")
-ggsave(averages_all_no_figure , file = "../latex/average_all_no_first_2.jpg")
-
-weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
-        ggtitle("Number of weak failures with Institutional Rule") + xlab("Number of weak Failures")
-weak_no_figure <- qplot(weak_failures_no,geom = "histogram",binwidth = 10) +
-        ggtitle("Number of weak failures without Institutional Rule") + xlab("Number of weak Failures")
-ggsave(weak_figure , file = "../latex/weak_first_2.jpg")
-ggsave(weak_no_figure , file = "../latex/weak_no_first_2.jpg")
-
-hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
-        ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
-hard_no_figure <- qplot(hard_failures_no,geom = "histogram",binwidth = 1) + 
-        ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
-ggsave(hard_figure , file = "../latex/hard_first_2.jpg")
-ggsave(hard_no_figure , file = "../latex/hard_no_first_2.jpg")
+# averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
+# averages_no_figure <- qplot(averages_no,geom = "histogram",binwidth = 1) +
+#         ggtitle("Average SOC without Institutional Rule") + xlab("Average SOC")
+# 
+# ggsave(averages_figure , file = "../latex/averages_first_2.eps")
+# ggsave(averages_no_figure , file = "../latex/averages_no_first_2.eps") 
+#         
+# 
+# averages_near_figure <- qplot(averages_near,geom = "histogram",binwidth = 1) +
+#         ggtitle("Average SOC") + xlab("Average SOC")
+# ggsave(averages_near_figure , file = "../latex/average_near_first_2.eps")
+# 
+# averages_far_figure <- qplot(averages_far,geom = "histogram",binwidth = 1) +
+#         ggtitle("Average SOC") + xlab("Average SOC")
+# ggsave(averages_far_figure , file = "../latex/average_far_first_2.eps")
+# 
+# 
+# averages_all_figure <- qplot(averages_all,geom = "histogram",binwidth = 1) +
+#         ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
+# 
+# averages_all_no_figure <- qplot(averages_all_no,geom = "histogram",binwidth = 1) +
+#         ggtitle("Average SOC without Institutional Rule") + xlab("Average SOC")
+# 
+# ggsave(averages_all_figure , file = "../latex/average_all_first_2.eps")
+# ggsave(averages_all_no_figure , file = "../latex/average_all_no_first_2.eps")
+# 
+# weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
+#         ggtitle("Number of weak failures with Institutional Rule") + xlab("Number of weak Failures")
+# weak_no_figure <- qplot(weak_failures_no,geom = "histogram",binwidth = 10) +
+#         ggtitle("Number of weak failures without Institutional Rule") + xlab("Number of weak Failures")
+# ggsave(weak_figure , file = "../latex/weak_first_2.eps")
+# ggsave(weak_no_figure , file = "../latex/weak_no_first_2.eps")
+# 
+# hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
+# hard_no_figure <- qplot(hard_failures_no,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
+# ggsave(hard_figure , file = "../latex/hard_first_2.eps")
+# ggsave(hard_no_figure , file = "../latex/hard_no_first_2.eps")
 
 #----------------------------------t_test---------------------------------------
 t.test(averages, averages_no, "less", conf.level= 0.95)

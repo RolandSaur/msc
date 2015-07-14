@@ -1,11 +1,20 @@
 library(ggplot2)
 
 
-function_average <- function(data_frame) {
+function_average_far <- function(data_frame) {
         averages <- c()
         for (k in c(1:100)){
                 untergruppe <- subset(data_frame, data_frame$run_id == k)
                 averages <- c(averages, mean(untergruppe$a6))
+        }
+        return(averages)
+}
+
+function_average_near <- function(data_frame) {
+        averages <- c()
+        for (k in c(1:100)){
+                untergruppe <- subset(data_frame, data_frame$run_id == k)
+                averages <- c(averages, mean(untergruppe$a1))
         }
         return(averages)
 }
@@ -88,17 +97,31 @@ filename <- "/home/saur/Documents/master/output_data/greedy_folder/greedy_runs.c
 data_frame <- read.csv(filename, header = TRUE, sep = ",")
 
 averages <- function_average_all(data_frame)
+averages_near <- function_average_near(data_frame)
+averages_far <- function_average_far(data_frame)
+
 hard_failures <- function_hard_failure(data_frame)
 weak_failures <- function_weak_failure(data_frame)
 
 averages_figure <- qplot(averages,geom = "histogram",binwidth = 0.5) + 
         ggtitle("Average SOC") + xlab("Average SOC")
-ggsave(averages_figure , file = "../latex/averages_first_greedy.jpg")
+ggsave(averages_figure , file = "../latex/averages_first_greedy.eps")
 
 weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
         ggtitle("Number of weak failures with Institutional Rule") + xlab("Number of weak Failures")
-ggsave(weak_figure , file = "../latex/weak_first_greedy.jpg")
+ggsave(weak_figure , file = "../latex/weak_first_greedy.eps")
 
 hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 50) + 
         ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
-ggsave(hard_figure , file = "../latex/hard_first_greedy.jpg")
+ggsave(hard_figure , file = "../latex/hard_first_greedy.eps")
+
+
+
+averages_figure_near <- qplot(averages_near,geom = "histogram",binwidth = 0.5) + 
+        ggtitle("Average SOC") + xlab("Average SOC")
+ggsave(averages_figure_near , file = "../latex/averages_first_greedy_near.eps")
+
+
+averages_figure_far <- qplot(averages_far,geom = "histogram",binwidth = 0.5) + 
+        ggtitle("Average SOC") + xlab("Average SOC")
+ggsave(averages_figure_far , file = "../latex/averages_first_greedy_far.eps")

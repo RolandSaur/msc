@@ -1037,12 +1037,15 @@ the results stay similar over the following weeks.\\
 The model describes a common pool resource. A common pool resource system has two parts, the resource itself and the agents, 
 which benefit from using the resource. When evaluating a solution to this problem, both have to be looked at. But, 
 measuring one value that is representative of the state of the resource is hard, since the resource is distributed itself.
-However there is a way of 
-\\
-
-
-
-
+However there is a way of getting some insight about how well the resource is doing by looking at the weakest agents in the
+system. To illustrate this,
+imagine having a coca cola vending machine, which is replenished every hour with X cans, and there is a set of students which 
+use the vending machine every hour in a preset order. The machine always runs out of cola cans and some students do not get enough 
+cans for the day. You have absolutely no way of looking into vending machine therefore you cannot monitor the stock of cans 
+directly. But since the students always use the vending machine in the same order, you can say something about how well
+you manage access to the vending machine by looking at how well the last student is doing. A similar thing is done in this model. 
+It is hard to observe the resource itself but by looking at the weakest agents, something can be said about how well the resource is 
+managed.\\
 Looking at the average state of charge of an agent in the model is an indicator of 
 how well it performs. But this is a rather blunt tool, because it does not take into account the effect a certain 
 state of charge has on a household. 
@@ -1053,6 +1056,8 @@ meaning that the state of charge of its battery drops to zero, is an event that 
 be identified in the model output. Further it can also be said that an agent not being able to charge sufficiently is a
 much worse event than an agent not being able to charge to 100\%.
 \begin{enumerate}
+ \item \textbf{Average SOC of the weakest agent:}\\
+ Average state of charge of all the agents in situations when there is an institutional rule in place.
  \item \textbf{Average SOC of all of the EVs:}\\
  Average state of charge of all the agents in situations when there is an institutional rule in place.
  \item \textbf{Frequency of weak failures:}\\
@@ -1246,6 +1251,9 @@ are fixed. Further the initial active rule of each agent has to be set to a gree
  \item  \begin{alltt}copy_best_change = 0.3\end{alltt}
  \item  \begin{alltt}learn_change = 0.2\end{alltt}
  \item  \begin{alltt}active_rule = [1,1,20,5,5,0]\end{alltt}
+ This is the rule which is used to initialize the agents in this experiment. The first value sets that the rule is a 
+ voltage dependent rule. The fourth and fifth entry are set to 5 to make sure that this rule commands the agent always to charge 
+ at the maximum of 5 kW
  \item  \begin{alltt}copy_all = best(copy_all)\end{alltt}
  \item  \begin{alltt}institutional_success_rate = best(insitutional_success_rate)\end{alltt}
 \end{enumerate}
@@ -1309,17 +1317,17 @@ rules were selected more randomly and therefore performed worse when they were r
 
 \clearpage
 \section{Results and Discussion}
-The overall question that should be answered by this model is if distributed software agents can organize in a way so that 
+The overall question that should be answered by this model is whether distributed software agents can organize in a way so that 
 every electric vehicle can charge sufficiently charge while being constrained by a finite grid. \\
 The data will be examined using the statistical tool R. Histograms and box-plots will be used to get a broad first look at the data. 
 Statistical tests like the T-test will be used where useful and possible.\\
-In the following chapter first a broad look at the model output and a comparison between the model output and a uncontrolled or 
+In the following chapter first a broad look at the model output and a comparison between the model output and an uncontrolled or 
 models without institutional rules is given. Then the results of the experiments are discussed and finally a summary of the results is 
 given.
 \subsection{First Look}
 To evaluate the model on a first glance the results from the first experiment are used because of simplicity reasons. The 
 model will be compared to a model run, in which there is no control and every agent tries to charge as much as possible as long as 
-its battery is not completely full. This is to see if the switch to software agents is in itself beneficial to the overall situatio.
+its battery is not completely full. This is to see if the switch to software agents is in itself beneficial to the overall situation.
 In a second step the times when there is an institutional rule will be compared to the times when there is no institutional 
 rule in place and the agents are free to develop their rules by themselves. This is to show if the introduction of institutions has an 
 effect on the performance of the agents. 
@@ -1329,20 +1337,114 @@ To see how the model would behave in an uncontrolled scenario, in which every ag
 is run with simplified agents which only have one action to charge at 5kW. The results from these model runs are then compared to the 
 results from experiment 1.\\
 Figures \ref{inst_averages_all_1} and \ref{averages_uncontrolled} show the distribution of 
-average SOC for controlled and uncontrolled model runs, respectively. It is already clear from the graphs that the average 
-SOC for an uncontrolled model run is about 8kWh less than for controlled runs with institutional rules.  \\
+average SOC for controlled and uncontrolled model runs, respectively. 
+This is the average state of charge(SOC) for all of the agents including the agents, which have plenty of access to the resource. 
+It is already clear from the graphs that the average 
+SOC for an uncontrolled model run is about 8kWh less than for controlled runs with institutional rules.But this is just a first indication,
+because the agents are heterogeneous in their access to the resource, agents closer to the resource have easier access than agents
+further from the main transformer. So in the uncontrolled situation there should be agents which do very well and some agent which  
+perform very badly. When managing the common pool resource, the agents which do very well should be restricted to benefit the agents 
+which do very poorly. Therefore in the next step the average state of charge for the weakest and strongest agents are compared in the 
+scenarios with and without software agents.\\
+\newpage
 \begin{figure}[!ht]
-\subfigure[Average SOC with Institutional Rule]{
+\subfigure[Average SOC]{
 \includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
 \label{inst_averages_all_1}}
 \subfigure[Average SOC uncontrolled scenario]{
-\includegraphics[width = 0.45\textwidth]{averages_first_greedy.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_first_greedy.eps}
 \label{averages_uncontrolled}}
 \caption{Average State of Charge}
 \label{averages_unconstrained_a}
 \end{figure}
-Graphs for the other two performance indicators are given in the appendix, but paint a similar picture that an uncontrolled grid would 
-cause many electric vehicles to fail to charge sufficiently. 
+
+Figure \ref{averages_unconstrained_near} shows the average SOC for the agents which are closest to the source and should therefore 
+perform worse in the case when software agents manage the grid. Surprisingly the agents are not significantly worse off when the 
+grid is managed. The lowest average SOC is a bit higher in the unconstrained scenario. 
+This is an indication that constraining the actions of agents by managing the grid with software agents has little negative 
+effect on those agents, which are not naturally constrained by the grid itself.\\
+\begin{figure}[!ht]
+\subfigure[Average SOC ]{
+\includegraphics[width = 0.45\textwidth]{average_near_first_2.eps}
+\label{inst_averages_near_1}}
+\subfigure[Average SOC uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{averages_first_greedy_near.eps}
+\label{averages_uncontrolled_near}}
+\caption{Average State of Charge of nearest Agent}
+\label{averages_unconstrained_near}
+\end{figure}
+The effect of software agents on the SOC of the farthest agents is interesting for two reasons. The farthest agents are those which 
+are first constrained by the grid directly. Therefore they are the most problematic agents. But they also give some insight into 
+the state of the resource, the grid, itself. A low average SOC of those farthest agents would indicate that they do not have access to 
+the grid at most times. This means that the grid is overloaded at those times and the grid is miss-managed. Figure
+\ref{averages_unconstrained_far} shows the SOC of the farthest agents with and without software agents to manage the grid. Without 
+software agents, figure on the right, the SOC is significantly lower. Most of the time it is below 10 kWh, which is not even close to 
+the lowest values in the case when there are software agents, figure on the left. When software agents manage the grid the SOC of the 
+farthest agents is only slightly lower than the SOC of the nearest agents. \\
+This raises the question, how constraining the nearest
+agents in such a small amount can have such a big effect on the farthest agents.
+It is as if there was a lake and some fisherman would take 
+10 fish from the lake per day,while others would get none. The amount would then be limited to 8 fish per day and suddenly 
+the fisherman, who received no fish would be able to get 7 fish from the lake.
+Although this seems like an error in the model, it can 
+be explained by how the model is structured. EVs only discharge when they arrive at home. In the period between leaving home and 
+arriving back at home the state of the battery stays the same. The SOC that is achieved  when the car is leaving is amplified in the 
+average SOC over time, because it stays that way for a longer time period. A change in performance becomes more pronounced. Thus the 
+improvement is significant but not unrealistic. 
+
+\begin{figure}[!ht]
+\subfigure[Average SOC ]{
+\includegraphics[width = 0.45\textwidth]{average_far_first_2.eps}
+\label{inst_averages_far_1}}
+\subfigure[Average SOC uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{averages_first_greedy_far.eps}
+\label{averages_uncontrolled_far}}
+\caption{Average State of Charge of farthest Agent}
+\label{averages_unconstrained_far}
+\end{figure}
+
+As mentioned before the average SOC is not a particularly precise indicator for performance. The two failures actually say something 
+about the effect on the daily lives of people. The average SOC over several weeks is not very important to people. Whether or 
+not the battery is full when leaving the house ,weak failure, or whether the charge is sufficient to get someone to and from work,hard 
+failure, is actually relevant. \\
+For each run the number of times either a weak or a hard failure has occurred is documented. The distributions of the number 
+of failures can then be compared for different scenarios to see the effect, a parameter has on the likelihood of a weak or hard failure
+occurring.\\
+Figure \ref{Failure_uncontrolled_weak} shows two such distributions for two different scenarios. On the left there are 
+software agents controlling the grid and on the right the grid is uncontrolled. The number of weak failures, the cars not being 
+charged fully when leaving the home, ranges from almost zero to a bit over 400 times in 6 months. However when the grid is uncontrolled, 
+the number is above 1000 occurrences in every run. \\
+The case for the number of hard failures, is very similar and can be seen in figure \ref{Failure_uncontrolled_hard}.
+Again the maximum number of failures in the controlled scenario is lower than even the lower end of the scenario without control.\\
+
+\begin{figure}[!ht]
+\subfigure[Weak Failures controlled scenario]{
+\includegraphics[width = 0.45\textwidth]{weak_first_2.eps}
+\label{inst_weak_second_first}}
+\subfigure[Weak Failures Uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{weak_first_greedy.eps}
+}
+\caption{Number of weak Failure in uncontrolled scenario}
+\label{Failure_uncontrolled_weak}
+\end{figure}
+\begin{figure}[!ht]
+\subfigure[Hard Failures controlled scenario]{
+\includegraphics[width = 0.45\textwidth]{hard_first_2.eps}
+\label{inst_hard_second}}
+\subfigure[Hard Failures Uncontrolled scenario]{
+\includegraphics[width = 0.45\textwidth]{hard_first_greedy.eps}
+}
+\caption{Number of Failure in uncontrolled scenario}
+\label{Failure_uncontrolled_hard}
+\end{figure}
+\newpage
+
+In summary the introduction of software agents has a big impact on managing th grid. The average SOC over all agents is increased. There is 
+a redistribution of access from agents which would normally be not constrained to agents  which would normally be very constrained. The 
+negative effects on the normally strong agents is very limited, while the effect on the very constrained agents is very pronounced. 
+When relating the model output to real world events, not being able to charge sufficiently or fully, it becomes visible that the number of
+such events is strongly reduced by the introduction of software agents.
+
 \newpage
 \subsubsection{Comparison with and without an Institutional Rule}
 The effect of the existence of an institutional rule on the performance of the model will be explored next. For 
@@ -1383,7 +1485,7 @@ indicating that the weakest agents perform better when there is an institutional
 \caption{Average State of Charge of weakest agent}
 \label{inst_averages_second}
 \end{figure}
-\newpage
+
 Figures \ref{inst_weak_second} and \ref{no_inst_weakest_second}  show the distribution of the frequency of weak failures  for 
 when there is and when there is no institutional rule that every agent follows, respectively. The number of weak failures in cases
 where there is no institutional  rule spans from 250 and 700. When there is an institutional rule there still is a portion of the 
@@ -1416,11 +1518,31 @@ of an institutional rule reduces the number of electric vehicles that fail to be
 \caption{Number of hard Failure}
 \label{hard_second}
 \end{figure}
+\newpage
+Now that the influence of an institutional rule on the performance has been established, a look at which rules get selected is given. 
+Figure \ref{colored_hard} shows the distribution of the number of hard failures for when there is an institutional rule, color coded 
+by the kind of rule that was predominantly chosen in this run. The red bars are the voltage based rules and the blue bars represent the 
+time based rules. It is very clear that the voltage based rules are much better. Almost all the low failure rate runs occurred with 
+predominantly voltage based rules. One possible explanation for this, is that the variation in the time when electric vehicles arrive at
+home makes it hard to come up with one specific time interval, in which the cars should be constrained. Also the fact that the time
+based rules are more complicated, might make it harder for the agents to find the a suitable rule. There are more parameters and the 
+parameters have a bigger possible range, in time based rules, therefore it is harder to find the precise setting that works well. 
+But if voltage based rules are consistently easier to handle for the agents and therefore produce better results, why 
+
+\begin{figure}
+\centering
+ \includegraphics[width = 0.8\textwidth]{hard_failure_colored_first_look.eps}
+ \label{colored_hard}
+ \caption{Number of hard Failures color coded by Rule}
+\end{figure}
+
 In summary the introduction of an institutional rule that every agent follows increases the performance of the model. The average SOC
 is increased, the benefit for the agents on the lowest level however is more significant than for other agents. The number of times 
 electric vehicles are not able to charge fully or sufficiently is also reduced, although however it seems that it does not always 
-solve the problem. 
-\newpage
+solve the problem.
+
+
+\clearpage
 \subsection{Experiments}
 While the previous part about the initial look on the model was about what the model roughly does, this following part is about 
 how the model works in detail, what does and what does not affect the model performance. For this the results from the 
@@ -2577,17 +2699,7 @@ elsif (copy_all == "vertical")
 
 \clearpage
 \section{Additional Graphs}
-\subsection{First look}
-\begin{figure}[!ht]
-\subfigure[Weak Failures Uncontrolled scenario]{
-\includegraphics[width = 0.45\textwidth]{weak_first_greedy.jpg}
-}
-\subfigure[Hard Failures Uncontrolled scenario]{
-\includegraphics[width = 0.45\textwidth]{hard_first_greedy.jpg}
-}
-\caption{Number of Failure in uncontrolled scenario}
-\label{Failure_uncontrolled}
-\end{figure}
+
 
 \subsection{Experiment 1}
 \begin{figure}[!ht]
