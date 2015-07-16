@@ -1318,29 +1318,37 @@ rules were selected more randomly and therefore performed worse when they were r
 \clearpage
 \section{Results and Discussion}
 The overall question that should be answered by this model is whether distributed software agents can organize in a way so that 
-every electric vehicle can charge sufficiently charge while being constrained by a finite grid. \\
+every electric vehicle can charge sufficiently while being constrained by a finite grid. \\
 The data will be examined using the statistical tool R. Histograms and box-plots will be used to get a broad first look at the data. 
 Statistical tests like the T-test will be used where useful and possible.\\
 In the following chapter first a broad look at the model output and a comparison between the model output and an uncontrolled or 
 models without institutional rules is given. Then the results of the experiments are discussed and finally a summary of the results is 
 given.
 \subsection{First Look}
-To evaluate the model on a first glance the results from the first experiment are used because of simplicity reasons. The 
+To evaluate the model on a first glance the results from the first experiment are used. The 
 model will be compared to a model run, in which there is no control and every agent tries to charge as much as possible as long as 
-its battery is not completely full. This is to see if the switch to software agents is in itself beneficial to the overall situation.
+its battery is not completely full. To achieve this dummy agents are created, which will be called 'greedy agents'. Those greedy 
+agents will simply charge every time, their battery is not full at 5kW.
+\begin{comment}
+This is to see if the switch to software agents is in itself beneficial to the overall situation.
+\end{comment}
 In a second step the times when there is an institutional rule will be compared to the times when there is no institutional 
 rule in place and the agents are free to develop their rules by themselves. This is to show if the introduction of institutions has an 
 effect on the performance of the agents. 
 \subsubsection{Comparison to uncontrolled scenario}
-Firstly the intelligent agents have to be compared to what would happen without a smart grid, to control the charging. 
+In a first step the intelligent agents are being compared to what would happen without a smart grid, to control the charging. 
+
 To see how the model would behave in an uncontrolled scenario, in which every agent tries to charge as much as it can, the model 
 is run with simplified agents which only have one action to charge at 5kW. The results from these model runs are then compared to the 
-results from experiment 1.\\
+results from experiment 1. Experiment 1 is the experiment with the varying neighborhood grouping.\\
 Figures \ref{inst_averages_all_1} and \ref{averages_uncontrolled} show the distribution of 
 average SOC for controlled and uncontrolled model runs, respectively. 
 This is the average state of charge(SOC) for all of the agents including the agents, which have plenty of access to the resource. 
 It is already clear from the graphs that the average 
-SOC for an uncontrolled model run is about 8kWh less than for controlled runs with institutional rules.But this is just a first indication,
+SOC for an uncontrolled model run is about 8kWh less than for controlled runs with institutional rules. This means that on average 
+the agents have more access to the grid, when it is managed by software agents. 
+
+But this is just a first indication,
 because the agents are heterogeneous in their access to the resource, agents closer to the resource have easier access than agents
 further from the main transformer. So in the uncontrolled situation there should be agents which do very well and some agent which  
 perform very badly. When managing the common pool resource, the agents which do very well should be restricted to benefit the agents 
@@ -1430,7 +1438,7 @@ Again the maximum number of failures in the controlled scenario is lower than ev
 \begin{figure}[!ht]
 \subfigure[Hard Failures controlled scenario]{
 \includegraphics[width = 0.45\textwidth]{hard_first_2.eps}
-\label{inst_hard_second}}
+\label{inst_hard_second_prev}}
 \subfigure[Hard Failures Uncontrolled scenario]{
 \includegraphics[width = 0.45\textwidth]{hard_first_greedy.eps}
 }
@@ -1471,7 +1479,7 @@ To make the effect of an institutional rule on the performance of the model clea
 the agents, which have the least chance to get charge in an unregulated scenario. Those agents are the agents on the lowest level ,
 because they are furthest from the source and therefore first to be restricted by the grid.
 The distribution of average state of charge of the agent on the lowest level, with and without an institutional
-rule is displayed in figure \ref{inst_averages_second}. The bin width in both the graphs is the same but the axis are different. 
+rule is displayed in figure \ref{inst_averages_second}. The bin width in both graphs is the same but the axis are different. 
 The highest value indicated in figure \ref{inst_averages} is 80  whereas the highest count indicated in figure \ref{no_inst_averages}
 is 30. Given this it seems like figure \ref{inst_averages} is shifted to the right compared to figure \ref{no_inst_averages},
 indicating that the weakest agents perform better when there is an institutional rule that every agent follows. \\
@@ -1488,11 +1496,12 @@ indicating that the weakest agents perform better when there is an institutional
 
 Figures \ref{inst_weak_second} and \ref{no_inst_weakest_second}  show the distribution of the frequency of weak failures  for 
 when there is and when there is no institutional rule that every agent follows, respectively. The number of weak failures in cases
-where there is no institutional  rule spans from 250 and 700. When there is an institutional rule there still is a portion of the 
+where there is no institutional  rule spans from 250 and 700 per run. When there is an institutional rule there still is a portion of the 
 runs with a high failure number. However the high failure runs only span up to 450 failures in one run and there is a significant 
 portion of the runs which have very few weak failures. This very low failure rate is completely missing in the cases without 
 institutional rules. This shows that the introduction of an institutional rule can, but will not always, reduce the number of times
-electric vehicles cannot charge up to 100 \%. \\
+electric vehicles cannot charge up to 100 \%. The question as to which rules work and which rules seem not to work will be discussed 
+later on. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
 \includegraphics[width = 0.45\textwidth]{weak_first_2.jpg}
@@ -1506,7 +1515,7 @@ electric vehicles cannot charge up to 100 \%. \\
 Figures \ref{inst_hard_second} and \ref{no_inst_hard_second}  show the distribution of the frequency of hard failures  for 
 when there is and when there is no institutional rule that every agent follows, respectively. The number of hard failures spans from
 about 20 to 100 times when there is no institutional rule. Similar to the behavior of the weak failures the maximum 
-number of hard failures is reduced an there is a portion of the runs which experiences very low failure rates. Thus the introduction
+number of hard failures is reduced and there is a portion of the runs which experiences very low failure rates. Thus the introduction
 of an institutional rule reduces the number of electric vehicles that fail to be able to charge sufficiently. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
@@ -1524,7 +1533,7 @@ Figure \ref{colored_hard} shows the distribution of the number of hard failures 
 by the kind of rule that was predominantly chosen in this run. The red bars are the voltage based rules and the blue bars represent the 
 time based rules. It is very clear that the voltage based rules are much better. Almost all the low failure rate runs occurred with 
 predominantly voltage based rules. One possible explanation for this, is that the variation in the time when electric vehicles arrive at
-home makes it hard to come up with one specific time interval, in which the cars should be constrained. Also the fact that the time
+home makes it hard to come up with one specific time intervals, in which the cars should be constrained. Also the fact that the time
 based rules are more complicated, might make it harder for the agents to find the a suitable rule. There are more parameters and the 
 parameters have a bigger possible range, in time based rules, therefore it is harder to find the precise setting that works well. 
 But if voltage based rules are consistently easier to handle for the agents and therefore produce better results, why are there 
@@ -1532,23 +1541,87 @@ still so many runs in which most of the times, time based rules are selected? Th
 vote. Once a time based rule has been selected as an institutional rule, it gets distributed to the agents and into their memory. The 
 next time the agents vote, the time based rule, even if it is a bad rule, would still be likely to stay in their memory. Now many 
 agents report this time based rule as one of their votes, and thus new time based rules are more likely to be selected. The fact that 
-borda count only orders votes in a qualitative but not quantitative way, further enables this. 
-
-\textbf{If an agent has one really great rule and 4 
-rules, which the agents actually regards as poorly, the borda count voting mechanism will see this as equal to having five rules 
-which the agent regards as very similar.} 
-
+borda count only ranks votes in a qualitative but not quantitative way, further enables this. 
+If an agent has three rules in its memory, which it regards as good rules, and two rules which it regards as useless rules, the agent 
+has no way of expressing this in borda count voting. It can only  express a ranking but not the quantitative difference it sees 
+between the first three rules and the last two rules. This way rules, which were able to stick in the memory, have an impact on the 
+voting even if they are seen as bad rules. Why the relatively bad time based rules can be stuck in the memory of the agents, is most 
+likely related to the short time the model is run. The agents are not able to build enough experience to reject every bad rule. \\
 \begin{figure}
 \centering
  \includegraphics[width = 0.8\textwidth]{hard_failure_colored_first_look.eps}
- \label{colored_hard}
  \caption{Number of hard Failures color coded by Rule}
+ \label{colored_hard}
+\end{figure}
+The next step after identifying, which kind of rule works better, is to find out what the rules look like in detail. In the following 
+the voltage rules which were selected as institutional rules are being looked at. Voltage rules consist of four parts, 
+two actions, Action1 and Action2,
+a voltage threshold and a state of charge threshold. The two thresholds make up the condition of the rule. Action1 is selected if 
+the agent's grid node has a voltage below the voltage threshold and its state of charge is above the SOC-threshold. Otherwise Action2 is 
+selected. \\
+Figure \ref{colored_rules} shows a facet grid of the voltage rules that were selected to be institutional rules. From left to right in 
+increasing order Action1 and from top to bottom in increasing order the Action2 parameter is displayed. The bar charts show the number
+of times a specific SOC-threshold has been chosen. The bars themselves are color coded for the different voltage thresholds. \\
+The first things to note is that the agents never use the whole spectrum of possible actions and conditions. Actions for 0, 1 and 5 kW 
+charging are never selected. Neither are conditions for voltage thresholds 0.96 and 1.0 ever selected. 
+The very simple reasons for this is that the agents vote on their rules and for extreme values all of the agents 
+have to move to the extreme. This makes extreme values simply unlikely. While the voting mechanism makes extreme values in general 
+unlikely, the lower possible action values are additionally unlikely, because they would restrict all the agents too much. This is why 
+most of the rules  consist of actions for charging 3 or 4 kW. However when 2kW is selected for Action1, Action2 is most often 4kW and 
+the SOC-threshold is in the upper half of the spectrum. This way all the agents, which have a battery charge below 50\%, get to 
+charge at 4kW irrespectively of the voltage and all those agents, which are above 50\% charge, can only charge at 4kW if the voltage 
+level is above, above meaning less deviation thus better, 0.98. This way the agents which really need to charge get to charge faster 
+while those which have a sufficient state of charge are restricted unless the grid is doing well enough. \\
+When flipping the actions, the conditions also becomes somewhat flipped. The SOC-threshold is dropping very low, and the voltage threshold
+is getting higher, 0.99. 
+
+The drop in SOC-threshold is so that most of the agents can charge at 4kW. When the SOC-threshold becomes very low, the voltage
+threshold becomes the defining condition parameter. 
+The rise in voltage threshold 
+is so that those agents which are very close to the source and therefore often experience only a small voltage deviation, are restricted. 
+So in the end these rules restrict those agents which are very close to the source and those which have an extremely low state of 
+charge. The second group of agents makes very little sense to restrict, but is most likely a byproduct of trying to restrict those 
+agents which normally are the least restricted. 
+
+\begin{figure}
+\centering
+ \includegraphics[width = \textwidth]{rules_voltage_soc_first_look.eps}
+ \caption{Voltage Rules}
+ \label{colored_rules}
 \end{figure}
 
-In summary the introduction of an institutional rule that every agent follows increases the performance of the model. The average SOC
-is increased, the benefit for the agents on the lowest level however is more significant than for other agents. The number of times 
-electric vehicles are not able to charge fully or sufficiently is also reduced, although however it seems that it does not always 
-solve the problem.
+
+Since there are already so many variables, it is very hard to tie performance to specific parameters in one graph. 
+However the same graphs as in 
+figure \ref{colored_rules} can be made from a subset of runs, which are not only all voltage rules ,but also all have a hard failure rate
+below 5 occurrences. From the change that happens in the graph, something can be said about which rules result in a hard failure 
+rate of below 5 per run. Figure \ref{colored_rules_low} is in principle the same graph as figure \ref{colored_rules}, but subsetted for 
+very low failure rates. \\
+The bars for the left bottom and top right corner appear bigger. This can be explained by the change in the y-axis. The y-axis in all 
+the sub-graphs is determined by the subgraph with the highest count numbers, so that the different subgraphs are comparable to each other. 
+The number of rules, for which both actions were 3kW were drastically reduced, thus the scale of the y-axis is changed. This means that 
+the rules which used 3kW charging for both actions, performed worse than those which used 2 and 4kW charging for their actions. The bottom
+left and top right graphs show rules which try to split the agents into two groups, one which has faster charging and one which is more 
+restricted in their charging. Both try to strike a balance between letting agents charge and restricting the agents so that the grid is 
+not overloaded. The bottom left rules achieve this by letting all the low state of charge vehicles charge and restricting those which 
+have a sufficient charge. The top right rules on the other hand restrict most of the agents which are not in a position where the 
+voltage is very close to the nominal voltage. 
+\begin{figure}
+\centering
+ \includegraphics[width = \textwidth]{hard_failure_colored_low_look.eps}
+ \caption{Voltage Rules with low Failure Rate}
+  \label{colored_rules_low}
+\end{figure}
+
+
+In summary the introduction of an institutional rule that every agent follows increases the performance of the model. 
+The average SOC is increased. By introducing institutional rules there is a redistribution of access from the very well 
+performing to the less well performing agents. The negative effects on the strongest agents is much less pronounced and severe than the 
+positive effect on the weakest agents. 
+As a result of this redistribution, the number of times 
+electric vehicles are not able to charge fully or sufficiently is reduced. When the institutional rule is based on a voltage condition
+the agents perform much better. Although voltage based rules are superior, the model sometimes still 
+selects time based rules as institutional rules and sticks with them. 
 
 
 \clearpage
@@ -1561,15 +1634,21 @@ The experiment is about Hypotheses 3a and 3b, dealing with how grouping the agen
 of the model. The hypothesis stated that grouping agents into subsets generally improves the outcome especially grouping them vertically 
 creating heterogeneous groups is beneficial.\\
 Figures \ref{grouping_all}, \ref{grouping_vertical} and \ref{grouping_horizontal} show the distribution of average SOC for the 
-weakest agents for when the agents are grouped into one neighborhood, the agents are grouped vertically or horizontally, respectively. 
-The average SOC does not show any significant difference between the different types of grouping agents.\\
+weakest agents for when the agents are grouped into one neighborhood, the agents are grouped vertically or horizontally, respectively.
+There is no obvious difference between the different ways, agents can be grouped. However there seems to be a slight tendency that 
+grouping has a positive effect. This cannot be said conclusively just by looking at the histograms. 
 In such a situation it is
 useful to further do statistical tests to verify what can be seen in the graphs. Three t-test where done. Two tests 
 comparing the horizontal and vertical grouping to the single group and one test comparing the the vertical and horizontal grouping to each 
-other. Both t-tests comparing to the all in one grouping returned a relatively high p-value (above 0.85) indicating that 
-although it is hard to see, it is likely that grouping agents into subgroups has an effect on the average SOC of the weakest agent.
+other. 
+The two t-tests, which were comparing the horizontal and vertical grouping to the all in one grouping, returned 
+a relatively high p-value (above 0.85).This indicates that 
+although it is hard to see, it is likely that grouping agents into subgroups has an effect on the average SOC of the weakest agent,
+and shows that the grid is managed better when there are separate groups.
 However the third t-test, testing if vertical grouping results in better results, returned a p-value of 0.27, indicating that the 
-hypothesis is not accepted, while the counter hypothesis is also not supported. \\
+hypothesis,that vertical grouping is better than horizontal grouping, is not accepted, 
+while the counter hypothesis is also not supported. Thus grouping the agents in any way makes a statistical 
+significant difference on the average state of charge of the batteries, but no grouping mechanism is superior. \\
 \begin{figure}[!ht]
 \subfigure[All]{
 \includegraphics[width = 0.3\textwidth]{averages_exp_c_1.jpg}
@@ -1606,6 +1685,8 @@ distributions because t-test assumes a certain shape while the data is split int
 In summary grouping the agents into subgroups seems to have a weak effect on the averages state of charge, although it cannot be
 conclusively said that they also reduce the number of failures in a  model run. There also seems to be no significant difference 
 between different kinds of grouping the agents, simply grouping them into subgroups of any kind has a positive effect. 
+Therefore Hypothesis 3a, that grouping itself produces a better outcome, can be accepted while hypothesis 3b, that vertical 
+grouping would create better results because the agents in one group are more heterogeneous, has to be rejected.
 \subsubsection{Experiment 2}
 Experiment 2 is for hypotheses 2a,2b and 2c, about the influence of the voting mechanism and the effect of the institutional success 
 rate. The hypotheses state that using borda count as a voting mechanism improves performance and reducing the institutional success 

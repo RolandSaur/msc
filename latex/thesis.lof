@@ -37,89 +37,91 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Institutional Rule}}}{44}{figure.19}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {No Institutional Rule}}}{44}{figure.19}
 \contentsline {figure}{\numberline {20}{\ignorespaces Number of hard Failures color coded by Rule}}{46}{figure.20}
-\contentsline {figure}{\numberline {21}{\ignorespaces Neighborhood configurations}}{47}{figure.21}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{47}{figure.21}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{47}{figure.21}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{47}{figure.21}
-\contentsline {figure}{\numberline {22}{\ignorespaces Effect of Neighborhood configurations on hard failure rate}}{48}{figure.22}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{48}{figure.22}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{48}{figure.22}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{48}{figure.22}
-\contentsline {figure}{\numberline {23}{\ignorespaces Average State of Charge of weakest agent}}{49}{figure.23}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{49}{figure.23}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{49}{figure.23}
-\contentsline {figure}{\numberline {24}{\ignorespaces Results}}{50}{figure.24}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{50}{figure.24}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{50}{figure.24}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{50}{figure.24}
-\contentsline {figure}{\numberline {25}{\ignorespaces Results}}{50}{figure.25}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{50}{figure.25}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{50}{figure.25}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{50}{figure.25}
-\contentsline {figure}{\numberline {26}{\ignorespaces Number of hard Failure - Comparison Experiment 2 and 4}}{51}{figure.26}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Experiment 2}}}{51}{figure.26}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Experiment 4}}}{51}{figure.26}
-\contentsline {figure}{\numberline {27}{\ignorespaces Average State of Charge of weakest agent}}{52}{figure.27}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{52}{figure.27}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{52}{figure.27}
-\contentsline {figure}{\numberline {28}{\ignorespaces Number of hard Failure}}{52}{figure.28}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{52}{figure.28}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{52}{figure.28}
-\contentsline {figure}{\numberline {29}{\ignorespaces Distance from initial Rule}}{53}{figure.29}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{53}{figure.29}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{53}{figure.29}
-\contentsline {figure}{\numberline {30}{\ignorespaces Results from adapted Grid}}{55}{figure.30}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{55}{figure.30}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{55}{figure.30}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{55}{figure.30}
-\contentsline {figure}{\numberline {31}{\ignorespaces Topology}}{61}{figure.31}
-\contentsline {figure}{\numberline {32}{\ignorespaces Load Profile}}{61}{figure.32}
-\contentsline {figure}{\numberline {33}{\ignorespaces Linear Regression}}{62}{figure.33}
-\contentsline {figure}{\numberline {34}{\ignorespaces Power Constrain algorithm}}{63}{figure.34}
-\contentsline {figure}{\numberline {35}{\ignorespaces Constrain Branch}}{64}{figure.35}
-\contentsline {figure}{\numberline {36}{\ignorespaces Reduce Power}}{64}{figure.36}
-\contentsline {figure}{\numberline {37}{\ignorespaces Increase Power}}{65}{figure.37}
-\contentsline {figure}{\numberline {38}{\ignorespaces To-setup}}{71}{figure.38}
-\contentsline {figure}{\numberline {39}{\ignorespaces Initialize agents}}{71}{figure.39}
-\contentsline {figure}{\numberline {40}{\ignorespaces Setup arrival and leaving time}}{72}{figure.40}
-\contentsline {figure}{\numberline {41}{\ignorespaces Setup Battery}}{72}{figure.41}
-\contentsline {figure}{\numberline {42}{\ignorespaces Setup Rules and Memory}}{72}{figure.42}
-\contentsline {figure}{\numberline {43}{\ignorespaces To-go}}{74}{figure.43}
-\contentsline {figure}{\numberline {44}{\ignorespaces Agent matpower interaction}}{75}{figure.44}
-\contentsline {figure}{\numberline {45}{\ignorespaces Arrive at home}}{76}{figure.45}
-\contentsline {figure}{\numberline {46}{\ignorespaces Do Interact}}{76}{figure.46}
-\contentsline {figure}{\numberline {47}{\ignorespaces Get Action}}{76}{figure.47}
-\contentsline {figure}{\numberline {48}{\ignorespaces Get feedback}}{77}{figure.48}
-\contentsline {figure}{\numberline {49}{\ignorespaces Agents develop new rules}}{78}{figure.49}
-\contentsline {figure}{\numberline {50}{\ignorespaces Vote on Rules}}{79}{figure.50}
-\contentsline {figure}{\numberline {51}{\ignorespaces Reset values}}{80}{figure.51}
-\contentsline {figure}{\numberline {52}{\ignorespaces Update Memory}}{80}{figure.52}
-\contentsline {figure}{\numberline {53}{\ignorespaces Cluster Voltage Rules}}{81}{figure.53}
-\contentsline {figure}{\numberline {54}{\ignorespaces Cluster time Rules}}{82}{figure.54}
-\contentsline {figure}{\numberline {55}{\ignorespaces Cluster algorithm}}{82}{figure.55}
-\contentsline {figure}{\numberline {56}{\ignorespaces Change Rule}}{84}{figure.56}
-\contentsline {figure}{\numberline {57}{\ignorespaces Change random}}{84}{figure.57}
-\contentsline {figure}{\numberline {58}{\ignorespaces Change learn}}{85}{figure.58}
-\contentsline {figure}{\numberline {59}{\ignorespaces Change copy best}}{86}{figure.59}
-\contentsline {figure}{\numberline {60}{\ignorespaces Effect of Neighborhood configurations on weak failure rate}}{88}{figure.60}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{88}{figure.60}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{88}{figure.60}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{88}{figure.60}
-\contentsline {figure}{\numberline {61}{\ignorespaces Number of hard failures Experiment 2}}{88}{figure.61}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{88}{figure.61}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{88}{figure.61}
-\contentsline {figure}{\numberline {62}{\ignorespaces Number of weak failures Experiment 2}}{89}{figure.62}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{89}{figure.62}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{89}{figure.62}
-\contentsline {figure}{\numberline {63}{\ignorespaces Influence of institutional success rate on stability}}{89}{figure.63}
-\contentsline {figure}{\numberline {64}{\ignorespaces Influence of the institutional success rate on performance}}{90}{figure.64}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{90}{figure.64}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failure rate}}}{90}{figure.64}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failure rate}}}{90}{figure.64}
-\contentsline {figure}{\numberline {65}{\ignorespaces Number of weak Failure}}{91}{figure.65}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{91}{figure.65}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{91}{figure.65}
-\contentsline {figure}{\numberline {66}{\ignorespaces Results from adapted Grid}}{92}{figure.66}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{92}{figure.66}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{92}{figure.66}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{92}{figure.66}
+\contentsline {figure}{\numberline {21}{\ignorespaces Voltage Rules}}{47}{figure.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces Voltage Rules with low Failure Rate}}{48}{figure.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces Neighborhood configurations}}{50}{figure.23}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{50}{figure.23}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{50}{figure.23}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{50}{figure.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces Effect of Neighborhood configurations on hard failure rate}}{51}{figure.24}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{51}{figure.24}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{51}{figure.24}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{51}{figure.24}
+\contentsline {figure}{\numberline {25}{\ignorespaces Average State of Charge of weakest agent}}{52}{figure.25}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{52}{figure.25}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{52}{figure.25}
+\contentsline {figure}{\numberline {26}{\ignorespaces Results}}{53}{figure.26}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{53}{figure.26}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{53}{figure.26}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{53}{figure.26}
+\contentsline {figure}{\numberline {27}{\ignorespaces Results}}{53}{figure.27}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{53}{figure.27}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{53}{figure.27}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{53}{figure.27}
+\contentsline {figure}{\numberline {28}{\ignorespaces Number of hard Failure - Comparison Experiment 2 and 4}}{54}{figure.28}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Experiment 2}}}{54}{figure.28}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Experiment 4}}}{54}{figure.28}
+\contentsline {figure}{\numberline {29}{\ignorespaces Average State of Charge of weakest agent}}{55}{figure.29}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{55}{figure.29}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{55}{figure.29}
+\contentsline {figure}{\numberline {30}{\ignorespaces Number of hard Failure}}{55}{figure.30}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{55}{figure.30}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{55}{figure.30}
+\contentsline {figure}{\numberline {31}{\ignorespaces Distance from initial Rule}}{56}{figure.31}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{56}{figure.31}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{56}{figure.31}
+\contentsline {figure}{\numberline {32}{\ignorespaces Results from adapted Grid}}{58}{figure.32}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{58}{figure.32}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{58}{figure.32}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{58}{figure.32}
+\contentsline {figure}{\numberline {33}{\ignorespaces Topology}}{64}{figure.33}
+\contentsline {figure}{\numberline {34}{\ignorespaces Load Profile}}{64}{figure.34}
+\contentsline {figure}{\numberline {35}{\ignorespaces Linear Regression}}{65}{figure.35}
+\contentsline {figure}{\numberline {36}{\ignorespaces Power Constrain algorithm}}{66}{figure.36}
+\contentsline {figure}{\numberline {37}{\ignorespaces Constrain Branch}}{67}{figure.37}
+\contentsline {figure}{\numberline {38}{\ignorespaces Reduce Power}}{67}{figure.38}
+\contentsline {figure}{\numberline {39}{\ignorespaces Increase Power}}{68}{figure.39}
+\contentsline {figure}{\numberline {40}{\ignorespaces To-setup}}{74}{figure.40}
+\contentsline {figure}{\numberline {41}{\ignorespaces Initialize agents}}{74}{figure.41}
+\contentsline {figure}{\numberline {42}{\ignorespaces Setup arrival and leaving time}}{75}{figure.42}
+\contentsline {figure}{\numberline {43}{\ignorespaces Setup Battery}}{75}{figure.43}
+\contentsline {figure}{\numberline {44}{\ignorespaces Setup Rules and Memory}}{75}{figure.44}
+\contentsline {figure}{\numberline {45}{\ignorespaces To-go}}{77}{figure.45}
+\contentsline {figure}{\numberline {46}{\ignorespaces Agent matpower interaction}}{78}{figure.46}
+\contentsline {figure}{\numberline {47}{\ignorespaces Arrive at home}}{79}{figure.47}
+\contentsline {figure}{\numberline {48}{\ignorespaces Do Interact}}{79}{figure.48}
+\contentsline {figure}{\numberline {49}{\ignorespaces Get Action}}{79}{figure.49}
+\contentsline {figure}{\numberline {50}{\ignorespaces Get feedback}}{80}{figure.50}
+\contentsline {figure}{\numberline {51}{\ignorespaces Agents develop new rules}}{81}{figure.51}
+\contentsline {figure}{\numberline {52}{\ignorespaces Vote on Rules}}{82}{figure.52}
+\contentsline {figure}{\numberline {53}{\ignorespaces Reset values}}{83}{figure.53}
+\contentsline {figure}{\numberline {54}{\ignorespaces Update Memory}}{83}{figure.54}
+\contentsline {figure}{\numberline {55}{\ignorespaces Cluster Voltage Rules}}{84}{figure.55}
+\contentsline {figure}{\numberline {56}{\ignorespaces Cluster time Rules}}{85}{figure.56}
+\contentsline {figure}{\numberline {57}{\ignorespaces Cluster algorithm}}{85}{figure.57}
+\contentsline {figure}{\numberline {58}{\ignorespaces Change Rule}}{87}{figure.58}
+\contentsline {figure}{\numberline {59}{\ignorespaces Change random}}{87}{figure.59}
+\contentsline {figure}{\numberline {60}{\ignorespaces Change learn}}{88}{figure.60}
+\contentsline {figure}{\numberline {61}{\ignorespaces Change copy best}}{89}{figure.61}
+\contentsline {figure}{\numberline {62}{\ignorespaces Effect of Neighborhood configurations on weak failure rate}}{91}{figure.62}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {All}}}{91}{figure.62}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vertical Grouping}}}{91}{figure.62}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Horizontal Grouping}}}{91}{figure.62}
+\contentsline {figure}{\numberline {63}{\ignorespaces Number of hard failures Experiment 2}}{91}{figure.63}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{91}{figure.63}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{91}{figure.63}
+\contentsline {figure}{\numberline {64}{\ignorespaces Number of weak failures Experiment 2}}{92}{figure.64}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{92}{figure.64}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{92}{figure.64}
+\contentsline {figure}{\numberline {65}{\ignorespaces Influence of institutional success rate on stability}}{92}{figure.65}
+\contentsline {figure}{\numberline {66}{\ignorespaces Influence of the institutional success rate on performance}}{93}{figure.66}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{93}{figure.66}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failure rate}}}{93}{figure.66}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failure rate}}}{93}{figure.66}
+\contentsline {figure}{\numberline {67}{\ignorespaces Number of weak Failure}}{94}{figure.67}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Borda Count}}}{94}{figure.67}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Majority Voting}}}{94}{figure.67}
+\contentsline {figure}{\numberline {68}{\ignorespaces Results from adapted Grid}}{95}{figure.68}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Average SOC}}}{95}{figure.68}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Weak Failures}}}{95}{figure.68}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Hard Failures}}}{95}{figure.68}

@@ -257,6 +257,54 @@ function_get_number_timerules <- function(df)
         }
         return(time_rules)
 }
+
+
+function_extract_lowest_failure <- function(df)
+{
+        voltage_data_frame <- c()
+        for (k in c(1:100))
+        {
+                voltage_data_frame <- rbind(voltage_data_frame,subset(df[[k]],df[[k]]$inst_rule1 == 1))
+        }
+
+        return(voltage_data_frame)
+}
+
+function_extract_voltage_action <- function(df)
+{
+        Actions1 <- df$inst_rule4
+        Actions2 <- df$inst_rule5
+        Voltage_thresholds <- df$inst_rule2
+        output_data <- data.frame(cbind(Actions1,Actions2,Voltage_thresholds))
+        return(output_data)
+}
+
+function_extract_voltage_soc_action <- function(df)
+{
+        Actions1 <- df$inst_rule4
+        Actions2 <- df$inst_rule5
+        Voltage_thresholds <- df$inst_rule2
+        SOC_thresholds <- df$inst_rule3
+        output_data <- data.frame(cbind(Actions1,Actions2,SOC_thresholds,Voltage_thresholds))
+        return(output_data)
+}
+
+function_extract_below_failure_from_voltage <- function(df,hard_fails_threshold)
+{
+        voltage_data_frame <- c()
+        hard_fails <- function_hard_failure(df)
+        for (k in c(1:100))
+        {
+                if (hard_fails[k] < hard_fails_threshold )
+                {
+                        voltage_data_frame <- rbind(voltage_data_frame,subset(df[[k]],df[[k]]$inst_rule1 == 1))
+                }
+        }
+        
+        return(voltage_data_frame)
+}
+
+
 #----------------------------------------------------------------------------------------------------
 
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
@@ -306,27 +354,74 @@ for (i in runs) {
 
 }
 
+#-----------------------------Voltage_actions_correlations-------------------------------------------
+# data_frames <- list()
+# low_failure_run <- c()
+# for (i in runs) {
+#         folder <- paste(main_folder,"/exp_a_",i,sep="")
+#         for (k in c(1:100)){
+#                 filename <- paste(folder,"/exp_a_",i,"_",k,"_output.csv",sep="")
+#                 print(filename)
+#                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
+#         }
+#         low_failure_run <- rbind(low_failure_run,function_extract_lowest_failure(data_frames))
+# }
+# #low_failure_run <-function_extract_lowest_failure(data_frames)
+# #low_failure_data <-function_extract_voltage_action(low_failure_run)
+# 
+# 
+# low_failure_soc_data <- function_extract_voltage_soc_action(low_failure_run)
+# low_failure_soc_data$Voltage_thresholds <- factor(low_failure_soc_data$Voltage_thresholds)
+# mt <- ggplot(low_failure_soc_data,aes(SOC_thresholds,fill=Voltage_thresholds))
+# first_test <- mt + geom_bar(binwidth = 5)
+# first_test <- first_test + facet_grid(Actions2 ~ Actions1,scales="free_x",labeller = label_both) +
+#         ylab("Number of runs")
+# ggsave(first_test,file = "../latex/rules_voltage_soc_first_look.eps")
+# 
+
+# data_frames <- list()
+# low_vol_fail_run <- c()
+# for (i in runs) {
+#         folder <- paste(main_folder,"/exp_a_",i,sep="")
+#         for (k in c(1:100)){
+#                 filename <- paste(folder,"/exp_a_",i,"_",k,"_output.csv",sep="")
+#                 print(filename)
+#                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
+#         }
+#         low_vol_fail_run <- rbind(low_vol_fail_run,function_extract_below_failure_from_voltage(data_frames,5))
+# }
+# low_failure_soc_data <- function_extract_voltage_soc_action(low_vol_fail_run)
+# low_failure_soc_data$Voltage_thresholds <- factor(low_failure_soc_data$Voltage_thresholds)
+# mt <- ggplot(low_failure_soc_data,aes(SOC_thresholds,fill=Voltage_thresholds))
+# plot_low_fail_rules <- mt + geom_bar(binwidth = 5)
+# plot_low_fail_rules <- plot_low_fail_rules + facet_grid(Actions2 ~ Actions1,scales="free_x",labeller = label_both) +
+#         ylab("Number of runs")
+# ggsave(plot_low_fail_rules , file = "../latex/hard_failure_colored_low_look.eps")
+
+#----------------------------------hard_failures_color coded --------------------------------------
 indicator <- c()
 for (k in c(1:length(number_time_rules)))
 {
         if (number_time_rules[k] > number_voltage_rules[k])
         {
-                indicator <- c(indicator,"Time-Rule")
+                indicator <- c(indicator,2)
         }else
         {
-                indicator <- c(indicator,"Voltage-Rule")
+                indicator <- c(indicator,1)
         }
 }
 df_2 <- data.frame(cbind(hard_failures,indicator))
-df_2$indicator <- as.factor(df_2$indicator)
+df_2$indicator <- factor(df_2$indicator, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+df_2$hard_failures <- as.numeric(df_2$hard_failures)
 rule_colored_hard_failure <- ggplot(df_2,aes(hard_failures,fill=indicator)) + 
         geom_histogram() +
+        ylab("Number of runs") +
         ggtitle("Hard Failures colored by Rule") 
 ggsave(rule_colored_hard_failure , file = "../latex/hard_failure_colored_first_look.eps") 
 
 
 
-
+#-----------------------------------basic_output_of_histogramms---------------------------------------
 # averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
 #         ggtitle("Average SOC with Institutional Rule") + xlab("Average SOC")
 # averages_no_figure <- qplot(averages_no,geom = "histogram",binwidth = 1) +
