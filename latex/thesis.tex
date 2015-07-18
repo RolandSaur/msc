@@ -527,11 +527,11 @@ solve this problem.
 
 
 \subsection{Concept}
-First the components of the model will be explained. Then a overview of the processes that the agents go through will be 
+First the components of the model will be explained. Then an overview of the processes that the agents go through will be 
 given. The agents, how their rules and memory work and how the agents come up with rules collectively through voting 
 will be explained afterwards.
 \subsubsection{Model components}
-The model consists of three parts , a physical layer represented by the Matpower model, software agents and an institutional 
+The model consists of three parts , a physical layer represented by the PYPOWER model, software agents and an institutional 
 layer, which sets the norms. 
 The main active part in the model are the software agents. They interact with the physical layer by requesting a 
 specific amount of power from the grid and receiving feedback about how much power they actually get. They also vote on rules 
@@ -546,23 +546,37 @@ are used to come up with and vote on new rules.
 \end{figure}
 
 \subsubsection{Agent gets up drinks a cup of coffee}
-Each agent goes through the following process, depicted below. For one week in intervals of 15 minutes, the agent 
-chooses an action based on their internal rule. The Matpower model then calculates a feedback which the agents internalize
-by updating their voltage and state of charge. Each week the agent evaluates the rule it has been living with based on how 
+Each agent goes through the following process, depicted in figure \ref{model_coffee}. The process consists of two parts. 
+The first part takes place every 15 minutes and is done for one week. The second part is done once every week. \\
+The part that takes place every 15 minutes is very simple.
+For one week in intervals of 15 minutes, the agent 
+chooses an action based on their internal rule. The PYPOWER model then calculates a feedback which the agents internalize
+by updating their voltage and state of charge.\\
+Each week the agent evaluates the rule it has been living with based on how 
 high their battery state of charge over this past week was, and commits the rule and an associated preference value to 
-its memory. Afterwards the agent comes up with a new rule for the next week. When the memory of the agents is not yet 
-filled the agents develop the rules themselves. Voting is also omitted when a rule that has been voted on, was not good 
-enough to be in at least a certain percentage of the agents memories. This percentage is called the institutional success 
-rate. For the voting the agents report their ranked memory. The vote itself is done by borda count and then clustered.  
-The agent can come up with a new rule by either learning based on their memory, copying from the best performing other 
-agent or randomly selecting a new rule. The new rule is then set as the new active rule in the agent, and the process is
-started over again.
+its memory. 
+Afterwards the agent comes up with a new rule for the next week. It can do that either individually or collectively. 
+When the memory of the agents is not yet 
+filled, the agents develop the rules individually. 
+Voting is also omitted when a rule that has been voted on, was not good 
+enough to be in at least a certain percentage of the agents memories. This percentage is called the institutional acceptance
+threshold. \\
+When voting the agents report their ranked memory. The votes themselves are combined by borda count and then clustered.  
+The clustering is necessary, because there are so many different rules that it is very unlikely that all the agents 
+pick one very specific rule. By clustering the rules, the rule which is closest to most votes is selected. \\
+When the agents come up with rules without voting , the agent can come up with a new rule by either 
+learning based on their memory, copying from the best performing other 
+agent or randomly selecting a new rule. \\
+At the end of this second step a new active rule is set for the agents to follow for the next week.
+And the process is started over again.
 \begin{figure}[!ht]
 \includegraphics[width =\textwidth]{concept_coffe.png}
 \caption{Model processes}
 \label{model_coffee}
 \end{figure}
 
+
+\clearpage
 \subsubsection{Rules}
 Rules in the agents govern their behavior. They return a corresponding action given a specific state. The state of
 an agent is its state of charge(SOC), the voltage at its node and the current time. Rules basically map a specific 
@@ -572,9 +586,13 @@ combination of these variables to an action. The action is how much the agent wi
 \caption{The function of rules}
 \label{rules_function}
 \end{figure}
-
+Since the agents have to be able to come up with rules themselves, there has to be a structure for the rules. This 
+way the agents only have to find parameters to fill into blueprints of rules. The structure of the rules should be simple and not 
+use too many parameters, so that the possible space of rules is limited. The space of possible rules has to be rather small 
+because the agents do not have an infinite amount of time to explore all the different combinations of rules. Therefore 
+the rules cannot take into account all the state parameters in their condition. \\
 Rules can either be based on the current time and state of charge(soc) or on the voltage at the grid point and 
-the state of charge(soc). Voltage bases rules are indicated with a 1 and time based rules are indicated by a 2.
+the state of charge(soc). Voltage based rules are indicated with a 1 and time based rules are indicated by a 2.
 
 \begin{figure}[!ht]
 \includegraphics[width =\textwidth]{concept_rules_structure.png}
@@ -604,7 +622,7 @@ If (\textcolor{green}{time_end} < \textcolor{blue}{Time} < \textcolor{green}{tim
 else 
     do \textcolor{red}{Action2} 
 \end{alltt}
-
+\newpage
 \subsubsection{Memory}
 Each agent has a memory to keep track of past rules and how good the agent thinks this rule was. The memory 
 is needed for the learning and for being able to vote. The memory consist of 5 past rules and associated preference 
@@ -629,7 +647,7 @@ The top ranked rule in one memory matrix will be duplicated 4 times, the second 
 times and so on. Duplicated this way the votes are then all combined into one election matrix. The decision whether a new rule
 should have a voltage or time condition can be made by simple majority vote. The specifics of the conditions will be 
 determined by clustering the rules into 3 clusters. The center of the cluster containing the most votes will be used as 
-the specific condition for the rule.
+the specific condition and actions for the rule.
 
 
 \subsubsection{Assumptions and Choices}

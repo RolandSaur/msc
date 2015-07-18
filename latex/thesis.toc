@@ -19,60 +19,60 @@
 \contentsline {subsection}{\numberline {2.1}Concept}{15}{subsection.2.1}
 \contentsline {subsubsection}{\numberline {2.1.1}Model components}{15}{subsubsection.2.1.1}
 \contentsline {subsubsection}{\numberline {2.1.2}Agent gets up drinks a cup of coffee}{16}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}Rules}{16}{subsubsection.2.1.3}
-\contentsline {subsubsection}{\numberline {2.1.4}Memory}{18}{subsubsection.2.1.4}
-\contentsline {subsubsection}{\numberline {2.1.5}Voting}{18}{subsubsection.2.1.5}
-\contentsline {subsubsection}{\numberline {2.1.6}Assumptions and Choices}{18}{subsubsection.2.1.6}
-\contentsline {section}{\numberline {3}Modeling}{21}{section.3}
-\contentsline {subsection}{\numberline {3.1}Model Testbed}{21}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Modeling Assumptions}{22}{subsubsection.3.1.1}
-\contentsline {subsection}{\numberline {3.2}Tragedy of the Commons in the Simulated Environment}{22}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Implementation of Model}{23}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Verification of the Model}{24}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Verification of Multi Agent System}{24}{subsubsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.2}Verification of Pypower Model}{25}{subsubsection.3.4.2}
-\contentsline {section}{\numberline {4}Experimental Setup and Experiments}{28}{section.4}
-\contentsline {subsection}{\numberline {4.1}Basic setup}{28}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Input}{28}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Output}{30}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Performance indicators}{31}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Stability}{31}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Performance}{31}{subsubsection.4.2.2}
-\contentsline {subsection}{\numberline {4.3}Hypotheses}{32}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Experiments}{34}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{34}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{35}{subsubsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.3}Experiment 3}{35}{subsubsection.4.4.3}
-\contentsline {subsubsection}{\numberline {4.4.4}Experiment 4}{36}{subsubsection.4.4.4}
-\contentsline {subsubsection}{\numberline {4.4.5}Experiment 5}{36}{subsubsection.4.4.5}
-\contentsline {section}{\numberline {5}Results and Discussion}{37}{section.5}
-\contentsline {subsection}{\numberline {5.1}First Look}{37}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}Comparison to uncontrolled scenario}{37}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}Comparison with and without an Institutional Rule}{42}{subsubsection.5.1.2}
-\contentsline {subsection}{\numberline {5.2}Experiments}{50}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Experiment 1}{50}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Experiment 2}{51}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Experiment 3}{53}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Experiment 4}{54}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{57}{subsubsection.5.2.5}
-\contentsline {subsection}{\numberline {5.3}Summary}{58}{subsection.5.3}
-\contentsline {section}{\numberline {6}Conclusion}{59}{section.6}
-\contentsline {subsection}{\numberline {6.1}Model conclusion \& Research Questions}{59}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Real World implementation}{59}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{59}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}MAS for resource allocation}{61}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Conclusions about CPR}{61}{subsection.6.5}
-\contentsline {section}{\numberline {7}Further Research}{61}{section.7}
-\contentsline {section}{\numberline {A}PYPOWER Models}{63}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Physical Representation}{63}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{65}{subsection.A.2}
-\contentsline {section}{\numberline {B}Verification}{69}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Verification of Functions}{69}{subsection.B.1}
-\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{69}{subsubsection.B.1.1}
-\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{70}{subsubsection.B.1.2}
-\contentsline {section}{\numberline {C}Pseudo Code}{73}{appendix.C}
-\contentsline {section}{\numberline {D}Additional Graphs}{91}{appendix.D}
-\contentsline {subsection}{\numberline {D.1}Experiment 1}{91}{subsection.D.1}
-\contentsline {subsection}{\numberline {D.2}Experiment 2}{91}{subsection.D.2}
-\contentsline {subsection}{\numberline {D.3}Experiment 4}{94}{subsection.D.3}
-\contentsline {subsection}{\numberline {D.4}Experiment 5}{95}{subsection.D.4}
+\contentsline {subsubsection}{\numberline {2.1.3}Rules}{18}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}Memory}{20}{subsubsection.2.1.4}
+\contentsline {subsubsection}{\numberline {2.1.5}Voting}{20}{subsubsection.2.1.5}
+\contentsline {subsubsection}{\numberline {2.1.6}Assumptions and Choices}{21}{subsubsection.2.1.6}
+\contentsline {section}{\numberline {3}Modeling}{23}{section.3}
+\contentsline {subsection}{\numberline {3.1}Model Testbed}{23}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Modeling Assumptions}{24}{subsubsection.3.1.1}
+\contentsline {subsection}{\numberline {3.2}Tragedy of the Commons in the Simulated Environment}{24}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Implementation of Model}{25}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Verification of the Model}{26}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Verification of Multi Agent System}{26}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Verification of Pypower Model}{27}{subsubsection.3.4.2}
+\contentsline {section}{\numberline {4}Experimental Setup and Experiments}{30}{section.4}
+\contentsline {subsection}{\numberline {4.1}Basic setup}{30}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Input}{30}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Output}{32}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Performance indicators}{33}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Stability}{33}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Performance}{33}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Hypotheses}{34}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Experiments}{36}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Experiment 1}{36}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Experiment 2}{37}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Experiment 3}{37}{subsubsection.4.4.3}
+\contentsline {subsubsection}{\numberline {4.4.4}Experiment 4}{38}{subsubsection.4.4.4}
+\contentsline {subsubsection}{\numberline {4.4.5}Experiment 5}{38}{subsubsection.4.4.5}
+\contentsline {section}{\numberline {5}Results and Discussion}{39}{section.5}
+\contentsline {subsection}{\numberline {5.1}First Look}{39}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Comparison to uncontrolled scenario}{39}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Comparison with and without an Institutional Rule}{44}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Experiments}{52}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Experiment 1}{52}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Experiment 2}{53}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Experiment 3}{55}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Experiment 4}{56}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{59}{subsubsection.5.2.5}
+\contentsline {subsection}{\numberline {5.3}Summary}{60}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{61}{section.6}
+\contentsline {subsection}{\numberline {6.1}Model conclusion \& Research Questions}{61}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Real World implementation}{61}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{61}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}MAS for resource allocation}{63}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Conclusions about CPR}{63}{subsection.6.5}
+\contentsline {section}{\numberline {7}Further Research}{63}{section.7}
+\contentsline {section}{\numberline {A}PYPOWER Models}{65}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Physical Representation}{65}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{67}{subsection.A.2}
+\contentsline {section}{\numberline {B}Verification}{71}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Verification of Functions}{71}{subsection.B.1}
+\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{71}{subsubsection.B.1.1}
+\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{72}{subsubsection.B.1.2}
+\contentsline {section}{\numberline {C}Pseudo Code}{75}{appendix.C}
+\contentsline {section}{\numberline {D}Additional Graphs}{93}{appendix.D}
+\contentsline {subsection}{\numberline {D.1}Experiment 1}{93}{subsection.D.1}
+\contentsline {subsection}{\numberline {D.2}Experiment 2}{93}{subsection.D.2}
+\contentsline {subsection}{\numberline {D.3}Experiment 4}{96}{subsection.D.3}
+\contentsline {subsection}{\numberline {D.4}Experiment 5}{97}{subsection.D.4}
