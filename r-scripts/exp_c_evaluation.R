@@ -272,6 +272,10 @@ hard_failure_all <- ggplot(output_results_all,aes(hard_failure,fill=Indicator)) 
 ggsave(averages_all,file = "../latex/averages_colored_c.eps")
 ggsave(weak_failure_all,file = "../latex/weak_colored_c.eps")
 ggsave(hard_failure_all,file = "../latex/hard_colored_c.eps")
+
+
+#------------------------------------------------------------------------------------------------
+#------------------------------------old_code----------------------------------------------------
 # 
 # for (k in c(0:8)){
 #         assign(paste("average_copy_",k,sep=""),c())

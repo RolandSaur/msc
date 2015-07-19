@@ -330,8 +330,31 @@ In appropriation problems there is a natural resource that can be used by everyo
 managed. The spacial heterogeneity is that the position an actor is in, affects his/her ability to access the resource. A classic 
 example are hot and cold spots in fishing areas.
 \end{enumerate}
-Looking at it as an Supply side provisional problem. 
-
+Looking at it as a supply side provisional problem, there is an infrastructure,the grid, that provides benefits to actors, which
+cannot be excluded. Once the grid is built and maintained, everybody benefits from it equally. 
+From an assignment problem perspective, the grid is an existing resource that provides a good. 
+And the ability of the grid to distribute this good is limited. 
+Also the extend to which it can be accessed is heterogeneous.
+If there is a longer line between the node at which it is accessed and the main transformer, it is harder to use electricity without 
+overloading the grid. 
+This is also the case when there are users in serial. 
+The last one of them will have a harder time using electricity, because the actor will add to an existing load. 
+The smart grid is therefore a nested common pool resource problem. 
+There are two levels to this. A level of planning and creating the infrastructure itself  and one level of day to day management of the 
+capabilities of the infrastructure. \\
+The best comparison ,to make this easier to visualize, is to compare it to the irrigation system described in Ostroms' 
+``Rules,Games, \& Common Pool Resources``. The irrigation system is a human made common pool therefore it had to be build and has to be 
+maintained. Actors along the irrigation system are not easily kept from benefiting from the irrigation system. This makes it a
+supply side provisional problem. Once running there is only a limited amount of water the irrigation system can deliver, and farmers
+along the irrigation system have different access to the irrigation system. It is easier to take water from the head of the 
+irrigation system than downstream. It is also harder to take water from the system if others have already taken water from the 
+same canal, but closer to the source of the water. This makes it a heterogeneous appropriation problem, also known as an assignment 
+problem. \\
+In this comparison the irrigation system would be the electricity grid. The farmers taking water are households using electricity. 
+Instead of canals with multiple farmers accessing at different spots, there are households connected in serial to a main 
+transformer.\\
+Although the problem is actually two nested problems, the main focus will be on the assignment problem, managing the 
+grid as is. 
 
 
 %Since the households are 
@@ -1256,7 +1279,7 @@ based on the results of experiments one.
  \item \begin{alltt}random_change  = 0.3\end{alltt}
  \item \begin{alltt}copy_best_change = 0.5\end{alltt}
  \item \begin{alltt}learn_change = 0.2\end{alltt}
- \item \begin{alltt}copy_all = best(copy_all)\end{alltt}
+ \item \begin{alltt}copy_all = vertical\end{alltt}
 \end{enumerate}
 
 
@@ -1275,15 +1298,14 @@ The parameters for copy\_all and institutional\_success\_rate
 are based on the results of experiments one and two.
 \begin{enumerate}
  \item \begin{alltt}majority_vote = True\end{alltt}
- \item \begin{alltt}copy_all = best(copy_all)\end{alltt}
- \item \begin{alltt}institutional_acceptance_threshold = best(institutional_acceptance_threshold)\end{alltt}
+ \item \begin{alltt}copy_all = vertical \end{alltt}
+ \item \begin{alltt}institutional_acceptance_threshold = 80 \%\end{alltt}
 \end{enumerate}
 
 The variables which are of interest are the variables which influence the individual behavior of the agents. 
 \begin{enumerate}
- \item \begin{alltt}random_change \end{alltt}
- \item \begin{alltt}copy_best_change\end{alltt}
- \item \begin{alltt}learn_change\end{alltt}
+ \item \begin{alltt}copy_best_change = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8]\end{alltt}
+ \item \begin{alltt}learn_change = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]\end{alltt}
 \end{enumerate}
 Similar to experiment 1, the hypotheses will be accepted based on increase/decrease of the number of two failures.
 
@@ -1300,8 +1322,8 @@ are fixed. Further the initial active rule of each agent has to be set to a gree
  This is the rule which is used to initialize the agents in this experiment. The first value sets that the rule is a 
  voltage dependent rule. The fourth and fifth entry are set to 5 to make sure that this rule commands the agent always to charge 
  at the maximum of 5 kW
- \item  \begin{alltt}copy_all = best(copy_all)\end{alltt}
- \item  \begin{alltt}institutional_success_rate = best(insitutional_success_rate)\end{alltt}
+ \item  \begin{alltt}copy_all = vertical\end{alltt}
+ \item  \begin{alltt}institutional_success_rate = 80 \% \end{alltt}
 \end{enumerate}
 
 The only variable parameter is the majority\_vote parameter.
@@ -1319,15 +1341,6 @@ from the initial greedy rule is expected for the borda count compared to majorit
 \subsubsection{Experiment 5}
 This experiment addresses the first contextual hypothesis, 4a. This experiment does not really have 
 an behavior space, therefore all the parameter are kept fixed. 
-\begin{enumerate}
- \item \begin{alltt}random_change  = best(random_change)\end{alltt}
- \item \begin{alltt}copy_best_change = best(copy_best_change)\end{alltt}
- \item \begin{alltt}learn_change = best(learn_change)\end{alltt}
- \item \begin{alltt}majority_vote = best(majority_vote)\end{alltt}
- \item \begin{alltt}copy_all = best(copy_all)\end{alltt}
- \item \begin{alltt}institutional_success_rate = best(insitutional_success_rate)\end{alltt}
-\end{enumerate}
-
 The difference between the runs is the grid structure that is used. The model will first be run with the default grid, grid1.
 The best performing rule will be extracted from this model run. This rule will be used as the active rule for all the 
 agents in the second run. The second run will be done without the development of new rules  to just see the effect 
@@ -1403,7 +1416,7 @@ scenarios with and without software agents.\\
 \newpage
 \begin{figure}[!ht]
 \subfigure[Average SOC]{
-\includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{average_all_first_2.eps}
 \label{inst_averages_all_1}}
 \subfigure[Average SOC uncontrolled scenario]{
 \includegraphics[width = 0.45\textwidth]{averages_first_greedy.eps}
@@ -1512,10 +1525,10 @@ However a one sided t-test for institutional rule being greater with a confidenc
 SOC is statistical significantly bigger when there is an institutional rule.
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{average_all_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{average_all_first_2.eps}
 \label{inst_averages_all}}
 \subfigure[No Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{average_all_no_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{average_all_no_first_2.eps}
 \label{no_inst_averages_all}}
 \caption{Average State of Charge of all the agents}
 \label{inst_averages_all_second}
@@ -1531,10 +1544,10 @@ is 30. Given this it seems like figure \ref{inst_averages} is shifted to the rig
 indicating that the weakest agents perform better when there is an institutional rule that every agent follows. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{averages_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_first_2.eps}
 \label{inst_averages}}
 \subfigure[No Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{averages_no_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_no_first_2.eps}
 \label{no_inst_averages}}
 \caption{Average State of Charge of weakest agent}
 \label{inst_averages_second}
@@ -1550,10 +1563,10 @@ electric vehicles cannot charge up to 100 \%. The question as to which rules wor
 later on. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{weak_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{weak_first_2.eps}
 \label{inst_weak_second}}
 \subfigure[No Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{weak_no_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{weak_no_first_2.eps}
 \label{no_inst_weakest_second}}
 \caption{Number of weak Failure}
 \label{weakest_second}
@@ -1565,10 +1578,10 @@ number of hard failures is reduced and there is a portion of the runs which expe
 of an institutional rule reduces the number of electric vehicles that fail to be able to charge sufficiently. \\
 \begin{figure}[!ht]
 \subfigure[Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{hard_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_first_2.eps}
 \label{inst_hard_second}}
 \subfigure[No Institutional Rule]{
-\includegraphics[width = 0.45\textwidth]{hard_no_first_2.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_no_first_2.eps}
 \label{no_inst_hard_second}}
 \caption{Number of hard Failure}
 \label{hard_second}
@@ -1697,13 +1710,13 @@ while the counter hypothesis is also not supported. Thus grouping the agents in 
 significant difference on the average state of charge of the batteries, but no grouping mechanism is superior. \\
 \begin{figure}[!ht]
 \subfigure[All]{
-\includegraphics[width = 0.3\textwidth]{averages_exp_c_1.jpg}
+\includegraphics[width = 0.3\textwidth]{averages_exp_c_1.eps}
 \label{grouping_all}}
 \subfigure[Vertical Grouping]{
-\includegraphics[width = 0.3\textwidth]{averages_exp_c_2.jpg}
+\includegraphics[width = 0.3\textwidth]{averages_exp_c_2.eps}
 \label{grouping_vertical}}
 \subfigure[Horizontal Grouping]{
-\includegraphics[width = 0.3\textwidth]{averages_exp_c_3.jpg}
+\includegraphics[width = 0.3\textwidth]{averages_exp_c_3.eps}
 \label{grouping_horizontal}}
 \caption{Neighborhood configurations}
 \label{group_averages}
@@ -1716,13 +1729,13 @@ found in the appendix but show similar results. Doing a t-test to gain more insi
 distributions because t-test assumes a certain shape while the data is split into two fields. \\
 \begin{figure}[!ht]
 \subfigure[All]{
-\includegraphics[width = 0.3\textwidth]{hard_exp_c_1.jpg}
+\includegraphics[width = 0.3\textwidth]{hard_exp_c_1.eps}
 \label{grouping_all_hard_failures}}
 \subfigure[Vertical Grouping]{
-\includegraphics[width = 0.3\textwidth]{hard_exp_c_2.jpg}
+\includegraphics[width = 0.3\textwidth]{hard_exp_c_2.eps}
 \label{grouping_vertical_hard_failures}}
 \subfigure[Horizontal Grouping]{
-\includegraphics[width = 0.3\textwidth]{hard_exp_c_3.jpg}
+\includegraphics[width = 0.3\textwidth]{hard_exp_c_3.eps}
 \label{grouping_horizontal_hard_failures}}
 \caption{Effect of Neighborhood configurations on hard failure rate}
 \label{group_hard_failures}
@@ -1764,6 +1777,15 @@ It might also be a little bit of both.
 \subsubsection{Experiment 3}
 Experiment 3 is for hypotheses 1a and 1b, about the effect behavioral parameters have on the performance of the model. 
 The hypotheses state that increasing the copying or learning behavior reduces the performance of the model.\\
+Figure \ref{colored_3} shows the histograms for the number of hard failures  for different behavioral parameters, 
+color coded by the kind of rule in a facet grid plot. 
+\begin{figure}[!ht]
+\includegraphics[width = \textwidth]{hard_colored_c.eps}
+\caption{Number of hard failures}
+\label{colored_3}
+\end{figure}\\
+
+\begin{comment}
 Figure \ref{Result_exp_3_1} shows the results of the performance indicators with increasing copying behavior from left to right in the 
 graphs. The figures display no noticeable difference between the high and low rates of copying behavior. \\
 \begin{figure}[!ht]
@@ -1793,8 +1815,15 @@ Figure \ref{Result_exp_3_1} display a similar picture for the learning behavior.
 \caption{Results}
 \label{Result_exp_3_2}
 \end{figure}\\
-In summary there is surprisingly no to very little effect of behavioral parameters on the performance. It could also be because any 
-very small effect is overshadowed by the general fluctuation, natural to the model. 
+\end{comment}
+There appears to be no effect on the performance of the model at all. A possible answer as to why that is the case, is that 
+the rules the agents come up with contain only whole numbers and any values in between are rounded to the closest whole number. 
+If there were continuous values in the rules, there might be a positive feedback loop between agents behavior, which affects their 
+performance,which is internalized into the memory,which is used to vote , which  changes the rules, that govern the agents behavior.
+It could be that this loop exists when there are continuous values, which can capture minute changes, while it is lost
+when discrete values are used, since all small changes are lost when rounding.\\
+A second observation is only the reinforcement that voltage rules, work much better than time based rules. 
+
 \clearpage
 \subsubsection{Experiment 4}
 Experiment 4 is for hypotheses 2d and 2e about how well different voting mechanisms  deal with a greedy rule. The hypotheses state 
@@ -1808,10 +1837,10 @@ experiment 2, but are however almost nonexistent in the results from experiment 
 of hard failures that occurred has increased from below 60 to above 75. \\
 \begin{figure}[!ht]
 \subfigure[Experiment 2]{
-\includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.eps}
 \label{borda_d_exp2}}
 \subfigure[Experiment 4]{
-\includegraphics[width = 0.45\textwidth]{hard_d_borda.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_d_borda.eps}
 \label{majority_d_hard_2}}
 \caption{Number of hard Failure - Comparison Experiment 2 and 4}
 \label{d_comp}
@@ -1828,10 +1857,10 @@ However a  one sided t-test returns a p-value of 0.9626, making it extremely lik
 statistically significant.\\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
-\includegraphics[width = 0.45\textwidth]{averages_d_borda.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_d_borda.eps}
 \label{borda_d_average}}
 \subfigure[Majority Voting]{
-\includegraphics[width = 0.45\textwidth]{averages_d_majority.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_d_majority.eps}
 \label{majority_d_average}}
 \caption{Average State of Charge of weakest agent}
 \label{d_average}
@@ -1842,10 +1871,10 @@ much more to the lower end, when borda count is used as a voting mechanism. The 
 in the appendix. \\
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
-\includegraphics[width = 0.45\textwidth]{hard_d_borda.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_d_borda.eps}
 \label{borda_d_hard}}
 \subfigure[Majority Voting]{
-\includegraphics[width = 0.45\textwidth]{hard_d_majority.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_d_majority.eps}
 \label{majority_d_hard}}
 \caption{Number of hard Failure}
 \label{d_hard}
