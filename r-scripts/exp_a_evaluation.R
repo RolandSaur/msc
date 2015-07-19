@@ -178,18 +178,19 @@ for (i in runs) {
         weak_failures <- function_weak_failure(data_frames)
         
         averages_figure <- qplot(averages,geom = "histogram",binwidth = 1) + 
-                ggtitle("Average SOC") + xlab("Average SOC")
+                ggtitle("Average SOC") + xlab("Average SOC") +
+                ylab("Number of runs") 
         
         ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".jpg",sep=""))
         ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".eps",sep="")) 
         
         weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
-              ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+              ggtitle("Number of weak Failures") + xlab("Number of weak Failures") + ylab("Number of runs") 
         ggsave(weak_figure , file = paste("../latex/weak_exp_c_",i,".jpg",sep=""))
         ggsave(weak_figure , file = paste("../latex/weak_exp_c_",i,".eps",sep=""))
         
         hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
-              ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+              ggtitle("Number of hard Failures") + xlab("Number of hard Failures") + ylab("Number of runs") 
         ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".jpg",sep=""))
         ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".eps",sep=""))
 }

@@ -1747,9 +1747,9 @@ between different kinds of grouping the agents, simply grouping them into subgro
 Therefore Hypothesis 3a, that grouping itself produces a better outcome, can be accepted while hypothesis 3b, that vertical 
 grouping would create better results because the agents in one group are more heterogeneous, has to be rejected.
 \subsubsection{Experiment 2}
-Experiment 2 is for hypotheses 2a,2b and 2c, about the influence of the voting mechanism and the effect of the institutional success 
-rate. The hypotheses state that using borda count as a voting mechanism improves performance and reducing the institutional success 
-rate would at some point worsen performance, while increase the institutional success rate would increase instability.\\
+Experiment 2 is for hypotheses 2a,2b and 2c, about the influence of the voting mechanism and the effect of the institutional acceptance 
+threshold. The hypotheses state that using borda count as a voting mechanism improves performance and reducing the institutional success 
+rate would at some point worsen performance, while increase the institutional acceptance threshold would increase instability.\\
 First the effect of the kind of voting mechanism on performance of the model is looked at.
 Figure \ref{b_average} shows the distribution of the average SOC of the weakest agent with borda count and with majority 
 voting. There is no visible difference between the scenarios, which indicates that the kind of voting mechanism, that 
@@ -1771,7 +1771,8 @@ The figures show no effect of the voting mechanism on time based rules.
 But  the runs which use voltage based rules seem to be split in two, in the case when simple majority voting was used. 
 There is the normal bulk of low failure rate runs, but also a few runs which seem to belong to the higher failure rate runs. 
 This suggest that majority voting has an adverse effect on runs, in which the agents predominantly use voltage rules. 
-This is especially important since voltage based rules are 
+This means that using borda count not only improves the way the votes of agents are represented but that this has also an 
+effect on the performance of the model.
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
 \includegraphics[width = 0.45\textwidth]{weak_borda_exp_b.eps}
@@ -1783,11 +1784,11 @@ This is especially important since voltage based rules are
 \label{b_weak}
 \end{figure}
 
-For examining the influence of the institutional success rate on the model behavior, several boxplots were made to illustrate its 
+For examining the influence of the institutional acceptance threshold on the model behavior, several boxplots were made to illustrate its 
 effect on stability and performance. However there seems to be absolutely no effect at all. The plots can be seen in the appendix, but are
 omitted here because they do not contain useful information. There are two possible explanations for this result. One is that 
-rules are either very good or very bad and therefore the institutional success rate does not have an influence on 
-whether or not rule will be continued as a institutional rule. Really good rules will always convince all the agents and really bad 
+rules are either very good or very bad and therefore the institutional acceptance threshold does not have an influence on 
+whether or not a rule will be continued as an institutional rule. Really good rules will always convince all the agents and really bad 
 rules will fail to convince even just a few agents. The alternative explanation is that the model runs are two short and therefore 
 the memories of the agents have not had enough time yet to become sophisticated enough to discern correctly between good and bad rules.
 It might also be a little bit of both.
@@ -1898,23 +1899,24 @@ in the appendix. \\
 \label{d_hard}
 \end{figure}\\
 After looking at the effect of the voting mechanism on the performance, the effect of the voting mechanism on the institutional rule 
-is examined to get a better understanding of how the borda count improves results over simple majority voting. Since there are 
-100 runs per scenario it is not possible to examine each rule individually. Therefore the distance of the last institutional rule 
-of each run to the initial rule is used as a measure of change. The greater the distance the more the final rule deviates from 
-the initially set rule. 
-
+is examined to get a better understanding of how the borda count improves results over simple majority voting. 
+Since there are 100 runs per scenario it is not possible to examine each rule individually.
+But it is possible to look at how the parameters, that make up the rules, are distributed. 
+Figures \ref{colored_majority_d} and \ref{colored_borda_d} show the distributions of the parameters, for when majority voting and when 
+borda count is used, respectively. Under majority voting the values for the actions span further down to 2 and 1kw, while under borda 
+count the actions are always 3kW or above. At the same time, there is a much higher portion of the rules, which use 5kW as one 
+or both of their actions
 \begin{figure}[!ht]
-\includegraphics[width = \textwidth]{rules_voltage_d_majority.eps}
-\caption{Distribution of Rules - Majority Vote}
-\label{colored_majority_d}
+\subfigure[Distribution of Rules - Borda Count]{
+\includegraphics[width = 0.6\textwidth]{rules_voltage_d_borda.eps}
+\label{colored_borda_d}}
+\subfigure[Distribution of Rules - Majority Vote]{
+\includegraphics[width = 0.6\textwidth]{rules_voltage_d_majority.eps}
+\label{colored_majority_d}}
+\caption{Number of hard Failure}
+\label{d_colored_rules}
 \end{figure}
 
-
-\begin{figure}[!ht]
-\includegraphics[width = \textwidth]{rules_voltage_d_borda.eps}
-\caption{Distribution of Rules - Borda Count}
-\label{colored_borda_d}
-\end{figure}
 
 \begin{comment}
 Figure \ref{d_distance} shows the distance of the final rule to the initial rule for borda count and majority voting. The distance tends
@@ -1934,7 +1936,6 @@ report it as one of their candidates. \\
 \caption{Distance from initial Rule}
 \label{d_distance}
 \end{figure}\\
-
 \end{comment}
 
 In summary it was shown that neither borda count nor majority voting can counteract the effect of initializing 

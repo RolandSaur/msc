@@ -104,24 +104,24 @@ hard_failures <- function_hard_failure(data_frame)
 weak_failures <- function_weak_failure(data_frame)
 
 averages_figure <- qplot(averages,geom = "histogram",binwidth = 0.5) + 
-        ggtitle("Average SOC") + xlab("Average SOC")
+        ggtitle("Average SOC") + xlab("Average SOC") + ylab("Number of runs")
 ggsave(averages_figure , file = "../latex/averages_first_greedy.eps")
 
 weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
-        ggtitle("Number of weak failures with Institutional Rule") + xlab("Number of weak Failures")
+        ggtitle("Number of weak failures with Institutional Rule") + xlab("Number of weak Failures") + ylab("Number of runs")
 ggsave(weak_figure , file = "../latex/weak_first_greedy.eps")
 
 hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 50) + 
-        ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures")
+        ggtitle("Number of hard failures with Institutional Rule") + xlab("Number of hard Failures") + ylab("Number of runs")
 ggsave(hard_figure , file = "../latex/hard_first_greedy.eps")
 
 
 
 averages_figure_near <- qplot(averages_near,geom = "histogram",binwidth = 0.5) + 
-        ggtitle("Average SOC") + xlab("Average SOC")
+        ggtitle("Average SOC") + xlab("Average SOC") + ylab("Number of runs")
 ggsave(averages_figure_near , file = "../latex/averages_first_greedy_near.eps")
 
 
 averages_figure_far <- qplot(averages_far,geom = "histogram",binwidth = 0.5) + 
-        ggtitle("Average SOC") + xlab("Average SOC")
+        ggtitle("Average SOC") + xlab("Average SOC") + ylab("Number of runs")
 ggsave(averages_figure_far , file = "../latex/averages_first_greedy_far.eps")
