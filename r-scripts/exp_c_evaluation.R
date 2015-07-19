@@ -198,25 +198,42 @@ function_return_rule_indicators <- function(df)
         return(indicators)
 }
 
+
+function_get_copy_value <- function(df)
+{
+        copy_value <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                copy_value <- c(copy_value, untergruppe$copy_best)
+        }
+        return(copy_value)
+}
+
+
+function_get_learn_value <- function(df)
+{
+        learn_value <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                learn_value <- c(learn_value, untergruppe$learn_change)
+        }
+        return(learn_value)
+}
+
+
+function_get_output <- function(df)
+{
+        weak_fails <- function_weak_failure()
+}
 #-----------------------------main code ---------------------------------
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
 runs <- c(1:25)
 
-
-for (k in c(0:8)){
-        assign(paste("average_copy_",k,sep=""),c())
-        assign(paste("weak_copy_",k,sep=""),c())
-        assign(paste("hard_copy_",k,sep=""),c())
-        assign(paste("rules_copy_",k,sep=""),c())
-}
-for (k in c(1:9)){
-        assign(paste("average_learn_",k,sep=""),c())
-        assign(paste("weak_learn_",k,sep=""),c())
-        assign(paste("hard_learn_",k,sep=""),c())
-        assign(paste("rules_learn_",k,sep=""),c())
-}
-
-for (i in runs) {
+output_results_all <- c()
+for (i in runs) 
+{
         folder <- paste(main_folder,"/exp_c_",i,sep="")
         data_frames <- list()
         for (k in c(1:100)){
@@ -224,150 +241,242 @@ for (i in runs) {
                 print(filename)
                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
         }
-        #assign(paste("data_a_",i),function_average(data_frames))
-        print((data_frames[[1]]$majority[1] =="False"))
-        for (k in c(0:8)){
-                if (data_frames[[1]]$copy_best[1] == (k/10.0)) {
-                        temp_av <- get(paste("average_copy_",k,sep=""))
-                        temp_weak <- get(paste("weak_copy_",k,sep=""))
-                        temp_hard <- get(paste("hard_copy_",k,sep=""))
-                        temp_indicators <- get(paste("rules_copy_",k,sep=""))
-                        assign(paste("average_copy_",k,sep=""),c(temp_av,function_average(data_frames)))
-                        assign(paste("weak_copy_",k,sep=""),c(temp_weak,function_weak_failure(data_frames)))
-                        assign(paste("hard_copy_",k,sep=""),c(temp_hard,function_hard_failure(data_frames)))
-                        assign(paste("rules_copy_",k,sep=""),c(temp_indicators,function_return_rule_indicators(data_frames)))
-                }
+        if (i == 1)
+        {
+                output_results_all <- data.frame(rep(data_frames[[1]]$copy_best[1],100),rep(data_frames[[1]]$learn_change[1],100),function_average(data_frames),function_weak_failure(data_frames),function_hard_failure(data_frames),function_return_rule_indicators(data_frames))
+        }else{
+                output_results_all <- rbind(output_results_all,data.frame(rep(data_frames[[1]]$copy_best[1],100),rep(data_frames[[1]]$learn_change[1],100),function_average(data_frames),function_weak_failure(data_frames),function_hard_failure(data_frames),function_return_rule_indicators(data_frames)))
         }
-        for (k in c(1:9)){
-                if (data_frames[[1]]$learn_change[1] == (k/10.0)) {
-                        temp_av <- get(paste("average_learn_",k,sep=""))
-                        temp_weak <- get(paste("weak_learn_",k,sep=""))
-                        temp_hard <- get(paste("hard_learn_",k,sep=""))
-                        temp_indicators <- get(paste("rules_learn_",k,sep=""))
-                        assign(paste("average_learn_",k,sep=""),c(temp_av,function_average(data_frames)))
-                        assign(paste("weak_learn_",k,sep=""),c(temp_weak,function_weak_failure(data_frames)))
-                        assign(paste("hard_learn_",k,sep=""),c(temp_hard,function_hard_failure(data_frames)))
-                        assign(paste("rules_learn_",k,sep=""),c(temp_indicators,function_return_rule_indicators(data_frames)))
-                }
-        }
-        #averages <- function_average(data_frames) 
-        #hard_failures <- function_hard_failure(data_frames)
-        #weak_failures <- function_weak_failure(data_frames)
         
 }
+colnames(output_results_all) <- c("copy_best","learn","average_soc","weak_failure","hard_failure","Indicator")
+some_other_stuff <- output_results_all
+
+#output_results_all$Indicator <- factor(output_results_all$Indicator, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+averages_all <- ggplot(output_results_all,aes(average_soc,fill= Indicator)) + 
+        geom_bar(binwidth=5) +
+        facet_grid(learn~copy_best,scales="free_x",labeller = label_both)
+
+
+weak_failure_all <- ggplot(output_results_all,aes(weak_failure,fill=Indicator)) + 
+        geom_bar(binwidth=5) +
+        facet_grid(learn~copy_best,scales="free_x",labeller = label_both)
+
+hard_failure_all <- ggplot(output_results_all,aes(hard_failure,fill=Indicator)) + 
+        geom_bar(binwidth=5) +
+        facet_grid(learn~copy_best,scales="free_x",labeller = label_both)
+
+
+
+ggsave(averages_all,file = "../latex/averages_colored_c.eps")
+ggsave(weak_failure_all,file = "../latex/weak_colored_c.eps")
+ggsave(hard_failure_all,file = "../latex/hard_colored_c.eps")
+# 
+# for (k in c(0:8)){
+#         assign(paste("average_copy_",k,sep=""),c())
+#         assign(paste("weak_copy_",k,sep=""),c())
+#         assign(paste("hard_copy_",k,sep=""),c())
+#         assign(paste("rules_copy_",k,sep=""),c())
+#         assign(paste("learn_val_",k,sep=""),c())
+# }
+# for (k in c(1:9)){
+#         assign(paste("average_learn_",k,sep=""),c())
+#         assign(paste("weak_learn_",k,sep=""),c())
+#         assign(paste("hard_learn_",k,sep=""),c())
+#         assign(paste("rules_learn_",k,sep=""),c())
+#         assign(paste("copy_val_",k,sep=""),c())
+# }
+# 
+# 
+# 
+# for (i in runs) {
+#         folder <- paste(main_folder,"/exp_c_",i,sep="")
+#         data_frames <- list()
+#         for (k in c(1:100)){
+#                 filename <- paste(folder,"/exp_c_",i,"_",k,"_output.csv",sep="")
+#                 print(filename)
+#                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
+#         }
+#         #assign(paste("data_a_",i),function_average(data_frames))
+#         print((data_frames[[1]]$majority[1] =="False"))
+#         for (k in c(0:8)){
+#                 if (data_frames[[1]]$copy_best[1] == (k/10.0)) {
+#                         temp_av <- get(paste("average_copy_",k,sep=""))
+#                         temp_weak <- get(paste("weak_copy_",k,sep=""))
+#                         temp_hard <- get(paste("hard_copy_",k,sep=""))
+#                         temp_indicators <- get(paste("rules_copy_",k,sep=""))
+#                         temp_learn_val <- get(paste("learn_val_",k,sep=""))
+#                         
+#                         assign(paste("average_copy_",k,sep=""),c(temp_av,function_average(data_frames)))
+#                         assign(paste("weak_copy_",k,sep=""),c(temp_weak,function_weak_failure(data_frames)))
+#                         assign(paste("hard_copy_",k,sep=""),c(temp_hard,function_hard_failure(data_frames)))
+#                         assign(paste("rules_copy_",k,sep=""),c(temp_indicators,function_return_rule_indicators(data_frames)))
+#                         assign(paste("learn_val_",k,sep=""),c(temp_learn_val,function_get_learn_value(data_frames)))
+#                 }
+#         }
+#         for (k in c(1:9)){
+#                 if (data_frames[[1]]$learn_change[1] == (k/10.0)) {
+#                         temp_av <- get(paste("average_learn_",k,sep=""))
+#                         temp_weak <- get(paste("weak_learn_",k,sep=""))
+#                         temp_hard <- get(paste("hard_learn_",k,sep=""))
+#                         temp_indicators <- get(paste("rules_learn_",k,sep=""))
+#                         temp_copy_val <- get(paste("copy_val_",k,sep=""))
+#                         
+#                         assign(paste("average_learn_",k,sep=""),c(temp_av,function_average(data_frames)))
+#                         assign(paste("weak_learn_",k,sep=""),c(temp_weak,function_weak_failure(data_frames)))
+#                         assign(paste("hard_learn_",k,sep=""),c(temp_hard,function_hard_failure(data_frames)))
+#                         assign(paste("rules_learn_",k,sep=""),c(temp_indicators,function_return_rule_indicators(data_frames)))
+#                         assign(paste("copy_val_",k,sep=""),c(temp_learn_val,function_get_copy_value(data_frames)))
+#                 }
+#         }
+#         #averages <- function_average(data_frames) 
+#         #hard_failures <- function_hard_failure(data_frames)
+#         #weak_failures <- function_weak_failure(data_frames)
+#         
+# }
 
 
 #-------------------------------------------averages-------------------------------------------------
+# 
+# data_averages_copy <- data.frame(get(paste("average_copy_",0,sep="")),rep(0,length(get(paste("average_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
+# colnames(data_averages_copy) <- c("Averages","copy_best","indicators")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("average_copy_",k,sep="")),rep(k,length(get(paste("average_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
+#         colnames(data_out) <- c("Averages","copy_best","indicators")
+#         data_averages_copy <- rbind(data_averages_copy,data_out)
+# }
+# 
+# copy_averages_figure <- ggplot(data_averages_copy, aes(factor(copy_best), Averages)) + geom_boxplot() +
+#         xlab("Copy best behavior") +
+#         ylab("Average SOC")
+# 
+# ggsave(copy_averages_figure,file = "../latex/copy_average_c.jpg")
+# 
+# 
+# 
+# data_averages_learn <- data.frame(get(paste("average_learn_",1,sep="")),rep(1,length(get(paste("average_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
+# colnames(data_averages_learn) <- c("Averages","learn","indicators")
+# for (k in c(2:9)){
+#         data_out <- data.frame(get(paste("average_learn_",k,sep="")),rep(k,length(get(paste("average_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
+#         colnames(data_out) <- c("Averages","learn","indicators")
+#         data_averages_learn <- rbind(data_averages_learn,data_out)
+# }
+# 
+# learn_averages_figure <- ggplot(data_averages_learn, aes(factor(learn), Averages)) + geom_boxplot() +
+#         xlab("Learning behavior") +
+#         ylab("Average SOC")
+# 
+# ggsave(learn_averages_figure,file = "../latex/learn_average_c.jpg")
+# 
+# 
+# 
+# 
+# 
+# #-----------------weak error---------------------------------------------------
+# data_weak_copy <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("weak_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
+# colnames(data_weak_copy) <- c("Weak_Failures","copy_best","indicators")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("weak_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
+#         colnames(data_out) <- c("Weak_Failures","copy_best","indicators")
+#         data_weak_copy <- rbind(data_weak_copy,data_out)
+# }
+# 
+# copy_weak_figure <- ggplot(data_weak_copy, aes(factor(copy_best), Weak_Failures)) + geom_boxplot() +
+#         xlab("Copy best behavior") +
+#         ylab("Number of Weak Failures")
+# 
+# ggsave(copy_weak_figure,file = "../latex/copy_weak_c.jpg")
+# 
+# 
+# 
+# data_weak_learn <- data.frame(get(paste("weak_learn_",1,sep="")),rep(1,length(get(paste("weak_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
+# colnames(data_weak_learn) <- c("Weak_failures","learn","indicators")
+# for (k in c(2:9)){
+#         data_out <- data.frame(get(paste("weak_learn_",k,sep="")),rep(k,length(get(paste("weak_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
+#         colnames(data_out) <- c("Weak_failures","learn","indicators")
+#         data_weak_learn <- rbind(data_weak_learn,data_out)
+# }
+# 
+# learn_weak_figure <- ggplot(data_weak_learn, aes(factor(learn), Weak_failures)) + geom_boxplot() +
+#         xlab("Learning behavior") +
+#         ylab("Number of Weak Failures")
+# 
+# ggsave(learn_weak_figure,file = "../latex/learn_weak_c.jpg")
+# 
+# 
+# 
+# #-----------------hard error---------------------------------------------------
+# data_hard_copy <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("hard_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
+# colnames(data_hard_copy) <- c("hard_Failures","copy_best","indicators")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("hard_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
+#         colnames(data_out) <- c("hard_Failures","copy_best","indicators")
+#         data_hard_copy <- rbind(data_hard_copy,data_out)
+# }
+# 
+# copy_hard_figure <- ggplot(data_hard_copy, aes(factor(copy_best), hard_Failures)) + geom_boxplot() +
+#         xlab("Copy best behavior") +
+#         ylab("Number of Hard Failures")
+# 
+# ggsave(copy_hard_figure,file = "../latex/copy_hard_c.jpg")
+# 
+# 
+# 
+# data_hard_learn <- data.frame(get(paste("hard_learn_",1,sep="")),rep(1,length(get(paste("hard_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
+# colnames(data_hard_learn) <- c("hard_failures","learn","indicators")
+# for (k in c(2:9)){
+#         data_out <- data.frame(get(paste("hard_learn_",k,sep="")),rep(k,length(get(paste("hard_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
+#         colnames(data_out) <- c("hard_failures","learn","indicators")
+#         data_hard_learn <- rbind(data_hard_learn,data_out)
+# }
+# 
+# learn_hard_figure <- ggplot(data_hard_learn, aes(factor(learn), hard_failures)) + geom_boxplot() +
+#         xlab("Learning behavior") +
+#         ylab("Number of Hard Failures")
+# 
+# ggsave(learn_hard_figure,file = "../latex/learn_hard_c.jpg")
+# 
+# 
+# #----------------------------color coded rules -------------------------------------------------------
+# 
+# data_averages_copy$indicators <- factor(data_averages_copy$indicators, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# mt <- ggplot(data_averages_copy,aes(Averages,fill=factor(indicators)))
+# first_test <- mt + geom_bar(binwidth = 5)
+# first_test <- first_test + facet_grid(~copy_best,scales="free",labeller = label_both) +
+#         ylab("Number of runs")
+# 
+# 
+# 
+# data_averages_learn$indicators <- factor(data_averages_learn$indicators, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# mt <- ggplot(data_averages_learn,aes(Averages,fill=factor(indicators)))
+# first_test <- mt + geom_bar(binwidth = 5)
+# first_test <- first_test + facet_grid(~copy_best,scales="free",labeller = label_both) +
+#         ylab("Number of runs")
 
-data_averages_copy <- data.frame(get(paste("average_copy_",0,sep="")),rep(0,length(get(paste("average_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
-colnames(data_averages_copy) <- c("Averages","copy_best","indicators")
-for (k in c(1:8)){
-        data_out <- data.frame(get(paste("average_copy_",k,sep="")),rep(k,length(get(paste("average_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
-        colnames(data_out) <- c("Averages","copy_best","indicators")
-        data_averages_copy <- rbind(data_averages_copy,data_out)
-}
-
-copy_averages_figure <- ggplot(data_averages_copy, aes(factor(copy_best), Averages)) + geom_boxplot() +
-        xlab("Copy best behavior") +
-        ylab("Average SOC")
-
-ggsave(copy_averages_figure,file = "../latex/copy_average_c.jpg")
 
 
-
-data_averages_learn <- data.frame(get(paste("average_learn_",1,sep="")),rep(1,length(get(paste("average_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
-colnames(data_averages_learn) <- c("Averages","learn","indicators")
-for (k in c(2:9)){
-        data_out <- data.frame(get(paste("average_learn_",k,sep="")),rep(k,length(get(paste("average_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
-        colnames(data_out) <- c("Averages","learn","indicators")
-        data_averages_learn <- rbind(data_averages_learn,data_out)
-}
-
-learn_averages_figure <- ggplot(data_averages_learn, aes(factor(learn), Averages)) + geom_boxplot() +
-        xlab("Learning behavior") +
-        ylab("Average SOC")
-
-ggsave(learn_averages_figure,file = "../latex/learn_average_c.jpg")
-
-
-
-#-----------------weak error---------------------------------------------------
-data_weak_copy <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("weak_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
-colnames(data_weak_copy) <- c("Weak_Failures","copy_best","indicators")
-for (k in c(1:8)){
-        data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("weak_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
-        colnames(data_out) <- c("Weak_Failures","copy_best","indicators")
-        data_weak_copy <- rbind(data_weak_copy,data_out)
-}
-
-copy_weak_figure <- ggplot(data_weak_copy, aes(factor(copy_best), Weak_Failures)) + geom_boxplot() +
-        xlab("Copy best behavior") +
-        ylab("Number of Weak Failures")
-
-ggsave(copy_weak_figure,file = "../latex/copy_weak_c.jpg")
-
-
-
-data_weak_learn <- data.frame(get(paste("weak_learn_",1,sep="")),rep(1,length(get(paste("weak_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
-colnames(data_weak_learn) <- c("Weak_failures","learn","indicators")
-for (k in c(2:9)){
-        data_out <- data.frame(get(paste("weak_learn_",k,sep="")),rep(k,length(get(paste("weak_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
-        colnames(data_out) <- c("Weak_failures","learn","indicators")
-        data_weak_learn <- rbind(data_weak_learn,data_out)
-}
-
-learn_weak_figure <- ggplot(data_weak_learn, aes(factor(learn), Weak_failures)) + geom_boxplot() +
-        xlab("Learning behavior") +
-        ylab("Number of Weak Failures")
-
-ggsave(learn_weak_figure,file = "../latex/learn_weak_c.jpg")
-
-
-
-#-----------------hard error---------------------------------------------------
-data_hard_copy <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("hard_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")))
-colnames(data_hard_copy) <- c("hard_Failures","copy_best","indicators")
-for (k in c(1:8)){
-        data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("hard_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")))
-        colnames(data_out) <- c("hard_Failures","copy_best","indicators")
-        data_hard_copy <- rbind(data_hard_copy,data_out)
-}
-
-copy_hard_figure <- ggplot(data_hard_copy, aes(factor(copy_best), hard_Failures)) + geom_boxplot() +
-        xlab("Copy best behavior") +
-        ylab("Number of Hard Failures")
-
-ggsave(copy_hard_figure,file = "../latex/copy_hard_c.jpg")
-
-
-
-data_hard_learn <- data.frame(get(paste("hard_learn_",1,sep="")),rep(1,length(get(paste("hard_learn_",1,sep="")))),get(paste("rules_learn_",1,sep="")))
-colnames(data_hard_learn) <- c("hard_failures","learn","indicators")
-for (k in c(2:9)){
-        data_out <- data.frame(get(paste("hard_learn_",k,sep="")),rep(k,length(get(paste("hard_learn_",k,sep="")))),get(paste("rules_learn_",k,sep="")))
-        colnames(data_out) <- c("hard_failures","learn","indicators")
-        data_hard_learn <- rbind(data_hard_learn,data_out)
-}
-
-learn_hard_figure <- ggplot(data_hard_learn, aes(factor(learn), hard_failures)) + geom_boxplot() +
-        xlab("Learning behavior") +
-        ylab("Number of Hard Failures")
-
-ggsave(learn_hard_figure,file = "../latex/learn_hard_c.jpg")
-
-
-#----------------------------color coded rules -------------------------------------------------------
-
-data_averages_copy$indicators <- factor(data_averages_copy$indicators, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-mt <- ggplot(data_averages_copy,aes(Averages,fill=factor(indicators)))
-first_test <- mt + geom_bar(binwidth = 5)
-first_test <- first_test + facet_grid(~copy_best,scales="free",labeller = label_both) +
-        ylab("Number of runs")
-
-
-
-data_averages_learn$indicators <- factor(data_averages_learn$indicators, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-mt <- ggplot(data_averages_learn,aes(Averages,fill=factor(indicators)))
-first_test <- mt + geom_bar(binwidth = 5)
-first_test <- first_test + facet_grid(~copy_best,scales="free",labeller = label_both) +
-        ylab("Number of runs")
+#---------------------------combined data frame-----------------------------------------------------
+# data_averages_copy_learn <- data.frame(get(paste("average_copy_",0,sep="")),rep(0,length(get(paste("average_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")),get(paste("learn_val_",0,sep="")))
+# colnames(data_averages_copy) <- c("Averages","copy_best","indicators","learn")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("average_copy_",k,sep="")),rep(k,length(get(paste("average_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")),get(paste("learn_val_",k,sep="")))
+#         colnames(data_out) <- c("Averages","copy_best","indicators","learn")
+#         data_averages_copy <- rbind(data_averages_copy,data_out)
+# }
+# 
+# data_weak_copy_learn <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("weak_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")),get(paste("learn_val_",0,sep="")))
+# colnames(data_weak_copy) <- c("Weak_Failures","copy_best","indicators","learn")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("weak_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")),get(paste("learn_val_",k,sep="")))
+#         colnames(data_out) <- c("Weak_Failures","copy_best","indicators","learn")
+#         data_weak_copy <- rbind(data_weak_copy,data_out)
+# }
+# 
+# data_hard_copy_learn <- data.frame(get(paste("weak_copy_",0,sep="")),rep(0,length(get(paste("hard_copy_",0,sep="")))),get(paste("rules_copy_",0,sep="")),get(paste("learn_val_",0,sep="")))
+# colnames(data_hard_copy) <- c("hard_Failures","copy_best","indicators","learn")
+# for (k in c(1:8)){
+#         data_out <- data.frame(get(paste("weak_copy_",k,sep="")),rep(k,length(get(paste("hard_copy_",k,sep="")))),get(paste("rules_copy_",k,sep="")),get(paste("learn_val_",k,sep="")))
+#         colnames(data_out) <- c("hard_Failures","copy_best","indicators","learn")
+#         data_hard_copy <- rbind(data_hard_copy,data_out)
+# }

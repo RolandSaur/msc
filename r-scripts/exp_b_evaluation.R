@@ -190,24 +190,31 @@ for (i in runs) {
 averages_majority_figure <- qplot(averages_majority,geom = "histogram",binwidth = 1) + 
         ggtitle("Average SOC") + xlab("Average SOC")
 ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.jpg",sep=""))
+ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.eps",sep=""))
 
 averages_borda_figure <- qplot(averages_borda,geom = "histogram",binwidth = 1) + 
         ggtitle("Average SOC") + xlab("Average SOC")
 ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.jpg",sep=""))
+ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.eps",sep=""))
 
 weak_borda_figure <- qplot(weak_borda,geom = "histogram",binwidth = 10) + 
         ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
 ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.jpg",sep=""))
+ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.eps",sep=""))
 
 weak_majority_figure <- qplot(weak_majority,geom = "histogram",binwidth = 10) + 
         ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
 ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.jpg",sep=""))
+ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.eps",sep=""))
+
 
 hard_borda_figure <- qplot(hard_borda,geom = "histogram",binwidth = 1) + 
         ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
 ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.jpg",sep=""))
+ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.eps",sep=""))
 
 hard_majority_figure <- qplot(hard_majority,geom = "histogram",binwidth = 1) + 
         ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
 ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.jpg",sep=""))
+ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.eps",sep=""))
 

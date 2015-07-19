@@ -181,14 +181,17 @@ for (i in runs) {
                 ggtitle("Average SOC") + xlab("Average SOC")
         
         ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".jpg",sep=""))
-         
+        ggsave(averages_figure , file = paste("../latex/averages_exp_c_",i,".eps",sep="")) 
+        
         weak_figure <- qplot(weak_failures,geom = "histogram",binwidth = 10) + 
               ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
         ggsave(weak_figure , file = paste("../latex/weak_exp_c_",i,".jpg",sep=""))
+        ggsave(weak_figure , file = paste("../latex/weak_exp_c_",i,".eps",sep=""))
         
         hard_figure <- qplot(hard_failures,geom = "histogram",binwidth = 1) + 
               ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
         ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".jpg",sep=""))
+        ggsave(hard_figure , file = paste("../latex/hard_exp_c_",i,".eps",sep=""))
 }
 
 t.test(averages_vertical,averages_all, "less", conf.level= 0.95)

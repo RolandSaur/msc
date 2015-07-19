@@ -303,6 +303,41 @@ than they could by individual reasoning\cite{institutions}. \\
 can experience the tragedy of the commons. Further software agents could autonomously appropriate
 a resource for a user. If these software agents do not cooperate or have rules to regulate their behavior they will 
 contribute to the depletion of the resource. 
+
+\subsection{Smart grid as a Common pool resource}
+In this short sub-chapter, the similarities and differences between the smart grid and more conventional common pool resources will be
+shown.\\
+The problem, in the low voltage grid can be seen from a resource perspective. 
+The resource in this case would be the grid itself. 
+The two defining properties of a common pool resource is that excluding actors from the resource is very hard, while the resource
+itself is limited. 
+The accessibility is given by simply plugging the electric vehicles in. 
+The grid is limited in the sense that there is only a limited amount of energy that can be transported by it. 
+The tragedy of the commons is that each household tries to charge its electric vehicle as much as possible, while the grid is 
+not able to transport enough energy.\\
+Like most common pool resource problems, the smart gird is a nested common pool resource problem and can be looked at as either a supply
+side provisional problem or an assignment problem. \\
+According to \cite{cprbook}.
+\begin{enumerate}
+ \item \textbf{Supply side provisional problems} are problems, in which some kind of 
+infrastructure has to be created or maintained, and every actor in  the system benefits from this infrastructure. 
+The infrastructure costs money and effort to maintain and some actors therefore have to invest in it. 
+At the same time all the actors benefit from it. 
+The most rational thing for actors to do is to free ride, on the effort of others. An example of such a problem are irrigation 
+systems. Irrigation systems have to be build and maintained but it is very hard to exclude any actor from its benefits. 
+\item \textbf{Assignment problems} are a special kind of an appropriation problem, in which there is a spatial heterogeneity. 
+In appropriation problems there is a natural resource that can be used by everyone. This resource is limited and therefore has to be
+managed. The spacial heterogeneity is that the position an actor is in, affects his/her ability to access the resource. A classic 
+example are hot and cold spots in fishing areas.
+\end{enumerate}
+Looking at it as an Supply side provisional problem. 
+
+
+
+%Since the households are 
+%affected differently by restrictions of the grid based on their position, there are households which will not be able to 
+%charge sufficiently while others will not experience any restriction. 
+
 \subsection{Research Approach}
 The goal of this thesis is to design a distributed solution to manage the low voltage grid. \\
 The properties of the problem are, that it is distributed with many local variables and hard to predict because human behavior plays a role
@@ -310,17 +345,10 @@ in it. The problem is also very complex and the effect of interactions of many p
 solutions are therefore hard if not impossible, because the number of variables that have to be taken into account is enormous, and
 because centralized solutions have to know what the collective effect of many small changes is on the system. An automated distributed 
 approach to this would be to install software agents in peoples houses and connect them to a multi agent system.\\
-
-The problem can also be seen from a resource perspective. The resource in this case would be the grid itself, which can be viewed as a 
-common pool resource.
-The accessibility is given by simply plugging the electric vehicles in. 
-The grid is limited in the sense that there is only a limited amount of energy that can be transported by it. The tragedy
-of the commons is that each household tries to charge its electric vehicle as much as possible. Since the households are 
-affected differently by restrictions of the grid based on their position, there are households which will not be able to 
-charge sufficiently while other will not experience any restriction. 
-This way the grid can be seen as a common pool resource and simply introducing distributed software agents to manage the grid solely based 
-on the locally observable variables, will not solve the problem. The software agents will simply contribute to the 
-tragedy of the commons in this situation. Similar to human systems institutions can be used to coordinate the actions of the agents to 
+If the smart grid is really seen as a common pool resource, then simply introducing distributed software 
+agents to manage the grid solely based on the locally observable variables, will not solve the problem.
+The software agents will simply contribute to the tragedy of the commons in this situation. 
+Similar to human systems institutions can be used to coordinate the actions of the agents to 
 solve the cpr problem. \\
  When trying to come up with concrete solutions to the problem, the socio-technical aspects of the problem has to be taken into account.
 The problem is situated in a socio-technical system including, almost every aspect of peoples daily life, 
@@ -2045,6 +2073,8 @@ As mentioned before, this idea of having software agents collaborate to manage a
 problems. A interesting application would be the management of a communally shared heat source and or storage, to which several 
 household are connected and contribute to  and draw heat from. 
 \clearpage
+
+\section{Reflection}
 
 
 \begin{comment}

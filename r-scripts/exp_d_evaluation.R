@@ -105,18 +105,21 @@ averages_figure_majority <- qplot(averages_majority,geom = "histogram",binwidth 
         ggtitle("Average SOC") + xlab("Average SOC") +
         xlim(25,40)
 ggsave(averages_figure_majority , file = "../latex/averages_d_majority.jpg")
+ggsave(averages_figure_majority , file = "../latex/averages_d_majority.eps")
 
 weak_figure_majority <- qplot(weak_failures_majority,geom = "histogram",binwidth = 50) + 
         ggtitle("Number of weak failures with Institutional Rule") +
         xlab("Number of weak Failures") +
         xlim(200,800)
 ggsave(weak_figure_majority , file = "../latex/weak_d_majority.jpg")
+ggsave(weak_figure_majority , file = "../latex/weak_d_majority.eps")
 
 hard_figure_majority <- qplot(hard_failures_majority,geom = "histogram",binwidth = 10) + 
         ggtitle("Number of hard failures with Institutional Rule") + 
         xlab("Number of hard Failures") +
         xlim(0,100)
 ggsave(hard_figure_majority , file = "../latex/hard_d_majority.jpg")
+ggsave(hard_figure_majority , file = "../latex/hard_d_majority.eps")
 
 
 
@@ -124,17 +127,20 @@ averages_figure_borda <- qplot(averages_borda,geom = "histogram",binwidth = 0.5)
         ggtitle("Average SOC") + xlab("Average SOC") +
         xlim(25,40)
 ggsave(averages_figure_borda , file = "../latex/averages_d_borda.jpg")
+ggsave(averages_figure_borda , file = "../latex/averages_d_borda.eps")
 
 weak_figure_borda <- qplot(weak_failures_borda,geom = "histogram",binwidth = 50) + 
         ggtitle("Number of weak failures with Institutional Rule") +
         xlab("Number of weak Failures") +
         xlim(200,800)
 ggsave(weak_figure_borda , file = "../latex/weak_d_borda.jpg")
+ggsave(weak_figure_borda , file = "../latex/weak_d_borda.eps")
 
 hard_figure_borda <- qplot(hard_failures_borda,geom = "histogram",binwidth = 10) + 
         ggtitle("Number of hard failures with Institutional Rule") + 
         xlab("Number of hard Failures") + 
         xlim(0,100)
 ggsave(hard_figure_borda , file = "../latex/hard_d_borda.jpg")
+ggsave(hard_figure_borda , file = "../latex/hard_d_borda.eps")
 
 t.test(averages_borda,averages_majority, "less", conf.level= 0.95)
