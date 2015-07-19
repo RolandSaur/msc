@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.26)  18 JUL 2015 23:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.4.26)  19 JUL 2015 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -651,20 +651,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 534--545
 
  []
 
-<K-means_alg.jpg, id=674, 746.79pt x 380.42125pt>
+<K-means_alg.jpg, id=676, 746.79pt x 380.42125pt>
 File: K-means_alg.jpg Graphic file (type jpg)
  <use K-means_alg.jpg>
 Package pdftex.def Info: K-means_alg.jpg used on input line 552.
 (pdftex.def)             Requested size: 345.0pt x 175.7447pt.
 
 [14] [15 <./K-means_alg.jpg>]
-<concept_components.png, id=689, 722.7pt x 542.025pt>
+<concept_components.png, id=691, 722.7pt x 542.025pt>
 File: concept_components.png Graphic file (type png)
 
 <use concept_components.png>
 Package pdftex.def Info: concept_components.png used on input line 594.
 (pdftex.def)             Requested size: 345.0pt x 258.74649pt.
- <concept_coffe.png, id=691, 1027.84pt x 770.88pt>
+ <concept_coffe.png, id=693, 1027.84pt x 770.88pt>
 File: concept_coffe.png Graphic file (type png)
 
 <use concept_coffe.png>
@@ -673,14 +673,14 @@ Package pdftex.def Info: concept_coffe.png used on input line 624.
  [16
 
  <./concept_components.png>] [17] [18 <./concept_coffe.png>] <concept_rules_fun
-ction.png, id=707, 737.75626pt x 308.15125pt>
+ction.png, id=709, 737.75626pt x 308.15125pt>
 File: concept_rules_function.png Graphic file (type png)
 
 <use concept_rules_function.png>
 Package pdftex.def Info: concept_rules_function.png used on input line 636.
 (pdftex.def)             Requested size: 345.0pt x 144.10228pt.
 
-<concept_rules_structure.png, id=708, 671.50874pt x 457.71pt>
+<concept_rules_structure.png, id=710, 671.50874pt x 457.71pt>
 File: concept_rules_structure.png Graphic file (type png)
 
 <use concept_rules_structure.png>
@@ -699,7 +699,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 666--670
 [19
 
  <./concept_rules_function.png>] [20 <./concept_rules_structure.png>]
-<concept_memory.jpg, id=720, 702.625pt x 434.62375pt>
+<concept_memory.jpg, id=722, 702.625pt x 434.62375pt>
 File: concept_memory.jpg Graphic file (type jpg)
  <use concept_memory.jpg>
 Package pdftex.def Info: concept_memory.jpg used on input line 689.
@@ -717,7 +717,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 797--815
 
 [24
 
-] [25] <tragedy_of_commons.jpg, id=755, 506.8536pt x 371.2269pt>
+] [25] <tragedy_of_commons.jpg, id=757, 506.8536pt x 371.2269pt>
 File: tragedy_of_commons.jpg Graphic file (type jpg)
 
 <use tragedy_of_commons.jpg>
@@ -728,20 +728,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 902--906
 
  []
 
-[27] <Pypower_verification.jpg, id=766, 1185.42876pt x 335.2525pt>
+[27] <Pypower_verification.jpg, id=768, 1185.42876pt x 335.2525pt>
 File: Pypower_verification.jpg Graphic file (type jpg)
 
 <use Pypower_verification.jpg>
 Package pdftex.def Info: Pypower_verification.jpg used on input line 936.
 (pdftex.def)             Requested size: 345.0pt x 97.56859pt.
  [28 <./Pypower_verification.jpg>]
-<unconstrained.jpg, id=775, 506.8536pt x 371.2269pt>
+<unconstrained.jpg, id=778, 506.8536pt x 371.2269pt>
 File: unconstrained.jpg Graphic file (type jpg)
  <use unconstrained.jpg>
 Package pdftex.def Info: unconstrained.jpg used on input line 955.
 (pdftex.def)             Requested size: 345.0pt x 252.68584pt.
 
-<constrained.jpg, id=776, 506.8536pt x 371.2269pt>
+<constrained.jpg, id=779, 506.8536pt x 371.2269pt>
 File: constrained.jpg Graphic file (type jpg)
  <use constrained.jpg>
 Package pdftex.def Info: constrained.jpg used on input line 961.
@@ -824,7 +824,7 @@ nverted-to.pdf average_all_first_2.eps>
 (epstopdf)             \includegraphics on input line 1420.
 Package epstopdf Info: Output file is already uptodate.
 
-<average_all_first_2-eps-converted-to.pdf, id=918, 356.33125pt x 514.92375pt>
+<average_all_first_2-eps-converted-to.pdf, id=920, 356.33125pt x 514.92375pt>
 File: average_all_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use average_all_first_2-eps-converted-to.pdf>
@@ -843,7 +843,7 @@ converted-to.pdf averages_first_greedy.eps>
 (epstopdf)             \includegraphics on input line 1423.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_first_greedy-eps-converted-to.pdf, id=919, 356.33125pt x 514.92375pt>
+<averages_first_greedy-eps-converted-to.pdf, id=921, 356.33125pt x 514.92375pt>
 File: averages_first_greedy-eps-converted-to.pdf Graphic file (type pdf)
 <use averages_first_greedy-eps-converted-to.pdf>
 Package pdftex.def Info: averages_first_greedy-eps-converted-to.pdf used on inp
@@ -861,7 +861,7 @@ onverted-to.pdf average_near_first_2.eps>
 (epstopdf)             \includegraphics on input line 1436.
 Package epstopdf Info: Output file is already uptodate.
 
-<average_near_first_2-eps-converted-to.pdf, id=921, 356.33125pt x 514.92375pt>
+<average_near_first_2-eps-converted-to.pdf, id=923, 356.33125pt x 514.92375pt>
 File: average_near_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use average_near_first_2-eps-converted-to.pdf>
@@ -880,7 +880,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 1439.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_first_greedy_near-eps-converted-to.pdf, id=922, 356.33125pt x 514.923
+<averages_first_greedy_near-eps-converted-to.pdf, id=924, 356.33125pt x 514.923
 75pt>
 File: averages_first_greedy_near-eps-converted-to.pdf Graphic file (type pdf)
  <use averages_first_greedy_near-eps-converted-to.pdf>
@@ -900,7 +900,7 @@ nverted-to.pdf average_far_first_2.eps>
 (epstopdf)             \includegraphics on input line 1465.
 Package epstopdf Info: Output file is already uptodate.
 
-<average_far_first_2-eps-converted-to.pdf, id=943, 356.33125pt x 514.92375pt>
+<average_far_first_2-eps-converted-to.pdf, id=945, 356.33125pt x 514.92375pt>
 File: average_far_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use average_far_first_2-eps-converted-to.pdf>
@@ -919,7 +919,7 @@ eps-converted-to.pdf averages_first_greedy_far.eps>
 (epstopdf)             \includegraphics on input line 1468.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_first_greedy_far-eps-converted-to.pdf, id=944, 356.33125pt x 514.9237
+<averages_first_greedy_far-eps-converted-to.pdf, id=946, 356.33125pt x 514.9237
 5pt>
 File: averages_first_greedy_far-eps-converted-to.pdf Graphic file (type pdf)
  <use averages_first_greedy_far-eps-converted-to.pdf>
@@ -941,7 +941,7 @@ Package epstopdf Info: Source file: <weak_first_2.eps>
 -to.pdf weak_first_2.eps>
 (epstopdf)             \includegraphics on input line 1490.
 Package epstopdf Info: Output file is already uptodate.
-<weak_first_2-eps-converted-to.pdf, id=947, 356.33125pt x 514.92375pt>
+<weak_first_2-eps-converted-to.pdf, id=949, 356.33125pt x 514.92375pt>
 File: weak_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use weak_first_2-eps-converted-to.pdf>
@@ -959,7 +959,7 @@ erted-to.pdf weak_first_greedy.eps>
 (epstopdf)             \includegraphics on input line 1493.
 Package epstopdf Info: Output file is already uptodate.
 
-<weak_first_greedy-eps-converted-to.pdf, id=948, 356.33125pt x 514.92375pt>
+<weak_first_greedy-eps-converted-to.pdf, id=950, 356.33125pt x 514.92375pt>
 File: weak_first_greedy-eps-converted-to.pdf Graphic file (type pdf)
 
 <use weak_first_greedy-eps-converted-to.pdf>
@@ -979,7 +979,7 @@ Package epstopdf Info: Source file: <hard_first_2.eps>
 (epstopdf)             \includegraphics on input line 1500.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_first_2-eps-converted-to.pdf, id=970, 356.33125pt x 514.92375pt>
+<hard_first_2-eps-converted-to.pdf, id=972, 356.33125pt x 514.92375pt>
 File: hard_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_first_2-eps-converted-to.pdf>
@@ -997,7 +997,7 @@ erted-to.pdf hard_first_greedy.eps>
 (epstopdf)             \includegraphics on input line 1503.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_first_greedy-eps-converted-to.pdf, id=971, 356.33125pt x 514.92375pt>
+<hard_first_greedy-eps-converted-to.pdf, id=973, 356.33125pt x 514.92375pt>
 File: hard_first_greedy-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_first_greedy-eps-converted-to.pdf>
@@ -1039,7 +1039,7 @@ f>
 (epstopdf)             \includegraphics on input line 1532.
 Package epstopdf Info: Output file is already uptodate.
 
-<average_all_no_first_2-eps-converted-to.pdf, id=1030, 356.33125pt x 514.92375p
+<average_all_no_first_2-eps-converted-to.pdf, id=1032, 356.33125pt x 514.92375p
 t>
 File: average_all_no_first_2-eps-converted-to.pdf Graphic file (type pdf)
  <use average_all_no_first_2-eps-converted-to.pdf>
@@ -1057,7 +1057,7 @@ rted-to.pdf averages_first_2.eps>
 (epstopdf)             \includegraphics on input line 1548.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_first_2-eps-converted-to.pdf, id=1036, 356.33125pt x 514.92375pt>
+<averages_first_2-eps-converted-to.pdf, id=1038, 356.33125pt x 514.92375pt>
 File: averages_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_first_2-eps-converted-to.pdf>
@@ -1075,7 +1075,7 @@ nverted-to.pdf averages_no_first_2.eps>
 (epstopdf)             \includegraphics on input line 1551.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_no_first_2-eps-converted-to.pdf, id=1037, 356.33125pt x 514.92375pt>
+<averages_no_first_2-eps-converted-to.pdf, id=1039, 356.33125pt x 514.92375pt>
 File: averages_no_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_no_first_2-eps-converted-to.pdf>
@@ -1109,7 +1109,7 @@ ted-to.pdf weak_no_first_2.eps>
 (epstopdf)             \includegraphics on input line 1570.
 Package epstopdf Info: Output file is already uptodate.
 
-<weak_no_first_2-eps-converted-to.pdf, id=1055, 356.33125pt x 514.92375pt>
+<weak_no_first_2-eps-converted-to.pdf, id=1057, 356.33125pt x 514.92375pt>
 File: weak_no_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use weak_no_first_2-eps-converted-to.pdf>
@@ -1143,7 +1143,7 @@ ted-to.pdf hard_no_first_2.eps>
 (epstopdf)             \includegraphics on input line 1585.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_no_first_2-eps-converted-to.pdf, id=1058, 356.33125pt x 514.92375pt>
+<hard_no_first_2-eps-converted-to.pdf, id=1060, 356.33125pt x 514.92375pt>
 File: hard_no_first_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_no_first_2-eps-converted-to.pdf>
@@ -1164,7 +1164,7 @@ _look-eps-converted-to.pdf hard_failure_colored_first_look.eps>
 (epstopdf)             \includegraphics on input line 1611.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_failure_colored_first_look-eps-converted-to.pdf, id=1082, 495.8525pt x 41
+<hard_failure_colored_first_look-eps-converted-to.pdf, id=1084, 495.8525pt x 41
 8.56375pt>
 File: hard_failure_colored_first_look-eps-converted-to.pdf Graphic file (type p
 df)
@@ -1187,7 +1187,7 @@ ok-eps-converted-to.pdf rules_voltage_soc_first_look.eps>
 (epstopdf)             \includegraphics on input line 1647.
 Package epstopdf Info: Output file is already uptodate.
 
-<rules_voltage_soc_first_look-eps-converted-to.pdf, id=1107, 495.8525pt x 418.5
+<rules_voltage_soc_first_look-eps-converted-to.pdf, id=1109, 495.8525pt x 418.5
 6375pt>
 File: rules_voltage_soc_first_look-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1207,7 +1207,7 @@ ook-eps-converted-to.pdf hard_failure_colored_low_look.eps>
 (epstopdf)             \includegraphics on input line 1670.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_failure_colored_low_look-eps-converted-to.pdf, id=1111, 495.8525pt x 418.
+<hard_failure_colored_low_look-eps-converted-to.pdf, id=1113, 495.8525pt x 418.
 56375pt>
 File: hard_failure_colored_low_look-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -1229,7 +1229,7 @@ rted-to.pdf averages_exp_c_1.eps>
 (epstopdf)             \includegraphics on input line 1714.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_exp_c_1-eps-converted-to.pdf, id=1163, 936.49875pt x 699.61375pt>
+<averages_exp_c_1-eps-converted-to.pdf, id=1165, 936.49875pt x 699.61375pt>
 File: averages_exp_c_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_exp_c_1-eps-converted-to.pdf>
@@ -1247,7 +1247,7 @@ rted-to.pdf averages_exp_c_2.eps>
 (epstopdf)             \includegraphics on input line 1717.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_exp_c_2-eps-converted-to.pdf, id=1164, 936.49875pt x 699.61375pt>
+<averages_exp_c_2-eps-converted-to.pdf, id=1166, 936.49875pt x 699.61375pt>
 File: averages_exp_c_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_exp_c_2-eps-converted-to.pdf>
@@ -1265,7 +1265,7 @@ rted-to.pdf averages_exp_c_3.eps>
 (epstopdf)             \includegraphics on input line 1720.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_exp_c_3-eps-converted-to.pdf, id=1165, 936.49875pt x 699.61375pt>
+<averages_exp_c_3-eps-converted-to.pdf, id=1167, 936.49875pt x 699.61375pt>
 File: averages_exp_c_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_exp_c_3-eps-converted-to.pdf>
@@ -1283,7 +1283,7 @@ Package epstopdf Info: Source file: <hard_exp_c_1.eps>
 (epstopdf)             \includegraphics on input line 1733.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_exp_c_1-eps-converted-to.pdf, id=1167, 936.49875pt x 699.61375pt>
+<hard_exp_c_1-eps-converted-to.pdf, id=1169, 936.49875pt x 699.61375pt>
 File: hard_exp_c_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_exp_c_1-eps-converted-to.pdf>
@@ -1301,7 +1301,7 @@ Package epstopdf Info: Source file: <hard_exp_c_2.eps>
 (epstopdf)             \includegraphics on input line 1736.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_exp_c_2-eps-converted-to.pdf, id=1168, 936.49875pt x 699.61375pt>
+<hard_exp_c_2-eps-converted-to.pdf, id=1170, 936.49875pt x 699.61375pt>
 File: hard_exp_c_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_exp_c_2-eps-converted-to.pdf>
@@ -1319,7 +1319,7 @@ Package epstopdf Info: Source file: <hard_exp_c_3.eps>
 (epstopdf)             \includegraphics on input line 1739.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_exp_c_3-eps-converted-to.pdf, id=1169, 936.49875pt x 699.61375pt>
+<hard_exp_c_3-eps-converted-to.pdf, id=1171, 936.49875pt x 699.61375pt>
 File: hard_exp_c_3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_exp_c_3-eps-converted-to.pdf>
@@ -1329,23 +1329,85 @@ Package pdftex.def Info: hard_exp_c_3-eps-converted-to.pdf used on input line 1
  [53
 
  <./averages_exp_c_1-eps-converted-to.pdf> <./averages_exp_c_2-eps-converted-to
-.pdf> <./averages_exp_c_3-eps-converted-to.pdf>] <averages_borda_exp_b_.jpg, id
-=1199, 366.168pt x 271.0125pt>
-File: averages_borda_exp_b_.jpg Graphic file (type jpg)
+.pdf> <./averages_exp_c_3-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <averages_borda_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 12:00:34
+(epstopdf)                    size: 8789 bytes
+(epstopdf)             Output file: <averages_borda_exp_b-eps-converted-to.pdf>
 
-<use averages_borda_exp_b_.jpg>
-Package pdftex.def Info: averages_borda_exp_b_.jpg used on input line 1760.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
+(epstopdf)                    date: 2015-07-19 12:00:42
+(epstopdf)                    size: 12373 bytes
+(epstopdf)             Command: <repstopdf --outfile=averages_borda_exp_b-eps-c
+onverted-to.pdf averages_borda_exp_b.eps>
+(epstopdf)             \includegraphics on input line 1760.
+Package epstopdf Info: Output file is already uptodate.
 
-<averages_majority_exp_b.jpg, id=1200, 366.168pt x 271.0125pt>
-File: averages_majority_exp_b.jpg Graphic file (type jpg)
+<averages_borda_exp_b-eps-converted-to.pdf, id=1201, 366.36874pt x 271.0125pt>
+File: averages_borda_exp_b-eps-converted-to.pdf Graphic file (type pdf)
 
-<use averages_majority_exp_b.jpg>
-Package pdftex.def Info: averages_majority_exp_b.jpg used on input line 1763.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
+<use averages_borda_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: averages_borda_exp_b-eps-converted-to.pdf used on inpu
+t line 1760.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
+Package epstopdf Info: Source file: <averages_majority_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 8550 bytes
+(epstopdf)             Output file: <averages_majority_exp_b-eps-converted-to.p
+df>
+(epstopdf)                    date: 2015-07-19 11:59:13
+(epstopdf)                    size: 12514 bytes
+(epstopdf)             Command: <repstopdf --outfile=averages_majority_exp_b-ep
+s-converted-to.pdf averages_majority_exp_b.eps>
+(epstopdf)             \includegraphics on input line 1763.
+Package epstopdf Info: Output file is already uptodate.
+
+<averages_majority_exp_b-eps-converted-to.pdf, id=1202, 366.36874pt x 271.0125p
+t>
+File: averages_majority_exp_b-eps-converted-to.pdf Graphic file (type pdf)
+ <use averages_majority_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: averages_majority_exp_b-eps-converted-to.pdf used on i
+nput line 1763.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
+Package epstopdf Info: Source file: <weak_borda_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 11686 bytes
+(epstopdf)             Output file: <weak_borda_exp_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-07-19 12:11:36
+(epstopdf)                    size: 12487 bytes
+(epstopdf)             Command: <repstopdf --outfile=weak_borda_exp_b-eps-conve
+rted-to.pdf weak_borda_exp_b.eps>
+(epstopdf)             \includegraphics on input line 1779.
+Package epstopdf Info: Output file is already uptodate.
+
+<weak_borda_exp_b-eps-converted-to.pdf, id=1204, 366.36874pt x 271.0125pt>
+File: weak_borda_exp_b-eps-converted-to.pdf Graphic file (type pdf)
+
+<use weak_borda_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: weak_borda_exp_b-eps-converted-to.pdf used on input li
+ne 1779.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
+Package epstopdf Info: Source file: <weak_majority_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 11602 bytes
+(epstopdf)             Output file: <weak_majority_exp_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-07-19 12:11:36
+(epstopdf)                    size: 12697 bytes
+(epstopdf)             Command: <repstopdf --outfile=weak_majority_exp_b-eps-co
+nverted-to.pdf weak_majority_exp_b.eps>
+(epstopdf)             \includegraphics on input line 1782.
+Package epstopdf Info: Output file is already uptodate.
+
+<weak_majority_exp_b-eps-converted-to.pdf, id=1205, 366.36874pt x 271.0125pt>
+File: weak_majority_exp_b-eps-converted-to.pdf Graphic file (type pdf)
+
+<use weak_majority_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: weak_majority_exp_b-eps-converted-to.pdf used on input
+ line 1782.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
  [54 <./hard_exp_c_1-eps-converted-to.pdf> <./hard_exp_c_2-eps-converted-to.pdf
-> <./hard_exp_c_3-eps-converted-to.pdf>]
-[55 <./averages_borda_exp_b_.jpg> <./averages_majority_exp_b.jpg>]
+> <./hard_exp_c_3-eps-converted-to.pdf>] [55 <./averages_borda_exp_b-eps-conver
+ted-to.pdf> <./averages_majority_exp_b-eps-converted-to.pdf> <./weak_borda_exp_
+b-eps-converted-to.pdf> <./weak_majority_exp_b-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <hard_colored_c.eps>
 (epstopdf)                    date: 2015-07-18 16:20:03
 (epstopdf)                    size: 131262 bytes
@@ -1354,18 +1416,18 @@ Package epstopdf Info: Source file: <hard_colored_c.eps>
 (epstopdf)                    size: 30269 bytes
 (epstopdf)             Command: <repstopdf --outfile=hard_colored_c-eps-convert
 ed-to.pdf hard_colored_c.eps>
-(epstopdf)             \includegraphics on input line 1783.
+(epstopdf)             \includegraphics on input line 1802.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_colored_c-eps-converted-to.pdf, id=1237, 938.50626pt x 675.52374pt>
+<hard_colored_c-eps-converted-to.pdf, id=1289, 938.50626pt x 675.52374pt>
 File: hard_colored_c-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_colored_c-eps-converted-to.pdf>
 Package pdftex.def Info: hard_colored_c-eps-converted-to.pdf used on input line
- 1783.
+ 1802.
 (pdftex.def)             Requested size: 345.0pt x 248.32156pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1778--1787
+Underfull \hbox (badness 10000) in paragraph at lines 1797--1806
 
  []
 
@@ -1373,22 +1435,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 1778--1787
 
  <./hard_colored_c-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <hard_borda_exp_b.eps>
-(epstopdf)                    date: 2015-07-18 18:16:03
-(epstopdf)                    size: 7457 bytes
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 11216 bytes
 (epstopdf)             Output file: <hard_borda_exp_b-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-07-18 22:34:00
-(epstopdf)                    size: 10061 bytes
+(epstopdf)                    date: 2015-07-19 11:59:14
+(epstopdf)                    size: 12295 bytes
 (epstopdf)             Command: <repstopdf --outfile=hard_borda_exp_b-eps-conve
 rted-to.pdf hard_borda_exp_b.eps>
-(epstopdf)             \includegraphics on input line 1841.
+(epstopdf)             \includegraphics on input line 1860.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_borda_exp_b-eps-converted-to.pdf, id=1254, 366.36874pt x 271.0125pt>
+<hard_borda_exp_b-eps-converted-to.pdf, id=1306, 366.36874pt x 271.0125pt>
 File: hard_borda_exp_b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_borda_exp_b-eps-converted-to.pdf>
 Package pdftex.def Info: hard_borda_exp_b-eps-converted-to.pdf used on input li
-ne 1841.
+ne 1860.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 Package epstopdf Info: Source file: <hard_d_borda.eps>
 (epstopdf)                    date: 2015-07-18 18:57:28
@@ -1398,15 +1460,15 @@ Package epstopdf Info: Source file: <hard_d_borda.eps>
 (epstopdf)                    size: 10064 bytes
 (epstopdf)             Command: <repstopdf --outfile=hard_d_borda-eps-converted
 -to.pdf hard_d_borda.eps>
-(epstopdf)             \includegraphics on input line 1844.
+(epstopdf)             \includegraphics on input line 1863.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_d_borda-eps-converted-to.pdf, id=1255, 366.36874pt x 271.0125pt>
+<hard_d_borda-eps-converted-to.pdf, id=1307, 366.36874pt x 271.0125pt>
 File: hard_d_borda-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_d_borda-eps-converted-to.pdf>
 Package pdftex.def Info: hard_d_borda-eps-converted-to.pdf used on input line 1
-844.
+863.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 Package epstopdf Info: Source file: <averages_d_borda.eps>
 (epstopdf)                    date: 2015-07-18 18:57:28
@@ -1416,15 +1478,15 @@ Package epstopdf Info: Source file: <averages_d_borda.eps>
 (epstopdf)                    size: 9748 bytes
 (epstopdf)             Command: <repstopdf --outfile=averages_d_borda-eps-conve
 rted-to.pdf averages_d_borda.eps>
-(epstopdf)             \includegraphics on input line 1861.
+(epstopdf)             \includegraphics on input line 1880.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_d_borda-eps-converted-to.pdf, id=1258, 366.36874pt x 271.0125pt>
+<averages_d_borda-eps-converted-to.pdf, id=1310, 366.36874pt x 271.0125pt>
 File: averages_d_borda-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_d_borda-eps-converted-to.pdf>
 Package pdftex.def Info: averages_d_borda-eps-converted-to.pdf used on input li
-ne 1861.
+ne 1880.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 Package epstopdf Info: Source file: <averages_d_majority.eps>
 (epstopdf)                    date: 2015-07-18 18:57:27
@@ -1434,15 +1496,15 @@ Package epstopdf Info: Source file: <averages_d_majority.eps>
 (epstopdf)                    size: 9752 bytes
 (epstopdf)             Command: <repstopdf --outfile=averages_d_majority-eps-co
 nverted-to.pdf averages_d_majority.eps>
-(epstopdf)             \includegraphics on input line 1864.
+(epstopdf)             \includegraphics on input line 1883.
 Package epstopdf Info: Output file is already uptodate.
 
-<averages_d_majority-eps-converted-to.pdf, id=1259, 366.36874pt x 271.0125pt>
+<averages_d_majority-eps-converted-to.pdf, id=1311, 366.36874pt x 271.0125pt>
 File: averages_d_majority-eps-converted-to.pdf Graphic file (type pdf)
 
 <use averages_d_majority-eps-converted-to.pdf>
 Package pdftex.def Info: averages_d_majority-eps-converted-to.pdf used on input
- line 1864.
+ line 1883.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 Package epstopdf Info: Source file: <hard_d_borda.eps>
 (epstopdf)                    date: 2015-07-18 18:57:28
@@ -1452,13 +1514,13 @@ Package epstopdf Info: Source file: <hard_d_borda.eps>
 (epstopdf)                    size: 10064 bytes
 (epstopdf)             Command: <repstopdf --outfile=hard_d_borda-eps-converted
 -to.pdf hard_d_borda.eps>
-(epstopdf)             \includegraphics on input line 1875.
+(epstopdf)             \includegraphics on input line 1894.
 Package epstopdf Info: Output file is already uptodate.
 File: hard_d_borda-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_d_borda-eps-converted-to.pdf>
 Package pdftex.def Info: hard_d_borda-eps-converted-to.pdf used on input line 1
-875.
+894.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 Package epstopdf Info: Source file: <hard_d_majority.eps>
 (epstopdf)                    date: 2015-07-18 18:57:28
@@ -1468,633 +1530,665 @@ Package epstopdf Info: Source file: <hard_d_majority.eps>
 (epstopdf)                    size: 9838 bytes
 (epstopdf)             Command: <repstopdf --outfile=hard_d_majority-eps-conver
 ted-to.pdf hard_d_majority.eps>
-(epstopdf)             \includegraphics on input line 1878.
+(epstopdf)             \includegraphics on input line 1897.
 Package epstopdf Info: Output file is already uptodate.
 
-<hard_d_majority-eps-converted-to.pdf, id=1261, 366.36874pt x 271.0125pt>
+<hard_d_majority-eps-converted-to.pdf, id=1313, 366.36874pt x 271.0125pt>
 File: hard_d_majority-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hard_d_majority-eps-converted-to.pdf>
 Package pdftex.def Info: hard_d_majority-eps-converted-to.pdf used on input lin
-e 1878.
+e 1897.
 (pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
-
-<dist_borda_d.jpg, id=1263, 423.5022pt x 511.9125pt>
-File: dist_borda_d.jpg Graphic file (type jpg)
- <use dist_borda_d.jpg>
-Package pdftex.def Info: dist_borda_d.jpg used on input line 1897.
-(pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
-
-<dist_majority_d.jpg, id=1264, 423.5022pt x 511.9125pt>
-File: dist_majority_d.jpg Graphic file (type jpg)
-
-<use dist_majority_d.jpg>
-Package pdftex.def Info: dist_majority_d.jpg used on input line 1900.
-(pdftex.def)             Requested size: 155.24895pt x 187.65495pt.
  [57
 
  <./hard_borda_exp_b-eps-converted-to.pdf> <./hard_d_borda-eps-converted-to.pdf
->] [58 <./averages_d_borda-eps-converted-to.pdf> <./averages_d_majority-eps-con
-verted-to.pdf> <./hard_d_majority-eps-converted-to.pdf>] [59 <./dist_borda_d.jp
-g> <./dist_majority_d.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 1909--1913
+>]
+Package epstopdf Info: Source file: <rules_voltage_d_majority.eps>
+(epstopdf)                    date: 2015-07-17 11:06:37
+(epstopdf)                    size: 41428 bytes
+(epstopdf)             Output file: <rules_voltage_d_majority-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2015-07-19 10:16:13
+(epstopdf)                    size: 17653 bytes
+(epstopdf)             Command: <repstopdf --outfile=rules_voltage_d_majority-e
+ps-converted-to.pdf rules_voltage_d_majority.eps>
+(epstopdf)             \includegraphics on input line 1908.
+Package epstopdf Info: Output file is already uptodate.
+
+<rules_voltage_d_majority-eps-converted-to.pdf, id=1340, 495.8525pt x 418.56375
+pt>
+File: rules_voltage_d_majority-eps-converted-to.pdf Graphic file (type pdf)
+ <use rules_voltage_d_majority-eps-converted-to.pdf>
+Package pdftex.def Info: rules_voltage_d_majority-eps-converted-to.pdf used on 
+input line 1908.
+(pdftex.def)             Requested size: 345.0pt x 291.22348pt.
+Package epstopdf Info: Source file: <rules_voltage_d_borda.eps>
+(epstopdf)                    date: 2015-07-17 11:06:41
+(epstopdf)                    size: 22093 bytes
+(epstopdf)             Output file: <rules_voltage_d_borda-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2015-07-19 10:16:13
+(epstopdf)                    size: 14626 bytes
+(epstopdf)             Command: <repstopdf --outfile=rules_voltage_d_borda-eps-
+converted-to.pdf rules_voltage_d_borda.eps>
+(epstopdf)             \includegraphics on input line 1915.
+Package epstopdf Info: Output file is already uptodate.
+
+<rules_voltage_d_borda-eps-converted-to.pdf, id=1341, 495.8525pt x 418.56375pt>
+File: rules_voltage_d_borda-eps-converted-to.pdf Graphic file (type pdf)
+<use rules_voltage_d_borda-eps-converted-to.pdf>
+Package pdftex.def Info: rules_voltage_d_borda-eps-converted-to.pdf used on inp
+ut line 1915.
+(pdftex.def)             Requested size: 345.0pt x 291.22348pt.
+ [58 <./averages_d_borda-eps-converted-to.pdf> <./averages_d_majority-eps-conve
+rted-to.pdf> <./hard_d_majority-eps-converted-to.pdf>] [59 <./rules_voltage_d_m
+ajority-eps-converted-to.pdf>]
+[60 <./rules_voltage_d_borda-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1946--1950
 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1914.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1951.
 
-<averages_first_simple.jpg, id=1322, 423.5022pt x 511.9125pt>
+<averages_first_simple.jpg, id=1400, 423.5022pt x 511.9125pt>
 File: averages_first_simple.jpg Graphic file (type jpg)
 
 <use averages_first_simple.jpg>
-Package pdftex.def Info: averages_first_simple.jpg used on input line 1943.
+Package pdftex.def Info: averages_first_simple.jpg used on input line 1980.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<weak_first_simple.jpg, id=1323, 423.5022pt x 511.9125pt>
+<weak_first_simple.jpg, id=1401, 423.5022pt x 511.9125pt>
 File: weak_first_simple.jpg Graphic file (type jpg)
 
 <use weak_first_simple.jpg>
-Package pdftex.def Info: weak_first_simple.jpg used on input line 1946.
+Package pdftex.def Info: weak_first_simple.jpg used on input line 1983.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<hard_first_simple.jpg, id=1324, 423.5022pt x 511.9125pt>
+<hard_first_simple.jpg, id=1402, 423.5022pt x 511.9125pt>
 File: hard_first_simple.jpg Graphic file (type jpg)
 
 <use hard_first_simple.jpg>
-Package pdftex.def Info: hard_first_simple.jpg used on input line 1949.
+Package pdftex.def Info: hard_first_simple.jpg used on input line 1986.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
- [60
+ [61
 
-] [61 <./averages_first_simple.jpg> <./weak_first_simple.jpg> <./hard_first_sim
+] [62 <./averages_first_simple.jpg> <./weak_first_simple.jpg> <./hard_first_sim
 ple.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 1996--2000
+Underfull \hbox (badness 10000) in paragraph at lines 2033--2037
 
  []
 
-[62
+[63
 
-] [63]
-Underfull \hbox (badness 10000) in paragraph at lines 2079--2104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2079--2104
+] [64]
+Underfull \hbox (badness 10000) in paragraph at lines 2116--2141
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2079--2104
+Underfull \hbox (badness 10000) in paragraph at lines 2116--2141
 
  []
 
-[64] [65] [66
+
+Underfull \hbox (badness 10000) in paragraph at lines 2116--2141
+
+ []
+
+[65] [66] [67
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 2142--2146
+Underfull \hbox (badness 10000) in paragraph at lines 2179--2183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2147--2149
+Underfull \hbox (badness 10000) in paragraph at lines 2184--2186
 
  []
 
-<Topology.png, id=1377, 861.2175pt x 674.52pt>
+<Topology.png, id=1454, 861.2175pt x 674.52pt>
 File: Topology.png Graphic file (type png)
  <use Topology.png>
-Package pdftex.def Info: Topology.png used on input line 2163.
+Package pdftex.def Info: Topology.png used on input line 2200.
 (pdftex.def)             Requested size: 345.0pt x 270.2149pt.
 
-<loadprofile.png, id=1379, 569.9694pt x 371.2269pt>
+<loadprofile.png, id=1456, 569.9694pt x 371.2269pt>
 File: loadprofile.png Graphic file (type png)
  <use loadprofile.png>
-Package pdftex.def Info: loadprofile.png used on input line 2170.
+Package pdftex.def Info: loadprofile.png used on input line 2207.
 (pdftex.def)             Requested size: 345.0pt x 224.70908pt.
 
-[67] [68 <./Topology.png> <./loadprofile.png>]
-<load_voltage.jpg, id=1399, 803.0pt x 602.25pt>
+[68] [69 <./Topology.png> <./loadprofile.png>]
+<load_voltage.jpg, id=1475, 803.0pt x 602.25pt>
 File: load_voltage.jpg Graphic file (type jpg)
  <use load_voltage.jpg>
-Package pdftex.def Info: load_voltage.jpg used on input line 2192.
+Package pdftex.def Info: load_voltage.jpg used on input line 2229.
 (pdftex.def)             Requested size: 345.0pt x 258.75108pt.
 
-<constrain1.jpg, id=1401, 775.89874pt x 471.7625pt>
+<constrain1.jpg, id=1477, 775.89874pt x 471.7625pt>
 File: constrain1.jpg Graphic file (type jpg)
  <use constrain1.jpg>
-Package pdftex.def Info: constrain1.jpg used on input line 2204.
+Package pdftex.def Info: constrain1.jpg used on input line 2241.
 (pdftex.def)             Requested size: 345.0pt x 209.77168pt.
 
-<constrain2.jpg, id=1403, 924.45375pt x 552.0625pt>
+<constrain2.jpg, id=1479, 924.45375pt x 552.0625pt>
 File: constrain2.jpg Graphic file (type jpg)
  <use constrain2.jpg>
-Package pdftex.def Info: constrain2.jpg used on input line 2214.
+Package pdftex.def Info: constrain2.jpg used on input line 2251.
 (pdftex.def)             Requested size: 345.0pt x 206.02892pt.
 
-<constrain3_1.jpg, id=1405, 995.72pt x 498.86375pt>
+<constrain3_1.jpg, id=1481, 995.72pt x 498.86375pt>
 File: constrain3_1.jpg Graphic file (type jpg)
  <use constrain3_1.jpg>
-Package pdftex.def Info: constrain3_1.jpg used on input line 2223.
+Package pdftex.def Info: constrain3_1.jpg used on input line 2260.
 (pdftex.def)             Requested size: 345.0pt x 172.84654pt.
 
-<constrain3_2.jpg, id=1407, 1039.885pt x 604.2575pt>
+<constrain3_2.jpg, id=1483, 1039.885pt x 604.2575pt>
 File: constrain3_2.jpg Graphic file (type jpg)
  <use constrain3_2.jpg>
-Package pdftex.def Info: constrain3_2.jpg used on input line 2233.
+Package pdftex.def Info: constrain3_2.jpg used on input line 2270.
 (pdftex.def)             Requested size: 345.0pt x 200.46591pt.
 
-[69
+[70
 
- <./load_voltage.jpg>] [70 <./constrain1.jpg>] [71 <./constrain2.jpg> <./constr
-ain3_1.jpg>] [72 <./constrain3_2.jpg>] [73
+ <./load_voltage.jpg>] [71 <./constrain1.jpg>] [72 <./constrain2.jpg> <./constr
+ain3_1.jpg>] [73 <./constrain3_2.jpg>] [74
 
-] [74] [75] [76] [77]
-<setup.jpg, id=1496, 690.58pt x 134.5025pt>
+] [75] [76] [77] [78]
+<setup.jpg, id=1573, 690.58pt x 134.5025pt>
 File: setup.jpg Graphic file (type jpg)
  <use setup.jpg>
-Package pdftex.def Info: setup.jpg used on input line 2404.
+Package pdftex.def Info: setup.jpg used on input line 2441.
 (pdftex.def)             Requested size: 345.0pt x 67.19565pt.
 
-<init_agent.jpg, id=1497, 570.13pt x 636.3775pt>
+<init_agent.jpg, id=1574, 570.13pt x 636.3775pt>
 File: init_agent.jpg Graphic file (type jpg)
  <use init_agent.jpg>
-Package pdftex.def Info: init_agent.jpg used on input line 2412.
+Package pdftex.def Info: init_agent.jpg used on input line 2449.
 (pdftex.def)             Requested size: 284.52756pt x 317.58592pt.
- [78 <./setup.jpg> <./init_agent.jpg>]
-<set_arrival_leaving_time.jpg, id=1504, 829.0975pt x 325.215pt>
+ [79 <./setup.jpg> <./init_agent.jpg>]
+<set_arrival_leaving_time.jpg, id=1580, 829.0975pt x 325.215pt>
 File: set_arrival_leaving_time.jpg Graphic file (type jpg)
 
 <use set_arrival_leaving_time.jpg>
-Package pdftex.def Info: set_arrival_leaving_time.jpg used on input line 2430.
+Package pdftex.def Info: set_arrival_leaving_time.jpg used on input line 2467.
 (pdftex.def)             Requested size: 284.52756pt x 111.6038pt.
 
-<setup_battery.jpg, id=1505, 862.22125pt x 456.70625pt>
+<setup_battery.jpg, id=1581, 862.22125pt x 456.70625pt>
 File: setup_battery.jpg Graphic file (type jpg)
 
 <use setup_battery.jpg>
-Package pdftex.def Info: setup_battery.jpg used on input line 2438.
+Package pdftex.def Info: setup_battery.jpg used on input line 2475.
 (pdftex.def)             Requested size: 284.52756pt x 150.70656pt.
 
-<setup_rule_memory.jpg, id=1506, 1004.75375pt x 429.605pt>
+<setup_rule_memory.jpg, id=1582, 1004.75375pt x 429.605pt>
 File: setup_rule_memory.jpg Graphic file (type jpg)
 
 <use setup_rule_memory.jpg>
-Package pdftex.def Info: setup_rule_memory.jpg used on input line 2445.
+Package pdftex.def Info: setup_rule_memory.jpg used on input line 2482.
 (pdftex.def)             Requested size: 284.52756pt x 121.65205pt.
- [79 <./set_arrival_leaving_time.jpg> <./setup_battery.jpg> <./setup_rule_memor
+ [80 <./set_arrival_leaving_time.jpg> <./setup_battery.jpg> <./setup_rule_memor
 y.jpg>]
-Overfull \hbox (3.80693pt too wide) in paragraph at lines 2456--2456
+Overfull \hbox (3.80693pt too wide) in paragraph at lines 2493--2493
 []    \OT1/cmtt/m/n/10 let soc[]threshold be randomly picked from soc[]threshol
 d_options[] 
  []
 
 
-Overfull \hbox (48.11652pt too wide) in paragraph at lines 2459--2459
+Overfull \hbox (48.11652pt too wide) in paragraph at lines 2496--2496
 []    \OT1/cmtt/m/n/10 set active[]rule to vector[2,t[]begin,t[]end,soc[]thresh
 old,action1,action2][] 
  []
 
 
-Overfull \hbox (48.74657pt too wide) in paragraph at lines 2461--2461
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 2498--2498
 []    \OT1/cmtt/m/n/10 let voltage_threshold be randomly picked from voltage_th
 reshold_options[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2462--2462
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2499--2499
 []    \OT1/cmtt/m/n/10 let soc_threshold be randomly picked from soc_threshold_
 options[] 
  []
 
 
-Overfull \hbox (90.7462pt too wide) in paragraph at lines 2465--2465
+Overfull \hbox (90.7462pt too wide) in paragraph at lines 2502--2502
 []    \OT1/cmtt/m/n/10 set active_rule to vector[1,voltage_threshold,soc_thresh
 old,action1,action2,NA][] 
  []
 
-[80] <go.jpg, id=1515, 361.35pt x 352.31625pt>
+[81] <go.jpg, id=1591, 361.35pt x 352.31625pt>
 File: go.jpg Graphic file (type jpg)
  <use go.jpg>
-Package pdftex.def Info: go.jpg used on input line 2474.
+Package pdftex.def Info: go.jpg used on input line 2511.
 (pdftex.def)             Requested size: 345.0pt x 336.37581pt.
- [81 <./go.jpg>]
-<agent_matpower_interaction.jpg, id=1520, 837.1275pt x 775.89874pt>
+ [82 <./go.jpg>]
+<agent_matpower_interaction.jpg, id=1596, 837.1275pt x 775.89874pt>
 File: agent_matpower_interaction.jpg Graphic file (type jpg)
 
 <use agent_matpower_interaction.jpg>
-Package pdftex.def Info: agent_matpower_interaction.jpg used on input line 2484
+Package pdftex.def Info: agent_matpower_interaction.jpg used on input line 2521
 .
 (pdftex.def)             Requested size: 345.0pt x 319.7662pt.
- [82 <./agent_matpower_interaction.jpg>]
-<arrive_home.jpg, id=1525, 810.02625pt x 390.45876pt>
+ [83 <./agent_matpower_interaction.jpg>]
+<arrive_home.jpg, id=1601, 810.02625pt x 390.45876pt>
 File: arrive_home.jpg Graphic file (type jpg)
  <use arrive_home.jpg>
-Package pdftex.def Info: arrive_home.jpg used on input line 2505.
+Package pdftex.def Info: arrive_home.jpg used on input line 2542.
 (pdftex.def)             Requested size: 345.0pt x 166.30322pt.
 
-<do_interaction.jpg, id=1526, 520.94624pt x 148.555pt>
+<do_interaction.jpg, id=1602, 520.94624pt x 148.555pt>
 File: do_interaction.jpg Graphic file (type jpg)
 
 <use do_interaction.jpg>
-Package pdftex.def Info: do_interaction.jpg used on input line 2511.
+Package pdftex.def Info: do_interaction.jpg used on input line 2548.
 (pdftex.def)             Requested size: 345.0pt x 98.38206pt.
- <get_action.jpg, id=1527, 964.60374pt x 338.26375pt>
+ <get_action.jpg, id=1603, 964.60374pt x 338.26375pt>
 File: get_action.jpg Graphic file (type jpg)
 
 <use get_action.jpg>
-Package pdftex.def Info: get_action.jpg used on input line 2517.
+Package pdftex.def Info: get_action.jpg used on input line 2554.
 (pdftex.def)             Requested size: 345.0pt x 120.97998pt.
- [83 <./arrive_home.jpg> <./do_interaction.jpg> <./get_action.jpg>]
-Overfull \hbox (17.24684pt too wide) in paragraph at lines 2532--2532
+ [84 <./arrive_home.jpg> <./do_interaction.jpg> <./get_action.jpg>]
+Overfull \hbox (17.24684pt too wide) in paragraph at lines 2569--2569
 []        \OT1/cmtt/m/n/10 if (active_rule[index = 2] < time%96 < active_rule[i
 ndex = 3][] 
  []
 
-<get_feedback.jpg, id=1532, 840.13875pt x 119.44624pt>
+<get_feedback.jpg, id=1609, 840.13875pt x 119.44624pt>
 File: get_feedback.jpg Graphic file (type jpg)
  <use get_feedback.jpg>
-Package pdftex.def Info: get_feedback.jpg used on input line 2547.
+Package pdftex.def Info: get_feedback.jpg used on input line 2584.
 (pdftex.def)             Requested size: 345.0pt x 49.04982pt.
 
-Overfull \hbox (90.7462pt too wide) in paragraph at lines 2553--2553
+Overfull \hbox (90.7462pt too wide) in paragraph at lines 2590--2590
 []\OT1/cmtt/m/n/10 let power be  - 1000.0 * output["gen"][node,1] ;; -1000 stem
 s from unit conversions[] 
  []
 
-[84 <./get_feedback.jpg>]
-<agents_develop_rules.jpg, id=1538, 820.06375pt x 697.60625pt>
+[85 <./get_feedback.jpg>]
+<agents_develop_rules.jpg, id=1614, 820.06375pt x 697.60625pt>
 File: agents_develop_rules.jpg Graphic file (type jpg)
 
 <use agents_develop_rules.jpg>
-Package pdftex.def Info: agents_develop_rules.jpg used on input line 2563.
+Package pdftex.def Info: agents_develop_rules.jpg used on input line 2600.
 (pdftex.def)             Requested size: 345.0pt x 293.49292pt.
 
-Overfull \hbox (22.4968pt too wide) in paragraph at lines 2572--2572
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 2609--2609
 []    \OT1/cmtt/m/n/10 preference = count_soc / count _steps ;; basically the a
 verage soc[] 
  []
 
 
-Overfull \hbox (48.74657pt too wide) in paragraph at lines 2574--2574
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 2611--2611
 []\OT1/cmtt/m/n/10 if (time % 672 == 0)                 ;; 672 is one week in 1
 5 minutes ticks[] 
  []
 
 
-Overfull \hbox (116.99597pt too wide) in paragraph at lines 2577--2577
+Overfull \hbox (116.99597pt too wide) in paragraph at lines 2614--2614
 []            \OT1/cmtt/m/n/10 let counter be the number of times the instituti
 onal rule is in agent memory[] 
  []
 
-[85 <./agents_develop_rules.jpg>]
-<vote_rules.jpg, id=1543, 677.53125pt x 636.3775pt>
+[86 <./agents_develop_rules.jpg>]
+<vote_rules.jpg, id=1620, 677.53125pt x 636.3775pt>
 File: vote_rules.jpg Graphic file (type jpg)
  <use vote_rules.jpg>
-Package pdftex.def Info: vote_rules.jpg used on input line 2596.
+Package pdftex.def Info: vote_rules.jpg used on input line 2633.
 (pdftex.def)             Requested size: 345.0pt x 324.05301pt.
 
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 2613--2613
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 2650--2650
 []            \OT1/cmtt/m/n/10 set election_matrix[index = all, index = i] to e
 lement[k, all][] 
  []
 
 
-Overfull \hbox (143.24574pt too wide) in paragraph at lines 2616--2616
+Overfull \hbox (143.24574pt too wide) in paragraph at lines 2653--2653
 []\OT1/cmtt/m/n/10 let number_voltage_rules to number of instances (election_ma
 trix[index = 1, index = all]== 1)[] 
  []
 
-[86 <./vote_rules.jpg>]
-Overfull \hbox (127.49588pt too wide) in paragraph at lines 2617--2617
+[87 <./vote_rules.jpg>]
+Overfull \hbox (127.49588pt too wide) in paragraph at lines 2654--2654
 []\OT1/cmtt/m/n/10 let number_time_rules to number of instances (election_matri
 x[index = 1, index = all]== 2)[] 
  []
 
-<reset_value.jpg, id=1548, 577.15625pt x 116.435pt>
+<reset_value.jpg, id=1625, 577.15625pt x 116.435pt>
 File: reset_value.jpg Graphic file (type jpg)
  <use reset_value.jpg>
-Package pdftex.def Info: reset_value.jpg used on input line 2627.
+Package pdftex.def Info: reset_value.jpg used on input line 2664.
 (pdftex.def)             Requested size: 345.0pt x 69.60214pt.
 
-<update_memory.jpg, id=1549, 640.3925pt x 455.7025pt>
+<update_memory.jpg, id=1626, 640.3925pt x 455.7025pt>
 File: update_memory.jpg Graphic file (type jpg)
  <use update_memory.jpg>
-Package pdftex.def Info: update_memory.jpg used on input line 2640.
+Package pdftex.def Info: update_memory.jpg used on input line 2677.
 (pdftex.def)             Requested size: 345.0pt x 245.5055pt.
 
-[87 <./reset_value.jpg> <./update_memory.jpg>]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 2652--2652
+[88 <./reset_value.jpg> <./update_memory.jpg>]
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 2689--2689
 []    \OT1/cmtt/m/n/10 set memory[memory_index,7] = (memory[memory_index,7] +pr
 eference)  / 2[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2664--2664
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2701--2701
 []        \OT1/cmtt/m/n/10 set memory[index = memory_index,index = all] to acti
 ve_rule[] 
  []
 
-<Cluster_voltage.jpg, id=1554, 545.03625pt x 145.54375pt>
+<Cluster_voltage.jpg, id=1631, 545.03625pt x 145.54375pt>
 File: Cluster_voltage.jpg Graphic file (type jpg)
 
 <use Cluster_voltage.jpg>
-Package pdftex.def Info: Cluster_voltage.jpg used on input line 2670.
+Package pdftex.def Info: Cluster_voltage.jpg used on input line 2707.
 (pdftex.def)             Requested size: 345.0pt x 92.1261pt.
- [88 <./Cluster_voltage.jpg>]
-<cluster_time.jpg, id=1559, 541.02126pt x 144.54pt>
+ [89 <./Cluster_voltage.jpg>]
+<cluster_time.jpg, id=1636, 541.02126pt x 144.54pt>
 File: cluster_time.jpg Graphic file (type jpg)
  <use cluster_time.jpg>
-Package pdftex.def Info: cluster_time.jpg used on input line 2686.
+Package pdftex.def Info: cluster_time.jpg used on input line 2723.
 (pdftex.def)             Requested size: 345.0pt x 92.17224pt.
 
-<cluster_algorithm.jpg, id=1560, 518.93875pt x 402.50375pt>
+<cluster_algorithm.jpg, id=1637, 518.93875pt x 402.50375pt>
 File: cluster_algorithm.jpg Graphic file (type jpg)
 
 <use cluster_algorithm.jpg>
-Package pdftex.def Info: cluster_algorithm.jpg used on input line 2704.
+Package pdftex.def Info: cluster_algorithm.jpg used on input line 2741.
 (pdftex.def)             Requested size: 345.0pt x 267.60635pt.
- [89 <./cluster_time.jpg> <./cluster_algorithm.jpg>]
-Overfull \hbox (59.24648pt too wide) in paragraph at lines 2724--2724
+ [90 <./cluster_time.jpg> <./cluster_algorithm.jpg>]
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 2761--2761
 []            \OT1/cmtt/m/n/10 if calc_distance(centers[k,all],element[1 to 6] 
 < lowest_distance[] 
  []
 
 
-Overfull \hbox (90.7462pt too wide) in paragraph at lines 2725--2725
+Overfull \hbox (90.7462pt too wide) in paragraph at lines 2762--2762
 []                \OT1/cmtt/m/n/10 set lowest_distance to calc_distance(centers
 [k,all],element[1 to 6][] 
  []
 
 
-Overfull \hbox (101.24611pt too wide) in paragraph at lines 2730--2730
+Overfull \hbox (101.24611pt too wide) in paragraph at lines 2767--2767
 []    \OT1/cmtt/m/n/10 set centers[k,all] to arithmetic_mean(cluster_matrix[1 t
 o 6] with (index = 7 ==k)[] 
  []
 
 
-Overfull \hbox (27.74675pt too wide) in paragraph at lines 2734--2734
+Overfull \hbox (27.74675pt too wide) in paragraph at lines 2771--2771
 []\OT1/cmtt/m/n/10 let voltage_threshold be randomly picked from voltage_thresh
 old_options[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2735--2735
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2772--2772
 []    \OT1/cmtt/m/n/10 let soc_threshold be randomly picked from soc_threshold_
 options[] 
  []
 
 
-Overfull \hbox (27.74675pt too wide) in paragraph at lines 2738--2738
+Overfull \hbox (27.74675pt too wide) in paragraph at lines 2775--2775
 []    \OT1/cmtt/m/n/10 return vector[1,voltage_threshold,soc_threshold,action1,
 action2,NA][] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2743--2743
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2780--2780
 []    \OT1/cmtt/m/n/10 let soc_threshold be randomly picked from soc_threshold_
 options[] 
  []
 
-[90] <change_rule.jpg, id=1570, 749.80125pt x 571.13374pt>
+[91] <change_rule.jpg, id=1647, 749.80125pt x 571.13374pt>
 File: change_rule.jpg Graphic file (type jpg)
 
 <use change_rule.jpg>
-Package pdftex.def Info: change_rule.jpg used on input line 2750.
+Package pdftex.def Info: change_rule.jpg used on input line 2787.
 (pdftex.def)             Requested size: 345.0pt x 262.79443pt.
- <change_random.jpg, id=1571, 799.98875pt x 299.1175pt>
+ <change_random.jpg, id=1648, 799.98875pt x 299.1175pt>
 File: change_random.jpg Graphic file (type jpg)
 
 <use change_random.jpg>
-Package pdftex.def Info: change_random.jpg used on input line 2766.
+Package pdftex.def Info: change_random.jpg used on input line 2803.
 (pdftex.def)             Requested size: 345.0pt x 128.99683pt.
- <change_learn.jpg, id=1572, 578.16pt x 272.01625pt>
+ <change_learn.jpg, id=1649, 578.16pt x 272.01625pt>
 File: change_learn.jpg Graphic file (type jpg)
 
 <use change_learn.jpg>
-Package pdftex.def Info: change_learn.jpg used on input line 2771.
+Package pdftex.def Info: change_learn.jpg used on input line 2808.
 (pdftex.def)             Requested size: 345.0pt x 162.31447pt.
- [91 <./change_rule.jpg> <./change_random.jpg>]
-Overfull \hbox (53.99652pt too wide) in paragraph at lines 2801--2801
+ [92 <./change_rule.jpg> <./change_random.jpg>]
+Overfull \hbox (53.99652pt too wide) in paragraph at lines 2838--2838
 []        \OT1/cmtt/m/n/10 if (preference_voltage/number_voltage > preference_t
 ime/number_time)[] 
  []
 
-[92 <./change_learn.jpg>]
-<change_copy_best.jpg, id=1581, 923.45pt x 300.12125pt>
+[93 <./change_learn.jpg>]
+<change_copy_best.jpg, id=1658, 923.45pt x 300.12125pt>
 File: change_copy_best.jpg Graphic file (type jpg)
 
 <use change_copy_best.jpg>
-Package pdftex.def Info: change_copy_best.jpg used on input line 2826.
+Package pdftex.def Info: change_copy_best.jpg used on input line 2863.
 (pdftex.def)             Requested size: 345.0pt x 112.12387pt.
 
-Overfull \hbox (1.49698pt too wide) in paragraph at lines 2836--2836
+Overfull \hbox (1.49698pt too wide) in paragraph at lines 2873--2873
 []                \OT1/cmtt/m/n/10 if (node of i-th agent != node of original a
 gent):[] 
  []
 
 
-Overfull \hbox (11.99689pt too wide) in paragraph at lines 2837--2837
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 2874--2874
 []                        \OT1/cmtt/m/n/10 if preference of i-th best rule> bes
 t_value:[] 
  []
 
 
-Overfull \hbox (53.99652pt too wide) in paragraph at lines 2839--2839
+Overfull \hbox (53.99652pt too wide) in paragraph at lines 2876--2876
 []                            \OT1/cmtt/m/n/10 best_value = preference of i-th 
 agents best rule[] 
  []
 
 
-Overfull \hbox (122.24593pt too wide) in paragraph at lines 2848--2848
+Overfull \hbox (122.24593pt too wide) in paragraph at lines 2885--2885
 []                \OT1/cmtt/m/n/10 if ((branch == branch2) &(node of i-th agent
  != node of original agent)):[] 
  []
 
 
-Overfull \hbox (17.24684pt too wide) in paragraph at lines 2849--2849
+Overfull \hbox (17.24684pt too wide) in paragraph at lines 2886--2886
 []                        \OT1/cmtt/m/n/10 if preference of i-th best rule > be
 st_value:[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2850--2850
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2887--2887
 []                                \OT1/cmtt/m/n/10 best_rule = best rule of i-t
 h agent[] 
  []
 
 
-Overfull \hbox (74.99634pt too wide) in paragraph at lines 2851--2851
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 2888--2888
 []                                \OT1/cmtt/m/n/10 best_value = preference of i
 -th agents best rule[] 
  []
 
-[93 <./change_copy_best.jpg>]
-Overfull \hbox (116.99597pt too wide) in paragraph at lines 2859--2859
+[94 <./change_copy_best.jpg>]
+Overfull \hbox (116.99597pt too wide) in paragraph at lines 2896--2896
 []                \OT1/cmtt/m/n/10 if ((level == level2) & (node of i-th agent 
 != node of original agent)):[] 
  []
 
 
-Overfull \hbox (17.24684pt too wide) in paragraph at lines 2860--2860
+Overfull \hbox (17.24684pt too wide) in paragraph at lines 2897--2897
 []                        \OT1/cmtt/m/n/10 if preference of i-th best rule > be
 st_value:[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 2861--2861
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 2898--2898
 []                                \OT1/cmtt/m/n/10 best_rule = best rule of i-t
 h agent[] 
  []
 
 
-Overfull \hbox (74.99634pt too wide) in paragraph at lines 2862--2862
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 2899--2899
 []                                \OT1/cmtt/m/n/10 best_value = preference of i
 -th agents best rule[] 
  []
 
-[94] <weak_exp_c_1.jpg, id=1590, 936.3783pt x 699.5736pt>
+[95] <weak_exp_c_1.jpg, id=1667, 936.3783pt x 699.5736pt>
 File: weak_exp_c_1.jpg Graphic file (type jpg)
 
 <use weak_exp_c_1.jpg>
-Package pdftex.def Info: weak_exp_c_1.jpg used on input line 2875.
+Package pdftex.def Info: weak_exp_c_1.jpg used on input line 2912.
 (pdftex.def)             Requested size: 103.50105pt x 77.31627pt.
- <weak_exp_c_2.jpg, id=1591, 936.3783pt x 699.5736pt>
+ <weak_exp_c_2.jpg, id=1668, 936.3783pt x 699.5736pt>
 File: weak_exp_c_2.jpg Graphic file (type jpg)
 
 <use weak_exp_c_2.jpg>
-Package pdftex.def Info: weak_exp_c_2.jpg used on input line 2878.
+Package pdftex.def Info: weak_exp_c_2.jpg used on input line 2915.
 (pdftex.def)             Requested size: 103.50105pt x 77.31627pt.
- <weak_exp_c_3.jpg, id=1592, 936.3783pt x 699.5736pt>
+ <weak_exp_c_3.jpg, id=1669, 936.3783pt x 699.5736pt>
 File: weak_exp_c_3.jpg Graphic file (type jpg)
 
 <use weak_exp_c_3.jpg>
-Package pdftex.def Info: weak_exp_c_3.jpg used on input line 2881.
+Package pdftex.def Info: weak_exp_c_3.jpg used on input line 2918.
 (pdftex.def)             Requested size: 103.50105pt x 77.31627pt.
- <hard_borda_exp_b.jpg, id=1593, 366.168pt x 271.0125pt>
-File: hard_borda_exp_b.jpg Graphic file (type jpg)
+Package epstopdf Info: Source file: <hard_borda_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 11216 bytes
+(epstopdf)             Output file: <hard_borda_exp_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-07-19 11:59:14
+(epstopdf)                    size: 12295 bytes
+(epstopdf)             Command: <repstopdf --outfile=hard_borda_exp_b-eps-conve
+rted-to.pdf hard_borda_exp_b.eps>
+(epstopdf)             \includegraphics on input line 2926.
+Package epstopdf Info: Output file is already uptodate.
+File: hard_borda_exp_b-eps-converted-to.pdf Graphic file (type pdf)
+ <use hard_borda_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: hard_borda_exp_b-eps-converted-to.pdf used on input li
+ne 2926.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
+Package epstopdf Info: Source file: <hard_majority_exp_b.eps>
+(epstopdf)                    date: 2015-07-19 11:59:01
+(epstopdf)                    size: 11306 bytes
+(epstopdf)             Output file: <hard_majority_exp_b-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-07-19 12:11:19
+(epstopdf)                    size: 12605 bytes
+(epstopdf)             Command: <repstopdf --outfile=hard_majority_exp_b-eps-co
+nverted-to.pdf hard_majority_exp_b.eps>
+(epstopdf)             \includegraphics on input line 2929.
+Package epstopdf Info: Output file is already uptodate.
 
-<use hard_borda_exp_b.jpg>
-Package pdftex.def Info: hard_borda_exp_b.jpg used on input line 2889.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
+<hard_majority_exp_b-eps-converted-to.pdf, id=1670, 366.36874pt x 271.0125pt>
+File: hard_majority_exp_b-eps-converted-to.pdf Graphic file (type pdf)
 
-<hard_majority_exp_b.jpg, id=1594, 366.168pt x 271.0125pt>
-File: hard_majority_exp_b.jpg Graphic file (type jpg)
+<use hard_majority_exp_b-eps-converted-to.pdf>
+Package pdftex.def Info: hard_majority_exp_b-eps-converted-to.pdf used on input
+ line 2929.
+(pdftex.def)             Requested size: 155.24895pt x 114.84175pt.
 
-<use hard_majority_exp_b.jpg>
-Package pdftex.def Info: hard_majority_exp_b.jpg used on input line 2892.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
-
-<weak_borda_exp_b.jpg, id=1595, 366.168pt x 271.0125pt>
-File: weak_borda_exp_b.jpg Graphic file (type jpg)
-
-<use weak_borda_exp_b.jpg>
-Package pdftex.def Info: weak_borda_exp_b.jpg used on input line 2900.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
-
-<weak_majority_exp_b.jpg, id=1596, 366.168pt x 271.0125pt>
-File: weak_majority_exp_b.jpg Graphic file (type jpg)
-
-<use weak_majority_exp_b.jpg>
-Package pdftex.def Info: weak_majority_exp_b.jpg used on input line 2903.
-(pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
-
-<stability_b.jpg, id=1597, 423.5022pt x 511.9125pt>
+<stability_b.jpg, id=1671, 423.5022pt x 511.9125pt>
 File: stability_b.jpg Graphic file (type jpg)
  <use stability_b.jpg>
-Package pdftex.def Info: stability_b.jpg used on input line 2910.
+Package pdftex.def Info: stability_b.jpg used on input line 2936.
 (pdftex.def)             Requested size: 172.5pt x 208.51073pt.
 
-<average_ins_b.jpg, id=1598, 423.5022pt x 511.9125pt>
+<average_ins_b.jpg, id=1672, 423.5022pt x 511.9125pt>
 File: average_ins_b.jpg Graphic file (type jpg)
  <use average_ins_b.jpg>
-Package pdftex.def Info: average_ins_b.jpg used on input line 2919.
+Package pdftex.def Info: average_ins_b.jpg used on input line 2945.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<weak_inst_b.jpg, id=1599, 423.5022pt x 511.9125pt>
+<weak_inst_b.jpg, id=1673, 423.5022pt x 511.9125pt>
 File: weak_inst_b.jpg Graphic file (type jpg)
  <use weak_inst_b.jpg>
-Package pdftex.def Info: weak_inst_b.jpg used on input line 2922.
+Package pdftex.def Info: weak_inst_b.jpg used on input line 2948.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<hard_inst_b.jpg, id=1600, 423.5022pt x 511.9125pt>
+<hard_inst_b.jpg, id=1674, 423.5022pt x 511.9125pt>
 File: hard_inst_b.jpg Graphic file (type jpg)
  <use hard_inst_b.jpg>
-Package pdftex.def Info: hard_inst_b.jpg used on input line 2925.
+Package pdftex.def Info: hard_inst_b.jpg used on input line 2951.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-[95
+[96
 
- <./weak_exp_c_1.jpg> <./weak_exp_c_2.jpg> <./weak_exp_c_3.jpg> <./hard_borda_e
-xp_b.jpg> <./hard_majority_exp_b.jpg> <./weak_borda_exp_b.jpg> <./weak_majority
-_exp_b.jpg>] [96 <./stability_b.jpg> <./average_ins_b.jpg> <./weak_inst_b.jpg> 
-<./hard_inst_b.jpg>] <weak_d_borda.jpg, id=1621, 366.168pt x 271.0125pt>
+ <./weak_exp_c_1.jpg> <./weak_exp_c_2.jpg> <./weak_exp_c_3.jpg> <./hard_majorit
+y_exp_b-eps-converted-to.pdf>] [97 <./stability_b.jpg> <./average_ins_b.jpg> <.
+/weak_inst_b.jpg> <./hard_inst_b.jpg>]
+<weak_d_borda.jpg, id=1703, 366.168pt x 271.0125pt>
 File: weak_d_borda.jpg Graphic file (type jpg)
-
-<use weak_d_borda.jpg>
-Package pdftex.def Info: weak_d_borda.jpg used on input line 2935.
+ <use weak_d_borda.jpg>
+Package pdftex.def Info: weak_d_borda.jpg used on input line 2961.
 (pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
- <weak_d_majority.jpg, id=1622, 366.168pt x 271.0125pt>
+
+<weak_d_majority.jpg, id=1704, 366.168pt x 271.0125pt>
 File: weak_d_majority.jpg Graphic file (type jpg)
 
 <use weak_d_majority.jpg>
-Package pdftex.def Info: weak_d_majority.jpg used on input line 2938.
+Package pdftex.def Info: weak_d_majority.jpg used on input line 2964.
 (pdftex.def)             Requested size: 155.24895pt x 114.90791pt.
- [97
+ [98
 
  <./weak_d_borda.jpg> <./weak_d_majority.jpg>]
-<averages_second_simple.jpg, id=1629, 423.5022pt x 511.9125pt>
+<averages_second_simple.jpg, id=1711, 423.5022pt x 511.9125pt>
 File: averages_second_simple.jpg Graphic file (type jpg)
 
 <use averages_second_simple.jpg>
-Package pdftex.def Info: averages_second_simple.jpg used on input line 2948.
+Package pdftex.def Info: averages_second_simple.jpg used on input line 2974.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<weak_second_simple.jpg, id=1630, 423.5022pt x 511.9125pt>
+<weak_second_simple.jpg, id=1712, 423.5022pt x 511.9125pt>
 File: weak_second_simple.jpg Graphic file (type jpg)
 
 <use weak_second_simple.jpg>
-Package pdftex.def Info: weak_second_simple.jpg used on input line 2951.
+Package pdftex.def Info: weak_second_simple.jpg used on input line 2977.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
 
-<hard_second_simple.jpg, id=1631, 423.5022pt x 511.9125pt>
+<hard_second_simple.jpg, id=1713, 423.5022pt x 511.9125pt>
 File: hard_second_simple.jpg Graphic file (type jpg)
 
 <use hard_second_simple.jpg>
-Package pdftex.def Info: hard_second_simple.jpg used on input line 2954.
+Package pdftex.def Info: hard_second_simple.jpg used on input line 2980.
 (pdftex.def)             Requested size: 103.50105pt x 125.1033pt.
- [98
+ [99
 
  <./averages_second_simple.jpg> <./weak_second_simple.jpg> <./hard_second_simpl
-e.jpg>] [99
+e.jpg>] [100
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 3004--3005
+Underfull \hbox (badness 10000) in paragraph at lines 3030--3031
 [][]$\OT1/cmtt/m/n/10 http : / / ffcpg . com . my / portal / Products . nsf /
  []
 
 
-Overfull \hbox (11.80261pt too wide) in paragraph at lines 3004--3005
+Overfull \hbox (11.80261pt too wide) in paragraph at lines 3030--3031
 \OT1/cmtt/m/n/10 2d248e16d8d12df4825719b00301d50 / 5801a1bfde86e113482577e40009
 d126 /
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3051.
-[100]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3051.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3077.
+[101]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3077.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3051.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3051.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3077.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3077.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 31FA23CB489325761A08BF1E0C8F2405;5672.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3051.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3077.
  ) 
 Here is how much of TeX's memory you used:
- 8116 strings out of 493105
- 119314 string characters out of 6137072
- 214048 words of memory out of 5000000
- 10902 multiletter control sequences out of 15000+600000
+ 8109 strings out of 493105
+ 119716 string characters out of 6137072
+ 213929 words of memory out of 5000000
+ 10895 multiletter control sequences out of 15000+600000
  9357 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,8n,35p,1515b,631s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2116,10 +2210,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (101 pages, 5369877 bytes).
+Output written on thesis.pdf (102 pages, 4778769 bytes).
 PDF statistics:
- 1825 PDF objects out of 2073 (max. 8388607)
- 1523 compressed objects within 16 object streams
+ 1907 PDF objects out of 2073 (max. 8388607)
+ 1583 compressed objects within 16 object streams
  503 named destinations out of 1000 (max. 500000)
- 1098 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1093 words of extra memory for PDF output out of 10000 (max. 10000000)
 

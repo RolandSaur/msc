@@ -153,6 +153,32 @@ function_weak_failure_no <- function(df){
         #xx
         return(weak_fails)
 }
+
+
+function_get_number_timerules <- function(df)
+{
+        time_rules <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                time_rules <- c(time_rules,sum(as.numeric(untergruppe$inst_rule1==2)))
+        }
+        return(time_rules)
+}
+function_get_number_voltagerules <- function(df)
+{
+        voltage_rules <- c()
+        for (k in c(1:100))
+        {
+                untergruppe <- subset(df[[k]],df[[k]]$voting == "True")
+                voltage_rules <- c(voltage_rules,sum(as.numeric(untergruppe$inst_rule1==1)))
+        }
+        return(voltage_rules)
+}
+
+
+#-------------------------------------------main code-------------------------------------------
+
 main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
 runs <- c(1:10)
 averages_majority <- c()
@@ -161,6 +187,13 @@ hard_majority <- c()
 hard_borda <- c()
 weak_majority <- c()
 weak_borda <- c()
+
+
+number_voltage_rules_borda <- c()
+number_time_rules_borda <- c()
+
+number_voltage_rules_majority <- c()
+number_time_rules_majority <- c()
 for (i in runs) {
         folder <- paste(main_folder,"/exp_b_",i,sep="")
         data_frames <- list()
@@ -176,45 +209,139 @@ for (i in runs) {
                 averages_borda <- c(averages_borda,function_average(data_frames))
                 hard_borda <- c(hard_borda, function_hard_failure(data_frames))
                 weak_borda <- c(weak_borda,function_weak_failure(data_frames))
+                number_voltage_rules_borda <- c(number_voltage_rules_borda,function_get_number_voltagerules(data_frames))
+                number_time_rules_borda <- c(number_time_rules_borda,function_get_number_timerules(data_frames))
         }else{
                 print(7)
                 averages_majority <- c(averages_majority,function_average(data_frames))
                 hard_majority <- c(hard_majority,function_hard_failure(data_frames))
                 weak_majority <- c(weak_majority,function_weak_failure(data_frames))
+                number_voltage_rules_majority <- c(number_voltage_rules_majority,function_get_number_voltagerules(data_frames))
+                number_time_rules_majority <- c(number_time_rules_majority,function_get_number_timerules(data_frames))
         }
         #averages <- function_average(data_frames) 
         #hard_failures <- function_hard_failure(data_frames)
         #weak_failures <- function_weak_failure(data_frames)
 
 }
-averages_majority_figure <- qplot(averages_majority,geom = "histogram",binwidth = 1) + 
-        ggtitle("Average SOC") + xlab("Average SOC")
-ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.jpg",sep=""))
+
+
+indicator_borda <- c()
+for (k in c(1:length(number_time_rules_borda)))
+{
+        if (number_time_rules_borda[k] > number_voltage_rules_borda[k])
+        {
+                indicator_borda <- c(indicator_borda,2)
+        }else
+        {
+                indicator_borda <- c(indicator_borda,1)
+        }
+}
+
+indicator_majority <- c()
+for (k in c(1:length(number_time_rules_majority)))
+{
+        if (number_time_rules_majority[k] > number_voltage_rules_majority[k])
+        {
+                indicator_majority <- c(indicator_majority,2)
+        }else
+        {
+                indicator_majority <- c(indicator_majority,1)
+        }
+}
+
+df_borda_hard <- data.frame(cbind(hard_borda,indicator_borda))
+df_borda_hard$indicator_borda <- factor(df_borda_hard$indicator_borda, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+df_borda_weak <- data.frame(cbind(weak_borda,indicator_borda))
+df_borda_weak$indicator_borda <- factor(df_borda_weak$indicator_borda, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+df_borda_average <- data.frame(cbind(averages_borda,indicator_borda))
+df_borda_average$indicator_borda <- factor(df_borda_average$indicator_borda, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+
+df_majority_hard <- data.frame(cbind(hard_majority,indicator_majority))
+df_majority_hard$indicator_majority <- factor(df_majority_hard$indicator_majority, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+df_majority_weak <- data.frame(cbind(weak_majority,indicator_majority))
+df_majority_weak$indicator_majority <- factor(df_majority_weak$indicator_majority, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+df_majority_average <- data.frame(cbind(averages_majority,indicator_majority))
+df_majority_average$indicator_majority <- factor(df_majority_average$indicator_majority, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+
+
+averages_majority_figure <-ggplot(df_majority_average,aes(averages_majority,fill=indicator_majority)) +
+        geom_histogram(binwidth = 2) +
+        ylab("Number of runs") +
+        ggtitle("Average SOC") 
 ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.eps",sep=""))
 
-averages_borda_figure <- qplot(averages_borda,geom = "histogram",binwidth = 1) + 
-        ggtitle("Average SOC") + xlab("Average SOC")
-ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.jpg",sep=""))
-ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.eps",sep=""))
 
-weak_borda_figure <- qplot(weak_borda,geom = "histogram",binwidth = 10) + 
-        ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
-ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.jpg",sep=""))
-ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.eps",sep=""))
-
-weak_majority_figure <- qplot(weak_majority,geom = "histogram",binwidth = 10) + 
-        ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
-ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.jpg",sep=""))
+weak_majority_figure <- ggplot(df_majority_weak,aes(weak_majority,fill=indicator_majority)) +
+        geom_histogram() +
+        ylab("Number of runs") +
+        ggtitle("Weak Failure") 
 ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.eps",sep=""))
 
 
-hard_borda_figure <- qplot(hard_borda,geom = "histogram",binwidth = 1) + 
-        ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
-ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.jpg",sep=""))
-ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.eps",sep=""))
-
-hard_majority_figure <- qplot(hard_majority,geom = "histogram",binwidth = 1) + 
-        ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
-ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.jpg",sep=""))
+hard_majority_figure <- ggplot(df_majority_hard,aes(hard_majority,fill=indicator_majority)) +
+        geom_histogram() +
+        ylab("Number of runs") +
+        ggtitle("Hard Failure")
 ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.eps",sep=""))
 
+
+
+
+averages_borda_figure <-ggplot(df_borda_average,aes(averages_borda,fill=indicator_borda)) +
+        geom_histogram(binwidth = 2) +
+        ylab("Number of runs") +
+        ggtitle("Average SOC") 
+ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b.eps",sep=""))
+
+
+weak_borda_figure <- ggplot(df_borda_weak,aes(weak_borda,fill=indicator_borda)) +
+        geom_histogram() +
+        ylab("Number of runs") +
+        ggtitle("Weak Failure") 
+ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.eps",sep=""))
+
+
+hard_borda_figure <- ggplot(df_borda_hard,aes(hard_borda,fill=indicator_borda)) +
+        geom_histogram() +
+        ylab("Number of runs") +
+        ggtitle("Hard Failure")
+ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.eps",sep=""))
+
+#-------------------------------old_graphs---------------------------------------------------
+# averages_majority_figure <- qplot(averages_majority,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Average SOC") + xlab("Average SOC")
+# ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.jpg",sep=""))
+# ggsave(averages_majority_figure , file = paste("../latex/averages_majority_exp_b.eps",sep=""))
+# 
+# averages_borda_figure <- qplot(averages_borda,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Average SOC") + xlab("Average SOC")
+# ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.jpg",sep=""))
+# ggsave(averages_borda_figure , file = paste("../latex/averages_borda_exp_b_.eps",sep=""))
+# 
+# weak_borda_figure <- qplot(weak_borda,geom = "histogram",binwidth = 10) + 
+#         ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+# ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.jpg",sep=""))
+# ggsave(weak_borda_figure , file = paste("../latex/weak_borda_exp_b.eps",sep=""))
+# 
+# weak_majority_figure <- qplot(weak_majority,geom = "histogram",binwidth = 10) + 
+#         ggtitle("Number of weak Failures") + xlab("Number of weak Failures")
+# ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.jpg",sep=""))
+# ggsave(weak_majority_figure , file = paste("../latex/weak_majority_exp_b.eps",sep=""))
+# 
+# 
+# hard_borda_figure <- qplot(hard_borda,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+# ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.jpg",sep=""))
+# ggsave(hard_borda_figure , file = paste("../latex/hard_borda_exp_b.eps",sep=""))
+# 
+# hard_majority_figure <- qplot(hard_majority,geom = "histogram",binwidth = 1) + 
+#         ggtitle("Number of hard Failures") + xlab("Number of hard Failures")
+# ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.jpg",sep=""))
+# ggsave(hard_majority_figure , file = paste("../latex/hard_majority_exp_b.eps",sep=""))
+# 

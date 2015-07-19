@@ -1752,19 +1752,38 @@ rate. The hypotheses state that using borda count as a voting mechanism improves
 rate would at some point worsen performance, while increase the institutional success rate would increase instability.\\
 First the effect of the kind of voting mechanism on performance of the model is looked at.
 Figure \ref{b_average} shows the distribution of the average SOC of the weakest agent with borda count and with majority 
-voting. There is no visible difference between the scenarios, which indicates that the kind of voting mechanism has no 
-effect on the performance of the model. \\ 
+voting. There is no visible difference between the scenarios, which indicates that the kind of voting mechanism, that 
+is used, has no  effect on the average SOC of the weakest agent. \\ 
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
-\includegraphics[width = 0.45\textwidth]{averages_borda_exp_b_.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_borda_exp_b.eps}
 \label{borda_b_average}}
 \subfigure[Majority Voting]{
-\includegraphics[width = 0.45\textwidth]{averages_majority_exp_b.jpg}
+\includegraphics[width = 0.45\textwidth]{averages_majority_exp_b.eps}
 \label{majority_b_average}}
 \caption{Average State of Charge of weakest agent}
 \label{b_average}
-\end{figure}\\
-The figure for the other two performance indicators show a very similar picture. They can be found in the appendix.\\
+\end{figure}
+However the average SOC of the weakest agent is not the best measure of performance.
+The next step is to look at the number of failures in each run.
+Figure \ref{b_weak} shows the histograms of the number of weak failures per run for borda count and majority voting. 
+The figures show no effect of the voting mechanism on time based rules.
+But  the runs which use voltage based rules seem to be split in two, in the case when simple majority voting was used. 
+There is the normal bulk of low failure rate runs, but also a few runs which seem to belong to the higher failure rate runs. 
+This suggest that majority voting has an adverse effect on runs, in which the agents predominantly use voltage rules. 
+This means that using borda count not only improves the way the votes of agents are represented but that this has also an 
+effect on the performance of the model.
+\begin{figure}[!ht]
+\subfigure[Borda Count]{
+\includegraphics[width = 0.45\textwidth]{weak_borda_exp_b.eps}
+\label{borda_b_weak}}
+\subfigure[Majority Voting]{
+\includegraphics[width = 0.45\textwidth]{weak_majority_exp_b.eps}
+\label{majority_b_weak}}
+\caption{Number of weak failures Experiment 2}
+\label{b_weak}
+\end{figure}
+
 For examining the influence of the institutional success rate on the model behavior, several boxplots were made to illustrate its 
 effect on stability and performance. However there seems to be absolutely no effect at all. The plots can be seen in the appendix, but are
 omitted here because they do not contain useful information. There are two possible explanations for this result. One is that 
@@ -1883,7 +1902,22 @@ After looking at the effect of the voting mechanism on the performance, the effe
 is examined to get a better understanding of how the borda count improves results over simple majority voting. Since there are 
 100 runs per scenario it is not possible to examine each rule individually. Therefore the distance of the last institutional rule 
 of each run to the initial rule is used as a measure of change. The greater the distance the more the final rule deviates from 
-the initially set rule. \\
+the initially set rule. 
+
+\begin{figure}[!ht]
+\includegraphics[width = \textwidth]{rules_voltage_d_majority.eps}
+\caption{Distribution of Rules - Majority Vote}
+\label{colored_majority_d}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\includegraphics[width = \textwidth]{rules_voltage_d_borda.eps}
+\caption{Distribution of Rules - Borda Count}
+\label{colored_borda_d}
+\end{figure}
+
+\begin{comment}
 Figure \ref{d_distance} shows the distance of the final rule to the initial rule for borda count and majority voting. The distance tends
 to be higher when majority voting is used as compared to when borda count is used. This is rather unexpected, since the reasoning for
 why borda count would work better, was that it would be able to make a bigger change to the initial greedy rule. 
@@ -1901,6 +1935,9 @@ report it as one of their candidates. \\
 \caption{Distance from initial Rule}
 \label{d_distance}
 \end{figure}\\
+
+\end{comment}
+
 In summary it was shown that neither borda count nor majority voting can counteract the effect of initializing 
 the model with a greedy rule completely. Borda count however performs better in such a scenario although the 
 mechanism of how it achieves this is is not what was expected. 
@@ -2885,24 +2922,13 @@ elsif (copy_all == "vertical")
 \subsection{Experiment 2}
 \begin{figure}[!ht]
 \subfigure[Borda Count]{
-\includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_borda_exp_b.eps}
 \label{borda_b_hard}}
 \subfigure[Majority Voting]{
-\includegraphics[width = 0.45\textwidth]{hard_majority_exp_b.jpg}
+\includegraphics[width = 0.45\textwidth]{hard_majority_exp_b.eps}
 \label{majority_b_hard}}
 \caption{Number of hard failures Experiment 2}
 \label{b_hard}
-\end{figure}
-
-\begin{figure}[!ht]
-\subfigure[Borda Count]{
-\includegraphics[width = 0.45\textwidth]{weak_borda_exp_b.jpg}
-\label{borda_b_weak}}
-\subfigure[Majority Voting]{
-\includegraphics[width = 0.45\textwidth]{weak_majority_exp_b.jpg}
-\label{majority_b_weak}}
-\caption{Number of weak failures Experiment 2}
-\label{b_weak}
 \end{figure}
 
 \begin{figure}[!ht]
