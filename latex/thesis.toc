@@ -50,31 +50,31 @@
 \contentsline {subsection}{\numberline {5.1}First Look}{40}{subsection.5.1}
 \contentsline {subsubsection}{\numberline {5.1.1}Comparison to uncontrolled scenario}{40}{subsubsection.5.1.1}
 \contentsline {subsubsection}{\numberline {5.1.2}Comparison with and without an Institutional Rule}{44}{subsubsection.5.1.2}
-\contentsline {subsection}{\numberline {5.2}Experiments}{50}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Experiment 1}{50}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Experiment 2}{51}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Experiment 3}{53}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Experiment 4}{54}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{57}{subsubsection.5.2.5}
-\contentsline {subsection}{\numberline {5.3}Summary}{58}{subsection.5.3}
-\contentsline {section}{\numberline {6}Conclusion}{59}{section.6}
-\contentsline {subsection}{\numberline {6.1}Model conclusion \& Research Questions}{59}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Real World implementation}{59}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{59}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}MAS for resource allocation}{61}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Conclusions about CPR}{61}{subsection.6.5}
-\contentsline {section}{\numberline {7}Further Research}{61}{section.7}
-\contentsline {section}{\numberline {8}Reflection}{63}{section.8}
-\contentsline {section}{\numberline {A}PYPOWER Models}{64}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Physical Representation}{64}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{66}{subsection.A.2}
-\contentsline {section}{\numberline {B}Verification}{70}{appendix.B}
-\contentsline {subsection}{\numberline {B.1}Verification of Functions}{70}{subsection.B.1}
-\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{70}{subsubsection.B.1.1}
-\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{71}{subsubsection.B.1.2}
-\contentsline {section}{\numberline {C}Pseudo Code}{74}{appendix.C}
-\contentsline {section}{\numberline {D}Additional Graphs}{92}{appendix.D}
-\contentsline {subsection}{\numberline {D.1}Experiment 1}{92}{subsection.D.1}
-\contentsline {subsection}{\numberline {D.2}Experiment 2}{92}{subsection.D.2}
-\contentsline {subsection}{\numberline {D.3}Experiment 4}{94}{subsection.D.3}
-\contentsline {subsection}{\numberline {D.4}Experiment 5}{95}{subsection.D.4}
+\contentsline {subsection}{\numberline {5.2}Experiments}{51}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Experiment 1}{51}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Experiment 2}{52}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Experiment 3}{54}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Experiment 4}{55}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Experiment 5}{58}{subsubsection.5.2.5}
+\contentsline {subsection}{\numberline {5.3}Summary}{59}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusion}{60}{section.6}
+\contentsline {subsection}{\numberline {6.1}Model conclusion \& Research Questions}{60}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Real World implementation}{60}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{60}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}MAS for resource allocation}{62}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Conclusions about CPR}{62}{subsection.6.5}
+\contentsline {section}{\numberline {7}Further Research}{62}{section.7}
+\contentsline {section}{\numberline {8}Reflection}{64}{section.8}
+\contentsline {section}{\numberline {A}PYPOWER Models}{65}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Physical Representation}{65}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{67}{subsection.A.2}
+\contentsline {section}{\numberline {B}Verification}{71}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Verification of Functions}{71}{subsection.B.1}
+\contentsline {subsubsection}{\numberline {B.1.1}Verification of simple functions}{71}{subsubsection.B.1.1}
+\contentsline {subsubsection}{\numberline {B.1.2}Verification of interacting functions:}{72}{subsubsection.B.1.2}
+\contentsline {section}{\numberline {C}Pseudo Code}{75}{appendix.C}
+\contentsline {section}{\numberline {D}Additional Graphs}{93}{appendix.D}
+\contentsline {subsection}{\numberline {D.1}Experiment 1}{93}{subsection.D.1}
+\contentsline {subsection}{\numberline {D.2}Experiment 2}{93}{subsection.D.2}
+\contentsline {subsection}{\numberline {D.3}Experiment 4}{95}{subsection.D.3}
+\contentsline {subsection}{\numberline {D.4}Experiment 5}{96}{subsection.D.4}

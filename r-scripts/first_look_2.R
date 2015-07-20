@@ -704,19 +704,19 @@ mt <- ggplot(hard_timeline,aes(hard_3,fill =indicator3)) + geom_histogram(binwid
 ggsave(mt,file = "../latex/hard_time_3.eps")
 
 
-mt <- ggplot(weak_timeline,aes(weak_1,fill =indicator1)) + geom_histogram(binwidth =10) +
+mt <- ggplot(weak_timeline,aes(weak_1,fill =indicator1)) + geom_histogram(binwidth =1) +
         ylab("Number of runs") +
         xlab("Number of weak failures") +
         ggtitle("")
 ggsave(mt,file = "../latex/weak_time_1.eps")
 
-mt <- ggplot(weak_timeline,aes(weak_2,fill =indicator2)) + geom_histogram(binwidth =10) +
+mt <- ggplot(weak_timeline,aes(weak_2,fill =indicator2)) + geom_histogram(binwidth =1) +
         ylab("Number of runs") +
         xlab("Number of weak failures") +
         ggtitle("")
 ggsave(mt,file = "../latex/weak_time_2.eps")
 
-mt <- ggplot(weak_timeline,aes(weak_3,fill =indicator3)) + geom_histogram(binwidth =10) +
+mt <- ggplot(weak_timeline,aes(weak_3,fill =indicator3)) + geom_histogram(binwidth =1) +
         ylab("Number of runs") +
         xlab("Number of weak failures") +
         ggtitle("")

@@ -1612,6 +1612,55 @@ likely related to the short time the model is run. The agents are not able to bu
  \caption{Number of hard Failures color coded by Rule}
  \label{colored_hard}
 \end{figure}
+\newpage
+
+So far, the number of weak/hard failures and the average soc was looked at over the whole time. 
+Since the failures are events and not variables that can be kept track of over time, the number of failures cannot be plotted over time. 
+Different time intervals can be defined and the number of failures within those time intervals can be compared to each other to 
+see how the performance changes over time. For this the time, when there is an institutional rule is split into three segments. 
+Figure \ref{average_over_time} shows the distribution of the average SOC for the three different time intervals.
+Time progresses from left to right. 
+The red bars are runs with mostly voltage rules in them and the blue bars are runs with mostly time based rules.
+There is a shift towards higher values for both kinds of rules, but the shift is stronger with voltage based rules. 
+\begin{figure}[!ht]
+\subfigure[Early]{
+\includegraphics[width = 0.3\textwidth]{average_time_1.eps}
+\label{average_early}}
+\subfigure[Middle]{
+\includegraphics[width = 0.3\textwidth]{average_time_2.eps}
+\label{average_middle}}
+\subfigure[Late]{
+\includegraphics[width = 0.3\textwidth]{average_time_3.eps}
+\label{average_late}}
+\caption{Average SOC over time}
+\label{average_over_time}
+\end{figure}
+
+Figure \ref{hard_over_time} shows the distribution of the number of hard failures, for the three time intervals. In the early phase,
+left graph, the number of hard failures are distribute up to 20 failures, per run. In the next two time intervals the number of 
+hard failures drops to 0 for all the runs, which use voltage rules. This means that, when using voltage rules the software agents 
+are able to come up with rules,which solve the common pool resource problem, quickly and reliably. In the second and third time interval
+every software agent is able to charge its electric vehicle sufficiently. \\
+It should be noted that it looks as if there is a shift from time based rules towards voltage based rules. But this is only due to the 
+change in the scale of the y-axis, which is caused by the voltage rules being concentrated in one point. Once a time based rule 
+is selected as an institutional rule, the institutional will unfortunately stay a time based rule. 
+\begin{figure}[!ht]
+\subfigure[Early]{
+\includegraphics[width = 0.3\textwidth]{hard_time_1.eps}
+\label{hard_early}}
+\subfigure[Middle]{
+\includegraphics[width = 0.3\textwidth]{hard_time_2.eps}
+\label{hard_middle}}
+\subfigure[Late]{
+\includegraphics[width = 0.3\textwidth]{hard_time_3.eps}
+\label{hard_late}}
+\caption{Number of hard failures over time}
+\label{hard_over_time}
+\end{figure}
+
+
+
+
 The next step after identifying, which kind of rule works better, is to find out what the rules look like in detail. In the following 
 the voltage rules which were selected as institutional rules are being looked at. Voltage rules consist of four parts, 
 two actions, Action1 and Action2,
@@ -1633,7 +1682,6 @@ level is above, above meaning less deviation thus better, 0.98. This way the age
 while those which have a sufficient state of charge are restricted unless the grid is doing well enough. \\
 When flipping the actions, the conditions also becomes somewhat flipped. The SOC-threshold is dropping very low, and the voltage threshold
 is getting higher, 0.99. 
-
 The drop in SOC-threshold is so that most of the agents can charge at 4kW. When the SOC-threshold becomes very low, the voltage
 threshold becomes the defining condition parameter. 
 The rise in voltage threshold 
@@ -1641,14 +1689,12 @@ is so that those agents which are very close to the source and therefore often e
 So in the end these rules restrict those agents which are very close to the source and those which have an extremely low state of 
 charge. The second group of agents makes very little sense to restrict, but is most likely a byproduct of trying to restrict those 
 agents which normally are the least restricted. 
-
 \begin{figure}
 \centering
  \includegraphics[width = \textwidth]{rules_voltage_soc_first_look.eps}
  \caption{Voltage Rules}
  \label{colored_rules}
 \end{figure}
-
 
 Since there are already so many variables, it is very hard to tie performance to specific parameters in one graph. 
 However the same graphs as in 
@@ -1672,18 +1718,17 @@ voltage is very close to the nominal voltage.
   \label{colored_rules_low}
 \end{figure}
 
-
 In summary the introduction of an institutional rule that every agent follows increases the performance of the model. 
 The average SOC is increased. By introducing institutional rules there is a redistribution of access from the very well 
 performing to the less well performing agents. The negative effects on the strongest agents is much less pronounced and severe than the 
 positive effect on the weakest agents. 
 As a result of this redistribution, the number of times 
 electric vehicles are not able to charge fully or sufficiently is reduced. When the institutional rule is based on a voltage condition
-the agents perform much better. Although voltage based rules are superior, the model sometimes still 
-selects time based rules as institutional rules and sticks with them. 
+the agents perform much better. 
+When the agents use voltage based rules, they are able to solve the cpr problem, after some time.
+Although voltage based rules are superior, the model sometimes still selects time based rules as institutional rules and sticks with them. 
 
 
-\clearpage
 \subsection{Experiments}
 While the previous part about the initial look on the model was about what the model roughly does, this following part is about 
 how the model works in detail, what does and what does not affect the model performance. For this the results from the 
@@ -1943,8 +1988,15 @@ report it as one of their candidates. \\
 \end{comment}
 
 In summary it was shown that neither borda count nor majority voting can counteract the effect of initializing 
-the model with a greedy rule completely. Borda count however performs better in such a scenario, because it represents 
+the model with a greedy rule completely. 
+Borda count however performs better in such a scenario, because it represents 
 the agents vote more complexly and makes a shift to more restrictive rules easier.
+However it seems that the fact that the system is very heterogeneous makes it favorably for too many agents, to 
+implement rules allowing them to charge as much as possible all the time. This makes voting not a suitable option for 
+overcoming a greedy rule. There simply never is a majority for more restrictive rules when everybody already hat the 
+possibility to experience non restrictive rules. 
+
+
 \clearpage
 \subsubsection{Experiment 5}
 Experiment 5 is for hypothesis 4a about whether or not the rules the agents come up with are tied to the infrastructure they are in. 
@@ -2000,9 +2052,12 @@ A short summary of the results.
 \begin{enumerate}
  \item Institutional rules are needed to get good results. Individual agents coming up with rules is not 
 sufficient on its own.
+ \item Rules with a condition based on the voltage are better than conditions based on time. 
+ \item Agents using rules with voltage based conditions, solve the common pool resource problem over time.
+ \item The kind of institutional rule does not change over time.
  \item While Grouping the agents in different neighborhoods does make a difference the way in which they are grouped, 
 homogeneous or heterogeneous, seems not to be important. 
- \item The institutional success rate has no effect on the model.
+ \item The institutional acceptance threshold has no effect on the model.
  \item The influence of behavioral parameters on the model are much weaker than expected.
  \item Different voting mechanisms make a slight difference in performance and become more pronounced when the agents are initialized with a greedy rule.
  \item Rules, which emerged from one grid do not work well when the infrastructure changes.
@@ -2907,7 +2962,19 @@ elsif (copy_all == "vertical")
 
 \clearpage
 \section{Additional Graphs}
-
+\begin{figure}[!ht]
+\subfigure[Early]{
+\includegraphics[width = 0.3\textwidth]{weak_time_1.eps}
+\label{weak_early}}
+\subfigure[Middle]{
+\includegraphics[width = 0.3\textwidth]{weak_time_2.eps}
+\label{weak_middle}}
+\subfigure[Late]{
+\includegraphics[width = 0.3\textwidth]{weak_time_3.eps}
+\label{weak_late}}
+\caption{Number of weak failures over time}
+\label{waek_over_time}
+\end{figure}
 
 \subsection{Experiment 1}
 \begin{figure}[!ht]
