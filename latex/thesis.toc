@@ -60,11 +60,10 @@
 \contentsline {section}{\numberline {6}Conclusion}{60}{section.6}
 \contentsline {subsection}{\numberline {6.1}Model conclusion \& Research Questions}{60}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Real World implementation}{60}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{60}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}MAS for resource allocation}{62}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Conclusions about CPR}{62}{subsection.6.5}
-\contentsline {section}{\numberline {7}Further Research}{62}{section.7}
-\contentsline {section}{\numberline {8}Reflection}{64}{section.8}
+\contentsline {subsection}{\numberline {6.3}Stakeholder perspective}{61}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Conclusions about CPR}{62}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}MAS for resource allocation}{62}{subsection.6.5}
+\contentsline {section}{\numberline {7}Further Research}{63}{section.7}
 \contentsline {section}{\numberline {A}PYPOWER Models}{65}{appendix.A}
 \contentsline {subsection}{\numberline {A.1}Physical Representation}{65}{subsection.A.1}
 \contentsline {subsection}{\numberline {A.2}Power Constrain Algorithm}{67}{subsection.A.2}

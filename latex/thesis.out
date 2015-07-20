@@ -60,20 +60,19 @@
 \BOOKMARK [2][-]{subsection.6.1}{Model conclusion \046 Research Questions}{section.6}% 60
 \BOOKMARK [2][-]{subsection.6.2}{Real World implementation}{section.6}% 61
 \BOOKMARK [2][-]{subsection.6.3}{Stakeholder perspective}{section.6}% 62
-\BOOKMARK [2][-]{subsection.6.4}{MAS for resource allocation}{section.6}% 63
-\BOOKMARK [2][-]{subsection.6.5}{Conclusions about CPR}{section.6}% 64
+\BOOKMARK [2][-]{subsection.6.4}{Conclusions about CPR}{section.6}% 63
+\BOOKMARK [2][-]{subsection.6.5}{MAS for resource allocation}{section.6}% 64
 \BOOKMARK [1][-]{section.7}{Further Research}{}% 65
-\BOOKMARK [1][-]{section.8}{Reflection}{}% 66
-\BOOKMARK [1][-]{appendix.A}{PYPOWER Models}{}% 67
-\BOOKMARK [2][-]{subsection.A.1}{Physical Representation}{appendix.A}% 68
-\BOOKMARK [2][-]{subsection.A.2}{Power Constrain Algorithm}{appendix.A}% 69
-\BOOKMARK [1][-]{appendix.B}{Verification}{}% 70
-\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 71
-\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 72
-\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 73
-\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 74
-\BOOKMARK [1][-]{appendix.D}{Additional Graphs}{}% 75
-\BOOKMARK [2][-]{subsection.D.1}{Experiment 1}{appendix.D}% 76
-\BOOKMARK [2][-]{subsection.D.2}{Experiment 2}{appendix.D}% 77
-\BOOKMARK [2][-]{subsection.D.3}{Experiment 4}{appendix.D}% 78
-\BOOKMARK [2][-]{subsection.D.4}{Experiment 5}{appendix.D}% 79
+\BOOKMARK [1][-]{appendix.A}{PYPOWER Models}{}% 66
+\BOOKMARK [2][-]{subsection.A.1}{Physical Representation}{appendix.A}% 67
+\BOOKMARK [2][-]{subsection.A.2}{Power Constrain Algorithm}{appendix.A}% 68
+\BOOKMARK [1][-]{appendix.B}{Verification}{}% 69
+\BOOKMARK [2][-]{subsection.B.1}{Verification of Functions}{appendix.B}% 70
+\BOOKMARK [3][-]{subsubsection.B.1.1}{Verification of simple functions}{subsection.B.1}% 71
+\BOOKMARK [3][-]{subsubsection.B.1.2}{Verification of interacting functions:}{subsection.B.1}% 72
+\BOOKMARK [1][-]{appendix.C}{Pseudo Code}{}% 73
+\BOOKMARK [1][-]{appendix.D}{Additional Graphs}{}% 74
+\BOOKMARK [2][-]{subsection.D.1}{Experiment 1}{appendix.D}% 75
+\BOOKMARK [2][-]{subsection.D.2}{Experiment 2}{appendix.D}% 76
+\BOOKMARK [2][-]{subsection.D.3}{Experiment 4}{appendix.D}% 77
+\BOOKMARK [2][-]{subsection.D.4}{Experiment 5}{appendix.D}% 78

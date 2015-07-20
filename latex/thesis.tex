@@ -249,9 +249,9 @@ communicate private data.
 The question to tackle is how a decentralized approach can work in managing the smart grid. In order to answer this several 
 sub-questions have to be addressed. 
 \begin{enumerate}
-\item Can a artificial agent representing a single household, without the input from a central management system be beneficial to grid stability?
+\item Can a artificial agent representing a single household, without the input from a central management system be beneficial to the grid?
 \item How can multiple of  such household representing agents be coordinated in a decentralized way?
-\item Can viewing the grid as a common pool resource and giving each household-agent the ability to contribute to the making of the rules and norms that govern the grid be beneficial to the overall grid stability? 
+\item Can viewing the grid as a common pool resource be beneficial ?
 \end{enumerate}
 
 
@@ -2087,13 +2087,30 @@ What is the picture all those results paint.
 In this chapter conclusions will be drawn based on what has been presented so far. First a quick recap and interpretation of the
 model results will be given to answer the Research Questions. 
 This is followed by a look at what this can mean for real world implementations of smart charging and if there is also some 
-general insight about distributed software agents. 
+general insight about common pool resource problems and multi agents systems. 
 \subsection{Model conclusion \& Research Questions}
+\begin{comment}
 The model works quite well for most of the scenarios. But there are however no parameter settings that guarantee that the agents come up 
 with well functioning rules. The biggest contribution to the performance of the model is the existence of an institutional rule. 
 The institutional rules make scenarios possible in which it is very rare that EVs cannot charge sufficiently. Other parameters, 
 like the voting mechanism or how the agents are grouped, do have an impact on the model performance but only make a minor difference. \\
-
+\end{comment}
+The agents in this model solve, given certain parameters,  the common pool resource problem to an extend that no electric vehicle 
+has to charge to a less than sufficient state of charge. The biggest contribution to this, is the development of an institutional rule 
+that the agents develop collectively by voting. The structure of the rule the agents choose is the defining parameter in whether the agents
+succeed in coming up in a working institutional rule. If the structure is too complicated, as in the case of time based rules, the agents 
+are unable to find the correct configuration of such a rule.
+\begin{enumerate}
+\item Can a artificial agent representing a single household, without the input from a central management system be beneficial to the grid?\\
+ As seen in the initial evaluation of the data agents are very well able to contribute to the management of the grid, even without 
+ the existence of an institutional rule. 
+\item How can multiple of  such household representing agents be coordinated in a decentralized way?\\
+Voting is the way the agents coordinate in this model. On the one side, voting works very well for most cases. On the other hand 
+voting on its own for coordinating the agents actions, is unable to do anything about situations where the system is stuck. 
+\item Can viewing the grid as a common pool resource be beneficial ?\\
+Looking at the problem as a common pool resource exposes aspects of the grid like its heterogeneity of access and the implication
+this has for whether the agents succeed or fail in coming up with institutional rules. 
+\end{enumerate}
 \subsection{Real World implementation}
 As mentioned in the model conclusion there are no parameter setting that ensure a perfect operation, and people also do not have 6 months
 of time to wait until the agents converge towards an institutional rule. This shows that this is not a system of software agents which 
@@ -2156,11 +2173,43 @@ different solutions in the integration of electric vehicles. \\
 While grid operators would favor a system giving them more control, energy companies would prefer systems which give 
 them and consumers most flexibility to sell the most at more profitable times. 
 
+\subsection{Conclusions about CPR}
+The insight that can be gained from this work, deals with highly heterogeneous common pool resource problems. 
+There are situations in which democratic means of coming up with solutions fails. This was seen in experiment 4. 
+Although the agents were able to vote on the rules which govern every agent, they were unable to come up with a
+rule, which would give enough access to every agent. The agents were stuck in a situation in which a majority of 
+agents benefited from the current situation, because of their advantaged position in the system. At the same time 
+a minority of the agents were unable to get sufficient access to the grid.\\
+Therefore in very heterogeneous systems, with many hot spots and a few cold spots and fixed positions of the agents, 
+a democratic process to come up with institutional rules, might get stuck in a situation that benefits the majority and 
+ignores the minority. 
+
 \subsection{MAS for resource allocation}
 Generally multi agent systems, as presented here, could be used for resource allocation whenever there 
 is a common pool resource, which can 
 easily be accessed in an automated way so that software agents can be used, and there is a local
-variable which can indicate the state of the resource. \\
+variable which is tied to the resource. \\
+The two main problems, that the multi agent system experienced are, that it got stuck in situations where the majority 
+benefits while the minority suffers, and that it stuck with time based rules although they did not work very well.
+The first problem arises, as mentioned before, from the heterogeneity of the system. The second stems from the fact that 
+software agents are truly rational and strictly follow their internal logic and the way rules are kept in memory. 
+In human system these problems can be resolved by people analyzing the issue.
+Software agents however, do not have this ability. \\
+This makes the problem less about finding the correct solution to a particular problem and more about finding a 
+reliable algorithm for software agents to find a suitable solution themselves, that does not get them stuck.  Looking at the 
+differences to systems with humans gives some insight into what can be improved. The problem that the memory of the agents is not 
+flexible enough and does not get rid of bad rules, is probably due to the way the memory is filled. The software agents only 
+commit rules based on their own experience. People on the other hand not only vote on their own experiences but also based on other 
+peoples experience. It might be useful to give agents  not just the ability to copy other agents' rules but also the 
+preference value that they attached to it. \\
+The problem that the software agents get stuck because the system is very heterogeneous, can be solved by adding a non democratic 
+part into the system. Right now the institutional rule is created solely by voting. However if there was a possibility for 
+a single agent to veto an institutional rule under specific conditions, the system might be able to adapt when it would be otherwise
+stuck. The conditions under which a software agent would be able to veto a rule would be something like, if it is failing frequently. 
+The condition would have to be set as a parameter and therefore determined outside of the multi agent system. People would have 
+to set minimum standards for the agents in their multi agent system. And the agents can then use these minimum standards to 
+veto some institutional rules. 
+\begin{comment}
 There are not many results that can be generalized to any such system. The one insight that might be applicable in a wider range is 
 that the effect of the voting mechanism is not as straight forward as it seems. Using borda count for voting increases the 
 fairness of representation of the individual agents, but any further generalized statement is probably incorrect. The voting 
@@ -2169,8 +2218,8 @@ behavior of the agent, which affects what happens in the model  and therefore af
 the agents themselves. But the link that a better representation of the agents also results in better 
 rules and therefore in better 
 outcomes is not as clear and is heavily dependent on the particular situation. 
+\end{comment}
 
-\subsection{Conclusions about CPR}
 \section{Further Research}
 In this segment a few points about what could further be done are presented. They will be grouped in points regarding research tools that
 have been used, extensions of the model and extending the idea to other problems. \\ \\
@@ -2199,7 +2248,7 @@ problems. A interesting application would be the management of a communally shar
 household are connected and contribute to  and draw heat from. 
 \clearpage
 
-\section{Reflection}
+%\section{Reflection}
 
 
 \begin{comment}
