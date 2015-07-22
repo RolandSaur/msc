@@ -38,7 +38,7 @@
 % Title
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \HRule \\[0.4cm]
-{ \huge \bfseries Distributed Software Agents in Smart Grids}\\[0.4cm]
+{ \huge \bfseries Multi Agent System for Smart Charging}\\[0.4cm]
 
 \HRule \\[1.5cm]
 
@@ -86,8 +86,20 @@ Prof.dr.ir. P.M. \textsc{Herder}  \\
 \end{comment}
 Global warming is one of the main issues of the twenty-first century. The introduction of renewable energy sources (RES) and electric vehicles(EV) is promising, but poses a problem to the low voltage grid. \\
 Smart grid technology can be used to manage and thus mitigate the negative effects RES and EVs have on the grid.
-Smart grid technology to manage the low voltage grid not only deals with technical issues, but also has a social component. Smart gird technology should respect privacy, not ask for much user interaction and be widely accepted by users.\\
-Most centralized approaches fail to achieve to comply with all the requirements. Distributed approaches seem promising but often need centralized management or infringe on the users privacy. If distributed solutions can be solve the management problem of low voltage grids and how they can coordinate their actions is the central question that arises.
+Smart grid technology to manage the low voltage grid not only deals with technical issues, but also has a social component. 
+Smart gird technology should respect privacy, not ask for much user interaction and be widely accepted by users.\\
+Most centralized approaches fail to achieve to comply with all the requirements. Distributed approaches seem promising but 
+often need centralized management or infringe on the users privacy. The electricity grid is also limited in its capabilities and is 
+accessed by everyone alike. This has given rise to the suggestion that the electricity grid can be seen as a common pool resource. 
+If distributed solutions can solve the management problem of low voltage grids and how they can 
+coordinate their actions is the central question that arises.\\
+ This research focuses on the development of a distributed multi agent system for managing the charging of electric vehicles in the 
+ smart grid. A multi agents system(MAS) is designed and a testbed for the system is created to test the software agents.
+ Hypotheses are  made. The MAS itself and the hypotheses about it are tested in a series of experiments. The results show 
+ that the software agents work best when they are grouped into neighborhoods, use borda count as a voting mechanism and the structure 
+ of the rules, by which they operate, is simple. It is possible to extend this ideas to other problems in which software agents could
+ appropriate a resource for people. There are however some problems, with respect to situations, when the MAS gets stuck in 
+ non-optimal rules. 
 
 \begin{comment}
 A possible smart grid implementation that meets all the requirements is to use software agents, which have control over some appliances, like the charging of an electric vehicle. 
@@ -596,7 +608,7 @@ are used to come up with and vote on new rules.
 \label{mcomponents}
 \end{figure}
 
-\subsubsection{Agent gets up drinks a cup of coffee}
+\subsubsection{Model Flow}
 Each agent goes through the following process, depicted in figure \ref{model_coffee}. The process consists of two parts. 
 The first part takes place every 15 minutes and is done for one week. The second part is done once every week. \\
 The part that takes place every 15 minutes is very simple.
@@ -2086,7 +2098,7 @@ What is the picture all those results paint.
 \section{Conclusion}
 In this chapter conclusions will be drawn based on what has been presented so far. First a quick recap and interpretation of the
 model results will be given to answer the Research Questions. 
-This is followed by a look at what this can mean for real world implementations of smart charging and if there is also some 
+This is followed by a look at what this can mean for real world implementations, stakeholders  and if there is also some 
 general insight about common pool resource problems and multi agents systems. 
 \subsection{Model conclusion \& Research Questions}
 \begin{comment}
@@ -2108,14 +2120,11 @@ are unable to find the correct configuration of such a rule.
 Voting is the way the agents coordinate in this model. On the one side, voting works very well for most cases. On the other hand 
 voting on its own for coordinating the agents actions, is unable to do anything about situations where the system is stuck. 
 \item Can viewing the grid as a common pool resource be beneficial ?\\
-lalalla
+Looking at the problem as a common pool resource exposes aspects of the grid like its heterogeneity of access and the implication
+this has for whether the agents succeed or fail in coming up with institutional rules. 
 \end{enumerate}
-\subsection{Real World implementation}
-As mentioned in the model conclusion there are no parameter setting that ensure a perfect operation, and people also do not have 6 months
-of time to wait until the agents converge towards an institutional rule. This shows that this is not a system of software agents which 
-can just be implemented like this in the real world. However if smart meters are already deployed the software agents can be run in a dry 
-run. This way this could be seen as a tool to quickly come up with simple rules which work for this specific grid configuration and 
-situation, without having to actually analyze the situation. \\
+
+\begin{comment}
 This tool or implementation would however not open up any markets for energy companies or consumers, which makes it rather unattractive 
 to them. Municipalities would also only have a secondary interest in deploying software agents, since they are more interested in the 
 existence of electric vehicles then mitigating their effect on the grid. The main stakeholder with an incentive to adopt such a system 
@@ -2125,7 +2134,7 @@ But the feeling of loss of control and the infringement of privacy is very much 
 consumers that although they would be giving up direct control of their charging stations, this is not a step towards Orwellianism or 
 infringement of their privacy. \\
 Overall using software agents to come up with simple rules to govern a part of the grid seems unlikely but not impossible or useless.
-
+\end{comment}
 \subsection{Stakeholder perspective}
 The integration of electric vehicles into the electricity grid poses opportunities and threats to stakeholders. 
 The increase of electric vehicles can increase air quality in cities and the management of the load that 
@@ -2139,7 +2148,12 @@ First the different stakeholders and how they perceive this
 transition to electric vehicles and then possible conflicts of interest are discussed.
 \begin{enumerate}
  \item \textbf{Energy Companies:}\\
- To electricity companies the transition to electric vehicles is mostly an opportunity. It opens up a new market to them 
+ The perspective of energy companies on the introduction of electric vehicles is intertwined with a second 
+ development in the energy sector - the rise of renewable energies. Renewable energies are often volatile.Their production is 
+ dependent on whether the sun shines or the wind blows. When they do produce electricity, the cost of production falls significantly 
+ for energy companies. So it becomes very favorable for energy companies to sell at those times. 
+ Electric vehicles can be seen as large more or less dispatch-able energy consumers. 
+ Thus to electricity companies the transition to electric vehicles is mostly an opportunity. It opens up a new market to them 
  in which they see the potential to charge different rates at different times to sell as much electricity as possible 
  at times when production costs are lowest due to excess renewable energy production. Further can the batteries in 
  electric vehicles be seen as cheap storage solutions for electricity companies. The main opportunity electricity 
@@ -2162,6 +2176,8 @@ transition to electric vehicles and then possible conflicts of interest are disc
  to better negotiate with other stakeholders. This would increase the predictability of the costumer energy demand and make 
  customized solutions more likely. However  \cite{social_smart_grid} does not give a convincing reason or motivation for costumers 
  to suddenly cooperate, which makes it unlikely that social coordination will be a mayor part in implementing smart grids. 
+ Further, with the introduction of smart meters into households, consumers will experience an infringement of their privacy.
+ And a feeling of loss of control and the infringement of privacy is very much tied for costumers.
  
 \end{enumerate}
 The main conflict between stakeholders is between energy companies and grid operators. This simply arises from the 
@@ -2172,6 +2188,25 @@ different solutions in the integration of electric vehicles. \\
 While grid operators would favor a system giving them more control, energy companies would prefer systems which give 
 them and consumers most flexibility to sell the most at more profitable times. 
 
+\subsection{Real World implementation}
+The are several hurdles that need to be overcome, before this tech will be implemented. \\
+One is that there simply is a difference between the simulated environment and reality. 
+The difference between reality and the simulation model, that has to be taken care of when implementing such a multi agent system, is 
+the effect of overloading on the grid. 
+In the simulated environment, the excess power is simply cut and cannot be use.
+In reality a blackout of all the households downstream from where the maximum power was exceeded, would be the consequence. 
+When implementing this system, a simple override switch is needed inside the logic of the software agents, which automatically cuts 
+back the power it takes from the grid, if the voltage drops below the minimum voltage.\\
+The second one is that there has to be somebody, who would benefit from this enough to be willing to implement it, and that there might 
+be actors, who would oppose. Grid operators would benefit from an improved grid management because it would lower their 
+obligation to invest in more expensive infrastructure. Energy companies would oppose such a system, since it would limit their 
+ability to influence when the electric vehicle is charged to optimize their profit. The final hurdle is that consumers have to be able
+to accept this system, although it has no direct benefit for them. Further would consumers loose direct control over the charging patterns. 
+This makes it harder 
+\begin{comment}
+\subsection{Clusterfuck}
+Taking a step back and looking at the interaction of electric vehicles, renewable energies and the grid 
+\end{comment}
 \subsection{Conclusions about CPR}
 The insight that can be gained from this work, deals with highly heterogeneous common pool resource problems. 
 There are situations in which democratic means of coming up with solutions fails. This was seen in experiment 4. 
