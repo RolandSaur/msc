@@ -270,6 +270,17 @@ function_extract_lowest_failure <- function(df)
         return(voltage_data_frame)
 }
 
+function_extract_time_failure <- function(df)
+{
+        time_data_frame <- c()
+        for (k in c(1:100))
+        {
+                time_data_frame <- rbind(time_data_frame,subset(df[[k]],df[[k]]$inst_rule1 == 2))
+        }
+        
+        return(time_data_frame)
+}
+
 function_extract_voltage_action <- function(df)
 {
         Actions1 <- df$inst_rule4
@@ -469,7 +480,7 @@ function_timeline_weak <- function(df)
         }
         return(cbind(weak_1,indicator1,weak_2,indicator2,weak_3,indicator3))
 }
-#----------------------------------------------------------------------------------------------------
+#-------------------------------------main_code---------------------------------------------------
 
 # main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
 # runs <- c(1,2,3)
@@ -518,7 +529,40 @@ function_timeline_weak <- function(df)
 # 
 # }
 
+
+#-----------------------------time_rule_parameter-------------------------------------------
+main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
+runs <- c(1,2,3)
+data_frames <- list()
+time_runs <- c()
+for (i in runs) {
+        folder <- paste(main_folder,"/exp_a_",i,sep="")
+        for (k in c(1:100)){
+                filename <- paste(folder,"/exp_a_",i,"_",k,"_output.csv",sep="")
+                print(filename)
+                data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
+        }
+        time_runs <- rbind(time_runs,function_extract_time_failure(data_frames))
+}
+
+something <- data.frame(time_runs)
+
+time_begin <- ggplot(something,aes(inst_rule2)) + geom_histogram() +
+        xlab("time_begin") + ylab("Number of Runs")
+
+time_end <- ggplot(something,aes(inst_rule3)) + geom_histogram() + 
+        xlab("time_begin") + ylab("Number of Runs")
+
+times <- ggplot(something, aes(inst_rule2,inst_rule3)) + stat_bin2d() +
+        xlab("time_begin") + ylab("time_end")
+
+
+ggsave(time_end,file = "../latex/time_end.eps")
+ggsave(time_begin,file = "../latex/time_begin.eps")
+ggsave(times,file = "../latex/two_d_time_rule.eps")
 #-----------------------------Voltage_actions_correlations-------------------------------------------
+# main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
+# runs <- c(1,2,3)
 # data_frames <- list()
 # low_failure_run <- c()
 # for (i in runs) {
@@ -642,103 +686,103 @@ function_timeline_weak <- function(df)
 # t.test(averages_all,averages_all_no, "less", conf.level= 0.95 )
 
 #--------------------------------performance over time-------------------------------
-main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
-runs <- c(1,2,3)
-
-
-
-for (i in runs) {
-        folder <- paste(main_folder,"/exp_a_",i,sep="")
-        data_frames <- list()
-        for (k in c(1:100)){
-                filename <- paste(folder,"/exp_a_",i,"_",k,"_output.csv",sep="")
-                print(filename)
-                data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
-        }
-        if (i ==1)
-        {
-                hard_timeline <- function_timeline_hard(data_frames)
-                weak_timeline <- function_timeline_weak(data_frames)
-                average_timeline <- function_timeline_average(data_frames)
-        }else 
-        {
-                average_timeline <- rbind(average_timeline,function_timeline_average(data_frames))
-                weak_timeline <- rbind(weak_timeline,function_timeline_weak(data_frames))
-                hard_timeline <- rbind(hard_timeline,function_timeline_hard(data_frames))
-        }
-        #assign(paste("data_a_",i),function_average(data_frames))
-}
-average_timeline <- data.frame(average_timeline)
-weak_timeline <- data.frame(weak_timeline)
-hard_timeline <- data.frame(hard_timeline)
-
-average_timeline$indicator1 <- factor(average_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-average_timeline$indicator2 <- factor(average_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-average_timeline$indicator3 <- factor(average_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-
-
-weak_timeline$indicator1 <- factor(weak_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-weak_timeline$indicator2 <- factor(weak_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-weak_timeline$indicator3 <- factor(weak_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-
-hard_timeline$indicator1 <- factor(hard_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-hard_timeline$indicator2 <- factor(hard_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-hard_timeline$indicator3 <- factor(hard_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
-
-mt <- ggplot(hard_timeline,aes(hard_1,fill =indicator1)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of hard failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/hard_time_1.eps")
-
-mt <- ggplot(hard_timeline,aes(hard_2,fill =indicator2)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of hard failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/hard_time_2.eps")
-
-mt <- ggplot(hard_timeline,aes(hard_3,fill =indicator3)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of hard failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/hard_time_3.eps")
-
-
-mt <- ggplot(weak_timeline,aes(weak_1,fill =indicator1)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of weak failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/weak_time_1.eps")
-
-mt <- ggplot(weak_timeline,aes(weak_2,fill =indicator2)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of weak failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/weak_time_2.eps")
-
-mt <- ggplot(weak_timeline,aes(weak_3,fill =indicator3)) + geom_histogram(binwidth =1) +
-        ylab("Number of runs") +
-        xlab("Number of weak failures") +
-        ggtitle("")
-ggsave(mt,file = "../latex/weak_time_3.eps")
-
-
-
-
-mt <- ggplot(average_timeline,aes(average_1,fill =indicator1)) + geom_histogram() +
-        ylab("Number of runs") +
-        xlab("Average SOC") +
-        ggtitle("")
-ggsave(mt,file = "../latex/average_time_1.eps")
-
-mt <- ggplot(average_timeline,aes(average_2,fill =indicator2)) + geom_histogram() +
-        ylab("Number of runs") +
-        xlab("Average SOC") +
-        ggtitle("")
-ggsave(mt,file = "../latex/average_time_2.eps")
-
-mt <- ggplot(average_timeline,aes(average_3,fill =indicator3)) + geom_histogram() +
-        ylab("Number of runs") +
-        xlab("Average SOC") +
-        ggtitle("")
-ggsave(mt,file = "../latex/average_time_3.eps")
+# main_folder <- "/home/saur/Documents/master/output_data/main_node_folder"
+# runs <- c(1,2,3)
+# 
+# 
+# 
+# for (i in runs) {
+#         folder <- paste(main_folder,"/exp_a_",i,sep="")
+#         data_frames <- list()
+#         for (k in c(1:100)){
+#                 filename <- paste(folder,"/exp_a_",i,"_",k,"_output.csv",sep="")
+#                 print(filename)
+#                 data_frames[[k]] <-read.csv(filename, header = TRUE, sep = ",")
+#         }
+#         if (i ==1)
+#         {
+#                 hard_timeline <- function_timeline_hard(data_frames)
+#                 weak_timeline <- function_timeline_weak(data_frames)
+#                 average_timeline <- function_timeline_average(data_frames)
+#         }else 
+#         {
+#                 average_timeline <- rbind(average_timeline,function_timeline_average(data_frames))
+#                 weak_timeline <- rbind(weak_timeline,function_timeline_weak(data_frames))
+#                 hard_timeline <- rbind(hard_timeline,function_timeline_hard(data_frames))
+#         }
+#         #assign(paste("data_a_",i),function_average(data_frames))
+# }
+# average_timeline <- data.frame(average_timeline)
+# weak_timeline <- data.frame(weak_timeline)
+# hard_timeline <- data.frame(hard_timeline)
+# 
+# average_timeline$indicator1 <- factor(average_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# average_timeline$indicator2 <- factor(average_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# average_timeline$indicator3 <- factor(average_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# 
+# 
+# weak_timeline$indicator1 <- factor(weak_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# weak_timeline$indicator2 <- factor(weak_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# weak_timeline$indicator3 <- factor(weak_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# 
+# hard_timeline$indicator1 <- factor(hard_timeline$indicator1, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# hard_timeline$indicator2 <- factor(hard_timeline$indicator2, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# hard_timeline$indicator3 <- factor(hard_timeline$indicator3, levels=c("1","2"),labels=c("Voltage-rule","Time-rule"))
+# 
+# mt <- ggplot(hard_timeline,aes(hard_1,fill =indicator1)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of hard failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/hard_time_1.eps")
+# 
+# mt <- ggplot(hard_timeline,aes(hard_2,fill =indicator2)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of hard failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/hard_time_2.eps")
+# 
+# mt <- ggplot(hard_timeline,aes(hard_3,fill =indicator3)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of hard failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/hard_time_3.eps")
+# 
+# 
+# mt <- ggplot(weak_timeline,aes(weak_1,fill =indicator1)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of weak failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/weak_time_1.eps")
+# 
+# mt <- ggplot(weak_timeline,aes(weak_2,fill =indicator2)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of weak failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/weak_time_2.eps")
+# 
+# mt <- ggplot(weak_timeline,aes(weak_3,fill =indicator3)) + geom_histogram(binwidth =1) +
+#         ylab("Number of runs") +
+#         xlab("Number of weak failures") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/weak_time_3.eps")
+# 
+# 
+# 
+# 
+# mt <- ggplot(average_timeline,aes(average_1,fill =indicator1)) + geom_histogram() +
+#         ylab("Number of runs") +
+#         xlab("Average SOC") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/average_time_1.eps")
+# 
+# mt <- ggplot(average_timeline,aes(average_2,fill =indicator2)) + geom_histogram() +
+#         ylab("Number of runs") +
+#         xlab("Average SOC") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/average_time_2.eps")
+# 
+# mt <- ggplot(average_timeline,aes(average_3,fill =indicator3)) + geom_histogram() +
+#         ylab("Number of runs") +
+#         xlab("Average SOC") +
+#         ggtitle("")
+# ggsave(mt,file = "../latex/average_time_3.eps")
